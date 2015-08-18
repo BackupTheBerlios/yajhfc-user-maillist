@@ -1,0 +1,20 @@
+From jonas.wolz at freenet.de  Thu Nov 15 12:27:21 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 15 Nov 2007 12:27:21 +0100
+Subject: [Yajhfc-user] Vista compatible setup.exe
+Message-ID: <200711151227.21981.jonas.wolz@freenet.de>
+
+The YajHFC Windows setup program has been updated to fully support Windows 
+Vista now.
+
+You can download the new version at:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_5a-setup.exe
+
+If you find any (new) incompatibilities to Vista or any other Windows version, 
+please let me know.
+
+Have fun,
+Jonas
+
+
+

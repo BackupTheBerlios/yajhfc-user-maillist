@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812152152.49641.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000142.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Feature request</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812152152.49641.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Feature request">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Dec 15 21:52:49 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000142.html">[Yajhfc-user] Feature request
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Yajhfc-user] Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 15. Dezember 2008 schrieb Jonas Wolz:
+&gt;<i> The workaround I implemented is to add code to this script which saves the
+</I>&gt;<i> correct values for USERPROFILE, TMP and TEMP to the registry
+</I>&gt;<i> (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+</I>&gt;<i> printlaunch.vbs now checks if these values are present and uses them if
+</I>&gt;<i> they are present. If not, the old logic is applied.
+</I>&gt;<i> As long as the user profile location has not been moved after the
+</I>&gt;<i> last &quot;normal&quot; start of YajHFC (which should be really seldom) and YajHFC
+</I>&gt;<i> has been started &quot;normally&quot; at some point of time, this should fix the path
+</I>&gt;<i> problems.
+</I>
+Again answering to myself:
+If you (or someone else) wants to test the scripts including the workaround, 
+these are now available under
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs">ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs</A> and
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs">ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs</A>
+
+To use the new versions, simply replace the YajHFC 0.3.9 versions of the 
+scripts under c:\program files\yajhfc with the versions from above. 
+After YajHFC has been started using execyajhfc.vbs for the first time (as the 
+shortcuts created by the 0.3.9 setup do), printlaunch.vbs should work 
+flawlessly (and you should find three registry keys under 
+HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+
+Regards,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000142.html">[Yajhfc-user] Feature request
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Yajhfc-user] Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

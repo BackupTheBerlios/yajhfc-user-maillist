@@ -1,0 +1,575 @@
+From lists at egidy.de  Fri Mar  4 09:20:54 2011
+From: lists at egidy.de (Gerd v. Egidy)
+Date: Fri, 4 Mar 2011 09:20:54 +0100
+Subject: [Yajhfc-user] 0.5.0beta7: can't delete server configurations
+Message-ID: <201103040920.54558.lists@egidy.de>
+
+Hi,
+
+I was playing around with the 0.5.0b7 a bit and stumbled upon a problem when 
+trying to delete a server configuration. You can reproduce it like this:
+
+- install yajhfc
+- set up the "standard" server config to make it work
+- close the options dialog
+- open the options dialog
+- add a new server config
+- configure this server config to make it work
+- close the options dialog
+- open the options dialog
+- go to the list of server configs
+- delete the first "standard" one
+- click on the second one you created
+- click on edit (or whatever that is called in your language)
+-> you see the options of the "standard" server config which should have been 
+deleted but is still there
+
+Also the tree view on the left side of the options dialog still shows the old 
+config too.
+
+Kind regards,
+
+Gerd
+
+-- 
+Address (better: trap) for people I really don't want to get mail from:
+jonas at cactusamerica.com
+
+
+From jonas.wolz at freenet.de  Sun Mar  6 11:28:05 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 6 Mar 2011 11:28:05 +0100
+Subject: [Yajhfc-user] 0.5.0beta7: can't delete server configurations
+In-Reply-To: <201103040920.54558.lists@egidy.de>
+References: <201103040920.54558.lists@egidy.de>
+Message-ID: <201103061128.05237.jonas.wolz@freenet.de>
+
+Thanks for your bug report!
+This bug should be fixed now in 0.5.0beta8.
+
+Best regards
+Jonas
+
+Am Freitag, 4. M?rz 2011 schrieb Gerd v. Egidy:
+> Hi,
+> 
+> I was playing around with the 0.5.0b7 a bit and stumbled upon a problem
+> when trying to delete a server configuration. You can reproduce it like
+> this:
+> 
+> - install yajhfc
+> - set up the "standard" server config to make it work
+> - close the options dialog
+> - open the options dialog
+> - add a new server config
+> - configure this server config to make it work
+> - close the options dialog
+> - open the options dialog
+> - go to the list of server configs
+> - delete the first "standard" one
+> - click on the second one you created
+> - click on edit (or whatever that is called in your language)
+> -> you see the options of the "standard" server config which should have
+> been deleted but is still there
+> 
+> Also the tree view on the left side of the options dialog still shows the
+> old config too.
+> 
+> Kind regards,
+> 
+> Gerd
+
+
+
+From lists at egidy.de  Mon Mar  7 13:07:44 2011
+From: lists at egidy.de (Gerd v. Egidy)
+Date: Mon, 7 Mar 2011 13:07:44 +0100
+Subject: [Yajhfc-user] 0.5.0beta7: can't delete server configurations
+In-Reply-To: <201103061128.05237.jonas.wolz@freenet.de>
+References: <201103040920.54558.lists@egidy.de>
+	<201103061128.05237.jonas.wolz@freenet.de>
+Message-ID: <201103071307.45027.lists@egidy.de>
+
+Hi Jonas,
+
+> Thanks for your bug report!
+> This bug should be fixed now in 0.5.0beta8.
+
+I just tested it with beta9 and it works. Thanks for fixing this.
+
+Kind regards,
+
+Gerd
+
+-- 
+Address (better: trap) for people I really don't want to get mail from:
+jonas at cactusamerica.com
+
+
+From jonas.wolz at freenet.de  Sun Mar 13 13:25:43 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 13 Mar 2011 13:25:43 +0100
+Subject: [Yajhfc-user] YajHFC 0.5.0 release candiate
+Message-ID: <201103131325.43327.jonas.wolz@freenet.de>
+
+In a few weeks YajHFC 0.5.0 will be released.
+
+You can download the current release candidate as jar file / Windows setup / 
+Linux packages / MAC app from:
+
+ftp://ftp.berlios.de/pub/yajhfc/temp/beta/
+
+The translations (except German) are still incomplete, but they will be 
+updated as soon as they are ready.
+
+Changes in YajHFC 0.5.0:
+- Support for local caching of the fax lists, probably making the start-up of 
+the application feel much quicker
+- Experimental support for direct reading to the recvq and doneq directory, 
+bypassing the HylaFAX server (and the HylaFAX user authentication). This 
+might lead to a lower server load with large queues since only modified files 
+are read to refresh the fax lists. This still needs some testing, however... 
+(any feedback on this feature is very welcome!)
+- Options dialog should open a bit faster than before
+- "Test connection" button in the Options dialog
+- Support for multiple servers
+- Support for multiple identities
+- Lists of faxes can be saved in CSV, HTML or XML format
+- Support for configurable keyboard accelerators
+
+
+If you find any bugs / problems / ... with this version, please let me know.
+
+Have fun and thanks in advance for your feedback!
+
+Jonas Wolz.
+
+
+
+From rentorbuy at yahoo.com  Tue Mar 15 11:29:06 2011
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 15 Mar 2011 03:29:06 -0700 (PDT)
+Subject: [Yajhfc-user] YajHFC 0.5.0 release candiate
+In-Reply-To: <201103131325.43327.jonas.wolz@freenet.de>
+Message-ID: <257316.53888.qm@web113310.mail.gq1.yahoo.com>
+
+
+--- On Sun, 3/13/11, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> - Support for multiple servers
+
+Hi!
+
+I haven't tried this release yet but I would like to know what "Support for multiple servers" means exactly.
+
+Is there any way of telling yajhfc to automatically resend a failed fax job to "the next server on the list"?
+
+Maybe this could be done at server level only (ie. hylafax server 1 can pass the failed fax job to hylafax server 2, OR hylafax server 1 can try to use hylafax server 2's modems via TCP/IP) but I haven't managed to do it for now.
+
+So I'm wondering if YajHFC 0.5.0 can re-send a failed job sequentially to its list of multiple servers. If the last server on the list also fails then abort.
+
+Thanks
+
+Vieri
+
+
+
+
+      
+
+
+From eric at midstateconstruction.com  Wed Mar 16 16:22:06 2011
+From: eric at midstateconstruction.com (Eric Bostrom)
+Date: Wed, 16 Mar 2011 08:22:06 -0700
+Subject: [Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+Message-ID: <99504936-B675-4EF0-81CC-2E7D2301E14A@midstateconstruction.com>
+
+Hello,
+Thank you very much for YajHFC. Over the past week, we've sent roughly 3,300~ faxes. 
+
+This leads me to my problem: When I send large batches of faxes, I can't easily correlate the entry with a batch. I can specify jobinfo via send fax>advanced>job properties, but I am unable to add a jobinfo column to the 'Sent' queue-view.
+
+I want to be able to see groups of faxes with the same "subject line" in "Sent" queue-view.
+
+Example:
+If I send BatchA to 300 users and then send BatchB to 300 users, the queue-view will show 600 faxes. I cannot easily see which 300 were BatchA and which were BatchB.
+
+Thanks for your help!
+
+From giulioo at gmail.com  Wed Mar 16 17:19:55 2011
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Wed, 16 Mar 2011 17:19:55 +0100
+Subject: [Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+In-Reply-To: <99504936-B675-4EF0-81CC-2E7D2301E14A@midstateconstruction.com>
+References: <99504936-B675-4EF0-81CC-2E7D2301E14A@midstateconstruction.com>
+Message-ID: <AANLkTikF+WL0uRq3XjVQPpsWYW_N5o7ah33J5v0L+6g5@mail.gmail.com>
+
+On Wed, Mar 16, 2011 at 16:22, Eric Bostrom
+<eric at midstateconstruction.com> wrote:
+>correlate the entry with a batch. I can specify jobinfo via send fax>advanced>job >properties, but I am unable to add a jobinfo column to the 'Sent' queue-view.
+
+What have you tried to accomplish this?
+Have you added the "tag string" column to the sent faxes?
+
+
+-- 
+giulioo at pobox.com
+
+
+From eric at midstateconstruction.com  Wed Mar 16 17:29:51 2011
+From: eric at midstateconstruction.com (Eric Bostrom)
+Date: Wed, 16 Mar 2011 09:29:51 -0700
+Subject: [Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+In-Reply-To: <AANLkTikF+WL0uRq3XjVQPpsWYW_N5o7ah33J5v0L+6g5@mail.gmail.com>
+References: <99504936-B675-4EF0-81CC-2E7D2301E14A@midstateconstruction.com>
+	<AANLkTikF+WL0uRq3XjVQPpsWYW_N5o7ah33J5v0L+6g5@mail.gmail.com>
+Message-ID: <343541B9-F733-4D71-8EF5-1DEA85C2A6CF@midstateconstruction.com>
+
+I have tag string column enabled, it usually shows 'null'
+
+I just sent a fax using send fax>advanced>job properties>
+Key:TAGLINE
+Value:Test
+
+...and the tag string column shows 'null'
+
+I attempted to send a 2nd test with:
+Key:TAGSTRING
+Value:Test2 
+
+...and received the message 	
+500 JPARM TAGSTRING: Parameter not recognized.
+
+What job property key/value should I use? I've tried JOBINFO, JOBTAG & GROUPID
+
+
+On Mar 16, 2011, at 9:19 AM, Giulio Orsero wrote:
+
+> On Wed, Mar 16, 2011 at 16:22, Eric Bostrom
+> <eric at midstateconstruction.com> wrote:
+>> correlate the entry with a batch. I can specify jobinfo via send fax>advanced>job >properties, but I am unable to add a jobinfo column to the 'Sent' queue-view.
+> 
+> What have you tried to accomplish this?
+> Have you added the "tag string" column to the sent faxes?
+> 
+> 
+> -- 
+> giulioo at pobox.com
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+> 
+
+
+
+From jonas.wolz at freenet.de  Wed Mar 16 18:09:16 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 16 Mar 2011 18:09:16 +0100
+Subject: [Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+Message-ID: <201103161809.16506.jonas.wolz@freenet.de>
+
+Am Mittwoch, 16. M?rz 2011 schrieb Eric Bostrom:
+> I have tag string column enabled, it usually shows 'null'
+> 
+> I just sent a fax using send fax>advanced>job properties>
+> Key:TAGLINE
+> Value:Test
+> 
+> ...and the tag string column shows 'null'
+> 
+> I attempted to send a 2nd test with:
+> Key:TAGSTRING
+> Value:Test2
+> 
+> ...and received the message
+> 500 JPARM TAGSTRING: Parameter not recognized.
+> 
+> What job property key/value should I use? I've tried JOBINFO, JOBTAG &
+> GROUPID
+
+The HylaFAX jparm name is USRKEY.
+
+But you actually do not need to use the advanced job properties for that:
+YajHFC automatically sets the "Tag string" to the fax's "subject" as entered 
+in the send dialog.
+
+Hope that helps
+Jonas
+
+
+
+From jonas.wolz at freenet.de  Wed Mar 16 18:09:36 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 16 Mar 2011 18:09:36 +0100
+Subject: [Yajhfc-user] YajHFC 0.5.0 release candiate
+Message-ID: <201103161809.36607.jonas.wolz@freenet.de>
+
+Am Dienstag, 15. M?rz 2011 schrieb Vieri:
+> I haven't tried this release yet but I would like to know what "Support for
+> multiple servers" means exactly.
+
+It means that you can add connection profiles for multiple servers (or 
+multiple users on the same server).
+
+> Is there any way of telling yajhfc to automatically resend a failed fax job
+> to "the next server on the list"?
+> 
+> Maybe this could be done at server level only (ie. hylafax server 1 can
+> pass the failed fax job to hylafax server 2, OR hylafax server 1 can try
+> to use hylafax server 2's modems via TCP/IP) but I haven't managed to do
+> it for now.
+> 
+> So I'm wondering if YajHFC 0.5.0 can re-send a failed job sequentially to
+> its list of multiple servers. If the last server on the list also fails
+> then abort.
+
+No, version 0.5.0 cannot do this. 
+This would not be that easy to do anyway, since a client does not get any 
+explicit success/failure information from the server. So the only method to 
+detect a failure would be scanning the sent/transmitting tables for failed 
+faxes and then cancel them on server 1 and create a new job on server 2.
+To be honest it is quite unlikely this will be implemented any time soon... 
+
+
+Best regards
+Jonas
+
+
+
+From pz-yajhfc-user at ziemba.us  Thu Mar 24 07:16:02 2011
+From: pz-yajhfc-user at ziemba.us (G. Paul Ziemba)
+Date: Thu, 24 Mar 2011 06:16:02 +0000 (UTC)
+Subject: [Yajhfc-user] 0.5.0rc5 issues
+Message-ID: <imenj2$2ncf$1@hairball.ziemba.us>
+
+First I'd like to thank Jonas (et al.?) for this software. It seems to
+have a lot of nice features and I am happy to have found it.
+
+I can send faxes but there are some little problems. I am not
+experienced with Java (most of my work has been in C/C++) so I am not
+sure how to classify some of these issues (are they problems in the
+java environment external to yajhfc or are they internal to yajhfc?).
+
+Should I open a bug in the tracker for either of these?
+
+Thanks for your patience.
+
+My setup:
+
+OS: FreeBSD 8.2-PRERELEASE Sun Jan 23 00:28:46 PST 2011
+Java: diablo-jdk1.6.0
+yajhfc: 0.5.0rc5
+
+1. Date/time of day on cover sheet is always in UTC timezone. In
+   Extras>Options>Servers>Default there are Settings for "Date/Time
+   offset" and "Time Zone" (the latter has choices Local and GMT)
+   but neither has any effect on the cover sheet.
+
+   How can I get correct date/time to appear on the cover sheet?
+
+
+2. I get the following message at startup but I don't know what it means.
+   It does not seem to affect functionality.
+
+    Mar 24, 2011 6:06:36 AM yajhfc.util.AWTExceptionLogger handle
+    SEVERE: An uncaught exception occurred during event dispatching:
+    java.lang.UnsatisfiedLinkError: /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: Undefined symbol "jpeg_resync_to_restart"
+	    at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+	    at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1751)
+	    at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1668)
+	    at java.lang.Runtime.loadLibrary0(Runtime.java:823)
+	    at java.lang.System.loadLibrary(System.java:1030)
+	    at sun.security.action.LoadLibraryAction.run(LoadLibraryAction.java:50)
+	    at java.security.AccessController.doPrivileged(Native Method)
+	    at java.awt.SplashScreen.getSplashScreen(SplashScreen.java:91)
+	    at yajhfc.splashscreen.Java6YJSplashScreen.<init>(Java6YJSplashScreen.java:75)
+	    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	    at java.lang.Class.newInstance0(Class.java:355)
+	    at java.lang.Class.newInstance(Class.java:308)
+	    at yajhfc.splashscreen.YJSplashScreen.getSplashScreen(YJSplashScreen.java:79)
+	    at yajhfc.launch.Launcher2$NewInstRunner.run(Launcher2.java:557)
+	    at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+	    at java.awt.EventQueue.dispatchEvent(EventQueue.java:597)
+	    at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:273)
+	    at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:183)
+	    at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:173)
+	    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:168)
+	    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:160)
+	    at java.awt.EventDispatchThread.run(EventDispatchThread.java:121)
+    Mar 24, 2011 6:06:36 AM yajhfc.MainWin$LoginThread$1 run
+    INFO: Finished init work after refresh complete!
+
+many thanks,
+
+ ~!paul
+-- 
+G. Paul Ziemba
+FreeBSD unix:
+11:11PM  up 21 days, 23:47, 22 users, load averages: 0.09, 0.13, 0.07
+
+
+From jonas.wolz at freenet.de  Sat Mar 26 17:48:01 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 26 Mar 2011 17:48:01 +0100
+Subject: [Yajhfc-user] 0.5.0rc5 issues
+Message-ID: <201103261748.01378.jonas.wolz@freenet.de>
+
+Am Donnerstag, 24. M?rz 2011 schrieb G. Paul Ziemba:
+> OS: FreeBSD 8.2-PRERELEASE Sun Jan 23 00:28:46 PST 2011
+> Java: diablo-jdk1.6.0
+> yajhfc: 0.5.0rc5
+> 
+> 1. Date/time of day on cover sheet is always in UTC timezone. In
+>    Extras>Options>Servers>Default there are Settings for "Date/Time
+>    offset" and "Time Zone" (the latter has choices Local and GMT)
+>    but neither has any effect on the cover sheet.
+
+These settings only affect the date/times from the HylaFAX server, not the 
+ones on the cover page.
+
+>    How can I get correct date/time to appear on the cover sheet?
+
+The date/time on the cover page is generated by YajHFC and uses the local 
+system time with the local time zone.
+Currently there is no feature to change the time zone for the cover page.
+
+Most likely your time zone is either not set correctly or (more likely) Java 
+somehow does not recognize it...
+
+> 2. I get the following message at startup but I don't know what it means.
+>    It does not seem to affect functionality.
+> 
+>     Mar 24, 2011 6:06:36 AM yajhfc.util.AWTExceptionLogger handle
+>     SEVERE: An uncaught exception occurred during event dispatching:
+>     java.lang.UnsatisfiedLinkError:
+> /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so:
+> /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: Undefined
+> symbol "jpeg_resync_to_restart" at
+> java.lang.ClassLoader$NativeLibrary.load(Native Method)
+> [...]
+
+libsplashscreen.so is a component of the Java runtime environment. This error 
+probably means that this file has been linked against a different, 
+incompatible version of some other library on your system (which in turn 
+suggests that your Java installation is probably partially broken...).
+
+
+Hope that helps
+Jonas Wolz
+
+
+
+From jonas.wolz at freenet.de  Sun Mar 27 13:22:26 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 27 Mar 2011 13:22:26 +0200
+Subject: [Yajhfc-user] Status of YajHFC 0.5.0 translations
+Message-ID: <201103271322.26245.jonas.wolz@freenet.de>
+
+Hello translators and users,
+
+the release of YajHFC 0.5.0 is planned for the next weekend, some translations 
+are still incomplete however.
+
+This affects the following translations:
+
+Greek:
+521 translated messages, 2 fuzzy translations, 386 untranslated messages.
+----------
+Polish:
+770 translated messages, 139 untranslated messages.
+----------
+Turkish:
+725 translated messages, 184 untranslated messages.
+----------
+
+The rest of the translations (Chinese, French, German, Italian, Spanish, 
+Russian) are complete (thanks to all translators here!).
+
+
+If the Greek, Polish and Turkish translation are not completed before next 
+weekend, I will release the program with incomplete translations for these 
+languages.
+
+Before doing so, however, I would like to ask the "general public" if there 
+are any active users of these translations, who are willing to complete them 
+for this and possibly future releases.
+
+If yes, please send me a mail and I will provide you with instructions how to 
+do the translation (even you need more than a week time for it; I will then 
+decide if the release will be postponed because of that or not...).
+
+
+Thanks in advance
+Jonas Wolz
+
+
+From pz-yajhfc-user at ziemba.us  Sun Mar 27 18:39:20 2011
+From: pz-yajhfc-user at ziemba.us (G. Paul Ziemba)
+Date: Sun, 27 Mar 2011 16:39:20 +0000 (UTC)
+Subject: [Yajhfc-user] 0.5.0rc5 issues
+References: <201103261748.01378.jonas.wolz@freenet.de>
+Message-ID: <imnp7o$11i8$1@hairball.ziemba.us>
+
+jonas.wolz at freenet.de (Jonas Wolz) writes:
+
+>Am Donnerstag, 24. M?rz 2011 schrieb G. Paul Ziemba:
+>> OS: FreeBSD 8.2-PRERELEASE Sun Jan 23 00:28:46 PST 2011
+>> Java: diablo-jdk1.6.0
+>> yajhfc: 0.5.0rc5
+>> 
+>> 1. Date/time of day on cover sheet is always in UTC timezone. In
+>>    Extras>Options>Servers>Default there are Settings for "Date/Time
+>>    offset" and "Time Zone" (the latter has choices Local and GMT)
+>>    but neither has any effect on the cover sheet.
+
+>These settings only affect the date/times from the HylaFAX server, not the 
+>ones on the cover page.
+
+>>    How can I get correct date/time to appear on the cover sheet?
+
+>The date/time on the cover page is generated by YajHFC and uses the local 
+>system time with the local time zone.
+>Currently there is no feature to change the time zone for the cover page.
+>
+>Most likely your time zone is either not set correctly or (more likely) Java 
+>somehow does not recognize it...
+
+Aha. That was useful information. Indeed, my java installation didn't
+seem to know the correct local timezone (even though everything else
+on my system does). An updated version of /etc/localtime (previous was
+from 2007) fixed that.
+
+
+
+>> 2. I get the following message at startup but I don't know what it means.
+>>    It does not seem to affect functionality.
+>> 
+>>     Mar 24, 2011 6:06:36 AM yajhfc.util.AWTExceptionLogger handle
+>>     SEVERE: An uncaught exception occurred during event dispatching:
+>>     java.lang.UnsatisfiedLinkError:
+>> /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so:
+>> /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: Undefined
+>> symbol "jpeg_resync_to_restart" at
+>> java.lang.ClassLoader$NativeLibrary.load(Native Method)
+>> [...]
+
+>libsplashscreen.so is a component of the Java runtime environment. This error 
+>probably means that this file has been linked against a different, 
+>incompatible version of some other library on your system (which in turn 
+>suggests that your Java installation is probably partially broken...).
+
+Hmm. At least now I know where to begin digging.
+
+thanks,
+
+ ~!paul
+-- 
+G. Paul Ziemba
+FreeBSD unix:
+ 9:36AM  up 25 days, 10:12, 25 users, load averages: 0.16, 0.14, 0.09
+
+

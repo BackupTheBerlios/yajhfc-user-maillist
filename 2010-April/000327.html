@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] problem with sending a postscript file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20sending%20a%20postscript%20file&In-Reply-To=%3C4BB914E4.4060709%40free.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000326.html">
+   <LINK REL="Next"  HREF="000328.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] problem with sending a postscript file</H1>
+    <B>anne.yajhfc at free.fr</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20sending%20a%20postscript%20file&In-Reply-To=%3C4BB914E4.4060709%40free.fr%3E"
+       TITLE="[Yajhfc-user] problem with sending a postscript file">anne.yajhfc at free.fr
+       </A><BR>
+    <I>Mon Apr  5 00:38:28 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000326.html">[Yajhfc-user] problem with sending a postscript file
+</A></li>
+        <LI>Next message: <A HREF="000328.html">[Yajhfc-user] problem with sending a postscript file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#327">[ date ]</a>
+              <a href="thread.html#327">[ thread ]</a>
+              <a href="subject.html#327">[ subject ]</a>
+              <a href="author.html#327">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">anne.yajhfc at free.fr</A> a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i> I sent a fax with a postscript file (. ps)
+</I>&gt;<i> The fax, which was received, has many small squares.
+</I>&gt;<i> The fax is illegible.
+</I>&gt;<i> 
+</I>
+-----
+gs -q -dBATCH -dSAFER -dNOPAUSE -sDEVICE=pdfwrite 
+-sOutputFile=/home/anne/Documents/amdocq/submit_ama2.pdf -sPAPERSIZE=a4 
+-r196 -dPDFSETTINGS=/default -dDownsampleColorImages=true 
+-dDownsampleGrayImages=true -dDownsampleMonoImages=true 
+-dMonoImageDownsampleType=/Bicubic -dGrayImageDownsampleType=/Bicubic 
+-dColorImageDownsampleType=/Bicubic -dMonoImageResolution=196 
+-dGrayImageResolution=196 -dColorImageResolution=196 -dOptimize=true -c 
+.setpdfwrite -f /home/anne/Documents/amdocq/doc122.ps
+-----
+
+With this command, on my client computer, with ghostscript (version 
+8.70), the file 'submit_ama2.pdf is OK
+
+With this same command, on my server, with ghostscript-7.07-33.11.el4, 
+the file 'submit_ama2.pdf' is not ok =&gt; lots of small squares
+
+How to solve the problem?
+
+Anne
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000326.html">[Yajhfc-user] problem with sending a postscript file
+</A></li>
+	<LI>Next message: <A HREF="000328.html">[Yajhfc-user] problem with sending a postscript file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#327">[ date ]</a>
+              <a href="thread.html#327">[ thread ]</a>
+              <a href="subject.html#327">[ subject ]</a>
+              <a href="author.html#327">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,150 @@
+From jonas.wolz at freenet.de  Thu Apr 12 21:39:41 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 12 Apr 2007 21:39:41 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.3 released
+Message-ID: <200704122139.41522.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.3 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_3.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_3-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_3-setup.exe
+
+New features/changes:
+- Support for resending faxes
+- Printing the tables with received/sent faxes supported
+- Colored background for failed fax jobs
+- Read only LDAP phone book support added
+- Support for multiple open phone books
+- Windows setup program with automatic "fax printer" installation
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+
+From rentorbuy at yahoo.com  Fri Apr 13 11:30:13 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Fri, 13 Apr 2007 02:30:13 -0700 (PDT)
+Subject: [Yajhfc-user] YajHFC 0.3.3 released
+In-Reply-To: <200704122139.41522.jonas.wolz@freenet.de>
+Message-ID: <729543.589.qm@web32609.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> I am pleased to announce that version 0.3.3 of
+> YajHFC has been released today.
+
+Great!
+I'm only having trouble getting LDAP to grab data
+because I get:
+
+LDAP: error code 4 - Sizelimit Exceeded
+
+but that's probably a server-side limitation I must
+investigate.
+
+The rest works perfectly (printing "sent faxes" table
+is useful - and of course "resending" is great
+although we haven't mass tested it yet).
+
+
+__________________________________________________
+Do You Yahoo!?
+Tired of spam?  Yahoo! Mail has the best spam protection around 
+http://mail.yahoo.com 
+
+
+From jonas.wolz at freenet.de  Fri Apr 13 11:55:45 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 13 Apr 2007 11:55:45 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.3 released
+In-Reply-To: <729543.589.qm@web32609.mail.mud.yahoo.com>
+References: <729543.589.qm@web32609.mail.mud.yahoo.com>
+Message-ID: <200704131155.46101.jonas.wolz@freenet.de>
+
+Am Freitag, 13. April 2007 11:30 schrieb Vieri:
+> I'm only having trouble getting LDAP to grab data
+> because I get:
+>
+> LDAP: error code 4 - Sizelimit Exceeded
+>
+> but that's probably a server-side limitation I must
+> investigate.
+
+Maybe the following link helps:
+http://www.ldapadministrator.com/forum/viewtopic.php?t=14
+
+The LDAP phone book is currently quite simple minded and just reads all 
+entries below the Base DN matching the object filter and uses them as phone 
+book entries.
+Since I tested it only against a "toy" LDAP directory with about 10 entries so 
+far, I don't really know how this performs with many entries (as you will 
+probably have).
+
+On the other hand, this (or other) problems could very well also be on my side 
+since this is actually one of first attempts to access LDAP programmatically 
+(using the Java JNDI classes).
+
+Regards,
+Jonas
+
+
+From rentorbuy at yahoo.com  Fri Apr 13 11:57:30 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Fri, 13 Apr 2007 02:57:30 -0700 (PDT)
+Subject: [Yajhfc-user] command line option to force specific table view
+Message-ID: <20070413095730.92892.qmail@web32602.mail.mud.yahoo.com>
+
+Hi Jonas,
+
+maybe a command line option to force a specific table
+to show up after a virtual printing redirection could
+be a useful feature.
+For instance, whenever a user sends a fax out through
+redmon then it may be appropriate for the admin to
+specify that the TRANSMIT table be displayed.
+
+
+__________________________________________________
+Do You Yahoo!?
+Tired of spam?  Yahoo! Mail has the best spam protection around 
+http://mail.yahoo.com 
+
+
+From MWilson at acesappraisal.com  Fri Apr 13 15:21:36 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Fri, 13 Apr 2007 09:21:36 -0400
+Subject: [Yajhfc-user] Yajhfc-user Digest, Vol 2, Issue 1
+In-Reply-To: <000801c77dcd$d1b53570$6415a8c0@AAG.local>
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A33603685E@claims-new>
+
+ 
+I haven't had time to download the new version, but I'm very excited
+about the ability to re-send.
+
+I've been using a variety of Hylafax front ends (for Windows) and so far
+this is my favorite.
+
+My wish list:
+
+1:  Pause/hold fax jobs (this would work great with re-send).
+2:  Tweat the send dialog to be more user-friendly when using Yajhfc as
+a fax-printer.  Ie, I am using Redmon and directing output to yajhfc.
+I'd like the main tab to have the fields for Number/recipient, etc, and
+all other options put on the secondary tab. 
+
+Thanks for your hard work .. This is a great program.
+
+Mike Wilson
+
+

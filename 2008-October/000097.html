@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] cannot print
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3C200810211124.36271.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000096.html">
+   <LINK REL="Next"  HREF="000102.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] cannot print</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3C200810211124.36271.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] cannot print">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Tue Oct 21 11:24:35 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000096.html">[Yajhfc-user] cannot print
+</A></li>
+        <LI>Next message: <A HREF="000102.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 21. Oktober 2008 schrieb Nerijus Baliunas:
+&gt;<i> On Tue, 21 Oct 2008 02:47:11 +0300 Nerijus Baliunas 
+</I>&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">nerijus at users.sourceforge.net</A>&gt; wrote:
+&gt;<i> &gt; java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin
+</I>&gt;<i> &gt; --background Caused by: java.lang.ClassNotFoundException:
+</I>&gt;<i> &gt; Files\YajHFC\yajhfc.jar --stdin --background
+</I>&gt;<i>
+</I>&gt;<i> Ah, I see there is some confusion with paths. OK, let's trace:
+</I>&gt;<i> javaexe = C:\Program Files\Java\jre1.6.0_07\bin/java.exe
+</I>&gt;<i> homedrv = Z:
+</I>&gt;<i> homedir = \
+</I>&gt;<i> userprofile = Z:\
+</I>&gt;<i> env(&quot;USERPROFILE&quot;) = userprofile = Z:\
+</I>&gt;<i>
+</I>&gt;<i> BTW, the following gets variables wrong:
+</I>&gt;<i> [...]
+</I>&gt;<i>
+</I>&gt;<i> HKEY_CURRENT_USER\Environment\TEMP=%USERPROFILE%\Local
+</I>&gt;<i> Settings\Temp=Z:\Local Settings\Temp which is wrong, as there is no such
+</I>&gt;<i> directory and actual TEMP in good (not changed) environment is
+</I>&gt;<i> TEMP=C:\DOCUME~1\USERNA~1\LOCALS~1\Temp, while
+</I>&gt;<i> USERPROFILE=C:\Documents and Settings\username
+</I>&gt;<i>
+</I>&gt;<i> So it seems there was no need to set TEMP and USERPROFILE, the values in
+</I>&gt;<i> environment were ok.
+</I>
+Did you take the values of the environment variables from the printlaunch.vbs 
+environment when it is invoked by Redmon?
+
+The problem and the reason for all that &quot;environment fixup&quot; is, that when a 
+program is invoked by Redmon as user, it often (but not always!) still 
+inherits the environment from Redmon, i.e. USERPROFILE=&quot;C:\Documents and 
+Settings\LocalService&quot; and TEMP=TMP=C:\WINDOWS\TEMP.
+I am asking this because the Redmon log in your last mail also showed those 
+symptoms when looking at the environment dump.
+
+It would be nice if you could try if printlaunch.vbs from 
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs">ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs</A> still has the same 
+problems with the incorrect enviroment fixup (it incorporates a workaround 
+suggested by another user to detect if the path specified by HOMEDRIVE and 
+HOMEPATH is valid).
+
+&gt;<i> and it starts to work. But, if YajHFC is not running, it starts and hangs
+</I>&gt;<i> on Fetching fax list (it's a different problem, I saw it before on another
+</I>&gt;<i> PC) with empty log file (only env variables in it), or the YajHFC main
+</I>&gt;<i> window is opened and freezes, then log file is:
+</I>&gt;<i>
+</I>&gt;<i> Error #-2147024664:
+</I>&gt;<i> 2008.10.21 03.36.27 yajhfc.Launcher main
+</I>&gt;<i> WARNING: An error occured communicating with the old instance:
+</I>&gt;<i> java.net.SocketException: Connection reset by peer: socket write error
+</I>&gt;<i> 	at java.net.SocketOutputStream.socketWrite0(Native Method)
+</I>&gt;<i> 	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+</I>&gt;<i> 	at java.net.SocketOutputStream.write(Unknown Source)
+</I>&gt;<i> 	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+</I>&gt;<i> 	at java.io.BufferedOutputStream.write(Unknown Source)
+</I>&gt;<i> 	at yajhfc.utils.copyStream(utils.java:634)
+</I>&gt;<i> 	at yajhfc.Launcher.main(Launcher.java:496)
+</I>&gt;<i>
+</I>
+Could you create a YajHFC debug log file for that case?
+
+To do so, please modify the registry value 
+at &quot;HKEY_LOCAL_MACHINE\Software\yajhfc\printlaunchparams&quot; to something like 
+'-jar &quot;c:\program files\yajhfc\yajhfc.jar&quot; --stdin --debug 
+--logfile=c:\yajhfc.log' 
+(i.e. add the command line parameters --debug and --logfile and 
+remove --background; of course you can use a different log file location).
+Then, please try printing again and send me both the YajHFC and the Redmon 
+log.
+
+Thanks,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000096.html">[Yajhfc-user] cannot print
+</A></li>
+	<LI>Next message: <A HREF="000102.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

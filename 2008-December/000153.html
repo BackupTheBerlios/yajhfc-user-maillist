@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Another feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Another%20feature%20request&In-Reply-To=%3C4951ACF0.8060204%40lauserco.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000150.html">
+   <LINK REL="Next"  HREF="000155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Another feature request</H1>
+    <B>Sorin Toma</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Another%20feature%20request&In-Reply-To=%3C4951ACF0.8060204%40lauserco.com%3E"
+       TITLE="[Yajhfc-user] Another feature request">sorin at lauserco.com
+       </A><BR>
+    <I>Wed Dec 24 04:30:56 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000150.html">[Yajhfc-user] Splitting of incoming faxes
+</A></li>
+        <LI>Next message: <A HREF="000155.html">[Yajhfc-user] Another feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+Sometimes we don't want to let all the users see all the sent or 
+received faxes, so in the &quot;View&quot; field we can change the option to &quot;Only 
+own faxes&quot;, but there are users with a bit of curiosity, that change 
+that option to &quot;All Faxes&quot;. For the moment, to disable that, I've 
+rebuilt a version with all the options set to &quot;view_own&quot;
+( in mainwin.java at about line 1088 I've changed: 
+            menuViewAll = new JRadioButtonMenuItem(_(&quot;All faxes&quot;));
+            menuViewAll.setActionCommand(&quot;view_own&quot;);
+            menuViewAll.setSelected(true);
+            menuViewAll.addActionListener(menuViewListener);
+           
+            menuViewOwn = new JRadioButtonMenuItem(_(&quot;Only own faxes&quot;));
+            menuViewOwn.setActionCommand(&quot;view_own&quot;);
+            menuViewOwn.addActionListener(menuViewListener);
+           
+            menuViewCustom = new JRadioButtonMenuItem(_(&quot;Custom 
+filter...&quot;));
+            menuViewCustom.setActionCommand(&quot;view_own&quot;);
+            menuViewCustom.addActionListener(menuViewListener);
+)
+it is another ugly hack. Maybe sometimes in the future this part of the 
+setup will be set by default to &quot;view_own&quot; and  protected by some sort 
+of &quot;administrative password&quot; or at least by a deeper option like &quot;show 
+advanced settings&quot;...?
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000150.html">[Yajhfc-user] Splitting of incoming faxes
+</A></li>
+	<LI>Next message: <A HREF="000155.html">[Yajhfc-user] Another feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] problem with coverpage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20coverpage&In-Reply-To=%3C4B9021C9.7010102%40free.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000321.html">
+   <LINK REL="Next"  HREF="000304.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] problem with coverpage</H1>
+    <B>anne.yajhfc at free.fr</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20coverpage&In-Reply-To=%3C4B9021C9.7010102%40free.fr%3E"
+       TITLE="[Yajhfc-user] problem with coverpage">anne.yajhfc at free.fr
+       </A><BR>
+    <I>Thu Mar  4 22:10:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000321.html">[Yajhfc-user] admin mode
+</A></li>
+        <LI>Next message: <A HREF="000304.html">[Yajhfc-user] problem with coverpage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi,
+
+I installed 'YajHFC' on my ubuntu 9.04.
+
+I tested with the interface in French to send a fax.
+I select a file to fax, I put a fax number and send.
+It's good.
+
+I tested with openoffice and YajFHC vitual fax printer.
+It's good.
+
+But with a cover page, I get an error :
+
+------------------
+Votre t&#233;l&#233;copie &#224; 09xxxxxxxx n'a pas &#233;t&#233; envoy&#233;e parce que la conversion 
+de document a &#233;chou&#233;e. Le programme de conversion a retourn&#233; le message 
+suivant :
+
+Error: /configurationerror in --setpagedevice--
+Additional information: [/ManualFeed false]
+Operand stack:
+    --dict:4/4(L)--
+Execution stack:
+    %interp_exit   .runexec2   --nostringval--   --nostringval-- 
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval-- 
+   --nostringval--   false   1   %stopped_push   1   3   %oparray_pop 
+1   3   %oparray_pop   1   3   %oparray_pop   1   3   %oparray_pop 
+.runexec2   --nostringval--   --nostringval--   --nostringval--   2 
+%stopped_push   --nostringval--   1   3   %oparray_pop   --nostringval-- 
+   --nostringval--   --nostringval--   --dict:1/2(L)--   --nostringval-- 
+   1   %dict_continue
+Dictionary stack:
+    --dict:1123/1686(ro)(G)--   --dict:0/20(G)--   --dict:102/200(L)--
+Current allocation mode is local
+Last OS error: 2
+ESP Ghostscript 815.01: Unrecoverable error, exit code 1
+/bin/cat: Erreur d'&#233;criture.: Relais bris&#233; (pipe)
+
+
+Assurez-vous que les fichiers PostScript ne contiennent pas de
+polices non-standard ni de structures invalide
+
+------- &#201;tat de la t&#226;che -------
+         Destination: 09xxxxxxxx
+         N&#186; de t&#226;che: 44
+        N&#186; de groupe: 44
+          Exp&#233;diteur: faxmaster
+    Adresse Courriel: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">anne at xxxxxxxxx.com</A>
+N&#186; de communication: c
+               Modem: any
+          Provenance: pc-mama.xxxxxxxxx.com
+     Largeur de page: 210  (mm)
+     Hauteur de page: 297 (mm)
+             Qualit&#233;: 196 (lpi)
+                &#201;tat: Error: /configurationerror in --setpagedevice--
+Additional information: [/ManualFeed false]
+Operand stack:
+    --dict:4/4(L)--
+Execution stack:
+    %interp_exit   .runexec2   --nostringval--   --nostringval-- 
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval-- 
+   --nostringval--   false   1   %stopped_push   1   3   %oparray_pop 
+1   3   %oparray_pop   1   3   %oparray_pop   1   3   %oparray_pop 
+.runexec2   --nostringval--   --nostringval--   --nostringval--   2 
+%stopped_push   --nostringval--   1   3   %oparray_pop   --nostringval-- 
+   --nostringval--   --nostringval--   --dict:1/2(L)--   --nostringval-- 
+   1   %dict_continue
+Dictionary stack:
+    --dict:1123/1686(ro)(G)--   --dict:0/20(G)--   --dict:102/200(L)--
+Current allocation mode is local
+Last OS error: 2
+ESP Ghostscript 815.01: Unrecoverable error, exit code 1
+/bin/cat: Erreur d'&#233;criture.: Relais bris&#233; (pipe)
+
+           Dialogues: 0
+        Compositions: 0
+              Appels: 0
+               Pages: 0
+  Nombre total pages: 0
+          Tentatives: 0
+
+------------------
+
+Have you an idea of the problem?
+
+Thank you
+Anne
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000321.html">[Yajhfc-user] admin mode
+</A></li>
+	<LI>Next message: <A HREF="000304.html">[Yajhfc-user] problem with coverpage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

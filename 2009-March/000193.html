@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Yajhfc and Windows 2003 Server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20and%20Windows%202003%20Server&In-Reply-To=%3C200903241941.02427.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000192.html">
+   <LINK REL="Next"  HREF="000196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Yajhfc and Windows 2003 Server</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20and%20Windows%202003%20Server&In-Reply-To=%3C200903241941.02427.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Yajhfc and Windows 2003 Server">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Tue Mar 24 19:41:01 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000192.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+        <LI>Next message: <A HREF="000196.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#193">[ date ]</a>
+              <a href="thread.html#193">[ thread ]</a>
+              <a href="subject.html#193">[ subject ]</a>
+              <a href="author.html#193">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 24. M&#228;rz 2009 schrieb Christian Metzen:
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> first lets congratulate for this great client, i really love it. But there
+</I>&gt;<i> is one problem for me now, i can't get it working under Windows 2003. Using
+</I>&gt;<i> it on my Workstation with XP runs fine.
+</I>&gt;<i>
+</I>&gt;<i> I installed it under Win2k3, installation went fine, the client opens when
+</I>&gt;<i> you run it manually without problems. But when i try to print for example a
+</I>&gt;<i> testpage to the printer nothing happens, the send dialog just won't open,
+</I>&gt;<i> no error messages.
+</I>&gt;<i>
+</I>&gt;<i> Does anybody already have this running? Perhaps there are some adjustements
+</I>&gt;<i> need in the printlaunch.vbs?
+</I>
+Does the printlaunch.vbs script start when you print to the YajHFC printer? 
+(i.e. can you see a console window in the taskbar for a short time?)
+
+In any case, please enable the Redmon log file in order to capture any error 
+messages that may be printed by the script and then send that log file to me 
+(I do not have Win2k3 here, so I cannot test YajHFC with it myself).
+
+To enable that log file, go to the properties of the YajHFC printer, select 
+the &quot;Ports&quot; tab, select the &quot;YAJHFC:&quot; port, click &quot;Configure&quot;, click the &quot;Log 
+file&quot; button and check the &quot;Use Log File&quot; check box.
+
+After enabling the log file, I would suggest to also uncomment the last two 
+lines in printlaunch.vbs to capture error messages printed by Java or YajHFC.
+I.e., change these last two lines to:
+wscript.stdout.write java.stdout.readAll()
+wscript.stderr.write java.stderr.readAll()
+
+
+Thanks,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000192.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+	<LI>Next message: <A HREF="000196.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#193">[ date ]</a>
+              <a href="thread.html#193">[ thread ]</a>
+              <a href="subject.html#193">[ subject ]</a>
+              <a href="author.html#193">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

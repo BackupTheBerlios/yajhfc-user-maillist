@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Italian translations update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Italian%20translations%20update&In-Reply-To=%3C20100209201659.554DEFAC9%40i3.golden.dom%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000298.html">
+   <LINK REL="Next"  HREF="000299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Italian translations update</H1>
+    <B>Giulio</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Italian%20translations%20update&In-Reply-To=%3C20100209201659.554DEFAC9%40i3.golden.dom%3E"
+       TITLE="[Yajhfc-user] Italian translations update">giulioo at gmail.com
+       </A><BR>
+    <I>Tue Feb  9 21:16:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000298.html">[Yajhfc-user] (no subject)
+</A></li>
+        <LI>Next message: <A HREF="000299.html">[Yajhfc-user] Italian translations update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#296">[ date ]</a>
+              <a href="thread.html#296">[ thread ]</a>
+              <a href="subject.html#296">[ subject ]</a>
+              <a href="author.html#296">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm attaching a zip file containing:
+
+new files:
+	README_it.txt
+	faq_it.tex
+
+updated files:
+	CommandLineOpts_it.po
+	messages_it.po
+
+All files are utf-8 w/o BOM.
+
+I tried to keep them in sync, meaning using the exact same translation in
+all of them.
+
+I didn't find a way to update the docs just by adding a .mo file, so if you
+speak Italian, please test the translation by downloading the UNOFFICIAL jar
+file of 0.4.2a recompiled with the updated Italian stuff:
+<A HREF="http://rapidshare.de/files/49125607/yajhfc.jar.html">http://rapidshare.de/files/49125607/yajhfc.jar.html</A>
+(look into &quot;aiuto -&gt; documentazione&quot; too).
+ 
+
+Note about updates to existing .po files:
+
+1) I intentionally changed all the direct forms like &quot;please, do this&quot;, &quot;you
+can ...&quot; (program speaking to you directly) into &quot;it's necessary to do this&quot;
+&quot;It's possible...&quot; (impersonal), because this is how usually programs &quot;talk&quot;
+to the user in Italian.
+I left the &quot;direct&quot; form in the faq, since the faq is usually informal.
+
+2) I intentionally used more &quot;relaxed&quot; translations for all the JobFmt,
+RcvFmt... parameters. I see in the English translation they are taken as is
+from the faxstat man page, the problem is the faxstat man page is very terse
+and often confusing, a direct translation into Italian would be even more
+so.
+I also restructured all these items to use the main word at the beginning,
+when possible, so that they get display together in the option dialog, ie:
+	consecutive failed dials
+	total dials
+into
+	dials failed consecutively
+	dials total    (the Italian equivalent sounds more OK...)
+
+3) &quot;fax&quot; and &quot;fax job&quot; 
+In the English translation sometimes &quot;fax&quot; is used, sometimes &quot;fax job&quot;.
+It seems &quot;fax job&quot; is used for queued (not completed) faxes, and &quot;fax&quot; for
+completed ones, but not always.
+Also, since HylaFAX supports &quot;page&quot;, it could be said that &quot;fax job&quot; is used
+to distinguish the various kind of jobs HylaFAX supports.
+However, HylaFAX is used 99,99% of the times to send fax, and in Italian the
+word &quot;job&quot; cannot be translated in a meaningful and natural way in this
+context; so I translated both &quot;fax&quot; and &quot;fax job&quot; with &quot;fax&quot;.
+When &quot;job&quot; is used like &quot;blah blah fax: job 123&quot; I used &quot;blah blah fax: ID
+123&quot;.
+
+4) I really don't know how to correctly translate &quot;descriptor&quot; in the phone
+book windows. I understand what it means, but I don't know if there is a
+conventional/common use Italian expression to indicate that thing.
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">giulioo at pobox.com</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: italian.zip
+Type: application/x-zip-compressed
+Size: 37818 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100209/fbb1f6d1/attachment.bin">https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100209/fbb1f6d1/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000298.html">[Yajhfc-user] (no subject)
+</A></li>
+	<LI>Next message: <A HREF="000299.html">[Yajhfc-user] Italian translations update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#296">[ date ]</a>
+              <a href="thread.html#296">[ thread ]</a>
+              <a href="subject.html#296">[ subject ]</a>
+              <a href="author.html#296">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

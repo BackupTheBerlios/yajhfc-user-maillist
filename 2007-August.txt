@@ -1,0 +1,52 @@
+From jonas.wolz at freenet.de  Sat Aug 25 18:19:37 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 25 Aug 2007 18:19:37 +0200
+Subject: [Yajhfc-user] Bugfix release YajHFC 0.3.4a
+Message-ID: <200708251819.37803.jonas.wolz@freenet.de>
+
+Version 0.3.4a of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4a.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4a-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4a-setup.exe
+
+This version fixes a bug that caused an extra character to be appended to a 
+document when it was submitted by standard input to an already running YajHFC 
+instance.
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+
+From SNegro at controlli.org  Sat Aug 25 22:00:49 2007
+From: SNegro at controlli.org (Stefano Negro/CONTROLLI/IT)
+Date: Sat, 25 Aug 2007 22:00:49 +0200
+Subject: [Yajhfc-user] Stefano Negro/CONTROLLI/IT is out of the office.
+Message-ID: <OFB6EDD10D.68D9C62C-ONC1257342.006DF028-C1257342.006DF02A@controlli.org>
+
+
+I will be out of the office starting  11/08/2007 and will not return until
+27/08/2007.
+
+Stefano Negro
+Controlli s.r.l.
+Ph / Fax : +39 010 7306 277 / 203
+Mobile:+39 349 8318348
+
+
+-- 
+Il messaggio e' stato analizzato alla ricerca di virus o
+contenuti pericolosi da MailScanner, ed e'
+risultato non infetto.
+
+
+

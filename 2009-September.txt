@@ -1,0 +1,157 @@
+From anderson.barros at aluforte.com  Wed Sep  2 19:36:44 2009
+From: anderson.barros at aluforte.com (Anderson Barros)
+Date: Wed, 2 Sep 2009 14:36:44 -0300
+Subject: [Yajhfc-user] Lost option configuration
+Message-ID: <000601ca2bf3$f0dec8e0$d29c5aa0$@barros@aluforte.com>
+
+I?m having a problem, all day the software lost the option configuration how
+host name, username, location of Ghostscript executable
+
+
+ 
+
+Do they know why happens this problem?
+
+ 
+
+Thansks for all,
+
+ 
+
+Anderson
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090902/84811b5b/attachment.html>
+
+From jonas.wolz at freenet.de  Sat Sep  5 15:35:25 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 5 Sep 2009 15:35:25 +0200
+Subject: [Yajhfc-user] Lost option configuration
+In-Reply-To: <000601ca2bf3$f0dec8e0$d29c5aa0$@barros@aluforte.com>
+References: <000601ca2bf3$f0dec8e0$d29c5aa0$@barros@aluforte.com>
+Message-ID: <200909051535.25603.jonas.wolz@freenet.de>
+
+Am Mittwoch, 2. September 2009 schrieb Anderson Barros:
+> I?m having a problem, all day the software lost the option configuration
+> how host name, username, location of Ghostscript executable
+
+>
+>
+>
+> Do they know why happens this problem?
+
+Java has a bug that prevents YajHFC from saving its settings when it is still 
+running (in the system tray) while the user logs off.
+This does not happen always and on every computer (this problem seems much 
+more likely on Windows Vista/7 than on XP; it does never occur on Linux).
+
+The next version of YajHFC (0.4.2; will be released soon) will include a work 
+around that hopefully fixes this problem.
+
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Sep 27 20:23:45 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 27 Sep 2009 20:23:45 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.2 released
+Message-ID: <200909272023.46028.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.2 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2-setup.exe
+
+
+New features/changes:
+- Polish translation added
+- Support to read recipients from text files
+- Desired window state can be specified on the command line
+- "Send only mode" without display of main window (when a 
+  document to send and neither --background nor --noclose is specified)
+- Arbitrary HylaFAX options can be specified for new fax jobs
+- Work around for a Java bug causing YajHFC not saving its settings when it is 
+  still running while the user logs off on Windows 7, Vista and (sometimes) XP
+  (if this still does not work for you, please write me a mail since this
+   problem is quite hard to debug)
+- Default cover page is now HTML to avoid problems with non ISO-8859-1   
+  characters
+- The Windows setup will now optionally install tiff2pdf and GhostScript
+- Various other bug fixes, improvements and code cleanup
+
+Known problems:
+- The Greek translation is incomplete (volunteers to complete it are welcome!)
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas
+
+
+From jwinius at umrk.nl  Tue Sep 29 14:36:24 2009
+From: jwinius at umrk.nl (Jaap Winius)
+Date: Tue, 29 Sep 2009 14:36:24 +0200
+Subject: [Yajhfc-user] Kerberos
+Message-ID: <20090929143624.tt2azwyu3h8g0448@www.umrk.nl>
+
+Hi all,
+
+A while back I was disappointed to learn that the Hylafax protocol was  
+basically just extended FTP. It's therefore "firewall unfriendly" and  
+sends login names and passwords in the clear.
+
+There may be nothing that we can do about the firewall unfriendliness,  
+but have there been any attempts yet to use Kerberos for  
+authentication? If so, would this work together with yajhfc?
+
+Thanks,
+
+Jaap
+
+
+From jonas.wolz at freenet.de  Tue Sep 29 18:22:19 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 29 Sep 2009 18:22:19 +0200
+Subject: [Yajhfc-user] Kerberos
+In-Reply-To: <20090929143624.tt2azwyu3h8g0448@www.umrk.nl>
+References: <20090929143624.tt2azwyu3h8g0448@www.umrk.nl>
+Message-ID: <200909291822.19902.jonas.wolz@freenet.de>
+
+Am Dienstag, 29. September 2009 schrieb Jaap Winius:
+> Hi all,
+>
+> A while back I was disappointed to learn that the Hylafax protocol was
+> basically just extended FTP. It's therefore "firewall unfriendly" and
+> sends login names and passwords in the clear.
+>
+> There may be nothing that we can do about the firewall unfriendliness,
+> but have there been any attempts yet to use Kerberos for
+> authentication? 
+
+None I know of (I have not searched for such attempts, however).
+Maybe it could be helpful to ask this question on a HylaFAX mailing list, too.
+
+> If so, would this work together with yajhfc? 
+
+Currently: No. 
+If there is a HylaFAX version which implements such a authentication method, I 
+would consider adding support for it to YajHFC, however.
+
+
+Hope that helps,
+Jonas
+
+

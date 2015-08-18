@@ -1,0 +1,641 @@
+From jonas.wolz at freenet.de  Sun Jan  3 11:52:49 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 3 Jan 2010 11:52:49 +0100
+Subject: [Yajhfc-user] Experimental Debian and Ubuntu packages for YajHFC
+Message-ID: <201001031152.49625.jonas.wolz@freenet.de>
+
+In the last few days, new .deb packages for YajHFC have been created. 
+They have been tested with Debian 5.0 ("Lenny") and Ubuntu 9.1 and probably 
+should work with other versions of Debian or Ubuntu, too.
+
+These packages support an easy installation of YajHFC and an automatic 
+installation of a "fax printer" in CUPS (just like the Windows setup does for 
+Windows).
+
+The packages include a beta version of YajHFC 0.4.3 (and not 0.4.2a), because 
+I had to make some extensions to YajHFC in order to support a reliable, 
+automatic fax printer creation with CUPS.
+
+While working on the fax printer package, I created a short guide how to 
+manually install a fax printer in YajHFC (e.g. if you use a rpm based 
+distribution or the packages do not work for you for some other reason).
+
+You can access this guide at:
+http://yajhfc.berlios.de/doc/cupsfaxprinter.shtml
+
+A JAR file of the YajHFC 0.4.3beta can be downloaded here:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_3beta1.jar
+
+
+If you use Debian or Ubuntu and want to try out the packages, the recommended 
+way is to add the YajHFC apt repository to your /etc/apt/sources.list. To do 
+so, please add the following line to that file (or use some graphical utility 
+to edit your package sources...) and do an "apt-get update".
+
+deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+The packages found there should work for both Debian and Ubuntu, so you can 
+use the same apt line for both distributuions.
+
+Usually you will receive a warning that my packages are not authenticated 
+(since I am not a Debian or Ubuntu maintainer). 
+You can either ignore this warning or import my public key and do another 
+apt-get update, so that apt knows that I am "trustworthy".
+To import the public key, execute the following command in a terminal:
+
+wget -q http://yajhfc.berlios.de/JonasWolz.pub -O - | sudo apt-key add -
+
+After successfully adding the repository, you will have two additional 
+packages available:
+yajhfc            -- Installs the jar file, a launcher and adds a menu
+                     shortcut
+yajhfc-faxprinter -- Installs a fax printer in CUPS
+
+You can now install the packages just like any other package for your 
+distribution (e.g. by issuing "apt-get install yajhfc-faxprinter").
+
+
+If you do not want to add my apt repository, you can also manually download 
+and install the debs from here:
+ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc_0.4.3~beta1-1_all.deb
+ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc-faxprinter_0.4.3~beta1-1_all.deb
+
+
+I hope that the packages will work for you (since this is the first time I 
+created and published Debian packages...).
+If you have any problems or feedback, please write me a mail or to the 
+yajhfc-user mailing list.
+
+
+Have fun and a Happy New Year,
+Jonas Wolz
+
+
+From gohlie at gmx.de  Sun Jan  3 19:19:26 2010
+From: gohlie at gmx.de (J-g)
+Date: Sun, 03 Jan 2010 19:19:26 +0100
+Subject: [Yajhfc-user] Experimental Debian and Ubuntu packages for	YajHFC
+In-Reply-To: <201001031152.49625.jonas.wolz@freenet.de>
+References: <201001031152.49625.jonas.wolz@freenet.de>
+Message-ID: <1262542766.7119.2.camel@Office-PC>
+
+Hallo Jonas ...
+
+wau das ist ja mal ein Weihnachts-Neujahrs Geschenk ;-). Habe es gleich
+mal ?ber Synaptic in mein Ubuntu 8.04.3 LTS installiert und es l?uft.
+
+Danke f?r die viele Arbeit!
+
+MFG J?rgen  
+
+Am Sonntag, den 03.01.2010, 11:52 +0100 schrieb Jonas Wolz:
+> wget -q http://yajhfc.berlios.de/JonasWolz.pub -O - | sudo apt-key add
+> -
+
+
+
+From jonas.wolz at freenet.de  Tue Jan  5 15:02:11 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 5 Jan 2010 15:02:11 +0100
+Subject: [Yajhfc-user] Experimental RPMs for YajHFC available
+Message-ID: <201001051502.11501.jonas.wolz@freenet.de>
+
+In addition to the Debian/Ubuntu packages, now there are also some RPM 
+packages available.
+The RPMs were created and tested on openSUSE 11.2.
+They probably will also work with older SUSE versions and other RPM based 
+distributions, but as I have not tested this, I cannot promise anything (so 
+use them at your own risk... ;-) ).
+
+You can download the two packages from:
+
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0.4.2.99beta1-1.noarch.rpm
+and
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-faxprinter-0.4.2.99beta1-1.noarch.rpm
+
+If you have any problems and/or feedback, please write me a mail or to the 
+yajhfc-user mailing list.
+
+
+Have fun,
+Jonas Wolz
+
+
+From syscon780 at gmail.com  Tue Jan 26 21:13:00 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Tue, 26 Jan 2010 13:13:00 -0700
+Subject: [Yajhfc-user] reading fax-list from another server
+Message-ID: <20100126201300.GJ5955@syscon4.inet>
+
+YajHFC is reading faxes on my local network just fine.
+But I'm puzzle why isn't retrieving fax list from another local Hylafax-server.
+
+Here is the scenario:
+IP 10.0.0.109 is running Hylafax-server - YajHFC works OK
+
+local sub-network: 192.168.1.2 is running Hylafax-server - YajHFC works OK
+
+I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+
+server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+
+-- 
+Joseph
+
+
+From sorin at lauserco.com  Tue Jan 26 22:48:28 2010
+From: sorin at lauserco.com (Sorin Toma)
+Date: Tue, 26 Jan 2010 16:48:28 -0500
+Subject: [Yajhfc-user] reading fax-list from another server
+In-Reply-To: <20100126201300.GJ5955@syscon4.inet>
+References: <20100126201300.GJ5955@syscon4.inet>
+Message-ID: <4B5F632C.6090109@lauserco.com>
+
+On 01/26/2010 03:13 PM, Joseph wrote:
+> YajHFC is reading faxes on my local network just fine.
+> But I'm puzzle why isn't retrieving fax list from another local Hylafax-server.
+>
+> Here is the scenario:
+> IP 10.0.0.109 is running Hylafax-server - YajHFC works OK
+>
+> local sub-network: 192.168.1.2 is running Hylafax-server - YajHFC works OK
+>
+> I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+> but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+>
+> server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+>
+>    
+let me get this straight: you have a client in the 192.168.1.0/24 
+network. this client can access a server at 192.168.1.2 but not a server 
+at 10.0.0.109, right? sounds like a basic routing problem to me
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+From syscon780 at gmail.com  Tue Jan 26 23:48:30 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Tue, 26 Jan 2010 15:48:30 -0700
+Subject: [Yajhfc-user] reading fax-list from another server
+In-Reply-To: <4B5F632C.6090109@lauserco.com>
+References: <20100126201300.GJ5955@syscon4.inet>
+	<4B5F632C.6090109@lauserco.com>
+Message-ID: <20100126224830.GK5955@syscon4.inet>
+
+On 01/26/10 16:48, Sorin Toma wrote:
+>On 01/26/2010 03:13 PM, Joseph wrote:
+>> YajHFC is reading faxes on my local network just fine.
+>> But I'm puzzle why isn't retrieving fax list from another local Hylafax-server.
+>>
+>> Here is the scenario:
+>> IP 10.0.0.109 is running Hylafax-server - YajHFC works OK
+>>
+>> local sub-network: 192.168.1.2 is running Hylafax-server - YajHFC works OK
+>>
+>> I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+>> but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+>>
+>> server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+>>
+>>
+>let me get this straight: you have a client in the 192.168.1.0/24
+>network. this client can access a server at 192.168.1.2 but not a server
+>at 10.0.0.109, right? sounds like a basic routing problem to me
+>
+>--
+>Best Regards,
+>Sorin Toma
+
+Yes, it would seem so but I can not figure it out.
+Gateway 10.0.0.1
+Hylafax server 1) - 10.0.0.109
+
+a) subnetwork 2) eth0 IP - 10.0.0.151
+                  eth1 IP (lan) - 192.168.1.1
+In internal subnet 2 router I'm forwarding 4559 from 10.0.0.151 to 4559 192.168.1.2
+(192.168.1.2) another hylafax server.
+
+Firewall between internal network is disabled, nmap is showing open port 4559 on  10.0.0.151
+In YajHFC --> server (tab) I entered IP:  10.0.0.151 but it can not connect.
+
+ssh, VPN between these two networks work OK except hylafax.  As I've mentioned I can access Hylafax 10.0.0.109 from 192.168.1.2 but not other way around.
+So I'm puzzled. 
+
+-- 
+Joseph
+
+
+From nerijus at users.sourceforge.net  Tue Jan 26 23:10:46 2010
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Wed, 27 Jan 2010 00:10:46 +0200
+Subject: [Yajhfc-user] reading fax-list from another server
+In-Reply-To: <20100126201300.GJ5955@syscon4.inet>
+References: <20100126201300.GJ5955@syscon4.inet>
+Message-ID: <Mahogany-0.67.2-13832-20100127-001046.00@nerijus.sat.lt>
+
+On Tue, 26 Jan 2010 13:13:00 -0700 Joseph <syscon780 at gmail.com> wrote:
+
+> I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+> but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+> 
+> server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+
+If you have (need) port forwarding then you need to deal with hylafax protocol
+as with ftp. For example, if you use Linux, you should load nf_conntrack_ftp module
+with parameter ports=21,4559.
+
+Regards,
+Nerijus
+
+
+From syscon780 at gmail.com  Wed Jan 27 00:37:30 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Tue, 26 Jan 2010 16:37:30 -0700
+Subject: [Yajhfc-user] reading fax-list from another server
+In-Reply-To: <Mahogany-0.67.2-13832-20100127-001046.00@nerijus.sat.lt>
+References: <20100126201300.GJ5955@syscon4.inet>
+	<Mahogany-0.67.2-13832-20100127-001046.00@nerijus.sat.lt>
+Message-ID: <20100126233730.GL5955@syscon4.inet>
+
+On 01/27/10 00:10, Nerijus Baliunas wrote:
+>On Tue, 26 Jan 2010 13:13:00 -0700 Joseph <syscon780 at gmail.com> wrote:
+>
+>> I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+>> but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+>>
+>> server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+>
+>If you have (need) port forwarding then you need to deal with hylafax protocol
+>as with ftp. For example, if you use Linux, you should load nf_conntrack_ftp module
+>with parameter ports=21,4559.
+>
+>Regards,
+>Nerijus
+
+Is it a kernel module ?
+Where do I enter/enable:  ports=21,4559
+
+-- 
+Joseph
+
+
+From nerijus at users.sourceforge.net  Wed Jan 27 01:55:50 2010
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Wed, 27 Jan 2010 02:55:50 +0200
+Subject: [Yajhfc-user] reading fax-list from another server
+In-Reply-To: <20100126233730.GL5955@syscon4.inet>
+References: <20100126201300.GJ5955@syscon4.inet><Mahogany-0.67.2-13832-20100127-001046.00@nerijus.sat.lt>
+	<20100126233730.GL5955@syscon4.inet>
+Message-ID: <Mahogany-0.67.2-13832-20100127-025550.00@nerijus.sat.lt>
+
+On Tue, 26 Jan 2010 16:37:30 -0700 Joseph <syscon780 at gmail.com> wrote:
+
+> >If you have (need) port forwarding then you need to deal with hylafax protocol
+> >as with ftp. For example, if you use Linux, you should load nf_conntrack_ftp module
+> >with parameter ports=21,4559.
+> 
+> Is it a kernel module ?
+
+Yes, if you use iptables firewall, you have this module loaded probably.
+
+> Where do I enter/enable:  ports=21,4559
+
+As I use shorewall, I modify /etc/shorewall/modules like this:
+-loadmodule nf_conntrack_ftp
++loadmodule nf_conntrack_ftp ports=21,4559
+
+Or you can most probably use modprobe nf_conntrack_ftp ports=21,4559
+(I didn't check it).
+IIRC nf_conntrack_ftp was called ip_conntrack_ftp in earlier kernels.
+
+Regards,
+Nerijus
+
+
+From syscon780 at gmail.com  Wed Jan 27 02:26:19 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Tue, 26 Jan 2010 18:26:19 -0700
+Subject: [Yajhfc-user] [SOLVED] reading fax-list from another server
+In-Reply-To: <Mahogany-0.67.2-13832-20100127-025550.00@nerijus.sat.lt>
+References: <20100126201300.GJ5955@syscon4.inet>
+	<Mahogany-0.67.2-13832-20100127-001046.00@nerijus.sat.lt>
+	<20100126233730.GL5955@syscon4.inet>
+	<Mahogany-0.67.2-13832-20100127-025550.00@nerijus.sat.lt>
+Message-ID: <20100127012619.GO5955@syscon4.inet>
+
+On 01/27/10 02:55, Nerijus Baliunas wrote:
+>On Tue, 26 Jan 2010 16:37:30 -0700 Joseph <syscon780 at gmail.com> wrote:
+>
+>> >If you have (need) port forwarding then you need to deal with hylafax protocol
+>> >as with ftp. For example, if you use Linux, you should load nf_conntrack_ftp module
+>> >with parameter ports=21,4559.
+>>
+>> Is it a kernel module ?
+>
+>Yes, if you use iptables firewall, you have this module loaded probably.
+>
+>> Where do I enter/enable:  ports=21,4559
+>
+>As I use shorewall, I modify /etc/shorewall/modules like this:
+>-loadmodule nf_conntrack_ftp
+>+loadmodule nf_conntrack_ftp ports=21,4559
+>
+>Or you can most probably use modprobe nf_conntrack_ftp ports=21,4559
+>(I didn't check it).
+>IIRC nf_conntrack_ftp was called ip_conntrack_ftp in earlier kernels.
+>
+>Regards,
+>Nerijus
+
+I think I would need:
+a) run "nf_conntrack_ftp" as module on the server I'm connecting to
+  at the moment "nf_conntrack_ftp" is compiled IN the kernel
+
+b) modify grub.conf to load ports=21,4559 (making sure I can still boot it :-/)
+
+c) my solution was to connect over VPN - no need to modify anything, it just works.
+
+-- 
+Joseph
+
+
+From ath.mailman at muffti.de  Thu Jan 28 19:15:04 2010
+From: ath.mailman at muffti.de (Achim Theobald)
+Date: Thu, 28 Jan 2010 19:15:04 +0100
+Subject: [Yajhfc-user] Experimental RPMs for YajHFC available
+In-Reply-To: <201001051502.11501.jonas.wolz@freenet.de>
+References: <201001051502.11501.jonas.wolz@freenet.de>
+Message-ID: <4B61D428.60103@muffti.de>
+
+Dear Jonas,
+
+can you publish the spec files from your rpms or the whole *.src.rpms?
+I ask because i use CentOS 5 and isn't possible to install your rpms.
+You or openSUSE 11.x use a new rpmlib (4) and CentOS an older one (3).
+
+Am 05.01.2010 15:02, schrieb Jonas Wolz:
+> In addition to the Debian/Ubuntu packages, now there are also some RPM 
+> packages available.
+> The RPMs were created and tested on openSUSE 11.2.
+> They probably will also work with older SUSE versions and other RPM based 
+> distributions, but as I have not tested this, I cannot promise anything (so 
+> use them at your own risk... ;-) ).
+> 
+> You can download the two packages from:
+> 
+> ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0.4.2.99beta1-1.noarch.rpm
+> and
+> ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-faxprinter-0.4.2.99beta1-1.noarch.rpm
+> 
+> If you have any problems and/or feedback, please write me a mail or to the 
+> yajhfc-user mailing list.
+
+
+Cu
+
+Achim
+
+
+From syscon780 at gmail.com  Sat Jan 30 00:56:24 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Fri, 29 Jan 2010 16:56:24 -0700
+Subject: [Yajhfc-user] YajHFC minimize to tray on XFCE4
+Message-ID: <20100129235624.GF6333@syscon4.inet>
+
+I am puzzled by YajHFC Minimize to Tray behavour. I've two computers running XFCE4 and with almost identical setup (both new installation).
+When running YajHFC "Minimize to Tray" works correctly on the other one "Minimize to Tray" doesn't work.
+I've posted on XFCE4 forum but they keep blaming program itself for it:
+http://tinyurl.com/YajHFC
+
+Any suggestion how to test it?
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Sat Jan 30 09:28:38 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 30 Jan 2010 09:28:38 +0100
+Subject: [Yajhfc-user] YajHFC minimize to tray on XFCE4
+In-Reply-To: <20100129235624.GF6333@syscon4.inet>
+References: <20100129235624.GF6333@syscon4.inet>
+Message-ID: <201001300928.39009.jonas.wolz@freenet.de>
+
+Am Samstag, 30. Januar 2010 schrieb Joseph:
+> I am puzzled by YajHFC Minimize to Tray behavour. I've two computers
+> running XFCE4 and with almost identical setup (both new installation). When
+> running YajHFC "Minimize to Tray" works correctly on the other one
+> "Minimize to Tray" doesn't work. I've posted on XFCE4 forum but they keep
+> blaming program itself for it: http://tinyurl.com/YajHFC
+>
+> Any suggestion how to test it?
+
+YajHFC uses the tray icon support of Java 6 to implement its tray icon. Most 
+likely on one computer a Java version without tray icon support is used (e.g. 
+Java 5).
+
+So, are the Java versions on both computers identical?
+(You can enter "java -version" in a terminal to check that.)
+
+
+Hope that helps
+Jonas
+
+
+From syscon780 at gmail.com  Sat Jan 30 10:20:23 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Sat, 30 Jan 2010 02:20:23 -0700
+Subject: [Yajhfc-user] YajHFC minimize to tray on XFCE4
+In-Reply-To: <201001300928.39009.jonas.wolz@freenet.de>
+References: <20100129235624.GF6333@syscon4.inet>
+	<201001300928.39009.jonas.wolz@freenet.de>
+Message-ID: <20100130092023.GG6333@syscon4.inet>
+
+On 01/30/10 09:28, Jonas Wolz wrote:
+>Am Samstag, 30. Januar 2010 schrieb Joseph:
+>> I am puzzled by YajHFC Minimize to Tray behavour. I've two computers
+>> running XFCE4 and with almost identical setup (both new installation). When
+>> running YajHFC "Minimize to Tray" works correctly on the other one
+>> "Minimize to Tray" doesn't work. I've posted on XFCE4 forum but they keep
+>> blaming program itself for it: http://tinyurl.com/YajHFC
+>>
+>> Any suggestion how to test it?
+>
+>YajHFC uses the tray icon support of Java 6 to implement its tray icon. Most
+>likely on one computer a Java version without tray icon support is used (e.g.
+>Java 5).
+>
+>So, are the Java versions on both computers identical?
+>(You can enter "java -version" in a terminal to check that.)
+>
+>
+>Hope that helps
+>Jonas
+
+Thanks for the hint.
+I just check:
+
+On Machine 1) "Minimize to Tray" works
+installed: 
+dev-java/sun-jdk-1.6.0.17
+virtual/jdk-1.6.0
+
+java -V 
+Could not create the Java virtual machine.
+
+-----
+On Machine 2) "Minimize to Tray" DOES NOT works
+it only had installed: "virtual/jdk-1.6.0"
+and the output of:
+java -V
+java ver. 1.6.0.0
+
+so I installed in same as what Machine 1) has: dev-java/sun-jdk-1.6.0.17
+so now they both have the same applications:
+dev-java/sun-jdk-1.6.0.17
+virtual/jdk-1.6.0
+
+but "Minimize to Tray" still does not work.
+and not the output of:
+java -V 
+Could not create the Java virtual machine.
+
+What else should I check. 
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Sat Jan 30 10:34:11 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 30 Jan 2010 10:34:11 +0100
+Subject: [Yajhfc-user] Sources of YajHFC linux packages available
+Message-ID: <201001301034.12096.jonas.wolz@freenet.de>
+
+Because of some user requests, I made the source packages for the YajHFC linux 
+packages available.
+
+Deb packages
+=============
+
+For the deb packages you can get them by adding the following apt line:
+deb-src ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+Or by directly downloading the following files:
+ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/sources/yajhfc_0.4.3~beta1-2.dsc
+ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/sources/yajhfc_0.4.3~beta1-2.tar.gz
+
+
+Rpm packages
+=============
+
+You can download the source rpms from:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0.4.2.99beta1-1.src.rpm
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-faxprinter-0.4.2.99beta1-1.src.rpm
+
+
+If you have any problems and/or feedback, please write me a mail or to the 
+yajhfc-user mailing list.
+
+Have fun
+Jonas Wolz
+
+
+From jonas.wolz at freenet.de  Sat Jan 30 14:35:16 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 30 Jan 2010 14:35:16 +0100
+Subject: [Yajhfc-user] YajHFC minimize to tray on XFCE4
+In-Reply-To: <20100130092023.GG6333@syscon4.inet>
+References: <20100129235624.GF6333@syscon4.inet>
+	<201001300928.39009.jonas.wolz@freenet.de>
+	<20100130092023.GG6333@syscon4.inet>
+Message-ID: <201001301435.16583.jonas.wolz@freenet.de>
+
+Am Samstag, 30. Januar 2010 schrieb Joseph:
+> On 01/30/10 09:28, Jonas Wolz wrote:
+> [...]
+> but "Minimize to Tray" still does not work.
+> and not the output of:
+> java -V
+> Could not create the Java virtual machine.
+
+Actually you will have to enter "java -version", "java -V" does not work with 
+the Sun JVM.
+
+> What else should I check.
+
+Before checking other things, I would like to be absolutely sure that it is 
+not a java version issue (if you have multiple java versions installed on one 
+computer, it is still possible that YajHFC uses different versions on both 
+computers...)
+
+To check that, please start YajHFC on both computers, go to Help->About, 
+select the tab "system properties" and check that the properties beginning 
+with "java.runtime", "java.version" and "java.vm" are the same.
+
+If these are the same, I would like to know the values of these properties and 
+the version of XFCE on the computer where it does not work.
+
+Thanks,
+Jonas
+
+
+From syscon780 at gmail.com  Sat Jan 30 18:45:21 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Sat, 30 Jan 2010 10:45:21 -0700
+Subject: [Yajhfc-user] [SOLVED] YajHFC minimize to tray on XFCE4
+In-Reply-To: <201001301435.16583.jonas.wolz@freenet.de>
+References: <20100129235624.GF6333@syscon4.inet>
+	<201001300928.39009.jonas.wolz@freenet.de>
+	<20100130092023.GG6333@syscon4.inet>
+	<201001301435.16583.jonas.wolz@freenet.de>
+Message-ID: <20100130174521.GH6333@syscon4.inet>
+
+On 01/30/10 14:35, Jonas Wolz wrote:
+>Am Samstag, 30. Januar 2010 schrieb Joseph:
+>> On 01/30/10 09:28, Jonas Wolz wrote:
+>> [...]
+>> but "Minimize to Tray" still does not work.
+>> and not the output of:
+>> java -V
+>> Could not create the Java virtual machine.
+>
+>Actually you will have to enter "java -version", "java -V" does not work with
+>the Sun JVM.
+>
+>> What else should I check.
+>
+>Before checking other things, I would like to be absolutely sure that it is
+>not a java version issue (if you have multiple java versions installed on one
+>computer, it is still possible that YajHFC uses different versions on both
+>computers...)
+>
+>To check that, please start YajHFC on both computers, go to Help->About,
+>select the tab "system properties" and check that the properties beginning
+>with "java.runtime", "java.version" and "java.vm" are the same.
+>
+>If these are the same, I would like to know the values of these properties and
+>the version of XFCE on the computer where it does not work.
+>
+>Thanks,
+>Jonas
+
+Thank you for your help again, indeed on my second machine the active java was a 'icedtea6-bin'
+I check Gentoo doc: http://www.gentoo.org/doc/en/java.xml
+so checking my setting revealed:
+
+java-config --list-available-vms
+The following VMs are available for generation-2:
+*1)	IcedTea6-bin 1.6.2 [icedtea6-bin]
+  2)	Sun JDK 1.6.0.17 [sun-jdk-1.6]
+
+setting it to sun-jdk solved the problem.
+
+-- 
+Joseph
+
+

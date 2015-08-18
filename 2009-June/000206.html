@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Issue/Questions...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Issue/Questions...&In-Reply-To=%3C200906101833.46473.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000204.html">
+   <LINK REL="Next"  HREF="000207.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Issue/Questions...</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Issue/Questions...&In-Reply-To=%3C200906101833.46473.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Issue/Questions...">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Jun 10 18:33:46 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000204.html">[Yajhfc-user] Issue/Questions...
+</A></li>
+        <LI>Next message: <A HREF="000207.html">[Yajhfc-user]  Own Fax Lists View
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Mittwoch, 10. Juni 2009 schrieb Klaus Hochlehnert:
+&gt;<i> My tests brought me to some issues/questions:
+</I>&gt;<i>
+</I>&gt;<i> - When I've lost the connection HylaFAX (e.g. the server was restarted)
+</I>&gt;<i> YajHFC is in disconnected state. When I try to fax something after this
+</I>&gt;<i> happened the cmd.exe with cscript starts and just hangs. I see the splash
+</I>&gt;<i> screen and that's it. I've to kill and restart the YajHFC.
+</I>
+Probably the instance of YajHFC started by cscript waits until the 
+disconnected instance is ready to send.
+I will try to look into this more thorughly in the next days, though.
+
+&gt;<i> - The PDF-conversion with libtiff for windows crashes under Windows Vista.
+</I>&gt;<i> Do you know some workaround/solution for that?
+</I>
+Yes, this is a bug in the libtiff-utils (it crashes when putput goes to 
+stdout).
+As a workaround, you can download the batch script at 
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd,">ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd,</A> place it in the same 
+directory as tiff2pdf.exe and tell YajHFC to use tiff2pdf.cmd instead of 
+tiff2pdf.exe
+
+&gt;<i> - Is it possible to put it YajHFC in autostart as tray-only (no main
+</I>&gt;<i> window)?
+</I>
+Currently not, but this is already on the &quot;wish list&quot; for future versions.
+
+&gt;<i> - Is it possible to add easily a command which will be executed by YajHFC
+</I>&gt;<i> before it connects to HylaFAX (I know for startup this could also be done
+</I>&gt;<i> by a script, but not after hibernation)? For notebook users I have
+</I>&gt;<i> sometimes the problem that the automatic DNS registrations takes some time.
+</I>&gt;<i> When the fax-client logs on it will be rejected because the DNS-IP differs
+</I>&gt;<i> from the notebook-IP.
+</I>&gt;<i>
+</I>&gt;<i>   &gt; Maybe this could be added directly to YajHFC that it registers the IP
+</I>&gt;<i>   &gt; in DNS before starting a connection (this can be done with ipconfig
+</I>&gt;<i>   &gt; /registerdns)?
+</I>
+Currently not.
+
+&gt;<i> - Is there a way of central configuration for the options?
+</I>
+Yes, see <A HREF="http://yajhfc.berlios.de/doc/faq.html#SECTION00039000000000000000">http://yajhfc.berlios.de/doc/faq.html#SECTION00039000000000000000</A>
+Alternatively, you can just copy the $HOME/.yajhfc/settings file between user 
+profiles to specify default settings for a specific user.
+
+Hope that helps,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000204.html">[Yajhfc-user] Issue/Questions...
+</A></li>
+	<LI>Next message: <A HREF="000207.html">[Yajhfc-user]  Own Fax Lists View
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,319 @@
+From jonas.wolz at freenet.de  Sun May  1 11:01:58 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 1 May 2011 11:01:58 +0200
+Subject: [Yajhfc-user] owner must be of type Dialog or Frame!
+In-Reply-To: <393331.46846.qm@web113312.mail.gq1.yahoo.com>
+References: <393331.46846.qm@web113312.mail.gq1.yahoo.com>
+Message-ID: <201105011101.58355.jonas.wolz@freenet.de>
+
+Hi,
+
+this is a bug in 0.5.0.
+
+Please try if version 0.5.1beta1 from
+ftp://ftp.berlios.de/pub/yajhfc/temp/beta/ 
+fixes this problem (except for the bugfix it is identical to 0.5.0).
+
+
+Hope that helps
+Jonas
+
+
+Am Mittwoch, 27. April 2011 schrieb Vieri:
+> Hi,
+> 
+> I've just upgraded my YAJHFC client installation in a test environment and
+> all's fine when running the app in my Windows desktop environment but it
+> seems to be failing within redmon (I used the installation wizard).
+> 
+> So when I print to the "YAJHFC Fax" printer I get an error and no
+> USERNAME/PASSWORD dialog box opens. The error I'm getting is:
+> 
+> owner must be of type Dialog or Frame!
+> 
+> java.lang.IllegalArgumentException: owner must be of type Dialog or Frame!
+> 	at
+> yajhfc.util.PasswordDialog$DisplayRunnable.<init>(PasswordDialog.java:284)
+> at
+> yajhfc.util.PasswordDialog.showPasswordDialogThreaded(PasswordDialog.java:
+> 247) at
+> yajhfc.util.PasswordDialog.showPasswordDialog(PasswordDialog.java:206) at
+> yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:140) at
+> yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:92)
+> at yajhfc.HylaClientManager.getRealModems(HylaClientManager.java:266) at
+> yajhfc.HylaClientManager.getModems(HylaClientManager.java:258) at
+> yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:650) at
+> yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:648) at
+> yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:
+> 59) at
+> yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:
+> 57) at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+> 	at java.util.concurrent.FutureTask.run(Unknown Source)
+> 	at
+> java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.acces
+> s$301(Unknown Source) at
+> java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(U
+> nknown Source) at
+> java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source) at
+> java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at
+> java.lang.Thread.run(Unknown Source)
+> 
+> 
+> YajHFC 0.5.0
+> Java 1.5.0_12 (Sun Microsystems Inc.)
+> Java(TM) 2 Runtime Environment, Standard Edition 1.5.0_12-b04
+> Java HotSpot(TM) Client VM
+> Windows Vista 6.1 (x86)
+> 
+> How can I fix this issue?
+> 
+> Thanks,
+> 
+> Vieri
+> 
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+From rentorbuy at yahoo.com  Mon May  2 16:13:18 2011
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 2 May 2011 07:13:18 -0700 (PDT)
+Subject: [Yajhfc-user] owner must be of type Dialog or Frame!
+In-Reply-To: <201105011101.58355.jonas.wolz@freenet.de>
+Message-ID: <454291.76062.qm@web113316.mail.gq1.yahoo.com>
+
+
+
+--- On Sun, 5/1/11, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Hi,
+> 
+> this is a bug in 0.5.0.
+> 
+> Please try if version 0.5.1beta1 from
+> ftp://ftp.berlios.de/pub/yajhfc/temp/beta/
+> 
+> fixes this problem (except for the bugfix it is identical
+> to 0.5.0).
+
+Yes, the beta fixes this issue.
+Thanks Jonas!
+
+
+
+From jonas.wolz at freenet.de  Sun May  8 17:38:03 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 8 May 2011 17:38:03 +0200
+Subject: [Yajhfc-user] Making new windows appear on top
+In-Reply-To: <4DA86129.5030805@bryntegbooks.co.uk>
+References: <4DA803DC.80306@bryntegbooks.co.uk>
+	<4DA86129.5030805@bryntegbooks.co.uk>
+Message-ID: <201105081738.03893.jonas.wolz@freenet.de>
+
+Hello,
+
+in case you (or other users) are still interested, I think I have found a 
+workaround for this problem:
+
+http://yajhfc.berlios.de/temp/win7-window-workaround/
+
+If you try it, please let me know if it works for you or not...
+
+Best regards
+Jonas Wolz
+
+Am Freitag, 15. April 2011 schrieb Richard Weller:
+>  My bad, this seems a "feature" of Windows 7!
+> 
+>  On 15/04/2011 09:37, Richard Weller wrote:
+> Hi all,
+> 
+>  I'm currently running yajhfc on Windows but having a minor problem with an
+> otherwise excellent client.
+> 
+>  If I print to yajhf, any new dialog boxes come behind all the windows but
+> would really like them to appear on top. I've tired with versions 5 and
+> 4.4 and on a couple of different PC's but same seem to happen. Is there
+> anything I can do to fix this?
+
+
+
+From giulioo at gmail.com  Mon May  9 09:00:20 2011
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Mon, 9 May 2011 09:00:20 +0200
+Subject: [Yajhfc-user] Making new windows appear on top
+In-Reply-To: <201105081738.03893.jonas.wolz@freenet.de>
+References: <4DA803DC.80306@bryntegbooks.co.uk>
+	<4DA86129.5030805@bryntegbooks.co.uk>
+	<201105081738.03893.jonas.wolz@freenet.de>
+Message-ID: <BANLkTim5qerJ11No+5s2Ay-7WRn-auhrTA@mail.gmail.com>
+
+On Sun, May 8, 2011 at 17:38, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> in case you (or other users) are still interested, I think I have found a
+> workaround for this problem:
+> http://yajhfc.berlios.de/temp/win7-window-workaround/
+
+Yes, it works.
+Is this a setting that could be enabled by  the win installer if
+running on win7?
+
+
+From jonas.wolz at freenet.de  Mon May  9 17:09:16 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 9 May 2011 17:09:16 +0200
+Subject: [Yajhfc-user] Making new windows appear on top
+In-Reply-To: <BANLkTim5qerJ11No+5s2Ay-7WRn-auhrTA@mail.gmail.com>
+References: <4DA803DC.80306@bryntegbooks.co.uk>
+	<201105081738.03893.jonas.wolz@freenet.de>
+	<BANLkTim5qerJ11No+5s2Ay-7WRn-auhrTA@mail.gmail.com>
+Message-ID: <201105091709.17054.jonas.wolz@freenet.de>
+
+Am Montag, 9. Mai 2011 schrieb Giulio Orsero:
+> On Sun, May 8, 2011 at 17:38, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> > in case you (or other users) are still interested, I think I have found a
+> > workaround for this problem:
+> > http://yajhfc.berlios.de/temp/win7-window-workaround/
+> 
+> Yes, it works.
+> Is this a setting that could be enabled by  the win installer if
+> running on win7?
+
+Yes, I am planning to do that for the next release.
+
+
+From sandman42 at libero.it  Tue May 10 09:23:43 2011
+From: sandman42 at libero.it (sandman42 at libero.it)
+Date: Tue, 10 May 2011 09:23:43 +0200 (CEST)
+Subject: [Yajhfc-user] R: Re:  Making new windows appear on top
+Message-ID: <33170125.2335551305012223050.JavaMail.defaultUser@defaultHost>
+
+Good idea. I confirm it's working
+
+>----Messaggio originale----
+>Da: jonas.wolz at freenet.de
+>Data: 09/05/2011 17.09
+>A: <yajhfc-user at lists.berlios.de>, <giulioo at pobox.com>
+>Ogg: Re: [Yajhfc-user] Making new windows appear on top
+>
+>Am Montag, 9. Mai 2011 schrieb Giulio Orsero:
+>> On Sun, May 8, 2011 at 17:38, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+>> > in case you (or other users) are still interested, I think I have found a
+>> > workaround for this problem:
+>> > http://yajhfc.berlios.de/temp/win7-window-workaround/
+>> 
+>> Yes, it works.
+>> Is this a setting that could be enabled by  the win installer if
+>> running on win7?
+>
+>Yes, I am planning to do that for the next release.
+>_______________________________________________
+>Yajhfc-user mailing list
+>Yajhfc-user at lists.berlios.de
+>https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+
+
+
+
+From richard.weller at bryntegbooks.co.uk  Fri May 13 16:25:55 2011
+From: richard.weller at bryntegbooks.co.uk (Richard Weller)
+Date: Fri, 13 May 2011 15:25:55 +0100
+Subject: [Yajhfc-user] Making new windows appear on top
+In-Reply-To: <201105091709.17054.jonas.wolz@freenet.de>
+References: <4DA803DC.80306@bryntegbooks.co.uk>	<201105081738.03893.jonas.wolz@freenet.de>	<BANLkTim5qerJ11No+5s2Ay-7WRn-auhrTA@mail.gmail.com>
+	<201105091709.17054.jonas.wolz@freenet.de>
+Message-ID: <4DCD3F73.3030605@bryntegbooks.co.uk>
+
+On 09/05/2011 16:09, Jonas Wolz wrote:
+> Yes, I am planning to do that for the next release.
+
+That's great news, thanks very much.
+
+Also thanks for the active development and support of your product.
+
+Richard
+
+
+
+From syscon780 at gmail.com  Mon May 16 20:14:50 2011
+From: syscon780 at gmail.com (Joseph)
+Date: Mon, 16 May 2011 12:14:50 -0600
+Subject: [Yajhfc-user] Command line for Postscript viewer
+Message-ID: <20110516181450.GF14556@syscon4.inet>
+
+I'm trying to view sent faxes and in: Command like for Postscript viewer:
+/usr/bin/gs "%s"
+
+and fax closes as soon as it open. When I try from command line: gs file.ps I can view it, it is not closing.
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Wed May 18 18:07:45 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 18 May 2011 18:07:45 +0200
+Subject: [Yajhfc-user] Command line for Postscript viewer
+In-Reply-To: <20110516181450.GF14556@syscon4.inet>
+References: <20110516181450.GF14556@syscon4.inet>
+Message-ID: <201105181807.45279.jonas.wolz@freenet.de>
+
+Am Montag, 16. Mai 2011 schrieb Joseph:
+> I'm trying to view sent faxes and in: Command like for Postscript viewer:
+> /usr/bin/gs "%s"
+> 
+> and fax closes as soon as it open. When I try from command line: gs file.ps
+> I can view it, it is not closing.
+
+The reason for that behaviour is that YajHFC closes the stdin stream of the 
+viewer once it has been started.
+When stdin is closed for gs, it closes.
+
+The solution for that problem is not to use plain gs as a viewer for faxes 
+since it is not intended to be used as such.
+Please use some postscript viewer application instead (evince, okular, gv, 
+...).
+
+Hope that helps
+Jonas Wolz
+
+
+From syscon780 at gmail.com  Wed May 18 20:49:07 2011
+From: syscon780 at gmail.com (Joseph)
+Date: Wed, 18 May 2011 12:49:07 -0600
+Subject: [Yajhfc-user] Command line for Postscript viewer
+In-Reply-To: <201105181807.45279.jonas.wolz@freenet.de>
+References: <20110516181450.GF14556@syscon4.inet>
+	<201105181807.45279.jonas.wolz@freenet.de>
+Message-ID: <20110518184907.GA9412@syscon4.inet>
+
+On 05/18/11 18:07, Jonas Wolz wrote:
+>Am Montag, 16. Mai 2011 schrieb Joseph:
+>> I'm trying to view sent faxes and in: Command like for Postscript viewer:
+>> /usr/bin/gs "%s"
+>>
+>> and fax closes as soon as it open. When I try from command line: gs file.ps
+>> I can view it, it is not closing.
+>
+>The reason for that behaviour is that YajHFC closes the stdin stream of the
+>viewer once it has been started.
+>When stdin is closed for gs, it closes.
+>
+>The solution for that problem is not to use plain gs as a viewer for faxes
+>since it is not intended to be used as such.
+>Please use some postscript viewer application instead (evince, okular, gv,
+>...).
+>
+>Hope that helps
+>Jonas Wolz
+
+Thanks Jonas, confirmed "evince" works nice"
+
+-- 
+Joseph
+
+

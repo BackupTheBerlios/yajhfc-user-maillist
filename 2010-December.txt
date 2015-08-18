@@ -1,0 +1,71 @@
+From jonas.wolz at freenet.de  Fri Dec 31 16:40:23 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 31 Dec 2010 16:40:23 +0100
+Subject: [Yajhfc-user] YajHFC 0.5.0beta
+Message-ID: <201012311640.23998.jonas.wolz@freenet.de>
+
+A beta version for YajHFC 0.5.0 has been made available today.
+
+You can find it in the following directory:
+ftp://ftp.berlios.de/pub/yajhfc/temp/beta/
+
+This version incorporates major changes in the architecture the fax lists are 
+loaded, which will offer much more flexibility in the possible sources of the 
+list data and will probably make it easier to offer multiple server support 
+some time in the future (although still much work needs to be done for the 
+latter; this feature won't necessarily come with 0.5.0).
+
+Because of this rather major change, I decided to put out a beta early (it 
+might still take some months before 0.5.0 gets released).
+I will be happy about any positive or negative feedback regarding this change 
+(especially new bugs, performance problems, ...).
+
+User-visible changes are:
+
+- Support for local caching of the fax lists, probably making the start-up of 
+the application feel much quicker
+
+- Experimental support for direct reading to the recvq and doneq directory, 
+bypassing the HylaFAX server (and the HylaFAX user authentication). This 
+might lead to a lower server load with large queues since only modified files 
+are read to refresh the fax lists. This still needs some testing, however... 
+(any feedback on this feature is very welcome!)
+
+- Options dialog should open a bit faster than before
+
+- "Test connection" button in the Options dialog
+
+
+Happy New Year and happy testing!
+Jonas Wolz
+
+
+From jonas.wolz at freenet.de  Fri Dec 31 18:05:21 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 31 Dec 2010 18:05:21 +0100
+Subject: [Yajhfc-user] [Yajhfc-announce] YajHFC 0.5.0beta
+In-Reply-To: <4D1E076F.9070508@mezonplus.ru>
+References: <201012311640.23998.jonas.wolz@freenet.de>
+	<4D1E076F.9070508@mezonplus.ru>
+Message-ID: <201012311805.21636.jonas.wolz@freenet.de>
+
+Am Freitag, 31. Dezember 2010 schrieben Sie:
+> 31.12.2010 18:40, Jonas Wolz ?????:
+> > A beta version for YajHFC 0.5.0 has been made available today.
+>
+> Nonascii characters not displayed in the "Owner" column of "Sent" table.
+
+Thanks, this is a change I forgot to mention: 
+
+The encoding/character set used for the HylaFAX server is now explicitely set 
+(before it was whatever the default encoding of the client's OS was).
+
+Please go to Options->Server and change the charset to what your platform 
+default is and you should be fine again.
+
+
+Hope that helps
+Jonas
+
+
+

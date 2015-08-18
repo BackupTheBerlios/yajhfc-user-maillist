@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] cannot print
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3C200810221133.07596.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000108.html">
+   <LINK REL="Next"  HREF="000103.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] cannot print</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3C200810221133.07596.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] cannot print">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Oct 22 11:33:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000108.html">[Yajhfc-user] cannot print
+</A></li>
+        <LI>Next message: <A HREF="000103.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Mittwoch, 22. Oktober 2008 schrieb Jonas Wolz:
+&gt;<i> Am Dienstag, 21. Oktober 2008 schrieb Nerijus Baliunas:
+</I>&gt;<i> &gt; On Tue, 21 Oct 2008 22:45:18 +0300 Nerijus Baliunas
+</I>&gt;<i>
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">nerijus at users.sourceforge.net</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; Some good news. wshNet.UserDomain is empty (probably because the script
+</I>&gt;<i> &gt; &gt; is run as local service), and because of this the &quot;hard way&quot; of getting
+</I>&gt;<i> &gt; &gt; the user profile fails. If I run printlaunch.vbs manually, I can see
+</I>&gt;<i> &gt; &gt; wshNet.UserDomain is correct, but if I run from redmon it is empty.
+</I>&gt;<i> &gt; &gt; Everything works if I hardcode domain in the line Set Account =
+</I>&gt;<i> &gt; &gt; WMIService.Get(&quot;Win32_UserAccount.Name='&quot; &amp; WshNet.UserName &amp;
+</I>&gt;<i> &gt; &gt; &quot;',Domain='&quot; &amp; wshNet.UserDomain &amp; &quot;'&quot;)
+</I>&gt;<i> &gt; &gt; Now I need to find out how to get the domain name when the script is
+</I>&gt;<i> &gt; &gt; run from redmon...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I added between lines &quot;userprofile =
+</I>&gt;<i> &gt; WshShell.ExpandEnvironmentStrings...&quot; and &quot;else&quot; the following code, and
+</I>&gt;<i> &gt; now everything works:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [...]
+</I>&gt;<i>
+</I>&gt;<i> Nice, thank you very much for your efforts to find a fix for this problem!
+</I>&gt;<i> I will integrate this fix into the next version of YajHFC.
+</I>
+Also answering myself here ;-)
+If somebody has the same problems before the next version is released, an 
+updated version of printlaunch.vbs can be found at:
+
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs">ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs</A>
+
+
+Regards,
+Jonas
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000108.html">[Yajhfc-user] cannot print
+</A></li>
+	<LI>Next message: <A HREF="000103.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

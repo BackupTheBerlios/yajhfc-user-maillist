@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Yajhfc-user Digest, Vol 4, Issue 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc-user%20Digest%2C%20Vol%204%2C%20Issue%202&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A33606628C%40claims-new%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Yajhfc-user Digest, Vol 4, Issue 2</H1>
+    <B>MWilson at acesappraisal.com</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc-user%20Digest%2C%20Vol%204%2C%20Issue%202&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A33606628C%40claims-new%3E"
+       TITLE="[Yajhfc-user] Yajhfc-user Digest, Vol 4, Issue 2">MWilson at acesappraisal.com
+       </A><BR>
+    <I>Wed Jul  4 12:56:49 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I did a little more searching on this and you are correct.  This is a
+Hylafax warning and not related to Java.  However, it appeared that only
+the Java clients I had tried were having an issue with it, thus I
+thought this was a java thing.
+
+I found a thread where someone had posted a patch for hylafax that
+syslog'd the 'warning' rather than replying to the client.  I patched my
+version of hylafax and recompiled and I'm working fine now.
+
+However, what probably needs to happen is the Client handle this
+response as the warning that it is and not a fatal error.  I think many
+in the situation that I am in  (on a cable modem or DSL connection where
+the ISP isn't properly setting up their DNS) are going to have this
+problem.  It would be useful to warn the user but continue operation
+anyway (it's not a fatal error ... and possibly a check box to 'not show
+this error' again, when the user has no way of fixing the issue).
+
+
+-----Original Message-----
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>
+[mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>] On Behalf Of
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-request at lists.berlios.de</A>
+Sent: Wednesday, July 04, 2007 6:16 AM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>
+Subject: Yajhfc-user Digest, Vol 4, Issue 2
+
+Send Yajhfc-user mailing list submissions to
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>
+
+To subscribe or unsubscribe via the World Wide Web, visit
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+or, via email, send a message with subject or body 'help' to
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-request at lists.berlios.de</A>
+
+You can reach the person managing the list at
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-owner at lists.berlios.de</A>
+
+When replying, please edit your Subject line so it is more specific
+than &quot;Re: Contents of Yajhfc-user digest...&quot;
+
+
+Today's Topics:
+
+   1. Re: Error when using cable modem service and connecting to
+      server over internet. (Jonas Wolz)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Tue, 03 Jul 2007 17:49:31 +0200
+From: Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt;
+Subject: Re: [Yajhfc-user] Error when using cable modem service and
+	connecting to server over internet.
+To: General discussion about YajHFC &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>&gt;
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">468A700B.4020303 at freenet.de</A>&gt;
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+
+Hello,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A> schrieb:
+&gt;<i> However, when I try to connect to it via Yajhfc (and all other Java 
+</I>&gt;<i> clients I have tried ... so this is a Java problem, not a Yajhfc 
+</I>&gt;<i> problem).  I get this error:
+</I>&gt;<i>  
+</I>&gt;<i> 130 Warning, no inverse address mapping for client host name 
+</I>&gt;<i> &quot;75-144-35-141-Chesterfield.hfc.comcastbusiness.net&quot;.
+</I>
+Actually that is a warning message from the HylaFAX server and not from 
+Java.
+It seems that the gnu.hylafax library (that YajHFC and probably most 
+other Java clients use) interprets this as an error and not as a 
+warning. So this is most probably a bug in that library.
+
+Nevertheless I must do a more thorough analysis (i.e. reproduce that 
+error) before I can be really sure about that.
+
+&gt;<i> Is there any way to work around this?
+</I>
+Configure the HylaFAX server in a way so that it doesn't issue that 
+warning. ;-)
+Seriously: I currently don't know a &quot;real&quot; work around for that problem.
+
+In the next days I will also check if this bug is still present in the 
+latest version of the gnu.hylafax library and report it to the 
+developers if it is (for &quot;historical reasons&quot; YajHFC currently uses a 
+own fork of that library, but it also builds against the &quot;stock&quot; version
+
+and I'm planning to stop using the fork in one of the next YajHFC
+versions).
+
+If a quick fix is possible, I'll probably publish a YajHFC jar with the 
+fix included.
+
+Regards,
+Jonas
+
+
+------------------------------
+
+_______________________________________________
+Yajhfc-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+
+
+End of Yajhfc-user Digest, Vol 4, Issue 2
+*****************************************
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

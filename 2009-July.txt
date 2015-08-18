@@ -1,0 +1,155 @@
+From sorin at lauserco.com  Mon Jul 20 16:16:46 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Mon, 20 Jul 2009 10:16:46 -0400
+Subject: [Yajhfc-user] Feature Request
+Message-ID: <4A647C4E.8020901@lauserco.com>
+
+Hello,
+First I want to thank the author for this software, we are using it for 
+about 1 yr now and we are extremely happy with it!
+ Our setup includes one hylafax+ server with mainly windows clients 
+(deployed automatically with tiff2ps, gs and yajhfc2pdf script by Thomas 
+Koch), a few linux ones and occasionally macs. The cover pages in .ps 
+format resides on the server. We also have a small script that takes a 
+.csv file and transforms it to a .phonebook and that too works just fine.
+
+Now, the sales dept came with the brilliant idea of using a kind of 
+watermark on the sent faxes and I have no clue where should I start 
+from. Has anyone tried to implement something like that and is willing 
+to share? Thank you.
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+
+From jonas.wolz at freenet.de  Wed Jul 22 19:23:12 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 22 Jul 2009 19:23:12 +0200
+Subject: [Yajhfc-user] Feature Request
+In-Reply-To: <4A647C4E.8020901@lauserco.com>
+References: <4A647C4E.8020901@lauserco.com>
+Message-ID: <200907221923.12148.jonas.wolz@freenet.de>
+
+Am Montag, 20. Juli 2009 schrieb Sorin Toma:
+> Now, the sales dept came with the brilliant idea of using a kind of
+> watermark on the sent faxes and I have no clue where should I start
+> from. Has anyone tried to implement something like that and is willing
+> to share? Thank you.
+
+Just an untested idea:
+AFAIK you can use pdftk to add watermarks to PDFs 
+(http://www.accesspdf.com/pdftk/; should be available as package for most 
+Linux distribution).
+
+HylaFAX uses the bin/pdf2fax and bin/ps2fax 
+(e.g. /var/spool/hylafax/bin/pdf2fax) scripts to convert PS or PDF to TIFF.
+So you could create a wrapper script around the original scripts which adds 
+the watermark and then passes the modified file to the original script.
+
+The advantage of this is that it does not need any changes to the client, but 
+the user will not see the water mark when he views sent faxes.
+
+
+If it is required to see the watermark, I think this must be done on the 
+client before the PDF or PS is sent to the server. 
+Unfortunately this is currently not possible with YajHFC (it would be 
+necessary to call a "filter script" before sending a document which is 
+currently not possible).
+
+Hope that helps,
+Jonas
+
+
+From sorin at lauserco.com  Wed Jul 22 19:38:25 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Wed, 22 Jul 2009 13:38:25 -0400
+Subject: [Yajhfc-user] ***PossibleSPAM*** Re:  Feature Request
+In-Reply-To: <200907221923.12148.jonas.wolz@freenet.de>
+References: <4A647C4E.8020901@lauserco.com>
+	<200907221923.12148.jonas.wolz@freenet.de>
+Message-ID: <4A674E91.9000700@lauserco.com>
+
+Jonas Wolz wrote:
+>
+> Just an untested idea:
+> AFAIK you can use pdftk to add watermarks to PDFs 
+> (http://www.accesspdf.com/pdftk/; should be available as package for most 
+> Linux distribution).
+>
+> HylaFAX uses the bin/pdf2fax and bin/ps2fax 
+> (e.g. /var/spool/hylafax/bin/pdf2fax) scripts to convert PS or PDF to TIFF.
+> So you could create a wrapper script around the original scripts which adds 
+> the watermark and then passes the modified file to the original script.
+>
+>   
+That's what I' working at, right now I am already able to add text 
+watermarks but...
+
+> The advantage of this is that it does not need any changes to the client, but 
+> the user will not see the water mark when he views sent faxes.
+>
+>
+>   
+Another big drawback is that it is adding the watermark to the 
+cover-page also.
+
+> If it is required to see the watermark, I think this must be done on the 
+> client before the PDF or PS is sent to the server. 
+> Unfortunately this is currently not possible with YajHFC (it would be 
+> necessary to call a "filter script" before sending a document which is 
+> currently not possible).
+>   
+Yes, well, but you put in the client the option to send all the jobs as 
+PS/PDF/TIFF - isn't that alredy a kind "filter" (I did not looked 
+further - the server-side processing seemed easier for me and I started 
+on that path)?
+Anyway, it is not a "must", or a "can't live without it" feature, but 
+more in the area of "nice to have" :)
+
+Thank you, and again THANK YOU for developing Yajhfc, it's a great 
+little piece of software :)
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+From jonas.wolz at freenet.de  Wed Jul 22 20:28:31 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 22 Jul 2009 20:28:31 +0200
+Subject: [Yajhfc-user] ***PossibleSPAM*** Re:  Feature Request
+In-Reply-To: <4A674E91.9000700@lauserco.com>
+References: <4A647C4E.8020901@lauserco.com>
+	<200907221923.12148.jonas.wolz@freenet.de>
+	<4A674E91.9000700@lauserco.com>
+Message-ID: <200907222028.32132.jonas.wolz@freenet.de>
+
+Am Mittwoch, 22. Juli 2009 schrieb Sorin Toma:
+> > If it is required to see the watermark, I think this must be done on the
+> > client before the PDF or PS is sent to the server.
+> > Unfortunately this is currently not possible with YajHFC (it would be
+> > necessary to call a "filter script" before sending a document which is
+> > currently not possible).
+>
+> Yes, well, but you put in the client the option to send all the jobs as
+> PS/PDF/TIFF - isn't that alredy a kind "filter" (I did not looked
+> further - the server-side processing seemed easier for me and I started
+> on that path)?
+> Anyway, it is not a "must", or a "can't live without it" feature, but
+> more in the area of "nice to have" :)
+
+Yes, it is similar, but not the same.
+The current conversion runs only when necessary and both when sending and 
+viewing faxes.
+Implementing such a filter would probably not be that difficult, but I also 
+classify this as "nice to have", so this does not have a very high priority 
+for me.
+
+
+Jonas.
+
+

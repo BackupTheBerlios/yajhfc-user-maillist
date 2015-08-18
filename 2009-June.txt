@@ -1,0 +1,372 @@
+From andreas_ruf at gmx.net  Tue Jun  2 15:12:47 2009
+From: andreas_ruf at gmx.net (Andreas Ruf)
+Date: Tue, 02 Jun 2009 15:12:47 +0200
+Subject: [Yajhfc-user] Questions about YajHFC
+Message-ID: <1243948367.8641.43.camel@kant.localdomain>
+
+Hello list,
+
+I have searched the available documentation and tested some
+configurations, but did not find satisfying answers. Perhaps someone can
+answer my questions concerning the behaviour and/or configuration of
+YajHFC.
+
+The client-version is 0.4.0. It was installed via "setup.exe" in Windows
+XP SP3 with JRE 6 Update 11.
+
+
+1. From documentation I expect the command line argument "--background"
+to behave like, starting the Client, give the pop-up for entering the
+fax-number, submit the document to the server, close the client.
+Is this assumption right?
+If I modify the VB-script (delivered with "setup.exe"), which is called
+if sending fax via installed printer, to get also this "--background"
+setting (beside the other standard-settings from the registry), this
+seems not to work.
+The behaviour is: the client starts up, the main-window and the
+send-dialog pop up, I give the number, the fax is transmitted to the
+server, the client keeps up and does not stop (like expected).
+
+
+2. Is it possible to start YajHFC minimized to the system-tray (i.e.
+without showing the main-window and logging-in information)?
+
+
+3. Everytime a fax is sent via the printer the main-window and the
+send-dialog pop up. Can this be configured to open only the send-dialog
+(not the main-window)?
+
+
+Many thanks in advance
+Sincerely
+Andreas Ruf
+
+
+
+From jonas.wolz at freenet.de  Tue Jun  2 17:48:25 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 2 Jun 2009 17:48:25 +0200
+Subject: [Yajhfc-user] Questions about YajHFC
+In-Reply-To: <1243948367.8641.43.camel@kant.localdomain>
+References: <1243948367.8641.43.camel@kant.localdomain>
+Message-ID: <200906021748.26118.jonas.wolz@freenet.de>
+
+Am Dienstag, 2. Juni 2009 schrieb Andreas Ruf:
+> 1. From documentation I expect the command line argument "--background"
+> to behave like, starting the Client, give the pop-up for entering the
+> fax-number, submit the document to the server, close the client.
+> Is this assumption right?
+
+No, it is the opposite way: Without --background you should get the behaviour 
+you expect.
+
+--background means "leave an instance running in the background after the fax 
+has been submitted" (looking at it again, the documentation may be a bit 
+misleading here...).
+
+> 2. Is it possible to start YajHFC minimized to the system-tray (i.e.
+> without showing the main-window and logging-in information)?
+>
+> 3. Everytime a fax is sent via the printer the main-window and the
+> send-dialog pop up. Can this be configured to open only the send-dialog
+> (not the main-window)?
+
+Both is not possible at the moment, but I will keep it on my list for possible 
+future feature enhancements.
+
+
+Hope that helps,
+Jonas
+
+
+From andreas_ruf at gmx.net  Wed Jun  3 12:46:37 2009
+From: andreas_ruf at gmx.net (Andreas Ruf)
+Date: Wed, 03 Jun 2009 12:46:37 +0200
+Subject: [Yajhfc-user] Questions about YajHFC
+In-Reply-To: <200906021748.26118.jonas.wolz@freenet.de>
+References: <1243948367.8641.43.camel@kant.localdomain>
+	<200906021748.26118.jonas.wolz@freenet.de>
+Message-ID: <1244025997.8134.17.camel@kant.localdomain>
+
+Am Dienstag, den 02.06.2009, 17:48 +0200 schrieb Jonas Wolz:
+> Am Dienstag, 2. Juni 2009 schrieb Andreas Ruf:
+> > 1. From documentation I expect the command line argument "--background"
+> > to behave like, starting the Client, give the pop-up for entering the
+> > fax-number, submit the document to the server, close the client.
+> > Is this assumption right?
+> 
+> No, it is the opposite way: Without --background you should get the behaviour 
+> you expect.
+> 
+> --background means "leave an instance running in the background after the fax 
+> has been submitted" (looking at it again, the documentation may be a bit 
+> misleading here...).
+Will try this.
+
+> 
+> > 2. Is it possible to start YajHFC minimized to the system-tray (i.e.
+> > without showing the main-window and logging-in information)?
+> >
+> > 3. Everytime a fax is sent via the printer the main-window and the
+> > send-dialog pop up. Can this be configured to open only the send-dialog
+> > (not the main-window)?
+> 
+> Both is not possible at the moment, but I will keep it on my list for possible 
+> future feature enhancements.
+Would be nice if this could be configurable.
+
+> 
+> 
+> Hope that helps,
+> Jonas
+Many thanks. That helped.
+Andreas Ruf
+
+
+
+From jonas.wolz at freenet.de  Sun Jun  7 15:18:49 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Jun 2009 15:18:49 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.1 released
+Message-ID: <200906071518.49792.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.1 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_1.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_1-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_1-setup.exe
+
+
+New features/changes:
+- Support for distribution lists in the phone book (XML+JDBC only)
+- Support for CSV phone books (e.g. for import/export)
+- Support to set the "archive flag" (doneop) for sent faxes
+- Quick search bar for faxes in the main window
+- Some bug fixes
+
+Known problems:
+- The Greek translation is incomplete (volunteers to complete it are welcome!)
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Jun  9 14:33:21 2009
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 9 Jun 2009 13:33:21 +0100
+Subject: [Yajhfc-user] Modem Column in Received Table
+Message-ID: <de8c2ec00906090533l84f9d2dubc1722272e3003c3@mail.gmail.com>
+
+Hi
+
+Is there a way to get a column into yajhfc to display which modem a
+particular fax was received on?
+
+This is something that we would find usefull since we have added 8 modems
+onto our fax server now, and makes it alot easier to track back to a
+particular modem when we have had a problem.
+
+Thanks
+
+Andy
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090609/3652754c/attachment.html>
+
+From Mailings at kh-dev.de  Wed Jun 10 00:43:15 2009
+From: Mailings at kh-dev.de (Klaus Hochlehnert)
+Date: Wed, 10 Jun 2009 00:43:15 +0200
+Subject: [Yajhfc-user] Issue/Questions...
+Message-ID: <A2F1C0E212BBBA4E8C0E7BE568361F04021D4F0C3019@srv02.khdev.corp>
+
+Hi,
+
+I'm currently testing your HylaFAX client and I'm impressed. Thanks for your work.
+
+My tests brought me to some issues/questions:
+
+- When I've lost the connection HylaFAX (e.g. the server was restarted) YajHFC is in disconnected state. When I try to fax something after this happened the cmd.exe with cscript starts and just hangs. I see the splash screen and that's it. I've to kill and restart the YajHFC.
+
+- I'm also interested in a "send only mode". I want the fax users are able to send faxes, but they shouldn't see the inbox.
+
+- The PDF-conversion with libtiff for windows crashes under Windows Vista. Do you know some workaround/solution for that?
+
+- Is it possible to put it YajHFC in autostart as tray-only (no main window)?
+
+- Is it possible to add easily a command which will be executed by YajHFC before it connects to HylaFAX (I know for startup this could also be done by a script, but not after hibernation)? For notebook users I have sometimes the problem that the automatic DNS registrations takes some time. When the fax-client logs on it will be rejected because the DNS-IP differs from the notebook-IP.
+  > Maybe this could be added directly to YajHFC that it registers the IP in DNS before starting a connection (this can be done with ipconfig /registerdns)?
+
+- Is there a way of central configuration for the options?
+
+
+So, that's it for the moment... :-)
+
+Thanks, Klaus
+
+
+From jonas.wolz at freenet.de  Wed Jun 10 18:18:15 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 10 Jun 2009 18:18:15 +0200
+Subject: [Yajhfc-user] Modem Column in Received Table
+In-Reply-To: <de8c2ec00906090533l84f9d2dubc1722272e3003c3@mail.gmail.com>
+References: <de8c2ec00906090533l84f9d2dubc1722272e3003c3@mail.gmail.com>
+Message-ID: <200906101818.15282.jonas.wolz@freenet.de>
+
+Am Dienstag, 9. Juni 2009 schrieb Andy Rogers:
+> Is there a way to get a column into yajhfc to display which modem a
+> particular fax was received on?
+
+None that I know of. As far as I know, HylaFAX does not offer this information 
+for received faxes.
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Wed Jun 10 18:33:46 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 10 Jun 2009 18:33:46 +0200
+Subject: [Yajhfc-user] Issue/Questions...
+In-Reply-To: <A2F1C0E212BBBA4E8C0E7BE568361F04021D4F0C3019@srv02.khdev.corp>
+References: <A2F1C0E212BBBA4E8C0E7BE568361F04021D4F0C3019@srv02.khdev.corp>
+Message-ID: <200906101833.46473.jonas.wolz@freenet.de>
+
+Am Mittwoch, 10. Juni 2009 schrieb Klaus Hochlehnert:
+> My tests brought me to some issues/questions:
+>
+> - When I've lost the connection HylaFAX (e.g. the server was restarted)
+> YajHFC is in disconnected state. When I try to fax something after this
+> happened the cmd.exe with cscript starts and just hangs. I see the splash
+> screen and that's it. I've to kill and restart the YajHFC.
+
+Probably the instance of YajHFC started by cscript waits until the 
+disconnected instance is ready to send.
+I will try to look into this more thorughly in the next days, though.
+
+> - The PDF-conversion with libtiff for windows crashes under Windows Vista.
+> Do you know some workaround/solution for that?
+
+Yes, this is a bug in the libtiff-utils (it crashes when putput goes to 
+stdout).
+As a workaround, you can download the batch script at 
+ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd, place it in the same 
+directory as tiff2pdf.exe and tell YajHFC to use tiff2pdf.cmd instead of 
+tiff2pdf.exe
+
+> - Is it possible to put it YajHFC in autostart as tray-only (no main
+> window)?
+
+Currently not, but this is already on the "wish list" for future versions.
+
+> - Is it possible to add easily a command which will be executed by YajHFC
+> before it connects to HylaFAX (I know for startup this could also be done
+> by a script, but not after hibernation)? For notebook users I have
+> sometimes the problem that the automatic DNS registrations takes some time.
+> When the fax-client logs on it will be rejected because the DNS-IP differs
+> from the notebook-IP.
+>
+>   > Maybe this could be added directly to YajHFC that it registers the IP
+>   > in DNS before starting a connection (this can be done with ipconfig
+>   > /registerdns)?
+
+Currently not.
+
+> - Is there a way of central configuration for the options?
+
+Yes, see http://yajhfc.berlios.de/doc/faq.html#SECTION00039000000000000000
+Alternatively, you can just copy the $HOME/.yajhfc/settings file between user 
+profiles to specify default settings for a specific user.
+
+Hope that helps,
+Jonas
+
+
+From hylafax at andyscomp.f9.co.uk  Thu Jun 11 13:08:29 2009
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Thu, 11 Jun 2009 12:08:29 +0100
+Subject: [Yajhfc-user]  Own Fax Lists View
+Message-ID: <de8c2ec00906110408r550dafd6wfafcdab6ab326889@mail.gmail.com>
+
+ Hi
+
+We have are going to soon be deploying more modems onto our Hylafax server
+for different departments, we have been running Hylafax just with 1 modem
+with no problems.
+
+With adding more modems, we are looking at using yajhfc so the different
+departments can view and manage their own received fax lists.
+
+I know under the View menu there is "View Own Faxes" option, but how do I
+setup Hylafax with Yajhfc to take advantage of this option so say the other
+departmetns can't see each other received fax lists.
+
+Currently the modems are setup under defaulf owners of uucp:uucp, and I
+intend to give each department a general username for the department which
+they will run Hylafax with, which I would like to somehow assign to say a
+particular modem for each dpeartment.
+Is this easily done with a couple of config changes somewhere, or do I need
+to look much deeper.
+
+Thanks
+
+Andy
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090611/13dfff18/attachment.html>
+
+From andreas_ruf at gmx.net  Fri Jun 12 11:13:48 2009
+From: andreas_ruf at gmx.net (Andreas Ruf)
+Date: Fri, 12 Jun 2009 11:13:48 +0200
+Subject: [Yajhfc-user] Own Fax Lists View
+In-Reply-To: <de8c2ec00906110408r550dafd6wfafcdab6ab326889@mail.gmail.com>
+References: <de8c2ec00906110408r550dafd6wfafcdab6ab326889@mail.gmail.com>
+Message-ID: <1244798028.7293.7.camel@kant.localdomain>
+
+Hi,
+
+see below
+
+Am Donnerstag, den 11.06.2009, 12:08 +0100 schrieb Andy Rogers:
+> Hi
+>  
+> We have are going to soon be deploying more modems onto our Hylafax
+> server for different departments, we have been running Hylafax just
+> with 1 modem with no problems.
+>  
+> With adding more modems, we are looking at using yajhfc so the
+> different departments can view and manage their own received fax
+> lists.
+>  
+> I know under the View menu there is "View Own Faxes" option, but how
+> do I setup Hylafax with Yajhfc to take advantage of this option so say
+> the other departmetns can't see each other received fax lists.
+>  
+> Currently the modems are setup under defaulf owners of uucp:uucp, and
+> I intend to give each department a general username for the department
+> which they will run Hylafax with, which I would like to somehow assign
+> to say a particular modem for each dpeartment.
+Try different users in "hosts.hfaxd" ("man faxadduser") for each
+department and option "JobProtection" in "hfaxd.conf" ("man hfaxd").
+Perhaps this is what you want?
+
+> Is this easily done with a couple of config changes somewhere, or do I
+> need to look much deeper.
+>  
+> Thanks
+>  
+> Andy
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+

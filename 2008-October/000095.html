@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] cannot print
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-8491-20081021-024711.00%40nerijus.sat.lt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000094.html">
+   <LINK REL="Next"  HREF="000096.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] cannot print</H1>
+    <B>Nerijus Baliunas</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-8491-20081021-024711.00%40nerijus.sat.lt%3E"
+       TITLE="[Yajhfc-user] cannot print">nerijus at users.sourceforge.net
+       </A><BR>
+    <I>Tue Oct 21 01:47:11 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000094.html">[Yajhfc-user] log console
+</A></li>
+        <LI>Next message: <A HREF="000096.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I am using 0.3.8b (tried with <A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar">ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar</A> too).
+Pressing Send toolbar button works, but printing test page of a Fax printer
+does not (nothing appears). Here is a log file:
+
+Environment:
+  ALLUSERSPROFILE=C:\Documents and Settings\All Users
+  CommonProgramFiles=C:\Program Files\Common Files
+  COMPUTERNAME=EXAMPLE
+  ComSpec=C:\WINDOWS\system32\cmd.exe
+  FP_NO_HOST_CHECK=NO
+  NUMBER_OF_PROCESSORS=2
+  OS=Windows_NT
+  Path=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Common Files\Lenovo;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static
+  PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH
+  PROCESSOR_ARCHITECTURE=x86
+  PROCESSOR_IDENTIFIER=x86 Family 15 Model 107 Stepping 1, AuthenticAMD
+  PROCESSOR_LEVEL=15
+  PROCESSOR_REVISION=6b01
+  ProgramFiles=C:\Program Files
+  RR=C:\Program Files\Lenovo\Rescue and Recovery
+  SMA=C:\Program Files\ThinkVantage\SMA\
+  SonicCentral=C:\Program Files\Common Files\Sonic Shared\Sonic Central\
+  SWSHARE=C:\SWSHARE
+  SystemDrive=C:
+  SystemRoot=C:\WINDOWS
+  TEMP=C:\WINDOWS\TEMP
+  TMP=C:\WINDOWS\TEMP
+  TPCCommon=C:\PROGRA~1\THINKV~2\PrdCtr
+  TVT=C:\Program Files\Lenovo
+  TVTCOMMON=C:\Program Files\Common Files\Lenovo
+  TVTPYDIR=C:\Program Files\Common Files\Lenovo\Python24
+  USERPROFILE=C:\Documents and Settings\LocalService
+  windir=C:\WINDOWS
+  REDMON_PORT=YAJHFC:
+  REDMON_JOB=83
+  REDMON_PRINTER=Fax
+  REDMON_MACHINE=\\EXAMPLE
+  REDMON_USER=Example
+  REDMON_DOCNAME=Test Page
+  REDMON_FILENAME=
+  REDMON_SESSIONID=0
+  
+Microsoft (R) Windows Script Host Version 5.7
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Error #-2147024664: 
+Error #-2147024664: 
+java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --background
+Caused by: java.lang.ClassNotFoundException: Files\YajHFC\yajhfc.jar --stdin --background
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+Exception in thread &quot;main&quot; 
+
+Z:\&gt;java -version
+java version &quot;1.6.0_07&quot;
+Java(TM) SE Runtime Environment (build 1.6.0_07-b06)
+Java HotSpot(TM) Client VM (build 10.0-b23, mixed mode, sharing)
+
+XP SP3.
+
+Regards,
+Nerijus
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000094.html">[Yajhfc-user] log console
+</A></li>
+	<LI>Next message: <A HREF="000096.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#95">[ date ]</a>
+              <a href="thread.html#95">[ thread ]</a>
+              <a href="subject.html#95">[ subject ]</a>
+              <a href="author.html#95">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

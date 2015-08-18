@@ -1,0 +1,1073 @@
+From hylafax at andyscomp.f9.co.uk  Tue Dec  2 09:12:46 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 2 Dec 2008 08:12:46 -0000 (UTC)
+Subject: [Yajhfc-user] Test YAJHFC 0.39a
+Message-ID: <4966.62.49.140.10.1228205566.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+I see that there is a version of yajhfc 0.39a on the berlios site.
+
+I have downloaded and given it ago and I really like the new menu design
+on the options, and how it now minimises down to a Tray Icon at the
+bottom.
+
+At the moment, I some times find it a little annoying when I have got
+yajhfc minimised as a tray icon and an incomming fax then comes in, and I
+get the yajhfc client restored when iam in the middle of working.
+Would it be possible to have a couple of options added for new fax
+notifications when the client has been minimised to the tray like:-
+
+1) Just Display the Ballon Notification Popup, then disappear after maybe
+a few seconds, or a duration specified by the user.
+
+2) Possibly display a ballon notification which disappears after a set
+time, and then get the icon to flash/blink in the tray until the user
+restores yajhfc.
+
+3) An option for as it currently is now, restore the applciation and bring
+to front each time.
+
+It also brings up yajhfc to front when it is open and not minimised to the
+tray, when it behind other applications.
+
+Just a couple of thoughts Jonas.
+
+Thanks
+
+Andy
+
+
+
+From jonas.wolz at freenet.de  Tue Dec  2 17:19:09 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 2 Dec 2008 17:19:09 +0100
+Subject: [Yajhfc-user] Test YAJHFC 0.39a
+In-Reply-To: <4966.62.49.140.10.1228205566.squirrel@webmail.plus.net>
+References: <4966.62.49.140.10.1228205566.squirrel@webmail.plus.net>
+Message-ID: <200812021719.09132.jonas.wolz@freenet.de>
+
+Am Dienstag, 2. Dezember 2008 schrieb Andy Rogers:
+> At the moment, I some times find it a little annoying when I have got
+> yajhfc minimised as a tray icon and an incomming fax then comes in, and I
+> get the yajhfc client restored when iam in the middle of working.
+> Would it be possible to have a couple of options added for new fax
+> notifications when the client has been minimised to the tray like:-
+
+It should already be possible to turn that off by unchecking "Bring to front" 
+at "Actions when a new fax is received" in the options.
+
+> 1) Just Display the Ballon Notification Popup, then disappear after maybe
+> a few seconds, or a duration specified by the user.
+
+According to the Java documentation the popup should already disappear 
+after some time. I am not able to influence this behaviour, however (Java 
+offers no method to set the display duration or to hide a baloon popup 
+again).
+
+> 2) Possibly display a ballon notification which disappears after a set
+> time, and then get the icon to flash/blink in the tray until the user
+> restores yajhfc.
+
+The flashing icon is a good idea and might be implemented in the future.
+
+
+Thanks for the feedback,
+Jonas
+
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Dec  9 14:51:25 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 9 Dec 2008 13:51:25 -0000 (UTC)
+Subject: [Yajhfc-user]  Test YAJHFC 0.39d
+In-Reply-To: <200812021719.09132.jonas.wolz@freenet.de>
+References: <4966.62.49.140.10.1228205566.squirrel@webmail.plus.net>
+	<200812021719.09132.jonas.wolz@freenet.de>
+Message-ID: <6296.83.104.73.141.1228830685.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+I have downloaded the latest test version of yajhfc i think it is 0.39d, I
+see that you have put in the flashing icon in the icon tray thanks.
+
+I have come across one problem with it, when it is minimised down and a
+fax has come in it flashes fine, I then double click ont he icon and
+yajhfc is restored and the flashing icon then stops blinking.
+
+I then minimise it down again, and when another fax comes in it flashes, I
+then double click on the icon to restore yajhfc again, but this time the
+icon keeps on flashing.  It seems to happen all the time after it has been
+restored once before.
+
+Thanks
+
+Andy
+
+
+
+From jonas.wolz at freenet.de  Sun Dec 14 15:00:38 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 14 Dec 2008 15:00:38 +0100
+Subject: [Yajhfc-user] Test YAJHFC 0.39d
+In-Reply-To: <6296.83.104.73.141.1228830685.squirrel@webmail.plus.net>
+References: <4966.62.49.140.10.1228205566.squirrel@webmail.plus.net>
+	<200812021719.09132.jonas.wolz@freenet.de>
+	<6296.83.104.73.141.1228830685.squirrel@webmail.plus.net>
+Message-ID: <200812141500.39105.jonas.wolz@freenet.de>
+
+Am Dienstag, 9. Dezember 2008 schrieb Andy Rogers:
+> I then minimise it down again, and when another fax comes in it flashes, I
+> then double click on the icon to restore yajhfc again, but this time the
+> icon keeps on flashing.  It seems to happen all the time after it has been
+> restored once before.
+
+What are your exact settings on the "General" panel in the options?
+I tried to reproduce this problem today on Windows XP and it works fine for me 
+(I tried with 5 faxes; it also worked with 2 faxes in a quick test last 
+Wednesday).
+So the problem might be related to some special combination of "Actions when a 
+new fax is received" and "Minimize to tray".
+
+BTW, this weekend I also did a quick test with the HylaFAX CVS versions (and 
+the date format indeed changed there). So the newest YajHFC developer version 
+should be able to show dates for these versions now, too.
+
+
+Jonas
+
+
+From sorin at lauserco.com  Sun Dec 14 18:59:55 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Sun, 14 Dec 2008 12:59:55 -0500
+Subject: [Yajhfc-user] Feature request
+Message-ID: <4945499B.2010600@lauserco.com>
+
+Hello,
+
+I'm using YajHFC for about 4-5 month on our windows network. Since now 
+I've seen a few bugs. The most annoing is when a user's home directory 
+is on a network drive. In this case the vbs script is unable to launch 
+the main program. To fix this I'm adding in the printlaunch.vbs the 
+following lines:
+
+Set WshNet = CreateObject("WScript.Network")
+strUsername = WshNet.Username
+userprofile = "c:\Documents and Settings\" & strUsername
+
+I know is not the right way to do it and it doesn't cover all the cases, 
+but in my case it's the right hack.
+
+Another annoing trouble is that sometimes clicking "preview"brings an 
+error about the .tmp file not found in %systemroot%\system32\Settings\Temp\
+it seems like somehow, it search for the temp file in this place instead 
+of %userprofile%\Local Settings\Temp\. my quick and dirty hack is to do 
+a hard-link (NTFS junction) between %userprofile%\Local Settings\ and 
+%systemroot%\system32\Settings\
+
+Now, for the request part, I'm asking if it is possible to schedule the 
+time when a fax message can be sent. It is the feature that almost all 
+my user are asking for.
+Another request is if it is possible to print the fax log. For the 
+moment my users sort the sent messages an then use "Screen Capture" if 
+they need to print the logs, but this is pretty ugly and unhandy.
+
+Thank you.
+
+
+
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From jonas.wolz at freenet.de  Sun Dec 14 20:28:28 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 14 Dec 2008 20:28:28 +0100
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <4945499B.2010600@lauserco.com>
+References: <4945499B.2010600@lauserco.com>
+Message-ID: <200812142028.28423.jonas.wolz@freenet.de>
+
+Am Sonntag, 14. Dezember 2008 schrieb Sorin Toma:
+> I'm using YajHFC for about 4-5 month on our windows network. Since now
+> I've seen a few bugs. The most annoing is when a user's home directory
+> is on a network drive. In this case the vbs script is unable to launch
+> the main program. [...]
+
+From which YajHFC version is the script you use?
+The script included with YajHFC 0.3.9 incorporates a fix regarding home 
+directories on network drives, so it would be interesting for me to know if 
+you (still) have the same problems with this version.
+
+> Another annoing trouble is that sometimes clicking "preview"brings an
+> error about the .tmp file not found in %systemroot%\system32\Settings\Temp\
+> it seems like somehow, it search for the temp file in this place instead
+> of %userprofile%\Local Settings\Temp\. my quick and dirty hack is to do
+> a hard-link (NTFS junction) between %userprofile%\Local Settings\ and
+> %systemroot%\system32\Settings\
+
+Which application shows this error (YajHFC or the viewer)? 
+This looks a bit like a problem with space characters and missing quotes 
+(e.g. "c:\...\local settings\..." is interpreted as two files "c:\...\local" 
+and "settings\..." and then qualified with the current directory 
+(probably %systemroot%\system32)).
+
+> Now, for the request part, I'm asking if it is possible to schedule the
+> time when a fax message can be sent. It is the feature that almost all
+> my user are asking for.
+
+This is already planned for the next version.
+
+> Another request is if it is possible to print the fax log. For the
+> moment my users sort the sent messages an then use "Screen Capture" if
+> they need to print the logs, but this is pretty ugly and unhandy.
+
+"Extras"->"Print table"?
+
+
+Jonas.
+
+
+From sorin at lauserco.com  Sun Dec 14 22:12:46 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Sun, 14 Dec 2008 16:12:46 -0500
+Subject: [Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+In-Reply-To: <200812142028.28423.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com>
+	<200812142028.28423.jonas.wolz@freenet.de>
+Message-ID: <494576CE.2030907@lauserco.com>
+
+Jonas Wolz wrote:
+> [...]
+> >From which YajHFC version is the script you use?
+> The script included with YajHFC 0.3.9 incorporates a fix regarding home 
+> directories on network drives, so it would be interesting for me to know if 
+> you (still) have the same problems with this version.
+>
+>   
+I've done an installation friday with 0.3.9 and the "print to fax" was 
+not running. already knowing the trouble, i did not investigated 
+further, just replaced the script with a modified one and "voila" 
+everything was ok. it was a normal user account (no local admin) with a 
+network drive home.
+next
+
+> [...]
+> Which application shows this error (YajHFC or the viewer)? 
+> This looks a bit like a problem with space characters and missing quotes 
+> (e.g. "c:\...\local settings\..." is interpreted as two files "c:\...\local" 
+> and "settings\..." and then qualified with the current directory 
+> (probably %systemroot%\system32)).
+>   
+it's the viewer (gsview32) and yes, it seems like that. I did not payed 
+to much attention, as a simple "ln" fixes the trouble. What I definitly 
+remember is that first I thought thay the script is launced as system 
+(instead being launched as user), but a look in the printer "port" 
+showed that "launch as user" was checked. I might investigate further if 
+you wish.
+
+>   
+>> Now, for the request part, I'm asking if it is possible to schedule the
+>> time when a fax message can be sent. It is the feature that almost all
+>> my user are asking for.
+>>     
+>
+> This is already planned for the next version.
+>
+>   
+Thank you, this will make a lot of people happy. :)
+for the moment we are using the feature present in the web interface of 
+avantfax, but it will be far better to use the same interface (yajhfc).
+
+>> Another request is if it is possible to print the fax log. For the
+>> moment my users sort the sent messages an then use "Screen Capture" if
+>> they need to print the logs, but this is pretty ugly and unhandy.
+>>     
+>
+> "Extras"->"Print table"?
+>   
+well... that is very stupid of me. somebody asked me about this, I 
+looked into the "fax" menu and concluded "it's not there, so it doesn't 
+exists" :)
+>
+> Jonas.
+>
+>
+>   
+
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From jonas.wolz at freenet.de  Mon Dec 15 16:02:22 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 15 Dec 2008 16:02:22 +0100
+Subject: [Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+In-Reply-To: <494576CE.2030907@lauserco.com>
+References: <4945499B.2010600@lauserco.com>
+	<200812142028.28423.jonas.wolz@freenet.de>
+	<494576CE.2030907@lauserco.com>
+Message-ID: <200812151602.23068.jonas.wolz@freenet.de>
+
+Am Sonntag, 14. Dezember 2008 schrieb Sorin Toma:
+> Jonas Wolz wrote:
+> > [...]
+> >
+> > >From which YajHFC version is the script you use?
+> >
+> > The script included with YajHFC 0.3.9 incorporates a fix regarding home
+> > directories on network drives, so it would be interesting for me to know
+> > if you (still) have the same problems with this version.
+>
+> I've done an installation friday with 0.3.9 and the "print to fax" was
+> not running. already knowing the trouble, i did not investigated
+> further, just replaced the script with a modified one and "voila"
+> everything was ok. it was a normal user account (no local admin) with a
+> network drive home.
+
+What were the symptoms you got?
+Did you get the message "Could not determine User Profile Path. Cancelling 
+YajHFC launch."?
+
+To be honest the whole printlaunch script is kind of a hack, but a necessary 
+one, because Redmon often does not setup the enviroment correctly *and* 
+windows does not seem to offer a reliable way to get a user's home directory 
+from the registry (or from somewhere else than the environment).
+
+> > [...]
+> > Which application shows this error (YajHFC or the viewer)?
+> > This looks a bit like a problem with space characters and missing quotes
+> > (e.g. "c:\...\local settings\..." is interpreted as two files
+> > "c:\...\local" and "settings\..." and then qualified with the current
+> > directory (probably %systemroot%\system32)).
+>
+> it's the viewer (gsview32) and yes, it seems like that. I did not payed
+> to much attention, as a simple "ln" fixes the trouble. What I definitly
+> remember is that first I thought thay the script is launced as system
+> (instead being launched as user), but a look in the printer "port"
+> showed that "launch as user" was checked. I might investigate further if
+> you wish.
+
+Have you checked if the %s in the YajHFC options has quotes around it?
+I.e. the command line for the PS viewer should look like this:
+c:\[...]\gsview32.exe "%s"
+
+This might cause this effect when the temporary file name contains spaces.
+
+Best regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Mon Dec 15 16:33:44 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 15 Dec 2008 16:33:44 +0100
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <200812151602.23068.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com> <494576CE.2030907@lauserco.com>
+	<200812151602.23068.jonas.wolz@freenet.de>
+Message-ID: <200812151633.44811.jonas.wolz@freenet.de>
+
+Am Montag, 15. Dezember 2008 schrieb Jonas Wolz:
+> To be honest the whole printlaunch script is kind of a hack, but a
+> necessary one, because Redmon often does not setup the enviroment correctly
+> *and* windows does not seem to offer a reliable way to get a user's home
+> directory from the registry (or from somewhere else than the environment).
+
+While writing the last mail I have got an idea for a workaround which should 
+solve this problem in the majority of cases and will be in the next version 
+(0.4.0) of YajHFC (technical explanation follows):
+
+Starting with 0.3.9 the "normal" YajHFC launch is also done by a VB-Script 
+(execyajhfc.vbs; this is because java.exe is not in the PATH on Vista 64bit).
+
+The workaround I implemented is to add code to this script which saves the 
+correct values for USERPROFILE, TMP and TEMP to the registry 
+(HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+printlaunch.vbs now checks if these values are present and uses them if they 
+are present. If not, the old logic is applied.
+As long as the user profile location has not been moved after the 
+last "normal" start of YajHFC (which should be really seldom) and YajHFC has  
+been started "normally" at some point of time, this should fix the path 
+problems.
+
+Regards,
+Jonas
+
+
+From sorin at lauserco.com  Mon Dec 15 19:25:30 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Mon, 15 Dec 2008 13:25:30 -0500
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <200812151602.23068.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com>	<200812142028.28423.jonas.wolz@freenet.de>	<494576CE.2030907@lauserco.com>
+	<200812151602.23068.jonas.wolz@freenet.de>
+Message-ID: <4946A11A.6070104@lauserco.com>
+
+Jonas Wolz wrote:
+> Am Sonntag, 14. Dezember 2008 schrieb Sorin Toma:
+>   
+>> Jonas Wolz wrote:
+>>     
+>>> [...]
+>>>
+>>>       
+>
+> What were the symptoms you got?
+> Did you get the message "Could not determine User Profile Path. Cancelling 
+> YajHFC launch."?
+>   
+Negative, No message at all. |File -> Print -> cscript started, then the 
+jajhfc.jar doesn't appeared.
+> [...]
+>
+> Have you checked if the %s in the YajHFC options has quotes around it?
+> I.e. the command line for the PS viewer should look like this:
+> c:\[...]\gsview32.exe "%s"
+>
+> This might cause this effect when the temporary file name contains spaces.
+>
+>   
+Not checked for the quotes, anyway it sounds very probable that this is 
+the problem. What puzzled me was the fact that it was looking in 
+c:\windows\system32\. I will check next time.
+
+
+> Best regards,
+> Jonas
+>
+>   
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+
+From sorin at lauserco.com  Mon Dec 15 19:34:03 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Mon, 15 Dec 2008 13:34:03 -0500
+Subject: [Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+In-Reply-To: <200812151633.44811.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com>
+	<494576CE.2030907@lauserco.com>	<200812151602.23068.jonas.wolz@freenet.de>
+	<200812151633.44811.jonas.wolz@freenet.de>
+Message-ID: <4946A31B.1040507@lauserco.com>
+
+Jonas Wolz wrote:
+> Am Montag, 15. Dezember 2008 schrieb Jonas Wolz:
+>   
+>> To be honest the whole printlaunch script is kind of a hack, but a
+>> necessary one, because Redmon often does not setup the enviroment correctly
+>> *and* windows does not seem to offer a reliable way to get a user's home
+>> directory from the registry (or from somewhere else than the environment).
+>>     
+>
+> While writing the last mail I have got an idea for a workaround which should 
+> solve this problem in the majority of cases and will be in the next version 
+> (0.4.0) of YajHFC (technical explanation follows):
+>
+> Starting with 0.3.9 the "normal" YajHFC launch is also done by a VB-Script 
+> (execyajhfc.vbs; this is because java.exe is not in the PATH on Vista 64bit).
+>
+> The workaround I implemented is to add code to this script which saves the 
+> correct values for USERPROFILE, TMP and TEMP to the registry 
+> (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+> printlaunch.vbs now checks if these values are present and uses them if they 
+> are present. If not, the old logic is applied.
+> As long as the user profile location has not been moved after the 
+> last "normal" start of YajHFC (which should be really seldom) and YajHFC has  
+> been started "normally" at some point of time, this should fix the path 
+> problems.
+>
+>   
+I was thinking to the same thing, but the installation is done as 
+administrator, so the first start of the app it's going to save the 
+informations about admin's profile. then, launching the application as 
+normal user will read the information from the registry, will try to use 
+admin's parameters and it will fail.we might also encounter cases when 
+multiple users uses the same pc... a quick hack is to put in autostart a 
+script that saves those parameters at every login (it's ugly, I know).
+
+
+> Regards,
+> Jonas
+>   
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+From nerijus at users.sourceforge.net  Mon Dec 15 20:58:34 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Mon, 15 Dec 2008 21:58:34 +0200
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <4946A31B.1040507@lauserco.com>
+References: <4945499B.2010600@lauserco.com><494576CE.2030907@lauserco.com>
+	<200812151602.23068.jonas.wolz@freenet.de><200812151633.44811.jonas.wolz@freenet.de>
+	<4946A31B.1040507@lauserco.com>
+Message-ID: <Mahogany-0.67.2-25950-20081215-215834.00@nerijus.sat.lt>
+
+On Mon, 15 Dec 2008 13:34:03 -0500 Sorin Toma <sorin at lauserco.com> wrote:
+
+> > The workaround I implemented is to add code to this script which saves the 
+> > correct values for USERPROFILE, TMP and TEMP to the registry 
+> > (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+>   
+> I was thinking to the same thing, but the installation is done as 
+> administrator, so the first start of the app it's going to save the 
+> informations about admin's profile.
+
+Yes, to the admin's HKEY_CURRENT_USER.
+
+> then, launching the application as 
+> normal user will read the information from the registry, will try to use 
+> admin's parameters
+
+No, parameters from the user's HKEY_CURRENT_USER.
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Mon Dec 15 21:35:27 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 15 Dec 2008 21:35:27 +0100
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <4946A31B.1040507@lauserco.com>
+References: <4945499B.2010600@lauserco.com>
+	<200812151633.44811.jonas.wolz@freenet.de>
+	<4946A31B.1040507@lauserco.com>
+Message-ID: <200812152135.27301.jonas.wolz@freenet.de>
+
+Am Montag, 15. Dezember 2008 schrieb Sorin Toma:
+> > The workaround I implemented is to add code to this script which saves
+> > the correct values for USERPROFILE, TMP and TEMP to the registry
+> > (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+> > printlaunch.vbs now checks if these values are present and uses them if
+> > they are present. If not, the old logic is applied.
+> > As long as the user profile location has not been moved after the
+> > last "normal" start of YajHFC (which should be really seldom) and YajHFC
+> > has been started "normally" at some point of time, this should fix the
+> > path problems.
+>
+> I was thinking to the same thing, but the installation is done as
+> administrator, so the first start of the app it's going to save the
+> informations about admin's profile. then, launching the application as
+> normal user will read the information from the registry, will try to use
+> admin's parameters and it will fail.we might also encounter cases when
+> multiple users uses the same pc... a quick hack is to put in autostart a
+> script that saves those parameters at every login (it's ugly, I know).
+
+The information is/will be saved in HKEY_CURRENT_USER (not 
+HKEY_LOCAL_MACHINE), so every user should get his own copy of the registry 
+keys. 
+It's *not* the setup program writing the keys, but the "non-print" YajHFC 
+launch script which runs as the normal user. Of course this requires every 
+user to launch YajHFC at least once using the start menu/desktop icon, but 
+that typically should not be a problem.
+
+Or am I missing something here?
+
+Regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Mon Dec 15 21:44:34 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 15 Dec 2008 21:44:34 +0100
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <4946A11A.6070104@lauserco.com>
+References: <4945499B.2010600@lauserco.com>
+	<200812151602.23068.jonas.wolz@freenet.de>
+	<4946A11A.6070104@lauserco.com>
+Message-ID: <200812152144.34748.jonas.wolz@freenet.de>
+
+Am Montag, 15. Dezember 2008 schrieb Sorin Toma:
+> Not checked for the quotes, anyway it sounds very probable that this is
+> the problem. What puzzled me was the fact that it was looking in
+> c:\windows\system32\. I will check next time.
+
+java.exe is typically located in c:\windows\system32, so this is usually the 
+current directory when YajHFC is launched under windows (if you don't set a 
+different current directory in the properties of the YajHFC shortcut).
+
+Regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Mon Dec 15 21:52:49 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 15 Dec 2008 21:52:49 +0100
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <200812151633.44811.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com>
+	<200812151602.23068.jonas.wolz@freenet.de>
+	<200812151633.44811.jonas.wolz@freenet.de>
+Message-ID: <200812152152.49641.jonas.wolz@freenet.de>
+
+Am Montag, 15. Dezember 2008 schrieb Jonas Wolz:
+> The workaround I implemented is to add code to this script which saves the
+> correct values for USERPROFILE, TMP and TEMP to the registry
+> (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+> printlaunch.vbs now checks if these values are present and uses them if
+> they are present. If not, the old logic is applied.
+> As long as the user profile location has not been moved after the
+> last "normal" start of YajHFC (which should be really seldom) and YajHFC
+> has been started "normally" at some point of time, this should fix the path
+> problems.
+
+Again answering to myself:
+If you (or someone else) wants to test the scripts including the workaround, 
+these are now available under
+ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs and
+ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs
+
+To use the new versions, simply replace the YajHFC 0.3.9 versions of the 
+scripts under c:\program files\yajhfc with the versions from above. 
+After YajHFC has been started using execyajhfc.vbs for the first time (as the 
+shortcuts created by the 0.3.9 setup do), printlaunch.vbs should work 
+flawlessly (and you should find three registry keys under 
+HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+
+Regards,
+Jonas
+
+
+From Chris at symac.com  Tue Dec 16 13:06:16 2008
+From: Chris at symac.com (Chris Carr)
+Date: Tue, 16 Dec 2008 12:06:16 -0000
+Subject: [Yajhfc-user] Feature request
+Message-ID: <2D0C74CC0A8DCB43AA46948B4A368D53013C812B@saracen.symac.local>
+
+I am very interested in finding a solution to using YAJHFC where the
+users Home directory is on a network drive. I will try the new vbs
+scripts as soon as possible and post the results to this thread.
+
+ 
+
+________________________________
+
+Chris Carr 
+
+Symac                                                    Tel: 01959
+570022 
+
+147 Main Road                                        Fax: 01959 570033 
+
+Biggin Hill                                              email:
+chris at symac.com <mailto:chris at symac.com>  
+
+Kent TN16 3JP
+
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20081216/01f38f11/attachment.html>
+
+From malte.gell at gmx.de  Fri Dec 19 05:49:08 2008
+From: malte.gell at gmx.de (Malte Gell)
+Date: Fri, 19 Dec 2008 05:49:08 +0100
+Subject: [Yajhfc-user] When to use as root
+Message-ID: <200812190549.16051.malte.gell@gmx.de>
+
+Hi there!
+
+1st, thank you for this clean and nice HylaFAX GUI! This is exactly what 
+I need. I run HylaFAX on openSUSE 10.3.
+
+My question is, there is an "admin mode", but, does this makes sense if 
+you are not root? I mean, only if you are root, you can 
+clean /var/spool/fax ,right?
+
+Second, this is such a great tool! Why don't you ask the different Linux 
+distributions in order to include it?
+
+Regards
+Malte
+
+
+From moiseev at mezonplus.ru  Fri Dec 19 10:03:04 2008
+From: moiseev at mezonplus.ru (Alexander Moisseev)
+Date: Fri, 19 Dec 2008 12:03:04 +0300
+Subject: [Yajhfc-user] Splitting of incoming faxes
+Message-ID: <494B6348.602@mezonplus.ru>
+
+We have a lot of incoming faxes without page breaks (to be more exact, unlimited page length), e.g. forwarded rolls from thermofaxes, pages manually added to fax machine tray during transmission, etc.
+Our users have problems with printing or viewing such faxes.
+
+On Lee Howard's advice from HylaFAX users mailing list I have tried configure modem to not permit unlimited length pages by replacing +FDCC response.
+
+I done some experimenting and have as result 3 types of behavior of fax machines:
+
+1. Remote fax machine send unlimited page anyway.
+2. Remote fax machine send 297mm of inserted page and report transmission error to the user.
+3. Remote fax machine send 297mm of inserted page and hangs.
+
+In all cases I had A4 page length negotiated on handshake.
+I suppose that type 2 is absolutely correct behavior. But users don't mind that "transmission error" means unsupported page length! They simply repeat transmission again and again.
+
+Evidently prohibiting of unlimited length pages must not be used.
+
+I find a way to automatically split tif files analogically with tiff2fax, i.e. detect faxes with long pages with tiffcheck and split it with ($TIFF2PS -a -H11.7 $fil | $PS2FAX -o $out $opt). But I lose fax information in out file. I can't find the way to retain or recreate information about received fax in resulting file.
+Because of that I cant do such file processing directly on HylaFAX server. Instead I wrote script that automatically splits incoming fax and exports it to samba share on remote server.
+
+As new version of YajHFC will have some faxprocessing capabilities, is it possible add a feature for splitting faxes on pages?
+
+Regards,
+Alexander
+
+
+From jonas.wolz at freenet.de  Fri Dec 19 20:55:35 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 19 Dec 2008 20:55:35 +0100
+Subject: [Yajhfc-user] When to use as root
+In-Reply-To: <200812190549.16051.malte.gell@gmx.de>
+References: <200812190549.16051.malte.gell@gmx.de>
+Message-ID: <200812192055.35757.jonas.wolz@freenet.de>
+
+Am Freitag, 19. Dezember 2008 schrieb Malte Gell:
+> My question is, there is an "admin mode", but, does this makes sense if
+> you are not root? I mean, only if you are root, you can
+> clean /var/spool/fax ,right?
+
+No, it also makes sense when you are not root, as HylaFAX implements its own 
+user authentication system.
+For example, adding the following line to hosts.hfaxd will "create" a 
+user "fax" with both password and admin password "fax":
+^fax at .*$::jk7fbGIw26tYs:jk7fbGIw26tYs
+
+When this user logs in as admin, he can view and delete any fax (technically 
+he has the same rights as the user "hfaxd" runs under ("uucp" on Debian) -- 
+this user also owns /var/spool/fax and all sub directories).
+
+> Second, this is such a great tool! Why don't you ask the different Linux
+> distributions in order to include it?
+
+Well, to be honest, because I did not take the time so far to find out where I 
+can suggest new packages for the different distributions.
+Of course, I would not object if someone else wants to do that instead... ;-)
+
+If such a suggestion results in the creation of a new package (or if someone 
+wants to do that independently from a distribution), it is also no problem to 
+offer some assistance for that (e.g. to find out the correct dependencies). 
+I currently do not have the time to create such a package myself, however 
+(because I would first need to become acquainted with the packaging system 
+and policy of the distribution in question).
+
+
+Regards,
+Jonas
+
+
+From malte.gell at gmx.de  Sat Dec 20 00:06:44 2008
+From: malte.gell at gmx.de (Malte Gell)
+Date: Sat, 20 Dec 2008 00:06:44 +0100
+Subject: [Yajhfc-user] When to use as root
+In-Reply-To: <200812192055.35757.jonas.wolz@freenet.de>
+References: <200812190549.16051.malte.gell@gmx.de>
+	<200812192055.35757.jonas.wolz@freenet.de>
+Message-ID: <200812200006.44534.malte.gell@gmx.de>
+
+On Freitag, 19. Dezember 2008, Jonas Wolz wrote:
+> Am Freitag, 19. Dezember 2008 schrieb Malte Gell:
+> > My question is, there is an "admin mode", but, does this makes
+> > sense if you are not root? I mean, only if you are root, you can
+> > clean /var/spool/fax ,right?
+>
+> No, it also makes sense when you are not root, as HylaFAX implements
+> its own user authentication system.
+> For example, adding the following line to hosts.hfaxd will "create" a
+> user "fax" with both password and admin password "fax":
+> ^fax at .*$::jk7fbGIw26tYs:jk7fbGIw26tYs
+
+Thanx for explaining. But, it did not work... I used 
+
+faxadduser -a fax -p fax -h 127.0.0.1 malte_gell
+
+in order to add my user account to HylaFAX. Now, when i start Yajhfc and 
+try to enter admin mode, i am asked for the password and i type "fax", 
+but I get the following:
+
+530 Password incorrect.
+	at 
+gnu.hylafax.HylaFAXClientProtocol.admin(HylaFAXClientProtocol.java:111)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:147)
+	at 
+yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:79)
+	at yajhfc.mainwin$LoginThread.run(mainwin.java:2139)
+
+
+Why does this happen? I typed the right password...
+
+Thanx Malte
+PS, I renamed Yajhfc to "hylagui" on my machine, is faster to type ;-)
+
+
+From jonas.wolz at freenet.de  Sat Dec 20 18:50:31 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 20 Dec 2008 18:50:31 +0100
+Subject: [Yajhfc-user] Splitting of incoming faxes
+In-Reply-To: <494B6348.602@mezonplus.ru>
+References: <494B6348.602@mezonplus.ru>
+Message-ID: <200812201850.31644.jonas.wolz@freenet.de>
+
+Am Freitag, 19. Dezember 2008 schrieb Alexander Moisseev:
+> [...]
+>
+> As new version of YajHFC will have some faxprocessing capabilities, is it
+> possible add a feature for splitting faxes on pages?
+
+It is possible and I see that this can be indeed useful. 
+But it will not be in the next release as this is a bit more complicated than 
+the current logic (and I still have to figure out how to best implement this 
+(by invoking command line tools or by using a Java TIFF library directly)).
+
+For the time being, as a workaround, you can of course also create a small 
+wrapper script around tiff2pdf with this functionality and set it 
+as "tiff2pdf" executable in YajHFC (the file set as tiff2pdf executable does 
+not need to be called "tiff2pdf", of course).
+
+Currently YajHFC invokes tiff2pdf with the input file as single parameter and 
+expects the PDF data on the standard output (i.e. the command line looks 
+like "tiff2pdf fax.tiff").
+
+Additionally, there is a special logic if PostScript is requested as output 
+format: 
+If there is a executable named "tiff2ps" in the same directory as the tiff2pdf 
+executable, this is called instead with the parameter "-a1", 
+e.g. "tiff2ps -a1 fax.tiff".
+If there is no tiff2ps in the same directory, the tiff2pdf executable is used 
+as above and the output is then fed into GhostScript to create the 
+PostScript.
+
+Regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Sat Dec 20 18:56:22 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 20 Dec 2008 18:56:22 +0100
+Subject: [Yajhfc-user] When to use as root
+In-Reply-To: <200812200006.44534.malte.gell@gmx.de>
+References: <200812190549.16051.malte.gell@gmx.de>
+	<200812192055.35757.jonas.wolz@freenet.de>
+	<200812200006.44534.malte.gell@gmx.de>
+Message-ID: <200812201856.22666.jonas.wolz@freenet.de>
+
+Am Samstag, 20. Dezember 2008 schrieb Malte Gell:
+> Thanx for explaining. But, it did not work... I used
+>
+> faxadduser -a fax -p fax -h 127.0.0.1 malte_gell
+>
+> in order to add my user account to HylaFAX. Now, when i start Yajhfc and
+> try to enter admin mode, i am asked for the password and i type "fax",
+> but I get the following:
+>
+> 530 Password incorrect.
+> 	at
+> gnu.hylafax.HylaFAXClientProtocol.admin(HylaFAXClientProtocol.java:111)
+> 	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:147)
+> 	at
+> yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:79)
+> 	at yajhfc.mainwin$LoginThread.run(mainwin.java:2139)
+>
+>
+> Why does this happen? I typed the right password...
+
+My guess:
+In the hosts.hfaxd the first line matching the user and host name is used. 
+That means, if there is the default "localhost" line and the line from 
+faxadduser comes after that, only the "localhost" line is used when you 
+connect from localhost and the line from faxadduser is ignored.
+
+So you will probably have to open your hosts.hfaxd in a text editor and 
+reorder the lines so that the line from faxadduser comes first.
+
+Regards,
+Jonas
+
+
+From malte.gell at gmx.de  Sat Dec 20 19:54:07 2008
+From: malte.gell at gmx.de (Malte Gell)
+Date: Sat, 20 Dec 2008 19:54:07 +0100
+Subject: [Yajhfc-user] When to use as root
+In-Reply-To: <200812201856.22666.jonas.wolz@freenet.de>
+References: <200812190549.16051.malte.gell@gmx.de>
+	<200812200006.44534.malte.gell@gmx.de>
+	<200812201856.22666.jonas.wolz@freenet.de>
+Message-ID: <200812201954.07399.malte.gell@gmx.de>
+
+On Samstag, 20. Dezember 2008, Jonas Wolz wrote:
+> Am Samstag, 20. Dezember 2008 schrieb Malte Gell:
+
+> > faxadduser -a fax -p fax -h 127.0.0.1 malte_gell
+> > 530 Password incorrect.
+> > Why does this happen? I typed the right password...
+
+> My guess:
+> In the hosts.hfaxd the first line matching the user and host name is
+> used. That means, if there is the default "localhost" line and the
+> line from faxadduser comes after that, only the "localhost" line is
+> used when you connect from localhost and the line from faxadduser is
+> ignored.
+> So you will probably have to open your hosts.hfaxd in a text editor
+> and reorder the lines so that the line from faxadduser comes first.
+
+Thanx so much! You were right, I changed the order and it works now! 
+Heaven, that it has such an importance to have the right order, why is 
+HylaFAX not intelligent enough to understand this on its own......
+
+Malte
+
+
+From sorin at lauserco.com  Wed Dec 24 04:30:56 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Tue, 23 Dec 2008 22:30:56 -0500
+Subject: [Yajhfc-user] Another feature request
+Message-ID: <4951ACF0.8060204@lauserco.com>
+
+Hello,
+Sometimes we don't want to let all the users see all the sent or 
+received faxes, so in the "View" field we can change the option to "Only 
+own faxes", but there are users with a bit of curiosity, that change 
+that option to "All Faxes". For the moment, to disable that, I've 
+rebuilt a version with all the options set to "view_own"
+( in mainwin.java at about line 1088 I've changed: 
+            menuViewAll = new JRadioButtonMenuItem(_("All faxes"));
+            menuViewAll.setActionCommand("view_own");
+            menuViewAll.setSelected(true);
+            menuViewAll.addActionListener(menuViewListener);
+           
+            menuViewOwn = new JRadioButtonMenuItem(_("Only own faxes"));
+            menuViewOwn.setActionCommand("view_own");
+            menuViewOwn.addActionListener(menuViewListener);
+           
+            menuViewCustom = new JRadioButtonMenuItem(_("Custom 
+filter..."));
+            menuViewCustom.setActionCommand("view_own");
+            menuViewCustom.addActionListener(menuViewListener);
+)
+it is another ugly hack. Maybe sometimes in the future this part of the 
+setup will be set by default to "view_own" and  protected by some sort 
+of "administrative password" or at least by a deeper option like "show 
+advanced settings"...?
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From sorin at lauserco.com  Wed Dec 24 04:50:17 2008
+From: sorin at lauserco.com (Sorin Toma)
+Date: Tue, 23 Dec 2008 22:50:17 -0500
+Subject: [Yajhfc-user] Feature request
+In-Reply-To: <200812152152.49641.jonas.wolz@freenet.de>
+References: <4945499B.2010600@lauserco.com>	<200812151602.23068.jonas.wolz@freenet.de>	<200812151633.44811.jonas.wolz@freenet.de>
+	<200812152152.49641.jonas.wolz@freenet.de>
+Message-ID: <4951B179.4080305@lauserco.com>
+
+Jonas Wolz wrote:
+> Again answering to myself:
+> If you (or someone else) wants to test the scripts including the workaround, 
+> these are now available under
+> ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs and
+> ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs
+>
+> To use the new versions, simply replace the YajHFC 0.3.9 versions of the 
+> scripts under c:\program files\yajhfc with the versions from above. 
+> After YajHFC has been started using execyajhfc.vbs for the first time (as the 
+> shortcuts created by the 0.3.9 setup do), printlaunch.vbs should work 
+> flawlessly (and you should find three registry keys under 
+> HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+>   
+Hello,
+
+One week of use, 8 new installations, flawless untill now! Marked as 
+"works-for-me".
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From jonas.wolz at freenet.de  Mon Dec 29 10:51:44 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 29 Dec 2008 10:51:44 +0100
+Subject: [Yajhfc-user] Another feature request
+In-Reply-To: <4951ACF0.8060204@lauserco.com>
+References: <4951ACF0.8060204@lauserco.com>
+Message-ID: <200812291051.44157.jonas.wolz@freenet.de>
+
+Am Mittwoch, 24. Dezember 2008 schrieb Sorin Toma:
+> Hello,
+> Sometimes we don't want to let all the users see all the sent or
+> received faxes, so in the "View" field we can change the option to "Only
+> own faxes", but there are users with a bit of curiosity, that change
+> that option to "All Faxes". For the moment, to disable that, I've
+> rebuilt a version with all the options set to "view_own"
+> ( in mainwin.java at about line 1088 I've changed:
+>             menuViewAll = new JRadioButtonMenuItem(_("All faxes"));
+>             menuViewAll.setActionCommand("view_own");
+>             menuViewAll.setSelected(true);
+>             menuViewAll.addActionListener(menuViewListener);
+>
+>             menuViewOwn = new JRadioButtonMenuItem(_("Only own faxes"));
+>             menuViewOwn.setActionCommand("view_own");
+>             menuViewOwn.addActionListener(menuViewListener);
+>
+>             menuViewCustom = new JRadioButtonMenuItem(_("Custom
+> filter..."));
+>             menuViewCustom.setActionCommand("view_own");
+>             menuViewCustom.addActionListener(menuViewListener);
+> )
+> it is another ugly hack. Maybe sometimes in the future this part of the
+> setup will be set by default to "view_own" and  protected by some sort
+> of "administrative password" or at least by a deeper option like "show
+> advanced settings"...?
+
+Generally, I am not so fond of putting such "security measures" in a client 
+and not the server, because a advanced user will often be able to find a way 
+to circumvent them.
+Nevertheless, I realize that this stops most "normal users"... ;-)
+
+Thus, the next version will include a way to disable these menu options (the 
+developer version from ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar has it 
+already, BTW):
+
+To disable the "view" options and force the "view own faxes" filter, create a 
+file named "settings.override" in the same directory as yajhfc.jar with the 
+following content:
+
+# copy and paste settings.override content from here
+allowChangeFilter=false
+sentFilter=O
+sendingFilter=O
+recvFilter=O
+archiveFilter=O
+# ... to here
+
+The values for the *Filter lines can also be set to enforce "view all faxes" 
+or a custom filter. 
+To set the filter to view all faxes, specify "A" instead of "O" (e.g. 
+recvFilter=A). 
+To set a custom filter, it is easiest to build the filter using the 
+YajHFC "custom filter" dialog, close YajHFC and then copy the respective 
+value from $HOME/.yajhfc/settings.
+
+Best regards,
+Jonas
+
+

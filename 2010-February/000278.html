@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Possible bug with --windowstate=T
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Possible%20bug%20with%20--windowstate%3DT&In-Reply-To=%3C20100201084935.639FAFACA%40i3.golden.dom%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000293.html">
+   <LINK REL="Next"  HREF="000287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Possible bug with --windowstate=T</H1>
+    <B>Giulio</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Possible%20bug%20with%20--windowstate%3DT&In-Reply-To=%3C20100201084935.639FAFACA%40i3.golden.dom%3E"
+       TITLE="[Yajhfc-user] Possible bug with --windowstate=T">giulioo at gmail.com
+       </A><BR>
+    <I>Mon Feb  1 09:49:35 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000293.html">[Yajhfc-user] Feature request: send fax dialog: &quot;time to send&quot;
+</A></li>
+        <LI>Next message: <A HREF="000287.html">[Yajhfc-user] Possible bug with --windowstate=T
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#278">[ date ]</a>
+              <a href="thread.html#278">[ thread ]</a>
+              <a href="subject.html#278">[ subject ]</a>
+              <a href="author.html#278">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+
+I have
+	Minimize to tray: checked
+	Auto-size status bar:checked
+
+I then edit the cmdline of link created by the setup program (in the start
+menu) to be
+	......execyajhfc.vbs --windowstate=I
+Starting YajHFC will cause the expected behavior:
+- fax icon displayed in the middle of the screen
+- ghost of the main window on the screen
+- window immediately minimized to notification area and fax icon disappears
+from middle of the screen
+
+I then edit the cmdline of link created by the setup program (in the start
+menu) to be
+	......execyajhfc.vbs --windowstate=T
+Starting YajHFC will cause some unexpected behavior:
+- fax icon displayed in the middle of the screen
+- no window ghost
+- notification area icon displayed
+- unexpected n.1: fax icon remains displayed in the middle of the screen; it
+will go away when you click on the notification area icon.
+- unexpected n.2: when you click on the notification area icon, you discover
+that the &quot;Auto-size status bar&quot; is now UNchecked, so that no status bar is
+visible.
+
+
+Thanks
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">giulioo at pobox.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000293.html">[Yajhfc-user] Feature request: send fax dialog: &quot;time to send&quot;
+</A></li>
+	<LI>Next message: <A HREF="000287.html">[Yajhfc-user] Possible bug with --windowstate=T
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#278">[ date ]</a>
+              <a href="thread.html#278">[ thread ]</a>
+              <a href="subject.html#278">[ subject ]</a>
+              <a href="author.html#278">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

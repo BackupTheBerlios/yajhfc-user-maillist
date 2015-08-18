@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Cover Page &amp; .3.5 problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Cover%20Page%20%26%20.3.5%20problems&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A336066E90%40claims-new%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000041.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Cover Page &amp; .3.5 problems</H1>
+    <B>MWilson at acesappraisal.com</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Cover%20Page%20%26%20.3.5%20problems&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A336066E90%40claims-new%3E"
+       TITLE="[Yajhfc-user] Cover Page &amp; .3.5 problems">MWilson at acesappraisal.com
+       </A><BR>
+    <I>Sat Oct 13 11:15:52 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000041.html">[Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+</A></li>
+        <LI>Next message: <A HREF="000043.html">[Yajhfc-user] Cover Page &amp; .3.5 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have not looked at the code, nor do I have much experience with Java
+(I do mostly Database stuff with Delphi).  However, based on the
+behavior, I think the comments area is simply stored in an array.  I
+think the word wrap is actually being done by the memo/edit control of
+Java.  Thus, when the code passes the memo.lines[] array of strings to
+the cover page code, it does not reformat them, just passes each line
+un-modified.  This is probably the correct behavior.  As a test of my
+theory, if the dialog box was resizable, and thus the memo control could
+be made bigger, I expect each line would get appropriately longer. 
+
+While on the subject of Cover pages, I would like to suggest a minor
+change in the send dialog.  I am a big fan of producing interfaces that
+are workable from the keyboard without having to go to the mouse unless
+desired.  The two-tabbed approach breaks this for me.  If we could
+combine these tabs into one larger dialog, or move the cover page stuff
+to the front tab, and relegate the file input box and other options to
+the second tab, I think it might flow better.  Of course, I almost only
+use this from a --stdin perspective.  It may make more sense the way it
+is if you do a lot of sending from files.  In that case, maybe a switch
+internally that shows different dialogs for --stdin &amp; launching directly
+from the UI?
+
+Also,  I tried to use .3.5 and while it works from the UI, I cannot get
+it to work from --stdin and Redmon.  I am using Vista, which has been
+difficult to get to work at all, but I'm now pretty stable with .3.4a
+and the CScript.  
+
+
+Thanks for such a great program
+
+
+
+Mike Wilson
+ACES Appraisal Group, Inc.
+P.O. Box 300
+Christiansburg, VA 24068
+540-268-5558 x 201
+Fax 540-268-1167
+
+
+-----Original Message-----
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>
+[mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>] On Behalf Of
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-request at lists.berlios.de</A>
+Sent: Friday, October 12, 2007 10:30 AM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>
+Subject: Yajhfc-user Digest, Vol 7, Issue 2
+
+Send Yajhfc-user mailing list submissions to
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>
+
+To subscribe or unsubscribe via the World Wide Web, visit
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+or, via email, send a message with subject or body 'help' to
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-request at lists.berlios.de</A>
+
+You can reach the person managing the list at
+	<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-owner at lists.berlios.de</A>
+
+When replying, please edit your Subject line so it is more specific
+than &quot;Re: Contents of Yajhfc-user digest...&quot;
+
+
+Today's Topics:
+
+   1. Fax Cover Page and Word Wrap/Length of Comments
+      (<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A>)
+   2. Re: Fax Cover Page and Word Wrap/Length of Comments (Jonas Wolz)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Thu, 11 Oct 2007 06:28:26 -0400
+From: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A>&gt;
+Subject: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>&gt;
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">B55301ABE760AA49BE5ADB32BF27A336066E53 at claims-new</A>&gt;
+Content-Type: text/plain; charset=&quot;us-ascii&quot;
+
+I use Yajhfc as a windows client and its great.  I also like to put a
+lot of notes/comments on my cover pages.  Often if I'm faxing a document
+to someone,  rather than writing a separate cover letter for
+instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+create forced word wrap that corresponds to the size of the send dialog
+box.  On the final fax, this comments area ends up being a small column
+that does not use the full page width.  Also, there seems to be a limit
+as to how many lines of the comments will get transmitted, but no
+indication that the comments have been truncated.
+
+ 
+
+Any way we can get the cover page comments to only respond to /n (new
+line) or word wrap at full page width?  And get a visual indicator that
+the comments are too long?
+
+ 
+
+Thanks,
+
+ 
+
+Mike Wilson
+
+ACES Appraisal Group, Inc.
+
+P.O. Box 300
+
+Christiansburg, VA 24068
+
+540-268-5558 x 201
+
+Fax 540-268-1167
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL:
+<A HREF="https://lists.berlios.de/pipermail/yajhfc-user/attachments/20071011/4935">https://lists.berlios.de/pipermail/yajhfc-user/attachments/20071011/4935</A>
+b473/attachment-0001.html 
+
+------------------------------
+
+Message: 2
+Date: Fri, 12 Oct 2007 11:26:21 +0200
+From: Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt;
+Subject: Re: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of
+	Comments
+To: General discussion about YajHFC &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user at lists.berlios.de</A>&gt;
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">200710121126.21667.jonas.wolz at freenet.de</A>&gt;
+Content-Type: text/plain;  charset=&quot;iso-8859-15&quot;
+
+Am Donnerstag, 11. Oktober 2007 12:28 schrieb <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A>:
+&gt;<i> I use Yajhfc as a windows client and its great.  I also like to put a
+</I>&gt;<i> lot of notes/comments on my cover pages.  Often if I'm faxing a
+</I>document
+&gt;<i> to someone,  rather than writing a separate cover letter for
+</I>&gt;<i> instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+</I>&gt;<i> create forced word wrap that corresponds to the size of the send
+</I>dialog
+&gt;<i> box.  On the final fax, this comments area ends up being a small
+</I>column
+&gt;<i> that does not use the full page width.  Also, there seems to be a
+</I>limit
+&gt;<i> as to how many lines of the comments will get transmitted, but no
+</I>&gt;<i> indication that the comments have been truncated.
+</I>&gt;<i>
+</I>&gt;<i> Any way we can get the cover page comments to only respond to /n (new
+</I>&gt;<i> line) or word wrap at full page width?
+</I>
+Difficult (see explanation below).
+
+&gt;<i> And get a visual indicator that 
+</I>&gt;<i> the comments are too long?
+</I>
+Should be possible.
+
+The YajHFC cover page code has been ported directly from the HylaFAX C++
+
+client code, so that it may use the same PostScript cover page format
+(this 
+is not exactly required, however, as the HylaFAX server accepts any 
+PostScript file as a cover page).
+
+Unfortunately that code does all the word wrapping in PostScript and as
+I 
+don't know any PostScript it is quite difficult for me to change that 
+behaviour.
+What I know is that the code seems to wrap always after 35 characters
+(not 
+after a certain width) and that it supports a maximum of 9 lines of
+text.
+So a visual indicator about those limitations should be doable.
+
+To be honest I am also a bit dissatisfied about the current cover page
+support 
+in YajHFC especially because there is no really user friendly cover page
+
+designer out there.
+On the other hand I don't want to spend a lot of time writing my own
+cover 
+page editor and I also don't know of any open source/freeware editor I
+could 
+use (if any reader knows one, please tell me!).
+
+To make it short: 
+Some visual indication will probably be implemented in the next version,
+but 
+a &quot;clean&quot; solution to the problem will probably take a bit longer.
+
+Greetings,
+Jonas
+
+
+------------------------------
+
+_______________________________________________
+Yajhfc-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+
+
+End of Yajhfc-user Digest, Vol 7, Issue 2
+*****************************************
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000041.html">[Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+</A></li>
+	<LI>Next message: <A HREF="000043.html">[Yajhfc-user] Cover Page &amp; .3.5 problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

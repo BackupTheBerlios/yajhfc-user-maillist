@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] error: 500 ':Syntax error, expecting password.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20error%3A%20500%20%27%3ASyntax%20error%2C%20expecting%20password.&In-Reply-To=%3C20091211065057.GA6760%40syscon4.inet%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000251.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] error: 500 ':Syntax error, expecting password.</H1>
+    <B>Joseph</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20error%3A%20500%20%27%3ASyntax%20error%2C%20expecting%20password.&In-Reply-To=%3C20091211065057.GA6760%40syscon4.inet%3E"
+       TITLE="[Yajhfc-user] error: 500 ':Syntax error, expecting password.">syscon780 at gmail.com
+       </A><BR>
+    <I>Fri Dec 11 07:50:57 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000251.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+        <LI>Next message: <A HREF="000254.html">[Yajhfc-user] error: 500 ':Syntax error, expecting password.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I just run hylafax &quot;faxsetup&quot; and it appear the new version (I don't know when did it change) in file-name:
+setup.modem
+
+the old setting was:
+     echo /dev/$1
+
+     echo /dev/$1
+
+with the setting above running: java -jar yajhfc-0_4_2a.jar
+yajhfc can connect and read faxes without any problem
+
+but after running faxsetup again it, the setting above was change from:
+     echo /dev/$1
+
+to:
+	if [ -z &quot;`echo $1 | grep &quot;^/&quot;`&quot; ]; then printf &quot;/dev/&quot;; fi
+	echo $1
+
+from:
+     echo /dev/$1
+
+to: 
+	if [ -z &quot;`echo $1 | grep &quot;^/&quot;`&quot; ]; then printf &quot;/dev/&quot;; fi
+	echo $1
+
+Now when I run: java -jar yajhfc-0_4_2a.jar
+I get error it keeps asking me for password, I'm not sure which root or user
+
+500 'pass ': Syntax error, expecting password.
+
+	at gnu.inet.ftp.FtpClientProtocol.pass(FtpClientProtocol.java:261)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:150)
+	at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:86)
+	at yajhfc.MainWin$LoginThread.run(MainWin.java:2646)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:98)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:207)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+
+
+-- 
+Joseph
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000251.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+	<LI>Next message: <A HREF="000254.html">[Yajhfc-user] error: 500 ':Syntax error, expecting password.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

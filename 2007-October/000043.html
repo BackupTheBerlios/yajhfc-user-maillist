@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Cover Page &amp; .3.5 problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Cover%20Page%20%26%20.3.5%20problems&In-Reply-To=%3C200710131720.16381.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000042.html">
+   <LINK REL="Next"  HREF="000044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Cover Page &amp; .3.5 problems</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Cover%20Page%20%26%20.3.5%20problems&In-Reply-To=%3C200710131720.16381.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Cover Page &amp; .3.5 problems">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sat Oct 13 17:20:15 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000042.html">[Yajhfc-user] Cover Page &amp; .3.5 problems
+</A></li>
+        <LI>Next message: <A HREF="000044.html">[Yajhfc-user] YajHFC and Vista Instal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Samstag, 13. Oktober 2007 11:15 schrieb <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A>:
+&gt;<i> I have not looked at the code, nor do I have much experience with Java
+</I>&gt;<i> (I do mostly Database stuff with Delphi).  However, based on the
+</I>&gt;<i> behavior, I think the comments area is simply stored in an array.  I
+</I>&gt;<i> think the word wrap is actually being done by the memo/edit control of
+</I>&gt;<i> Java.  Thus, when the code passes the memo.lines[] array of strings to
+</I>&gt;<i> the cover page code, it does not reformat them, just passes each line
+</I>&gt;<i> un-modified.  This is probably the correct behavior.  As a test of my
+</I>&gt;<i> theory, if the dialog box was resizable, and thus the memo control could
+</I>&gt;<i> be made bigger, I expect each line would get appropriately longer.
+</I>
+Sorry, but I *know* for sure that the string I get from the &quot;memo&quot; (JTextArea) 
+is not wrapped (at least when I output it to the console for testing).
+You can confirm that behaviour by entering a line 
+containing &quot;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii...&quot;  and another line 
+containing &quot;WWWWWWWWWWWWWWWWWWWWW...&quot; into the comment area. On the screen 
+much more i's than W's will fit in a line while on the cover page the number 
+will be the same.
+
+Making the dialog box resizable should be no problem and is a good idea, 
+however.
+
+&gt;<i> While on the subject of Cover pages, I would like to suggest a minor
+</I>&gt;<i> change in the send dialog.  I am a big fan of producing interfaces that
+</I>&gt;<i> are workable from the keyboard without having to go to the mouse unless
+</I>&gt;<i> desired.  The two-tabbed approach breaks this for me.  If we could
+</I>&gt;<i> combine these tabs into one larger dialog, or move the cover page stuff
+</I>&gt;<i> to the front tab, and relegate the file input box and other options to
+</I>&gt;<i> the second tab, I think it might flow better.  Of course, I almost only
+</I>&gt;<i> use this from a --stdin perspective.  It may make more sense the way it
+</I>&gt;<i> is if you do a lot of sending from files.  In that case, maybe a switch
+</I>&gt;<i> internally that shows different dialogs for --stdin &amp; launching directly
+</I>&gt;<i> from the UI?
+</I>
+I will think about it but I don't want to promise anything right now (you 
+certainly have a point here...).
+
+&gt;<i> Also,  I tried to use .3.5 and while it works from the UI, I cannot get
+</I>&gt;<i> it to work from --stdin and Redmon.  I am using Vista, which has been
+</I>&gt;<i> difficult to get to work at all, but I'm now pretty stable with .3.4a
+</I>&gt;<i> and the CScript.
+</I>
+As I currently don't own a Vista copy for testing, could you tell some details 
+about &quot;how&quot; 0.3.5 does not work in Vista (does it start, is the Send dialog 
+shown, is there no data/is it corrupted, ...)?
+
+BTW, did you have to use any &quot;special tricks&quot; (apart from using the 
+yajhfc-launch.vbs script) to get 0.3.4a to work with Redmon on Vista?
+If yes, could you maybe give a short description of what you had to do (to 
+make life a bit easier for other users)?
+
+Thanks again for your feedback,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000042.html">[Yajhfc-user] Cover Page &amp; .3.5 problems
+</A></li>
+	<LI>Next message: <A HREF="000044.html">[Yajhfc-user] YajHFC and Vista Instal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

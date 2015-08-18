@@ -1,0 +1,215 @@
+From rentorbuy at yahoo.com  Tue Apr  1 11:05:49 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 1 Apr 2008 02:05:49 -0700 (PDT)
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <200803311718.45962.jonas.wolz@freenet.de>
+Message-ID: <395243.37945.qm@web32601.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Please replace the loop at the end of your script
+> with the following code to 
+> capture the yajhfc output
+
+I guess that this is the error:
+
+Error #-2147024664: 
+Exception in thread "AWT-EventQueue-0"
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at
+yajhfc.HylaClientManager.getModems(HylaClientManager.java:238)
+	at yajhfc.SendWin.getPaneCommon(SendWin.java:422)
+	at yajhfc.SendWin.getTabMain(SendWin.java:442)
+	at yajhfc.SendWin.getJContentPane(SendWin.java:475)
+	at yajhfc.SendWin.initialize(SendWin.java:173)
+	at yajhfc.SendWin.<init>(SendWin.java:158)
+	at yajhfc.SendWin.<init>(SendWin.java:145)
+	at
+yajhfc.Launcher$SubmitRunner.doSubmit(Launcher.java:679)
+	at
+yajhfc.Launcher$SubmitRunner.run(Launcher.java:673)
+	at
+yajhfc.mainwin$LoginThread$1.run(mainwin.java:1993)
+	at java.awt.event.InvocationEvent.dispatch(Unknown
+Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at
+java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown
+Source)
+	at
+java.awt.EventDispatchThread.pumpEventsForFilter(Unknown
+Source)
+	at
+java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown
+Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+I'm attaching the logs. Note that my actions were:
+print from Notepad to yajhfc virtual printer -> yajhfc
+appeared on screen without the "send dialog box" -> I
+checked that the recvq and doneq tabs were loaded
+correclty -> I pressed the "send button" on the
+toolbar and it correclty displayed the window -> quit
+application.
+
+
+
+      ____________________________________________________________________________________
+Like movies? Here's a limited-time offer: Blockbuster Total Access for one month at no cost. 
+http://tc.deals.yahoo.com/tc/blockbuster/text4.com
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: yajhfc_log_0.3.6.zip
+Type: application/zip
+Size: 17523 bytes
+Desc: 451581223-yajhfc_log_0.3.6.zip
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20080401/8758a2b1/attachment.zip>
+
+From jonas.wolz at freenet.de  Tue Apr  1 14:44:17 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 1 Apr 2008 14:44:17 +0200
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <395243.37945.qm@web32601.mail.mud.yahoo.com>
+References: <395243.37945.qm@web32601.mail.mud.yahoo.com>
+Message-ID: <200804011444.17537.jonas.wolz@freenet.de>
+
+Am Dienstag, 1. April 2008 11:05 schrieb Vieri:
+> --- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> > Please replace the loop at the end of your script
+> > with the following code to
+> > capture the yajhfc output
+>
+> I guess that this is the error:
+>
+> Error #-2147024664:
+> Exception in thread "AWT-EventQueue-0"
+> java.lang.ArrayIndexOutOfBoundsException: 2
+> 	at
+> yajhfc.HylaClientManager.getModems(HylaClientManager.java:238)
+> [...]
+
+Yes. The problem was that your fax server obviously has a modem without a 
+phone number assigned and I didn't correctly handle that case in YajHFC.
+
+Please try the version at ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar and 
+see if it fixes the problem (this version is almost completely identical to 
+0.3.6 but has that error fixed).
+
+Thanks,
+Jonas
+
+
+From rentorbuy at yahoo.com  Thu Apr  3 13:22:41 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 3 Apr 2008 04:22:41 -0700 (PDT)
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <200804011444.17537.jonas.wolz@freenet.de>
+Message-ID: <831807.13602.qm@web32608.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Am Dienstag, 1. April 2008 11:05 schrieb Vieri:
+> > --- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> > > Please replace the loop at the end of your
+> script
+> > > with the following code to
+> > > capture the yajhfc output
+> >
+> > I guess that this is the error:
+> >
+> > Error #-2147024664:
+> > Exception in thread "AWT-EventQueue-0"
+> > java.lang.ArrayIndexOutOfBoundsException: 2
+> > 	at
+> >
+>
+yajhfc.HylaClientManager.getModems(HylaClientManager.java:238)
+> > [...]
+> 
+> Yes. The problem was that your fax server obviously
+> has a modem without a 
+> phone number assigned and I didn't correctly handle
+> that case in YajHFC.
+> 
+> Please try the version at
+> ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar and 
+> see if it fixes the problem (this version is almost
+> completely identical to 
+> 0.3.6 but has that error fixed).
+
+I can confirm that it works.
+I've put 0.3.6. in production use now.
+
+Thanks!
+
+
+
+      ____________________________________________________________________________________
+You rock. That's why Blockbuster's offering you one month of Blockbuster Total Access, No Cost.  
+http://tc.deals.yahoo.com/tc/blockbuster/text5.com
+
+
+From Chris at symac.com  Mon Apr 21 13:53:29 2008
+From: Chris at symac.com (Chris Carr)
+Date: Mon, 21 Apr 2008 12:53:29 +0100
+Subject: [Yajhfc-user] GSView
+Message-ID: <2D0C74CC0A8DCB43AA46948B4A368D5301323C0F@saracen.symac.local>
+
+When I try to preview a fax in the Send Fax window GSView tries to open
+the tmp file from the Windows\System32\Settings\Temp folder. But the tmp
+file is in fact in C:\Documents and Settings\username\Local
+Settings\Temp
+ 
+Is there a setting that I can change to resolve this?
+ 
+
+ 
+
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20080421/124917ed/attachment.html>
+
+From jonas.wolz at freenet.de  Tue Apr 22 11:38:53 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 22 Apr 2008 11:38:53 +0200
+Subject: [Yajhfc-user] GSView
+In-Reply-To: <2D0C74CC0A8DCB43AA46948B4A368D5301323C0F@saracen.symac.local>
+References: <2D0C74CC0A8DCB43AA46948B4A368D5301323C0F@saracen.symac.local>
+Message-ID: <200804221138.53856.jonas.wolz@freenet.de>
+
+Am Montag, 21. April 2008 13:53 schrieb Chris Carr:
+> When I try to preview a fax in the Send Fax window GSView tries to open
+> the tmp file from the Windows\System32\Settings\Temp folder. But the tmp
+> file is in fact in C:\Documents and Settings\username\Local
+> Settings\Temp
+>
+> Is there a setting that I can change to resolve this?
+
+YajHFC uses whatever Java thinks the Temp directory is.
+Java usually just takes the value from the environment variable TEMP for it.
+
+The problem is that when invoking YajHFC over Redmon that environment variable 
+is often incorrectly set and thus the wrong directory is used. In that case 
+the easiest solution is just to use the wrapper script from
+ftp://ftp.berlios.de/pub/yajhfc/download/yajhfc-launcher.zip
+
+Else, you can also manually override Java's selection by starting YajHFC with 
+a command line like:
+java -Djava.io.tmpdir=[desired temp directory] -jar /path/to/yajhfc.jar
+
+For example:
+java -Djava.io.tmpdir="C:\Documents and Settings\username\Local 
+Settings\Temp" -jar "c:\program files\yajhfc.jar"
+
+
+Hope that helps,
+Jonas
+
+

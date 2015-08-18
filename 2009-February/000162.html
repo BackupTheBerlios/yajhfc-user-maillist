@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] help - fop plugin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20help%20-%20fop%20plugin&In-Reply-To=%3C5901eff0902052346x753396c5rc1cd6646ee92e0fd%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000163.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] help - fop plugin</H1>
+    <B>member horvath</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20help%20-%20fop%20plugin&In-Reply-To=%3C5901eff0902052346x753396c5rc1cd6646ee92e0fd%40mail.gmail.com%3E"
+       TITLE="[Yajhfc-user] help - fop plugin">member at horvath.co.za
+       </A><BR>
+    <I>Fri Feb  6 08:46:46 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000163.html">[Yajhfc-user] help - fop plugin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+Firstly I have to say that this is by far the best hylafax client I
+have used to date.
+I have always had issues with designing coverpages for hylafax and it
+is nice to see support for some &quot;real&quot; coverpages.
+But (Theres always a but)
+I have designed a coverpage in openoffice with the relevant tags (I
+have even tried your supplied cover page (cover.odt)) and tried to use
+it but I get the following errors:
+The .odt file has been converted to .fo and I'm trying to preview it.
+
+Error viewing the FO file:
+org.xml.sax.SAXParseException: Premature end of file.
+
+javax.xml.transform.TransformerException:
+org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at yajhfc.faxcover.fop.EntryPoint.viewFOFile(EntryPoint.java:237)
+	at yajhfc.faxcover.fop.EntryPoint$2.actualActionPerformed(EntryPoint.java:132)
+	at yajhfc.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAction.java:67)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.AbstractButton.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(Unknown
+Source)
+	... 32 more
+---------
+org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at yajhfc.faxcover.fop.EntryPoint.viewFOFile(EntryPoint.java:237)
+	at yajhfc.faxcover.fop.EntryPoint$2.actualActionPerformed(EntryPoint.java:132)
+	at yajhfc.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAction.java:67)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.AbstractButton.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+I used the installer which includes the FOP plugin to install the package.
+In Options - Plugins: the plugin IS loaded and the app IS being
+launched correctly:
+&quot;C:\Program Files\YajHFC\execyajhfc.vbs&quot; --loadplugin=FOPPlugin.jar
+
+yajhfc - 0.3.9
+fop plugin - 0.1.1
+java.runtime.version - 1.6.0_11-b03
+
+Any help would be appreciated.
+
+Steve
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000163.html">[Yajhfc-user] help - fop plugin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

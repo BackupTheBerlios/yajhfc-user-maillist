@@ -1,0 +1,186 @@
+From giulioo at gmail.com  Fri Oct  1 21:59:52 2010
+From: giulioo at gmail.com (Giulio)
+Date: Fri, 01 Oct 2010 21:59:52 +0200
+Subject: [Yajhfc-user] Process name on Windows
+Message-ID: <20101001195948.B1EF4F805@i3.golden.dom>
+
+Win7 64bit, java 32 bit 6u21, yajhfc 0.4.4.
+
+When YajHFC is running you can see the javaw.exe process in task manager.
+Is there a way to start YajHFC in a way that will show "yajhfc.something" in
+the process list?
+
+My immediate issue is that I need to create a very small app which will
+edit/create the ".yajhfc/settings" file with settings all users should be
+using, or reset it to some default values if the user misconfigured it.
+
+To do this I need to kill YajHFC is it's running and restart it later, but I
+cannot detect is YajHFC is running because I cannot find any reference to it
+in the process list.
+
+Thanks.
+-- 
+giulioo at pobox.com
+
+
+From jonas.wolz at freenet.de  Sun Oct  3 14:13:24 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 3 Oct 2010 14:13:24 +0200
+Subject: [Yajhfc-user] Process name on Windows
+In-Reply-To: <20101001195948.B1EF4F805@i3.golden.dom>
+References: <20101001195948.B1EF4F805@i3.golden.dom>
+Message-ID: <201010031413.24720.jonas.wolz@freenet.de>
+
+Am Freitag, 1. Oktober 2010 schrieb Giulio:
+> Win7 64bit, java 32 bit 6u21, yajhfc 0.4.4.
+>
+> When YajHFC is running you can see the javaw.exe process in task manager.
+> Is there a way to start YajHFC in a way that will show "yajhfc.something"
+> in the process list?
+
+None that I am aware of...
+
+> My immediate issue is that I need to create a very small app which will
+> edit/create the ".yajhfc/settings" file with settings all users should be
+> using, or reset it to some default values if the user misconfigured it.
+
+Wouldn't the settings.override mechanism of YajHFC work for you in that case?
+
+Simply put a file named settings.override in the .yajhfc directory. When 
+YajHFC is loaded the settings inside that file always override the ones the 
+user specified the last time.
+(also see http://yajhfc.berlios.de/doc/faq.html#SECTION000310000000000000000 )
+
+
+Hope that helps
+Jonas
+
+
+From giulioo at gmail.com  Mon Oct  4 09:23:53 2010
+From: giulioo at gmail.com (Giulio)
+Date: Mon, 04 Oct 2010 09:23:53 +0200
+Subject: [Yajhfc-user] Process name on Windows
+In-Reply-To: <201010031413.24720.jonas.wolz@freenet.de>
+References: <20101001195948.B1EF4F805@i3.golden.dom>
+	<201010031413.24720.jonas.wolz@freenet.de>
+Message-ID: <20101004072349.67EAAF805@i3.golden.dom>
+
+On Sun, 3 Oct 2010 14:13:24 +0200, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+>> My immediate issue is that I need to create a very small app which will
+>> edit/create the ".yajhfc/settings" file with settings all users should be
+>> using, or reset it to some default values if the user misconfigured it.
+
+>Wouldn't the settings.override mechanism of YajHFC work for you in that case?
+>
+>Simply put a file named settings.override in the .yajhfc directory. When 
+
+I assume I have to restart yajhfc for the new settings to take effect.
+
+The reason I wanted to terminate the process was to be able to tell the user
+	"run the config app" (which would kill the running yajhfc by itself)
+instead of
+	"close the running yajhfc session"
+	"run the config app"
+	"restart yajhfc"
+
+this is because there are users who will ask "how do I close yajhfc?" "how
+do I restart it?"
+
+I'll try to find a workaround.
+-- 
+giulioo at pobox.com
+
+
+From giuseppe at eppesuigoccas.homedns.org  Mon Oct  4 10:58:24 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Mon, 04 Oct 2010 10:58:24 +0200
+Subject: [Yajhfc-user] Process name on Windows
+In-Reply-To: <20101001195948.B1EF4F805@i3.golden.dom>
+References: <20101001195948.B1EF4F805@i3.golden.dom>
+Message-ID: <1286182704.4299.20.camel@scarafaggio>
+
+Il giorno ven, 01/10/2010 alle 21.59 +0200, Giulio ha scritto:
+> Win7 64bit, java 32 bit 6u21, yajhfc 0.4.4.
+> 
+> When YajHFC is running you can see the javaw.exe process in task manager.
+> Is there a way to start YajHFC in a way that will show "yajhfc.something" in
+> the process list?
+
+you might try using "handle" from SysInternals and parsing its output.
+
+HTH,
+Giuseppe
+
+
+
+From kiwi_b at yahoo.com  Sat Oct  9 02:45:22 2010
+From: kiwi_b at yahoo.com (kiwi_b at yahoo.com)
+Date: Fri, 8 Oct 2010 17:45:22 -0700 (PDT)
+Subject: [Yajhfc-user] LDAP Lookup Windows Directory Service
+Message-ID: <137953.82943.qm@web113419.mail.gq1.yahoo.com>
+
+Hi all,
+
+
+I?am?wanting to?structure our Windows directory?service within a couple of OU's 
+deep.
+
+I am wanting to do an LDAP lookup using YAJHFC for the phonebook.
+I have an OU that is below another?that I with to only retreive this 
+information.
+
+The LDAP is: ou=first,ou=second,dc=domain,dc=com
+
+This fails, if?I use: ou=first,dc=domain,dc=com
+It will succeed.
+
+Can anyone assist with this as I am wanting to call on sub OU's.
+
+Many thanks anyone.
+Regards,?Blair 
+kiwi_b at yahoo.com 
+
+
+      
+
+
+From pasqualone at inwind.it  Fri Oct 15 01:56:42 2010
+From: pasqualone at inwind.it (pasqualone at inwind.it)
+Date: Fri, 15 Oct 2010 01:56:42 +0200 (CEST)
+Subject: [Yajhfc-user] Notify without email?
+Message-ID: <10318131.1440861287100602565.JavaMail.defaultUser@defaultHost>
+
+Hi,
+first of all thaks a lot for your software.
+
+The question is: is it possible to obtain a printable fax notification without 
+email?
+
+Pasquale
+
+
+From giuseppe at eppesuigoccas.homedns.org  Fri Oct 15 09:22:48 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Fri, 15 Oct 2010 09:22:48 +0200
+Subject: [Yajhfc-user] Notify without email?
+In-Reply-To: <10318131.1440861287100602565.JavaMail.defaultUser@defaultHost>
+References: <10318131.1440861287100602565.JavaMail.defaultUser@defaultHost>
+Message-ID: <1287127368.4220.2.camel@scarafaggio>
+
+Hi Pasquale,
+
+Il giorno ven, 15/10/2010 alle 01.56 +0200, pasqualone at inwind.it ha
+scritto:
+> The question is: is it possible to obtain a printable fax notification without 
+> email?
+
+email is sent by server software, not by client software. If you want to
+print notification of received faxes, just modify your faxrcvd command
+in order to print it on any printer.
+
+Bye,
+Giuseppe
+
+
+

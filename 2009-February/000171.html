@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Windows Setup repack
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Windows%20Setup%20repack&In-Reply-To=%3C200902140955.31901.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000170.html">
+   <LINK REL="Next"  HREF="000172.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Windows Setup repack</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Windows%20Setup%20repack&In-Reply-To=%3C200902140955.31901.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Windows Setup repack">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sat Feb 14 09:55:31 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000170.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+        <LI>Next message: <A HREF="000172.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Freitag, 13. Februar 2009 schrieb Sorin Toma:
+&gt;<i> Hello,
+</I>&gt;<i> I'm trying to add gv and tiff2pdf into the installer package, in order
+</I>&gt;<i> to make my life easier when I will start deploying Yajhfc  in our
+</I>&gt;<i> company,  but it seems like I'm missing something.
+</I>&gt;<i> I used innounp (<A HREF="http://innounp.sourceforge.net/">http://innounp.sourceforge.net/</A>) to unpack the
+</I>&gt;<i> installer, but, even without any modification, if I'm trying to repack
+</I>&gt;<i> it with innosetup (<A HREF="http://www.jrsoftware.org/isinfo.php">http://www.jrsoftware.org/isinfo.php</A>), I'm unable to
+</I>&gt;<i> find some functions like Check: &quot;RedmonNotInstalled&quot;, Check:
+</I>&gt;<i> &quot;NoYajHFCPrinter&quot; and BeforeInstall: &quot;InstallYajHFCPort()&quot;
+</I>&gt;<i> Can somebody give me a hint about what am I doing wrong?
+</I>
+To install the fax printer the YajHFC setup uses some custom code written in 
+InnoSetup's RemObject Pascal language ([code] section in the .iss file).
+I have never used innounp, but it seems that it does not extract this code 
+correctly, so that these functions are missing.
+
+Personally (especially for internal deployment), I would rather create some 
+kind of &quot;wrapper&quot; around the setup executables of YajHFC, gs and tiff2pdf.
+If you want to do that, you can use &quot;/SILENT&quot; switch to do a silent 
+installation with the YajHFC (and tiff2pdf) setup for example (see the Inno 
+Setup help or 
+<A HREF="http://unattended.sourceforge.net/InnoSetup_Switches_ExitCodes.html">http://unattended.sourceforge.net/InnoSetup_Switches_ExitCodes.html</A> for 
+details).
+
+
+Hope that helps,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000170.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+	<LI>Next message: <A HREF="000172.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

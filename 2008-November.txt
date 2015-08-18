@@ -1,0 +1,628 @@
+From hylafax at andyscomp.f9.co.uk  Thu Nov  6 09:11:32 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Thu, 6 Nov 2008 08:11:32 -0000 (UTC)
+Subject: [Yajhfc-user] Fetching Fax List Problem
+Message-ID: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+
+Hi All
+
+I have been running a Hylafax Fax Server for the past 3 months now, and
+have been using yajhfc for my client application which is excellent.
+
+I have now started to run into a problem when starting yajhfc when it is
+showing the "Fetching Fax List" dialog box it takes a little time but then
+it stops and I get an error message at the bottom saying "Error refreshing
+the status: java.net.SocketException: Connection reset by peer: socket
+write error".
+
+If I run yajhfc about 4 times it will eventually give my the current fax
+list.
+
+I do have approx 1300+ items in my list at present, but iam restricted in
+this as my boss wants the history keeping for 3 months.
+
+Other client applications for Hylafax seem to have no problems listing
+this big fax queue.
+
+Is there any way to get yajhfc to work with bigger fax lists but without
+having to run it approx 4 times, or is there a way in yajhfc to restrict
+it to only display the last 2-3 weeks of fax's instead?
+
+Thanks in Advance.
+
+Andy
+
+
+
+From jonas.wolz at freenet.de  Thu Nov  6 11:04:01 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 6 Nov 2008 11:04:01 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+Message-ID: <200811061104.01580.jonas.wolz@freenet.de>
+
+Am Donnerstag, 6. November 2008 schrieb Andy Rogers:
+> I have now started to run into a problem when starting yajhfc when it is
+> showing the "Fetching Fax List" dialog box it takes a little time but then
+> it stops and I get an error message at the bottom saying "Error refreshing
+> the status: java.net.SocketException: Connection reset by peer: socket
+> write error".
+>
+> If I run yajhfc about 4 times it will eventually give my the current fax
+> list.
+>
+> I do have approx 1300+ items in my list at present, but iam restricted in
+> this as my boss wants the history keeping for 3 months.
+>
+> Other client applications for Hylafax seem to have no problems listing
+> this big fax queue.
+
+This is strange. In a quick test with my test configuration YajHFC had no 
+problems loading and displaying a list of 2000 faxes (so it should work in 
+theory...).
+
+Could you send me a debug log of YajHFC for this problem?
+
+To create such a log, simply use the "YajHFC (debug mode)" link to start 
+YajHFC if you installed it using the Windows setup.
+
+Else, please add the command line parameters "--debug --logfile=c:\yajhfc.log" 
+when starting YajHFC (i.e. use a command line like "java -jar 
+yajhfc.jar --debug --logfile=c:\yajhfc.log" to start it).
+
+
+Additionally, you could also try if using the following developer version is 
+of any help:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar
+
+This version includes a newer version of the gnu.hylafax-library YajHFC uses 
+to connect to the server, which may (or may not) be of help in your case.
+
+> Is there any way to get yajhfc to work with bigger fax lists but without
+> having to run it approx 4 times, or is there a way in yajhfc to restrict
+> it to only display the last 2-3 weeks of fax's instead?
+
+Unfortunately, no. The list can only be retrieved as a whole from the HylaFAX 
+server (this is a restriction of the protocol).
+As far as I can tell at this time, the problem you experience occurs while the 
+list is retrieved from the server (the connection is reset) and not while 
+YajHFC is parsing/displaying it, so any filtering done after retrieving that 
+list would probably not be of much help.
+
+
+Best regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Thu Nov  6 18:44:22 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 6 Nov 2008 18:44:22 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <8675.62.49.140.10.1225984967.squirrel@webmail.plus.net>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<200811061104.01580.jonas.wolz@freenet.de>
+	<8675.62.49.140.10.1225984967.squirrel@webmail.plus.net>
+Message-ID: <200811061844.22604.jonas.wolz@freenet.de>
+
+Am Donnerstag, 6. November 2008 schrieb Andy Rogers:
+> Hi Jonas
+>
+> I have attached 4 log files as requested, 1 is from each time I needed to
+> run yajhfc until it successfully displays the information.
+>
+> I shall try the latest beta to see if the same happens.
+
+Thanks for the logs.
+After looking at them I think that the latest beta will probably fix your 
+problem.
+
+While working on another issue I noticed that gnu.hylafax uses a socket 
+timeout of 10 seconds by default. In the beta this timeout is disabled (i.e. 
+YajHFC will wait (almost) indefinitely).
+
+According to your logs the problem (connection reset) always occurs exactly 10 
+seconds after the transfer of the fax list has started, so it is quite likely 
+that the socket timeout is the reason for that.
+
+It works on the fourth try because the fax list is transferred there much 
+quicker (in 3 seconds), probably because that list is in the server's cache 
+at that time. 
+In the beta YajHFC should wait long enough for the server, so that the 
+transfer will probably succeed in the first try.
+
+
+If it still does not work, please let me know (it is not impossible that there 
+are other timeout values which need to be adjusted, too).
+
+Jonas
+
+
+From nerijus at users.sourceforge.net  Thu Nov  6 20:30:52 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Thu, 6 Nov 2008 21:30:52 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811061844.22604.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net><200811061104.01580.jonas.wolz@freenet.de><8675.62.49.140.10.1225984967.squirrel@webmail.plus.net>
+	<200811061844.22604.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-28460-20081106-213052.00@nerijus.sat.lt>
+
+On Thu, 6 Nov 2008 18:44:22 +0100 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> After looking at them I think that the latest beta will probably fix your 
+> problem.
+
+I had the same problem (with 2340 faxes). The lastest beta fixes it, thanks!
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Thu Nov  6 20:39:20 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Thu, 6 Nov 2008 21:39:20 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811061844.22604.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net><200811061104.01580.jonas.wolz@freenet.de><8675.62.49.140.10.1225984967.squirrel@webmail.plus.net>
+	<200811061844.22604.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt>
+
+On Thu, 6 Nov 2008 18:44:22 +0100 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> While working on another issue I noticed that gnu.hylafax uses a socket 
+> timeout of 10 seconds by default. In the beta this timeout is disabled (i.e. 
+> YajHFC will wait (almost) indefinitely).
+
+BTW, I had a problem with waiting indefinitely in another case. I had unconfigured
+nf_conntrack_ftp module (ports=21,4559 was not added), so the connection
+to the server timed out. I waited about a minute, but was not able to use or
+even close YajHFC. I had to kill java.exe.
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Thu Nov  6 22:44:47 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Thu, 6 Nov 2008 23:44:47 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net><200811061104.01580.jonas.wolz@freenet.de><8675.62.49.140.10.1225984967.squirrel@webmail.plus.net><200811061844.22604.jonas.wolz@freenet.de>
+	<Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-28460-20081106-234447.00@nerijus.sat.lt>
+
+On Thu, 6 Nov 2008 21:39:20 +0200 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> BTW, I had a problem with waiting indefinitely in another case. I had unconfigured
+> nf_conntrack_ftp module (ports=21,4559 was not added), so the connection
+> to the server timed out. I waited about a minute, but was not able to use or
+> even close YajHFC. I had to kill java.exe.
+
+To clarify - I was able to log in, but fetching fax list hung indefinitely and I had
+to kill java.
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Fri Nov  7 14:53:19 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 7 Nov 2008 14:53:19 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <Mahogany-0.67.2-28460-20081106-234447.00@nerijus.sat.lt>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-28460-20081106-234447.00@nerijus.sat.lt>
+Message-ID: <200811071453.19592.jonas.wolz@freenet.de>
+
+Am Donnerstag, 6. November 2008 schrieb Nerijus Baliunas:
+> On Thu, 6 Nov 2008 21:39:20 +0200 Nerijus Baliunas 
+<nerijus at users.sourceforge.net> wrote:
+> > BTW, I had a problem with waiting indefinitely in another case. I had
+> > unconfigured nf_conntrack_ftp module (ports=21,4559 was not added), so
+> > the connection to the server timed out. I waited about a minute, but was
+> > not able to use or even close YajHFC. I had to kill java.exe.
+>
+> To clarify - I was able to log in, but fetching fax list hung indefinitely
+> and I had to kill java.
+
+Was this with the beta from yesterday or an older version?
+
+Jonas
+
+
+From nerijus at users.sourceforge.net  Fri Nov  7 15:08:38 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Fri, 7 Nov 2008 16:08:38 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811071453.19592.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net><Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt><Mahogany-0.67.2-28460-20081106-234447.00@nerijus.sat.lt>
+	<200811071453.19592.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-28460-20081107-160838.00@nerijus.sat.lt>
+
+On Fri, 7 Nov 2008 14:53:19 +0100 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> > > BTW, I had a problem with waiting indefinitely in another case. I had
+> > > unconfigured nf_conntrack_ftp module (ports=21,4559 was not added), so
+> > > the connection to the server timed out. I waited about a minute, but was
+> > > not able to use or even close YajHFC. I had to kill java.exe.
+> >
+> > To clarify - I was able to log in, but fetching fax list hung indefinitely
+> > and I had to kill java.
+> 
+> Was this with the beta from yesterday or an older version?
+
+With older, but now tried beta - first time after 20-30 seconds "Fetching fax list"
+went away, status was Disconnected and I was able to close YajHFC normally.
+Second time progress bar in "Fetching fax list" stopped scrolling after about 30
+seconds and the program hung. I had to kill javaw.exe.
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Fri Nov  7 15:27:35 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 7 Nov 2008 15:27:35 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <15224.212.159.75.49.1225997297.squirrel@webmail.plus.net>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<200811061844.22604.jonas.wolz@freenet.de>
+	<15224.212.159.75.49.1225997297.squirrel@webmail.plus.net>
+Message-ID: <200811071527.35668.jonas.wolz@freenet.de>
+
+Am Donnerstag, 6. November 2008 schrieb Andy Rogers:
+> Would it be worth having this as a configurable timeout option, so that
+> yajhfc would not be waiting almost indefinatley, or does it actually time
+> out after a certain time ie, maybe 1 minute instead.
+
+In the beta from yesterday it waits until the OS considers the TCP connection 
+to be broken (how long this is is of course OS dependent).
+
+In the current version the timeout is configurable with a default of 90 
+seconds.
+
+Regards,
+Jonas
+
+
+From nerijus at users.sourceforge.net  Fri Nov  7 15:52:52 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Fri, 7 Nov 2008 16:52:52 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <Mahogany-0.67.2-28460-20081107-160838.00@nerijus.sat.lt>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net><Mahogany-0.67.2-28460-20081106-213920.00@nerijus.sat.lt><Mahogany-0.67.2-28460-20081106-234447.00@nerijus.sat.lt><200811071453.19592.jonas.wolz@freenet.de>
+	<Mahogany-0.67.2-28460-20081107-160838.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-28460-20081107-165252.00@nerijus.sat.lt>
+
+On Fri, 7 Nov 2008 16:08:38 +0200 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> > Was this with the beta from yesterday or an older version?
+> 
+> With older, but now tried beta - first time after 20-30 seconds "Fetching fax list"
+> went away, status was Disconnected and I was able to close YajHFC normally.
+> Second time progress bar in "Fetching fax list" stopped scrolling after about 30
+> seconds and the program hung. I had to kill javaw.exe.
+
+Tried with debug on, the same. Logs attached.
+
+Regards,
+Nerijus
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: 1.log
+Type: application/octet-stream
+Size: 8619 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20081107/f2b0d4b7/attachment.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: 2.log
+Type: application/octet-stream
+Size: 32215 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20081107/f2b0d4b7/attachment-0001.obj>
+
+From jonas.wolz at freenet.de  Sun Nov  9 14:14:42 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 9 Nov 2008 14:14:42 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <Mahogany-0.67.2-28460-20081107-165252.00@nerijus.sat.lt>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<Mahogany-0.67.2-28460-20081107-160838.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-28460-20081107-165252.00@nerijus.sat.lt>
+Message-ID: <200811091414.42272.jonas.wolz@freenet.de>
+
+Am Freitag, 7. November 2008 schrieb Nerijus Baliunas:
+> On Fri, 7 Nov 2008 16:08:38 +0200 Nerijus Baliunas 
+<nerijus at users.sourceforge.net> wrote:
+> > > Was this with the beta from yesterday or an older version?
+> >
+> > With older, but now tried beta - first time after 20-30 seconds "Fetching
+> > fax list" went away, status was Disconnected and I was able to close
+> > YajHFC normally. Second time progress bar in "Fetching fax list" stopped
+> > scrolling after about 30 seconds and the program hung. I had to kill
+> > javaw.exe.
+>
+> Tried with debug on, the same. Logs attached.
+
+Thanks for the logs. 
+Please try the current beta. YajHFC will still show "Fetching fax list" for 
+some time (until the OS has given up retransmitting the TCP SYN packets -- a 
+few minutes at my Linux box here), but you should be able to close it without 
+killing Java.
+
+Regards,
+Jonas
+
+
+From nerijus at users.sourceforge.net  Sun Nov  9 16:01:24 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Sun, 9 Nov 2008 17:01:24 +0200
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811091414.42272.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<Mahogany-0.67.2-28460-20081107-160838.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-28460-20081107-165252.00@nerijus.sat.lt>
+	<200811091414.42272.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-28460-20081109-170124.00@nerijus.sat.lt>
+
+On Sun, 9 Nov 2008 14:14:42 +0100 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Thanks for the logs. 
+> Please try the current beta. YajHFC will still show "Fetching fax list" for 
+> some time (until the OS has given up retransmitting the TCP SYN packets -- a 
+> few minutes at my Linux box here), but you should be able to close it without 
+> killing Java.
+
+It's OK now, thanks - "Fetching fax list" disappears in about half a minute.
+
+Regards,
+Nerijus
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Nov 11 09:10:31 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 11 Nov 2008 08:10:31 -0000 (UTC)
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811061104.01580.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<200811061104.01580.jonas.wolz@freenet.de>
+Message-ID: <10885.62.49.140.10.1226391031.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+I have been using the latest version of yajhfc 0.39rc2 and seems to be
+working well thanks.
+
+However one problem that Iam seeing, similar to the other user who had a
+similar problem with "Fetching Fax List", is with the latest release I see
+their is now a new option of "Disconnect".
+
+I have used this, but when I goto reconnect using "Connect" under the
+option menu the "Fetching Fax List" box remains on screen all the time,
+and fails to get the fax list.  And If I try and quit yajhfc I have to end
+up killing the Java application from my task list.
+
+It is only when I try to reconnect this way this actually happens.
+
+Another Idea maybe would to have a Connect/Disconnect icon on the toolbar
+maybe aswell for this added feature, like the other control icons already
+their.
+
+Thanks
+
+Andy
+
+
+
+From jonas.wolz at freenet.de  Tue Nov 11 11:51:22 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 11 Nov 2008 11:51:22 +0100
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <10885.62.49.140.10.1226391031.squirrel@webmail.plus.net>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<200811061104.01580.jonas.wolz@freenet.de>
+	<10885.62.49.140.10.1226391031.squirrel@webmail.plus.net>
+Message-ID: <200811111151.22777.jonas.wolz@freenet.de>
+
+Am Dienstag, 11. November 2008 schrieb Andy Rogers:
+> However one problem that Iam seeing, similar to the other user who had a
+> similar problem with "Fetching Fax List", is with the latest release I see
+> their is now a new option of "Disconnect".
+>
+> I have used this, but when I goto reconnect using "Connect" under the
+> option menu the "Fetching Fax List" box remains on screen all the time,
+> and fails to get the fax list.  And If I try and quit yajhfc I have to end
+> up killing the Java application from my task list.
+>
+> It is only when I try to reconnect this way this actually happens.
+
+Hmm, I think I found a small bug which may cause this and updated the build at 
+ftp.berlios.de accordingly.
+Please try if this works for you; if not, please send me some debug logs for 
+it.
+
+> Another Idea maybe would to have a Connect/Disconnect icon on the toolbar
+> maybe aswell for this added feature, like the other control icons already
+> their.
+
+This may be useful, but I won't add that for 0.3.9 yet (but maybe in the next 
+version after that).
+
+Thanks,
+Jonas
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Nov 11 12:22:57 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 11 Nov 2008 11:22:57 -0000 (UTC)
+Subject: [Yajhfc-user] Fetching Fax List Problem
+In-Reply-To: <200811111151.22777.jonas.wolz@freenet.de>
+References: <2338.62.49.140.10.1225959092.squirrel@webmail.plus.net>
+	<200811061104.01580.jonas.wolz@freenet.de>
+	<10885.62.49.140.10.1226391031.squirrel@webmail.plus.net>
+	<200811111151.22777.jonas.wolz@freenet.de>
+Message-ID: <13075.62.49.140.10.1226402577.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+> Hmm, I think I found a small bug which may cause this and updated the
+> build at
+> ftp.berlios.de accordingly.
+> Please try if this works for you; if not, please send me some debug logs
+> for
+> it.
+
+Thanks for the quick update, so far so good.  It seems to be working as I
+have not been able to crash it like I could with the other version.
+
+
+> This may be useful, but I won't add that for 0.3.9 yet (but maybe in the
+> next
+> version after that).
+
+Yeah sure that would be great,
+
+Thanks Again
+
+Regards
+
+Andy
+
+
+
+
+From jonas.wolz at freenet.de  Wed Nov 19 10:32:02 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 19 Nov 2008 10:32:02 +0100
+Subject: [Yajhfc-user] YajHFC 0.3.9 released
+Message-ID: <200811191032.02602.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.9 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_9.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_9-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_9-setup.exe
+
+New features/changes:
+- Italian and Turkish translations added
+- "Quick search" for phone books
+- Lots of bug fixes and small improvements
+
+Known problems:
+The French translation is incomplete.
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+From jonas.wolz at freenet.de  Tue Nov 25 18:27:57 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 25 Nov 2008 18:27:57 +0100
+Subject: [Yajhfc-user] New French translator needed
+Message-ID: <200811251827.57205.jonas.wolz@freenet.de>
+
+Hi to all,
+
+as the current French translators seem not to react to mails, a new French 
+translator is needed for YajHFC.
+
+So: If any user of the French translation is interested in updating the 
+translation f?r future versions of YajHFC (usually this involves translating 
+at most 20-30 messages per release), please let me know.
+
+
+Thanks,
+Jonas
+
+P.S.: 
+If one of the current translators reads this and wants to continue his work, 
+please let me know, too (you are of course still welcome; maybe your mails 
+did not reach me or my mails did not reach you -- please post a short note to 
+this list if this is the case).
+
+
+From rentorbuy at yahoo.com  Tue Nov 25 20:03:22 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 25 Nov 2008 11:03:22 -0800 (PST)
+Subject: [Yajhfc-user] New French translator needed
+In-Reply-To: <200811251827.57205.jonas.wolz@freenet.de>
+Message-ID: <293444.95842.qm@web32605.mail.mud.yahoo.com>
+
+I don't mind helping out.
+Just mail me the messages and I'll take a look at them.
+
+Vieri
+
+
+
+      
+
+
+From jonas.wolz at freenet.de  Wed Nov 26 18:34:25 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 26 Nov 2008 18:34:25 +0100
+Subject: [Yajhfc-user] New French translator needed
+In-Reply-To: <293444.95842.qm@web32605.mail.mud.yahoo.com>
+References: <293444.95842.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <200811261834.25470.jonas.wolz@freenet.de>
+
+Am Dienstag, 25. November 2008 schrieb Vieri:
+> I don't mind helping out.
+> Just mail me the messages and I'll take a look at them.
+
+OK, thank you very much!
+
+I will contact you about a week before the next release to update the 
+translations (if you need an updated translation earlier, just let me know, 
+however).
+
+Jonas
+
+
+From jonas.wolz at freenet.de  Thu Nov 27 18:41:58 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 27 Nov 2008 18:41:58 +0100
+Subject: [Yajhfc-user] New French translator needed
+In-Reply-To: <200811261834.25470.jonas.wolz@freenet.de>
+References: <293444.95842.qm@web32605.mail.mud.yahoo.com>
+	<200811261834.25470.jonas.wolz@freenet.de>
+Message-ID: <200811271841.58891.jonas.wolz@freenet.de>
+
+Am Mittwoch, 26. November 2008 schrieb Jonas Wolz:
+> Am Dienstag, 25. November 2008 schrieb Vieri:
+> > I don't mind helping out.
+> > Just mail me the messages and I'll take a look at them.
+>
+> OK, thank you very much!
+>
+> I will contact you about a week before the next release to update the
+> translations (if you need an updated translation earlier, just let me know,
+> however).
+
+Today the old translator has mailed me that he has been away for a few weeks 
+and wants to continue his work.
+So I will try the old translator again for the next release(s) and come back 
+to you in case he is away again (I hope you don't mind ;-) ).
+
+He also sent me an updated translation for 0.3.9. 
+So you now can download a JAR file with the updated French translation from:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_3_9-fr.jar
+
+Apart from the French translation, this file is completely identical to 0.3.9, 
+so I won't create a new release here.
+
+Regards,
+Jonas
+
+
+

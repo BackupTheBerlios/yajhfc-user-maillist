@@ -1,0 +1,107 @@
+From pasqualone at inwind.it  Fri Nov 19 05:05:21 2010
+From: pasqualone at inwind.it (pasqualone at inwind.it)
+Date: Fri, 19 Nov 2010 05:05:21 +0100 (CET)
+Subject: [Yajhfc-user] Filter incoming faxes by device
+Message-ID: <14999543.3369281290139521475.JavaMail.defaultUser@defaultHost>
+
+Hi,I have 8 analog modem (diva) and I have bound each line  with a specific modem.In this way I can define from which or them to make a call and it works fine. Furthermore there is a field in sent tab where I can see which of them has been used.
+I would like to know if there is a way to view only incoming faxes filtered by modem.
+There is no field 'modem' in received tab where I can read from which of them a fax is received, although there is a DEVICE variable in Hylafax log that contains the correct  value of this device when a fax is received
+It would  be nice to filter received faxes simply adding a field 'modem'. Now I filter by CID Number and it works fine but the configuration take more time.
+ 
+I'm tired  now. Sorry for my English.
+Pasquale
+
+
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20101119/ba0b5984/attachment.html>
+
+From jonas.wolz at freenet.de  Sat Nov 20 13:42:09 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 20 Nov 2010 13:42:09 +0100
+Subject: [Yajhfc-user] Filter incoming faxes by device
+In-Reply-To: <14999543.3369281290139521475.JavaMail.defaultUser@defaultHost>
+References: <14999543.3369281290139521475.JavaMail.defaultUser@defaultHost>
+Message-ID: <201011201342.09962.jonas.wolz@freenet.de>
+
+Am Freitag, 19. November 2010 schrieb pasqualone at inwind.it:
+> Hi,I have 8 analog modem (diva) and I have bound each line  with a specific
+> modem.In this way I can define from which or them to make a call and it
+> works fine. Furthermore there is a field in sent tab where I can see which
+> of them has been used. I would like to know if there is a way to view only
+> incoming faxes filtered by modem. There is no field 'modem' in received tab
+> where I can read from which of them a fax is received, although there is a
+> DEVICE variable in Hylafax log that contains the correct  value of this
+> device when a fax is received It would  be nice to filter received faxes
+> simply adding a field 'modem'. Now I filter by CID Number and it works fine
+> but the configuration take more time.
+
+This feature has been wished for before, but it is quite hard to implement:
+
+As far as I know, HylaFAX offers no direct way for a client using the HylaFAX 
+protocol to get the information on which modem a fax has been received.
+
+Also, it is not possible to get the contents of the log (this would only be 
+possible by using a separate connection with another protocol (i.e. by using 
+Samba, FTP, HTTP ... to make that file available)).
+
+
+Jonas
+
+
+
+
+From pasqualone at inwind.it  Sun Nov 21 01:47:13 2010
+From: pasqualone at inwind.it (pasqualone at inwind.it)
+Date: Sun, 21 Nov 2010 01:47:13 +0100 (CET)
+Subject: [Yajhfc-user] R: Re:  Filter incoming faxes by device
+Message-ID: <4453947.201331290300433208.JavaMail.defaultUser@defaultHost>
+
+Thank you very much.
+I didn'know about Hylafax protocol issue. I'm sorry.
+So, it would be better ask to Lee :-) .
+
+regards
+Pasquale Buccarelli
+
+>----Messaggio originale----
+>Da: jonas.wolz at freenet.de
+>Data: 20/11/2010 13.42
+>A: <yajhfc-user at lists.berlios.de>, "pasqualone at inwind.it"<pasqualone at inwind.
+it>
+>Ogg: Re: [Yajhfc-user] Filter incoming faxes by device
+>
+>Am Freitag, 19. November 2010 schrieb pasqualone at inwind.it:
+>> Hi,I have 8 analog modem (diva) and I have bound each line  with a specific
+>> modem.In this way I can define from which or them to make a call and it
+>> works fine. Furthermore there is a field in sent tab where I can see which
+>> of them has been used. I would like to know if there is a way to view only
+>> incoming faxes filtered by modem. There is no field 'modem' in received tab
+>> where I can read from which of them a fax is received, although there is a
+>> DEVICE variable in Hylafax log that contains the correct  value of this
+>> device when a fax is received It would  be nice to filter received faxes
+>> simply adding a field 'modem'. Now I filter by CID Number and it works fine
+>> but the configuration take more time.
+>
+>This feature has been wished for before, but it is quite hard to implement:
+>
+>As far as I know, HylaFAX offers no direct way for a client using the 
+HylaFAX 
+>protocol to get the information on which modem a fax has been received.
+>
+>Also, it is not possible to get the contents of the log (this would only be 
+>possible by using a separate connection with another protocol (i.e. by using 
+>Samba, FTP, HTTP ... to make that file available)).
+>
+>
+>Jonas
+>
+>
+>
+
+
+
+

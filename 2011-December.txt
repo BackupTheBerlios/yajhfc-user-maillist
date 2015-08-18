@@ -1,0 +1,41 @@
+From syscon780 at gmail.com  Fri Dec 23 18:56:52 2011
+From: syscon780 at gmail.com (Joseph)
+Date: Fri, 23 Dec 2011 10:56:52 -0700
+Subject: [Yajhfc-user] interfacing with cups
+Message-ID: <20111223175651.GB30930@syscon4.inet>
+
+Is it possible for YajHFC to interface with cups, even via link?
+
+I know brother has some java solution for cups:
+http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_pcf2.html
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Fri Dec 23 22:03:36 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 23 Dec 2011 22:03:36 +0100
+Subject: [Yajhfc-user] interfacing with cups
+In-Reply-To: <20111223175651.GB30930@syscon4.inet>
+References: <20111223175651.GB30930@syscon4.inet>
+Message-ID: <201112232203.36778.jonas.wolz@freenet.de>
+
+Yes, please see:
+http://files.yajhfc.de/doc/cupsfaxprinter.shtml
+
+... or did you mean/wanted to do something different?
+
+
+Hope that helps
+Jonas
+
+Am Freitag, 23. Dezember 2011 schrieb Joseph:
+> Is it possible for YajHFC to interface with cups, even via link?
+> 
+> I know brother has some java solution for cups:
+> http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_p
+> cf2.html
+
+
+

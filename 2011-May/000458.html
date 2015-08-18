@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Command line for Postscript viewer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Command%20line%20for%20Postscript%20viewer&In-Reply-To=%3C201105181807.45279.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000457.html">
+   <LINK REL="Next"  HREF="000459.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Command line for Postscript viewer</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Command%20line%20for%20Postscript%20viewer&In-Reply-To=%3C201105181807.45279.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Command line for Postscript viewer">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed May 18 18:07:45 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000457.html">[Yajhfc-user] Command line for Postscript viewer
+</A></li>
+        <LI>Next message: <A HREF="000459.html">[Yajhfc-user] Command line for Postscript viewer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#458">[ date ]</a>
+              <a href="thread.html#458">[ thread ]</a>
+              <a href="subject.html#458">[ subject ]</a>
+              <a href="author.html#458">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 16. Mai 2011 schrieb Joseph:
+&gt;<i> I'm trying to view sent faxes and in: Command like for Postscript viewer:
+</I>&gt;<i> /usr/bin/gs &quot;%s&quot;
+</I>&gt;<i> 
+</I>&gt;<i> and fax closes as soon as it open. When I try from command line: gs file.ps
+</I>&gt;<i> I can view it, it is not closing.
+</I>
+The reason for that behaviour is that YajHFC closes the stdin stream of the 
+viewer once it has been started.
+When stdin is closed for gs, it closes.
+
+The solution for that problem is not to use plain gs as a viewer for faxes 
+since it is not intended to be used as such.
+Please use some postscript viewer application instead (evince, okular, gv, 
+...).
+
+Hope that helps
+Jonas Wolz
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000457.html">[Yajhfc-user] Command line for Postscript viewer
+</A></li>
+	<LI>Next message: <A HREF="000459.html">[Yajhfc-user] Command line for Postscript viewer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#458">[ date ]</a>
+              <a href="thread.html#458">[ thread ]</a>
+              <a href="subject.html#458">[ subject ]</a>
+              <a href="author.html#458">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

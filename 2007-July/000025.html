@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] feature requests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C469CDE0E.80100%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000028.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] feature requests</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C469CDE0E.80100%40freenet.de%3E"
+       TITLE="[Yajhfc-user] feature requests">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Tue Jul 17 17:19:42 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000028.html">[Yajhfc-user] feature requests
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vieri schrieb:
+&gt;<i> could a &quot;default killtime&quot; be specified in the
+</I>&gt;<i> &quot;settings&quot; config file (just like max tries)?
+</I>
+No problem, will be in 0.3.4 (actually I thought it would already save 
+this...).
+
+&gt;<i> Also, I noticed that when a user has a lot of jobs in
+</I>&gt;<i> the &quot;sent&quot; table and is about to send another fax via
+</I>&gt;<i> printing redirection, there is a significant delay
+</I>&gt;<i> before the send dialog actually appears. It's probably
+</I>&gt;<i> because it has to wait for the hylafax server to
+</I>&gt;<i> transfer the whole job list so that yajhfc can display
+</I>&gt;<i> it in its grid and THEN the &quot;send&quot; dialog box appears.
+</I>&gt;<i> Can we find a way to reduce or elinminate this delay?
+</I>
+I see the problem you mean.
+Actually the table refresh is already multi-threaded, but for the first 
+time after connecting it is currently still done in the UI thread. 
+Before changing that I have to look if there is (still) a reason for 
+that or if it can be safely removed.
+Anyway, I will try to find some solution for that.
+
+Greetings,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000028.html">[Yajhfc-user] feature requests
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

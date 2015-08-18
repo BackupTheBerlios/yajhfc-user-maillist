@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] cannot print
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-8491-20081021-034705.00%40nerijus.sat.lt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000095.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] cannot print</H1>
+    <B>Nerijus Baliunas</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-8491-20081021-034705.00%40nerijus.sat.lt%3E"
+       TITLE="[Yajhfc-user] cannot print">nerijus at users.sourceforge.net
+       </A><BR>
+    <I>Tue Oct 21 02:47:05 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000095.html">[Yajhfc-user] cannot print
+</A></li>
+        <LI>Next message: <A HREF="000097.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 21 Oct 2008 02:47:11 +0300 Nerijus Baliunas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">nerijus at users.sourceforge.net</A>&gt; wrote:
+
+&gt;<i> java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --background
+</I>&gt;<i> Caused by: java.lang.ClassNotFoundException: Files\YajHFC\yajhfc.jar --stdin --background
+</I>
+Ah, I see there is some confusion with paths. OK, let's trace:
+javaexe = C:\Program Files\Java\jre1.6.0_07\bin/java.exe
+homedrv = Z:
+homedir = \
+userprofile = Z:\
+env(&quot;USERPROFILE&quot;) = userprofile = Z:\
+
+BTW, the following gets variables wrong:
+' Fix temp dir
+env(&quot;TMP&quot;) = WshShell.ExpandEnvironmentStrings(wshshell.regread(&quot;HKEY_CURRENT_USER\Environment\TMP&quot;))
+env(&quot;TEMP&quot;) = WshShell.ExpandEnvironmentStrings(wshshell.regread(&quot;HKEY_CURRENT_USER\Environment\TEMP&quot;))
+
+HKEY_CURRENT_USER\Environment\TEMP=%USERPROFILE%\Local Settings\Temp=Z:\Local Settings\Temp
+which is wrong, as there is no such directory and actual TEMP in good (not changed)
+environment is TEMP=C:\DOCUME~1\USERNA~1\LOCALS~1\Temp, while
+USERPROFILE=C:\Documents and Settings\username
+
+So it seems there was no need to set TEMP and USERPROFILE, the values in environment were ok.
+
+OK, so I just replace line
+' Launch java:
+Set java = WshShell.Exec(javaexe &amp; &quot; -Duser.home=&quot;&quot;&quot; &amp; userprofile &amp; &quot;&quot;&quot; &quot; &amp; yjargs)
+
+with
+
+Set java = WshShell.Exec(javaexe &amp; &quot; &quot; &amp; yjargs)
+
+and it starts to work. But, if YajHFC is not running, it starts and hangs on Fetching fax list
+(it's a different problem, I saw it before on another PC) with empty log file
+(only env variables in it), or the YajHFC main window is opened and freezes,
+then log file is:
+
+Error #-2147024664: 
+2008.10.21 03.36.27 yajhfc.Launcher main
+WARNING: An error occured communicating with the old instance: 
+java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at yajhfc.utils.copyStream(utils.java:634)
+	at yajhfc.Launcher.main(Launcher.java:496)
+
+Send fax dialog is opened correctly if YajHFC is running before I try to print a fax test page.
+
+Regards,
+Nerijus
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000095.html">[Yajhfc-user] cannot print
+</A></li>
+	<LI>Next message: <A HREF="000097.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

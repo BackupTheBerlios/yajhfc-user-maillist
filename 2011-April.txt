@@ -1,0 +1,240 @@
+From jonas.wolz at freenet.de  Sun Apr  3 11:11:48 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 3 Apr 2011 11:11:48 +0200
+Subject: [Yajhfc-user] YajHFC 0.5.0 released
+Message-ID: <201104031111.48563.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.5.0 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-setup.exe
+
+RPM packages:
+http://prdownload.berlios.de/yajhfc/yajhfc-0.5.0-1.noarch.rpm
+http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.5.0-1.noarch.rpm
+
+APT line to add to /etc/apt/sources.list for Debian/Ubuntu packages:
+deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+More information about the DEB packages:
+http://prdownload.berlios.de/yajhfc/deb-packages-info-0.5.0.txt
+
+Mac App:
+http://prdownload.berlios.de/yajhfc/yajhfc-macapp-0.5.0.zip
+
+
+New features/changes:
+- Support for local caching of the fax lists, probably making the start-up of 
+the application feel much quicker
+- Experimental support for direct reading to the recvq and doneq directory, 
+bypassing the HylaFAX server (and the HylaFAX user authentication). This 
+might lead to a lower server load with large queues since only modified files 
+are read to refresh the fax lists. This still needs some testing, however... 
+(any feedback on this feature is very welcome!)
+- Options dialog should open a bit faster than before
+- "Test connection" button in the Options dialog
+- Support for multiple servers
+- Support for multiple identities
+- Lists of faxes can be saved in CSV, HTML or XML format
+- Support for configurable keyboard accelerators
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas Wolz
+
+
+
+From met at shd.de  Mon Apr  4 08:44:44 2011
+From: met at shd.de (Christian Metzen)
+Date: Mon, 04 Apr 2011 08:44:44 +0200
+Subject: [Yajhfc-user] YajHFC 0.5.0 released
+In-Reply-To: <26521638.5940.1301821912054.JavaMail.root@teamup.shd.lan>
+References: <26521638.5940.1301821912054.JavaMail.root@teamup.shd.lan>
+Message-ID: <4817594.8955.1301899491979.JavaMail.root@teamup.shd.lan>
+
+Hi,
+
+thanks for the new release Jonas.
+
+I tried to build the sources, but seem to missing something,
+
+    [javac] 
+/home/met/Sources/yajhfc-0.5.0/src/yajhfc/HylaClientManager.java:129: 
+cannot find symbol
+     [javac] symbol  : method setCharacterEncoding(java.lang.String)
+     [javac] location: class gnu.hylafax.HylaFAXClient
+     [javac]                 
+client.setCharacterEncoding(myopts.hylaFAXCharacterEncoding);
+
+Building 0.4.4 works without problems using gnu-hylfax 1.0.3. Are using 
+any other sources for that now?
+
+Regards,
+Christian
+
+On 03.04.2011 11:11, Jonas Wolz wrote:
+> I am pleased to announce that version 0.5.0 of YajHFC has been released today.
+>
+> Download:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0.jar
+>
+> Source code:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-src.zip
+>
+> Windows setup.exe:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-setup.exe
+>
+> RPM packages:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0.5.0-1.noarch.rpm
+> http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.5.0-1.noarch.rpm
+>
+> APT line to add to /etc/apt/sources.list for Debian/Ubuntu packages:
+> deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+>
+> More information about the DEB packages:
+> http://prdownload.berlios.de/yajhfc/deb-packages-info-0.5.0.txt
+>
+> Mac App:
+> http://prdownload.berlios.de/yajhfc/yajhfc-macapp-0.5.0.zip
+>
+>
+> New features/changes:
+> - Support for local caching of the fax lists, probably making the start-up of
+> the application feel much quicker
+> - Experimental support for direct reading to the recvq and doneq directory,
+> bypassing the HylaFAX server (and the HylaFAX user authentication). This
+> might lead to a lower server load with large queues since only modified files
+> are read to refresh the fax lists. This still needs some testing, however...
+> (any feedback on this feature is very welcome!)
+> - Options dialog should open a bit faster than before
+> - "Test connection" button in the Options dialog
+> - Support for multiple servers
+> - Support for multiple identities
+> - Lists of faxes can be saved in CSV, HTML or XML format
+> - Support for configurable keyboard accelerators
+>
+>
+> For more information you may also take a look at the homepage at:
+> http://yajhfc.berlios.de/
+>
+> Have Fun,
+> Jonas Wolz
+>
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+
+From jonas.wolz at freenet.de  Mon Apr  4 18:32:11 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 4 Apr 2011 18:32:11 +0200
+Subject: [Yajhfc-user] YajHFC 0.5.0 released
+Message-ID: <201104041832.11171.jonas.wolz@freenet.de>
+
+Am Montag, 4. April 2011 schrieb Christian Metzen:
+> I tried to build the sources, but seem to missing something,
+> 
+>     [javac]
+> /home/met/Sources/yajhfc-0.5.0/src/yajhfc/HylaClientManager.java:129:
+> cannot find symbol
+>      [javac] symbol  : method setCharacterEncoding(java.lang.String)
+>      [javac] location: class gnu.hylafax.HylaFAXClient
+>      [javac]
+> client.setCharacterEncoding(myopts.hylaFAXCharacterEncoding);
+> 
+> Building 0.4.4 works without problems using gnu-hylfax 1.0.3. Are using
+> any other sources for that now?
+
+You will need to apply the patch from the following site to the gnu-hylafax 
+sources:
+http://sourceforge.net/tracker/?func=detail&atid=815237&aid=3148665&group_id=160285
+
+Sorry for any inconvenience caused by this...
+
+
+Hope that helps
+Jonas
+
+
+
+From richard.weller at bryntegbooks.co.uk  Fri Apr 15 10:37:48 2011
+From: richard.weller at bryntegbooks.co.uk (Richard Weller)
+Date: Fri, 15 Apr 2011 09:37:48 +0100
+Subject: [Yajhfc-user] Making new windows appear on top
+Message-ID: <4DA803DC.80306@bryntegbooks.co.uk>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20110415/51b4f24c/attachment.html>
+
+From richard.weller at bryntegbooks.co.uk  Fri Apr 15 17:15:53 2011
+From: richard.weller at bryntegbooks.co.uk (Richard Weller)
+Date: Fri, 15 Apr 2011 16:15:53 +0100
+Subject: [Yajhfc-user] Making new windows appear on top
+In-Reply-To: <4DA803DC.80306@bryntegbooks.co.uk>
+References: <4DA803DC.80306@bryntegbooks.co.uk>
+Message-ID: <4DA86129.5030805@bryntegbooks.co.uk>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20110415/5c918c08/attachment.html>
+
+From rentorbuy at yahoo.com  Wed Apr 27 15:01:53 2011
+From: rentorbuy at yahoo.com (Vieri)
+Date: Wed, 27 Apr 2011 06:01:53 -0700 (PDT)
+Subject: [Yajhfc-user] owner must be of type Dialog or Frame!
+Message-ID: <393331.46846.qm@web113312.mail.gq1.yahoo.com>
+
+Hi,
+
+I've just upgraded my YAJHFC client installation in a test environment and all's fine when running the app in my Windows desktop environment but it seems to be failing within redmon (I used the installation wizard).
+
+So when I print to the "YAJHFC Fax" printer I get an error and no USERNAME/PASSWORD dialog box opens. The error I'm getting is:
+
+owner must be of type Dialog or Frame!
+
+java.lang.IllegalArgumentException: owner must be of type Dialog or Frame!
+	at yajhfc.util.PasswordDialog$DisplayRunnable.<init>(PasswordDialog.java:284)
+	at yajhfc.util.PasswordDialog.showPasswordDialogThreaded(PasswordDialog.java:247)
+	at yajhfc.util.PasswordDialog.showPasswordDialog(PasswordDialog.java:206)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:140)
+	at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:92)
+	at yajhfc.HylaClientManager.getRealModems(HylaClientManager.java:266)
+	at yajhfc.HylaClientManager.getModems(HylaClientManager.java:258)
+	at yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:650)
+	at yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:648)
+	at yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:59)
+	at yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:57)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+YajHFC 0.5.0
+Java 1.5.0_12 (Sun Microsystems Inc.)
+Java(TM) 2 Runtime Environment, Standard Edition 1.5.0_12-b04
+Java HotSpot(TM) Client VM
+Windows Vista 6.1 (x86)
+
+How can I fix this issue?
+
+Thanks,
+
+Vieri
+
+
+

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Feature Request - Server-Side solution
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20Request%20-%20Server-Side%20solution&In-Reply-To=%3C4A84251A.6070708%40lauserco.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000214.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Feature Request - Server-Side solution</H1>
+    <B>Sorin Toma</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20Request%20-%20Server-Side%20solution&In-Reply-To=%3C4A84251A.6070708%40lauserco.com%3E"
+       TITLE="[Yajhfc-user] Feature Request - Server-Side solution">sorin at lauserco.com
+       </A><BR>
+    <I>Thu Aug 13 16:37:14 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000214.html">[Yajhfc-user] Feature Request - Client-Side solution
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jonas Wolz wrote:
+&gt;<i> Am Mittwoch, 22. Juli 2009 schrieb Sorin Toma:
+</I>&gt;<i>   
+</I>&gt;&gt;&gt;<i> If it is required to see the watermark, I think this must be done on the
+</I>&gt;&gt;&gt;<i> client before the PDF or PS is sent to the server.
+</I>&gt;&gt;&gt;<i> Unfortunately this is currently not possible with YajHFC (it would be
+</I>&gt;&gt;&gt;<i> necessary to call a &quot;filter script&quot; before sending a document which is
+</I>&gt;&gt;&gt;<i> currently not possible).
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> [...]
+</I>
+Hello,
+So, the hylafax+ ps2fax/pdf2fax/tiff2fax converting scripts calls a 
+certain etc/FaxModify where you can implement your own filtering if you 
+want.
+Basically, I'm using Jonas's sugestion and use pdftk in order to apply 
+the watermark on my outgoing faxes on the server.
+On the other hand I still investigate the client-side processing, I'm 
+going to keep you informed about my progress.
+
+
+Hoping that somebody else can use this, let's cat 
+/var/spool/hylafax/etc/FaxModify:
+
+##############CUT HERE##################
+#!/bin/sh
+workdir=/tmp/watermark$$
+log=$workdir/templog
+work=$workdir/tmpwrk
+result=$workdir/result
+backg=/etc/initsetup/watermark.pdf
+
+mkdir -p $workdir
+
+date &gt; $log
+echo &quot;Starting faxmodify on $fil&quot; &gt;&gt; $log
+
+cat $fil &gt;&gt; $work
+if /usr/bin/file $work | grep &quot;PostScript&quot; &gt;&gt;$log; then
+echo &quot;it's PS&quot; &gt;&gt; $log 2&gt;&amp;1
+/usr/bin/ps2pdf $work $work.pdf &gt;&gt;$log 2&gt;&amp;1
+/usr/bin/pdftk $work.pdf background $backg output $result.pdf &gt;&gt;$log 2&gt;&amp;1
+rm -f $fil &gt;&gt;$log 2&gt;&amp;1
+/usr/bin/pdf2ps $result.pdf $fil &gt;&gt;$log 2&gt;&amp;1
+fi
+
+if /usr/bin/file $work | grep &quot;PDF&quot; &gt;&gt;/dev/null; then
+echo &quot;it's PDF&quot; &gt;&gt; $log 2&gt;&amp;1
+rm -f $fil &gt;&gt;$log 2&gt;&amp;1
+/usr/bin/pdftk $work background $backg output $fil &gt;&gt;$log 2&gt;&amp;1
+fi
+
+if /usr/bin/file $work | grep &quot;TIFF&quot; &gt;&gt;/dev/null; then
+echo &quot;it's PDF&quot; &gt;&gt; $log 2&gt;&amp;1
+/usr/bin/tiff2pdf $work $work.pdf &gt;&gt;$log 2&gt;&amp;1
+/usr/bin/pdftk $work.pdf background $backg output $result.pdf &gt;&gt;$log 2&gt;&amp;1
+rm -f $fil &gt;&gt;$log 2&gt;&amp;1
+/usr/bin/gs -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sOutputFile=$fil 
+$result.pdf $fil &gt;&gt;$log 2&gt;&amp;1
+fi
+
+rm -rf $workdir
+
+#EOF
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000214.html">[Yajhfc-user] Feature Request - Client-Side solution
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] yajhfc just disconnecting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20yajhfc%20just%20disconnecting&In-Reply-To=%3C4C8F600B.70006%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000399.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] yajhfc just disconnecting</H1>
+    <B>Florian R&#252;chel</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20yajhfc%20just%20disconnecting&In-Reply-To=%3C4C8F600B.70006%40gmail.com%3E"
+       TITLE="[Yajhfc-user] yajhfc just disconnecting">florian.ruechel at googlemail.com
+       </A><BR>
+    <I>Tue Sep 14 13:44:11 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000399.html">[Yajhfc-user] yajhfc just disconnecting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#397">[ date ]</a>
+              <a href="thread.html#397">[ thread ]</a>
+              <a href="subject.html#397">[ subject ]</a>
+              <a href="author.html#397">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>  Hey Folks,
+
+I've got a problem mit yajhfc disconnecting from my hylafax  server some 
+time after it connected.
+
+So when I try to establish a connection (starting the program oder 
+selecting &quot;Connect&quot; from the menu), it's no problem, it connects, it 
+updates recieved faxes, all seems to be working.
+
+But after some time (randomly, some minutes perhaps) it just 
+disconnects. Reconnecting is possible and faxes can then be recieved 
+again but it will randomly disconnect again.
+The setup is:
+Windows 7 x64 running yajhfc
+Debian Server running hylafax
+to log in i use the user uucp
+
+This is what the log says:
+14.09.2010 13:03:27 yajhfc.MainWin$StatusRefresher run
+WARNUNG: Error refreshing the status:
+java.util.NoSuchElementException
+     at java.util.StringTokenizer.nextToken(Unknown Source)
+     at gnu.inet.ftp.FtpClientProtocol.pasv(FtpClientProtocol.java:1366)
+     at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+     at yajhfc.MainWin$StatusRefresher.run(MainWin.java:2484)
+     at java.util.TimerThread.mainLoop(Unknown Source)
+     at java.util.TimerThread.run(Unknown Source)
+
+14.09.2010 13:03:28 yajhfc.MainWin$TableRefresher run
+WARNUNG: A socket error occured refreshing the tables, logging out.
+java.net.SocketException: Software caused connection abort: socket write 
+error
+     at java.net.SocketOutputStream.socketWrite0(Native Method)
+     at java.net.SocketOutputStream.socketWrite(Unknown Source)
+     at java.net.SocketOutputStream.write(Unknown Source)
+     at sun.nio.cs.StreamEncoder.writeBytes(Unknown Source)
+     at sun.nio.cs.StreamEncoder.implFlushBuffer(Unknown Source)
+     at sun.nio.cs.StreamEncoder.implFlush(Unknown Source)
+     at sun.nio.cs.StreamEncoder.flush(Unknown Source)
+     at java.io.OutputStreamWriter.flush(Unknown Source)
+     at gnu.inet.ftp.FtpClientProtocol.pasv(FtpClientProtocol.java:1357)
+     at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+     at yajhfc.MainWin$TableRefresher.run(MainWin.java:2545)
+     at java.util.TimerThread.mainLoop(Unknown Source)
+     at java.util.TimerThread.run(Unknown Source)
+
+14.09.2010 13:03:28 yajhfc.HylaClientManager forceLogout
+WARNUNG: In forceLogout: transactionCounter = 1
+
+I am running the German version if that's of any help.
+Would greatly appreciate any suggestions that you have.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100914/d5751b30/attachment.html">https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100914/d5751b30/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000399.html">[Yajhfc-user] yajhfc just disconnecting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#397">[ date ]</a>
+              <a href="thread.html#397">[ thread ]</a>
+              <a href="subject.html#397">[ subject ]</a>
+              <a href="author.html#397">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

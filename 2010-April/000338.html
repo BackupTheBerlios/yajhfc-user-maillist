@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] How to delete a fax sent or received?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20How%20to%20delete%20a%20fax%20sent%20or%20received%3F&In-Reply-To=%3C1271488312.9760.23.camel%40scarafaggio%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000335.html">
+   <LINK REL="Next"  HREF="000333.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] How to delete a fax sent or received?</H1>
+    <B>Giuseppe Sacco</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20How%20to%20delete%20a%20fax%20sent%20or%20received%3F&In-Reply-To=%3C1271488312.9760.23.camel%40scarafaggio%3E"
+       TITLE="[Yajhfc-user] How to delete a fax sent or received?">giuseppe at eppesuigoccas.homedns.org
+       </A><BR>
+    <I>Sat Apr 17 09:11:52 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000335.html">[Yajhfc-user] How to delete a fax sent or received?
+</A></li>
+        <LI>Next message: <A HREF="000333.html">[Yajhfc-user] [Yajhfc-announce] yajhfc and Excel Integration
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#338">[ date ]</a>
+              <a href="thread.html#338">[ thread ]</a>
+              <a href="subject.html#338">[ subject ]</a>
+              <a href="author.html#338">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il giorno mar, 13/04/2010 alle 23.07 +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">anne.yajhfc at free.fr</A> ha
+scritto:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> How to delete a fax sent or received?
+</I>
+sent faxes are owned by the sender, while received faxes are owned by
+the &quot;administrative&quot; user.
+
+In hylafax server, you may play with a few parameters:
+RecvFileMode:           0640
+LogFileMode:            0640
+
+in order to give other authorization on these files.
+
+The key point is to create a unix group on hylafax server, and add all
+users to that group.
+
+Bye,
+Giuseppe
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000335.html">[Yajhfc-user] How to delete a fax sent or received?
+</A></li>
+	<LI>Next message: <A HREF="000333.html">[Yajhfc-user] [Yajhfc-announce] yajhfc and Excel Integration
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#338">[ date ]</a>
+              <a href="thread.html#338">[ thread ]</a>
+              <a href="subject.html#338">[ subject ]</a>
+              <a href="author.html#338">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

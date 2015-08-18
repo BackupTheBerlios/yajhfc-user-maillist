@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Any problems with Windows 7 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Any%20problems%20with%20Windows%207%20%3F&In-Reply-To=%3C201005170921.03887.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000360.html">
+   <LINK REL="Next"  HREF="000362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Any problems with Windows 7 ?</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Any%20problems%20with%20Windows%207%20%3F&In-Reply-To=%3C201005170921.03887.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Any problems with Windows 7 ?">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon May 17 09:21:03 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000360.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+        <LI>Next message: <A HREF="000362.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Sonntag, 16. Mai 2010 schrieb David Vrona:
+&gt;<i> Log file below.
+</I>
+&gt;<i> May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+</I>&gt;<i> FINE: 227 Entering passive mode (172,28,1,36,141,89)
+</I>&gt;<i>
+</I>&gt;<i> May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+</I>&gt;<i> WARNING: Error refreshing the status, logging out.
+</I>&gt;<i> java.net.ConnectException: Connection timed out: connect
+</I>
+This looks like a firewall problem to me. The control connection to the server 
+is established and working, but the data connection is blocked.
+
+Currently I am thinking of 2 possible sources:
+
+1. The HylaFAX protocol is based on FTP. Like FTP it opens separate data 
+connections, which is problematic for most firewalls.
+
+2. When you have installed a personal firewall (or use the Windows firewall), 
+you may have accidentally blocked YajHFC since it will show up as &quot;java.exe&quot; 
+or &quot;javaw.exe&quot;.
+
+
+To check out the first problem, you can use the command line FTP client to see 
+if listing directories on the server works.
+For example (transcript is from Linux, but it should very similarly work like 
+that on Windows, too):
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas at pc1</A>:~$ ftp hylafax-test 4559
+Connected to hylafax-test.
+220 hylafax-test server (HylaFAX (tm) Version 4.3.1) ready.
+Name (hylafax-test:jonas): fax
+331 Password required for fax.
+Password:
+230 User fax logged in.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; passive
+Passive mode on.
+ftp&gt; ls
+227 Entering passive mode (192,168,23,2,211,252)
+150 Opening new data connection for &quot;.&quot;.
+drwxr-x   2        0     4096 Sep  7 09:56 bin
+drwxrwx  76       10     4096 Mar 13 17:19 archive
+drwxr-x   2       10     4096 Jan  7 08:33 pollq
+drwxr-x   2       10     4096 Apr 17 14:19 recvq
+drwxr-x   2       10     4096 Mar 13 17:19 status
+drwxr-x   2       10     4096 Apr 19 16:33 info
+drwxr-x   2       10     4096 Apr 24 16:45 sendq
+drwxr-x   2       10    53248 Apr 24 16:45 doneq
+drwxr-x   3        0     4096 Nov  7 13:31 etc
+drwxr-x   2       10     4096 May 17 07:15 client
+drwxr-x   2       10     4096 Sep  7 09:56 dev
+drwxr-x   2       10     4096 Apr 24 16:45 docq
+drwxr-x   2       10    12288 Apr 19 16:33 log
+drwxrwx   2       10     4096 Apr 19 16:35 tmp
+drwxr-x   2       10     4096 Sep  7 09:55 config
+226 Transfer complete.
+ftp&gt; cd status
+250 CWD command successful.
+ftp&gt; ls
+227 Entering passive mode (192,168,23,2,161,223)
+150 Opening new data connection for &quot;.&quot;.
+HylaFAX scheduler on hylafax-test: Running
+Modem ttyIAX1 (+49.9876.54321-202): Running and idle
+Modem ttyIAX0 (+49.9876.54321-201): Running and idle
+226 Transfer complete.
+ftp&gt; bye
+221 Goodbye.
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas at pc1</A>:~$  
+
+
+
+If you have checked both possible sources of problems (especially if it works 
+with the command line ftp) and it still does not work, please write me 
+another mail.
+
+Hope that helps
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000360.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+	<LI>Next message: <A HREF="000362.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

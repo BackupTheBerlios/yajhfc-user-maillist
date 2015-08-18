@@ -1,0 +1,1435 @@
+From member at horvath.co.za  Fri Feb  6 08:46:46 2009
+From: member at horvath.co.za (member horvath)
+Date: Fri, 6 Feb 2009 09:46:46 +0200
+Subject: [Yajhfc-user] help - fop plugin
+Message-ID: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+
+Hi,
+Firstly I have to say that this is by far the best hylafax client I
+have used to date.
+I have always had issues with designing coverpages for hylafax and it
+is nice to see support for some "real" coverpages.
+But (Theres always a but)
+I have designed a coverpage in openoffice with the relevant tags (I
+have even tried your supplied cover page (cover.odt)) and tried to use
+it but I get the following errors:
+The .odt file has been converted to .fo and I'm trying to preview it.
+
+Error viewing the FO file:
+org.xml.sax.SAXParseException: Premature end of file.
+
+javax.xml.transform.TransformerException:
+org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at yajhfc.faxcover.fop.EntryPoint.viewFOFile(EntryPoint.java:237)
+	at yajhfc.faxcover.fop.EntryPoint$2.actualActionPerformed(EntryPoint.java:132)
+	at yajhfc.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAction.java:67)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.AbstractButton.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(Unknown
+Source)
+	... 32 more
+---------
+org.xml.sax.SAXParseException: Premature end of file.
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transformIdentity(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(Unknown
+Source)
+	at yajhfc.faxcover.fop.EntryPoint.viewFOFile(EntryPoint.java:237)
+	at yajhfc.faxcover.fop.EntryPoint$2.actualActionPerformed(EntryPoint.java:132)
+	at yajhfc.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAction.java:67)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.AbstractButton.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+	at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+I used the installer which includes the FOP plugin to install the package.
+In Options - Plugins: the plugin IS loaded and the app IS being
+launched correctly:
+"C:\Program Files\YajHFC\execyajhfc.vbs" --loadplugin=FOPPlugin.jar
+
+yajhfc - 0.3.9
+fop plugin - 0.1.1
+java.runtime.version - 1.6.0_11-b03
+
+Any help would be appreciated.
+
+Steve
+
+
+From jonas.wolz at freenet.de  Sat Feb  7 14:25:30 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 7 Feb 2009 14:25:30 +0100
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+Message-ID: <200902071425.30405.jonas.wolz@freenet.de>
+
+Am Freitag, 6. Februar 2009 schrieb member horvath:
+> Hi,
+> Firstly I have to say that this is by far the best hylafax client I
+> have used to date.
+> I have always had issues with designing coverpages for hylafax and it
+> is nice to see support for some "real" coverpages.
+> But (Theres always a but)
+> I have designed a coverpage in openoffice with the relevant tags (I
+> have even tried your supplied cover page (cover.odt)) and tried to use
+> it but I get the following errors:
+> The .odt file has been converted to .fo and I'm trying to preview it.
+>
+> Error viewing the FO file:
+> org.xml.sax.SAXParseException: Premature end of file.
+>
+> [...]
+> Any help would be appreciated.
+
+Thanks for the bug report. It seems that the launcher script (execyajhfc.vbs) 
+from version 0.3.9 has a bug which sometimes causes it to set an incorrect 
+class path for the FOP plugin.
+
+So, please replace c:\program files\yajhfc\execyajhfc.vbs with the updated 
+version from ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs and try 
+again.
+
+If it still does not work, it would be helpful if you could mail be a sample 
+ODT file with which you are having problems.
+
+
+Best regards,
+Jonas
+
+
+From member at horvath.co.za  Sun Feb  8 08:38:28 2009
+From: member at horvath.co.za (member horvath)
+Date: Sun, 8 Feb 2009 09:38:28 +0200
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <200902071425.30405.jonas.wolz@freenet.de>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+	<200902071425.30405.jonas.wolz@freenet.de>
+Message-ID: <5901eff0902072338s5e8d9b03u14a154955a2ae291@mail.gmail.com>
+
+Thanks it now works, with a few issues however.
+1. The cover page isn't the same as the odt file, but I believe that
+is an issue with FOP and I need to keep playing around until I get it
+"looking" right.
+2. The fax cover cannot be in a location that has spaces eg c:\program
+files but I figured out that by using progra~1 instead does work.
+
+Thanks very much,  Now if I can only get the fax cover to look the
+same as my ODT file that would be the cherry on the top.
+
+Steve
+
+2009/2/7 Jonas Wolz <jonas.wolz at freenet.de>:
+> Am Freitag, 6. Februar 2009 schrieb member horvath:
+>> Hi,
+>> Firstly I have to say that this is by far the best hylafax client I
+>> have used to date.
+>> I have always had issues with designing coverpages for hylafax and it
+>> is nice to see support for some "real" coverpages.
+>> But (Theres always a but)
+>> I have designed a coverpage in openoffice with the relevant tags (I
+>> have even tried your supplied cover page (cover.odt)) and tried to use
+>> it but I get the following errors:
+>> The .odt file has been converted to .fo and I'm trying to preview it.
+>>
+>> Error viewing the FO file:
+>> org.xml.sax.SAXParseException: Premature end of file.
+>>
+>> [...]
+>> Any help would be appreciated.
+>
+> Thanks for the bug report. It seems that the launcher script (execyajhfc.vbs)
+> from version 0.3.9 has a bug which sometimes causes it to set an incorrect
+> class path for the FOP plugin.
+>
+> So, please replace c:\program files\yajhfc\execyajhfc.vbs with the updated
+> version from ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs and try
+> again.
+>
+> If it still does not work, it would be helpful if you could mail be a sample
+> ODT file with which you are having problems.
+>
+>
+> Best regards,
+> Jonas
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+
+
+From member at horvath.co.za  Sun Feb  8 09:14:20 2009
+From: member at horvath.co.za (member horvath)
+Date: Sun, 8 Feb 2009 10:14:20 +0200
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <5901eff0902072338s5e8d9b03u14a154955a2ae291@mail.gmail.com>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+	<200902071425.30405.jonas.wolz@freenet.de>
+	<5901eff0902072338s5e8d9b03u14a154955a2ae291@mail.gmail.com>
+Message-ID: <5901eff0902080014y5cb54620k1bd666490694a2f7@mail.gmail.com>
+
+Sorry but it seems my enthusiasm was a little premature.
+It works when:
+I open Yajhfc,
+Select send, the send dialog opens,
+I choose a fax number (from a db table, works great, thanks)
+My cover page is already selected (set up in extras - options -
+delivery) and the details are filled in automatically
+I press send
+It warns me that no files are selected and it will send just the coverpage
+I agree
+it then sends the fax  (coverpage only.)
+I receive it.
+
+It doesn't work when:
+I open a document (as and example notepad with some text)
+Select print - > yajhfc
+A cscript.exe dialog appears but doesn't close, when I close it
+manually only then does the yajhfc app appear.
+for some reason in the file(s) section the following appears:
+Files\YajHFC\FOPPlugin.jar (I have tried removing this but it still
+doesn't work)
+I choose a fax number (as above)
+my cover page is already selected (as above)
+I press send
+I get the following error:
+
+yajhfc.faxcover.Faxcover$InvalidCoverFormatException: Unsupported
+cover page format!
+	at yajhfc.faxcover.Faxcover.createInstanceForTemplate(Faxcover.java:213)
+	at yajhfc.send.SendController.initFaxCover(SendController.java:111)
+	at yajhfc.send.SendController$SendWorker.doWork(SendController.java:289)
+	at yajhfc.ProgressWorker.run(ProgressWorker.java:176)
+
+Remember this is the SAME fax cover that I used in the previous step.
+
+If you need any more info please let me know
+
+Steve
+
+
+
+
+2009/2/8 member horvath <member at horvath.co.za>:
+> Thanks it now works, with a few issues however.
+> 1. The cover page isn't the same as the odt file, but I believe that
+> is an issue with FOP and I need to keep playing around until I get it
+> "looking" right.
+> 2. The fax cover cannot be in a location that has spaces eg c:\program
+> files but I figured out that by using progra~1 instead does work.
+>
+> Thanks very much,  Now if I can only get the fax cover to look the
+> same as my ODT file that would be the cherry on the top.
+>
+> Steve
+>
+> 2009/2/7 Jonas Wolz <jonas.wolz at freenet.de>:
+>> Am Freitag, 6. Februar 2009 schrieb member horvath:
+>>> Hi,
+>>> Firstly I have to say that this is by far the best hylafax client I
+>>> have used to date.
+>>> I have always had issues with designing coverpages for hylafax and it
+>>> is nice to see support for some "real" coverpages.
+>>> But (Theres always a but)
+>>> I have designed a coverpage in openoffice with the relevant tags (I
+>>> have even tried your supplied cover page (cover.odt)) and tried to use
+>>> it but I get the following errors:
+>>> The .odt file has been converted to .fo and I'm trying to preview it.
+>>>
+>>> Error viewing the FO file:
+>>> org.xml.sax.SAXParseException: Premature end of file.
+>>>
+>>> [...]
+>>> Any help would be appreciated.
+>>
+>> Thanks for the bug report. It seems that the launcher script (execyajhfc.vbs)
+>> from version 0.3.9 has a bug which sometimes causes it to set an incorrect
+>> class path for the FOP plugin.
+>>
+>> So, please replace c:\program files\yajhfc\execyajhfc.vbs with the updated
+>> version from ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs and try
+>> again.
+>>
+>> If it still does not work, it would be helpful if you could mail be a sample
+>> ODT file with which you are having problems.
+>>
+>>
+>> Best regards,
+>> Jonas
+>> _______________________________________________
+>> Yajhfc-user mailing list
+>> Yajhfc-user at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>>
+>
+
+
+From jonas.wolz at freenet.de  Mon Feb  9 14:39:46 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 9 Feb 2009 14:39:46 +0100
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <5901eff0902080014y5cb54620k1bd666490694a2f7@mail.gmail.com>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+	<5901eff0902072338s5e8d9b03u14a154955a2ae291@mail.gmail.com>
+	<5901eff0902080014y5cb54620k1bd666490694a2f7@mail.gmail.com>
+Message-ID: <200902091439.46245.jonas.wolz@freenet.de>
+
+Please download and install the new setup package from
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_0beta6-FOPPlugin-0_1_3-setup.exe
+and try if this version fixes the problem.
+It should now support fax cover pages that are in a path with spaces, too.
+
+I hope this version does not have any more "spaces in a path" related 
+problems. If you find one, please let me know, however.
+(Such problems are sometimes overlooked in my tests because my primary test 
+platforms are Linux and the German version of Windows XP, which both have 
+less spaces in their paths than an English Windows (for the latter "C:
+\Program Files" is localized to "C:\Programme", for example).)
+
+The layout differences between the ODT file and the FOP output probably do not 
+have changed, though. 
+The reason for this is the way YajHFC's ODT support currently works: 
+It uses a (third-party) XSLT stylesheet to transform the ODT file into FO 
+format and then uses FOP to convert the FO file to PDF.
+Since the ODT->FO transformation is not perfect (and probably never can be) 
+some layout differences are virtually unavoidable.
+If you have serious problems with a certain layout construct, however, please 
+let me know (maybe there are some improvements which can be made).
+
+
+Thanks,
+Jonas.
+
+Am Sonntag, 8. Februar 2009 schrieb member horvath:
+> Sorry but it seems my enthusiasm was a little premature.
+> It works when:
+> I open Yajhfc,
+> Select send, the send dialog opens,
+> I choose a fax number (from a db table, works great, thanks)
+> My cover page is already selected (set up in extras - options -
+> delivery) and the details are filled in automatically
+> I press send
+> It warns me that no files are selected and it will send just the coverpage
+> I agree
+> it then sends the fax  (coverpage only.)
+> I receive it.
+>
+> It doesn't work when:
+> I open a document (as and example notepad with some text)
+> Select print - > yajhfc
+> A cscript.exe dialog appears but doesn't close, when I close it
+> manually only then does the yajhfc app appear.
+> for some reason in the file(s) section the following appears:
+> Files\YajHFC\FOPPlugin.jar (I have tried removing this but it still
+> doesn't work)
+> I choose a fax number (as above)
+> my cover page is already selected (as above)
+> I press send
+> I get the following error:
+>
+> yajhfc.faxcover.Faxcover$InvalidCoverFormatException: Unsupported
+> cover page format!
+> 	at yajhfc.faxcover.Faxcover.createInstanceForTemplate(Faxcover.java:213)
+> 	at yajhfc.send.SendController.initFaxCover(SendController.java:111)
+> 	at yajhfc.send.SendController$SendWorker.doWork(SendController.java:289)
+> 	at yajhfc.ProgressWorker.run(ProgressWorker.java:176)
+>
+> Remember this is the SAME fax cover that I used in the previous step.
+>
+> If you need any more info please let me know
+>
+> Steve
+>
+> 2009/2/8 member horvath <member at horvath.co.za>:
+> > Thanks it now works, with a few issues however.
+> > 1. The cover page isn't the same as the odt file, but I believe that
+> > is an issue with FOP and I need to keep playing around until I get it
+> > "looking" right.
+> > 2. The fax cover cannot be in a location that has spaces eg c:\program
+> > files but I figured out that by using progra~1 instead does work.
+> >
+> > Thanks very much,  Now if I can only get the fax cover to look the
+> > same as my ODT file that would be the cherry on the top.
+> >
+> > Steve
+> >
+> > 2009/2/7 Jonas Wolz <jonas.wolz at freenet.de>:
+> >> Am Freitag, 6. Februar 2009 schrieb member horvath:
+> >>> Hi,
+> >>> Firstly I have to say that this is by far the best hylafax client I
+> >>> have used to date.
+> >>> I have always had issues with designing coverpages for hylafax and it
+> >>> is nice to see support for some "real" coverpages.
+> >>> But (Theres always a but)
+> >>> I have designed a coverpage in openoffice with the relevant tags (I
+> >>> have even tried your supplied cover page (cover.odt)) and tried to use
+> >>> it but I get the following errors:
+> >>> The .odt file has been converted to .fo and I'm trying to preview it.
+> >>>
+> >>> Error viewing the FO file:
+> >>> org.xml.sax.SAXParseException: Premature end of file.
+> >>>
+> >>> [...]
+> >>> Any help would be appreciated.
+> >>
+> >> Thanks for the bug report. It seems that the launcher script
+> >> (execyajhfc.vbs) from version 0.3.9 has a bug which sometimes causes it
+> >> to set an incorrect class path for the FOP plugin.
+> >>
+> >> So, please replace c:\program files\yajhfc\execyajhfc.vbs with the
+> >> updated version from ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs
+> >> and try again.
+> >>
+> >> If it still does not work, it would be helpful if you could mail be a
+> >> sample ODT file with which you are having problems.
+> >>
+> >>
+> >> Best regards,
+> >> Jonas
+> >> _______________________________________________
+> >> Yajhfc-user mailing list
+> >> Yajhfc-user at lists.berlios.de
+> >> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+
+From member at horvath.co.za  Mon Feb  9 17:43:10 2009
+From: member at horvath.co.za (member horvath)
+Date: Mon, 9 Feb 2009 18:43:10 +0200
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <200902091439.46245.jonas.wolz@freenet.de>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+	<5901eff0902072338s5e8d9b03u14a154955a2ae291@mail.gmail.com>
+	<5901eff0902080014y5cb54620k1bd666490694a2f7@mail.gmail.com>
+	<200902091439.46245.jonas.wolz@freenet.de>
+Message-ID: <5901eff0902090843s1f1222c2k6cd7987fc3a6d48c@mail.gmail.com>
+
+Perfect, Thanks alot,
+Spaces in filenames - works.
+Fax cover - works.
+Send document including fax cover - works.
+
+I'm not going to bother with messing around with the fax cover format,
+ I have used your example and made some minor changes to suite my
+needs.
+Could I ask where did/do you find tff2pdf.exe?
+
+Thanks again for the help
+Steve
+
+2009/2/9 Jonas Wolz <jonas.wolz at freenet.de>:
+> Please download and install the new setup package from
+> ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_0beta6-FOPPlugin-0_1_3-setup.exe
+> and try if this version fixes the problem.
+> It should now support fax cover pages that are in a path with spaces, too.
+>
+> I hope this version does not have any more "spaces in a path" related
+> problems. If you find one, please let me know, however.
+> (Such problems are sometimes overlooked in my tests because my primary test
+> platforms are Linux and the German version of Windows XP, which both have
+> less spaces in their paths than an English Windows (for the latter "C:
+> \Program Files" is localized to "C:\Programme", for example).)
+>
+> The layout differences between the ODT file and the FOP output probably do not
+> have changed, though.
+> The reason for this is the way YajHFC's ODT support currently works:
+> It uses a (third-party) XSLT stylesheet to transform the ODT file into FO
+> format and then uses FOP to convert the FO file to PDF.
+> Since the ODT->FO transformation is not perfect (and probably never can be)
+> some layout differences are virtually unavoidable.
+> If you have serious problems with a certain layout construct, however, please
+> let me know (maybe there are some improvements which can be made).
+>
+>
+> Thanks,
+> Jonas.
+>
+> Am Sonntag, 8. Februar 2009 schrieb member horvath:
+>> Sorry but it seems my enthusiasm was a little premature.
+>> It works when:
+>> I open Yajhfc,
+>> Select send, the send dialog opens,
+>> I choose a fax number (from a db table, works great, thanks)
+>> My cover page is already selected (set up in extras - options -
+>> delivery) and the details are filled in automatically
+>> I press send
+>> It warns me that no files are selected and it will send just the coverpage
+>> I agree
+>> it then sends the fax  (coverpage only.)
+>> I receive it.
+>>
+>> It doesn't work when:
+>> I open a document (as and example notepad with some text)
+>> Select print - > yajhfc
+>> A cscript.exe dialog appears but doesn't close, when I close it
+>> manually only then does the yajhfc app appear.
+>> for some reason in the file(s) section the following appears:
+>> Files\YajHFC\FOPPlugin.jar (I have tried removing this but it still
+>> doesn't work)
+>> I choose a fax number (as above)
+>> my cover page is already selected (as above)
+>> I press send
+>> I get the following error:
+>>
+>> yajhfc.faxcover.Faxcover$InvalidCoverFormatException: Unsupported
+>> cover page format!
+>>       at yajhfc.faxcover.Faxcover.createInstanceForTemplate(Faxcover.java:213)
+>>       at yajhfc.send.SendController.initFaxCover(SendController.java:111)
+>>       at yajhfc.send.SendController$SendWorker.doWork(SendController.java:289)
+>>       at yajhfc.ProgressWorker.run(ProgressWorker.java:176)
+>>
+>> Remember this is the SAME fax cover that I used in the previous step.
+>>
+>> If you need any more info please let me know
+>>
+>> Steve
+>>
+>> 2009/2/8 member horvath <member at horvath.co.za>:
+>> > Thanks it now works, with a few issues however.
+>> > 1. The cover page isn't the same as the odt file, but I believe that
+>> > is an issue with FOP and I need to keep playing around until I get it
+>> > "looking" right.
+>> > 2. The fax cover cannot be in a location that has spaces eg c:\program
+>> > files but I figured out that by using progra~1 instead does work.
+>> >
+>> > Thanks very much,  Now if I can only get the fax cover to look the
+>> > same as my ODT file that would be the cherry on the top.
+>> >
+>> > Steve
+>> >
+>> > 2009/2/7 Jonas Wolz <jonas.wolz at freenet.de>:
+>> >> Am Freitag, 6. Februar 2009 schrieb member horvath:
+>> >>> Hi,
+>> >>> Firstly I have to say that this is by far the best hylafax client I
+>> >>> have used to date.
+>> >>> I have always had issues with designing coverpages for hylafax and it
+>> >>> is nice to see support for some "real" coverpages.
+>> >>> But (Theres always a but)
+>> >>> I have designed a coverpage in openoffice with the relevant tags (I
+>> >>> have even tried your supplied cover page (cover.odt)) and tried to use
+>> >>> it but I get the following errors:
+>> >>> The .odt file has been converted to .fo and I'm trying to preview it.
+>> >>>
+>> >>> Error viewing the FO file:
+>> >>> org.xml.sax.SAXParseException: Premature end of file.
+>> >>>
+>> >>> [...]
+>> >>> Any help would be appreciated.
+>> >>
+>> >> Thanks for the bug report. It seems that the launcher script
+>> >> (execyajhfc.vbs) from version 0.3.9 has a bug which sometimes causes it
+>> >> to set an incorrect class path for the FOP plugin.
+>> >>
+>> >> So, please replace c:\program files\yajhfc\execyajhfc.vbs with the
+>> >> updated version from ftp://ftp.berlios.de/pub/yajhfc/temp/execyajhfc.vbs
+>> >> and try again.
+>> >>
+>> >> If it still does not work, it would be helpful if you could mail be a
+>> >> sample ODT file with which you are having problems.
+>> >>
+>> >>
+>> >> Best regards,
+>> >> Jonas
+>> >> _______________________________________________
+>> >> Yajhfc-user mailing list
+>> >> Yajhfc-user at lists.berlios.de
+>> >> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>>
+>> _______________________________________________
+>> Yajhfc-user mailing list
+>> Yajhfc-user at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+>
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+
+
+From jonas.wolz at freenet.de  Mon Feb  9 18:03:34 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 9 Feb 2009 18:03:34 +0100
+Subject: [Yajhfc-user] help - fop plugin
+In-Reply-To: <5901eff0902090843s1f1222c2k6cd7987fc3a6d48c@mail.gmail.com>
+References: <5901eff0902052346x753396c5rc1cd6646ee92e0fd@mail.gmail.com>
+	<200902091439.46245.jonas.wolz@freenet.de>
+	<5901eff0902090843s1f1222c2k6cd7987fc3a6d48c@mail.gmail.com>
+Message-ID: <200902091803.34291.jonas.wolz@freenet.de>
+
+Am Montag, 9. Februar 2009 schrieb member horvath:
+> Perfect, Thanks alot,
+> Spaces in filenames - works.
+> Fax cover - works.
+> Send document including fax cover - works.
+>
+> I'm not going to bother with messing around with the fax cover format,
+>  I have used your example and made some minor changes to suite my
+> needs.
+> Could I ask where did/do you find tff2pdf.exe?
+
+Yes, please see the FAQ at:
+http://yajhfc.berlios.de/doc/faq.html#SECTION00026000000000000000
+
+Jonas.
+
+
+From sorin at lauserco.com  Tue Feb 10 17:31:55 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Tue, 10 Feb 2009 11:31:55 -0500
+Subject: [Yajhfc-user] Yajhfc "printer" on linux client
+Message-ID: <4991ABFB.4060903@lauserco.com>
+
+Hello,
+In order to create a "printer" in linux, I've created a "print-to file" 
+printer, that calls yajhfc.jar with the option --stdin, like the one in 
+windoze does. This is my setup:
+Create a local port in order to make print to file:
+
+==========Cut Here=================
+
+#!/usr/bin/perl
+use IO::Socket::INET;
+#( $port, $prfile ) = @ARGV;
+$port=19100;
+$prfile=/tmp/prtofil;
+# print "port=$port file=$prfile $!\n";
+$psrv=IO::Socket::INET->new(LocalPort => $port,Type=>SOCK_STREAM,Reuse=>1,Listen=>1) or die "Error! It seems like port $port is used $!\n";
+while ($pjob=$psrv->accept()) {
+    open(J,">$prfile") or die "Error writing to $prfile $!\n";
+    while (<$pjob>) {
+	print J "$_";
+	}
+    close J;
+    system ("/bin/cat", $prfile, "| sudo -u myusername /usr/bin/java -jar /usr/local/bin/yajhfc.jar --stdin --bckground", ">>/tmp/result 2>&1") ;
+    close $pjob;
+    }
+
+===========Cut Here=================
+
+then, in cups I configured a printer called "Yajhfc" type Apple 
+LaserWriter 12/600 PS (to be able to print any type of file - otherwise 
+I will be forced to print only PS, PDF, JPG...). The connection for this 
+printer is "socket://127.0.0.1:19100".
+That's it!
+
+-- 
+Best Regards,
+Sorin Toma
+Lauserco Inc.
+514-354-5050 ext:223
+
+
+
+From sorin at lauserco.com  Fri Feb 13 23:30:45 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Fri, 13 Feb 2009 17:30:45 -0500
+Subject: [Yajhfc-user] Windows Setup repack
+Message-ID: <4995F495.3080803@lauserco.com>
+
+Hello,
+I'm trying to add gv and tiff2pdf into the installer package, in order 
+to make my life easier when I will start deploying Yajhfc  in our 
+company,  but it seems like I'm missing something.
+I used innounp (http://innounp.sourceforge.net/) to unpack the 
+installer, but, even without any modification, if I'm trying to repack 
+it with innosetup (http://www.jrsoftware.org/isinfo.php), I'm unable to 
+find some functions like Check: "RedmonNotInstalled", Check: 
+"NoYajHFCPrinter" and BeforeInstall: "InstallYajHFCPort()"
+Can somebody give me a hint about what am I doing wrong?
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+From jonas.wolz at freenet.de  Sat Feb 14 09:55:31 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 14 Feb 2009 09:55:31 +0100
+Subject: [Yajhfc-user] Windows Setup repack
+In-Reply-To: <4995F495.3080803@lauserco.com>
+References: <4995F495.3080803@lauserco.com>
+Message-ID: <200902140955.31901.jonas.wolz@freenet.de>
+
+Am Freitag, 13. Februar 2009 schrieb Sorin Toma:
+> Hello,
+> I'm trying to add gv and tiff2pdf into the installer package, in order
+> to make my life easier when I will start deploying Yajhfc  in our
+> company,  but it seems like I'm missing something.
+> I used innounp (http://innounp.sourceforge.net/) to unpack the
+> installer, but, even without any modification, if I'm trying to repack
+> it with innosetup (http://www.jrsoftware.org/isinfo.php), I'm unable to
+> find some functions like Check: "RedmonNotInstalled", Check:
+> "NoYajHFCPrinter" and BeforeInstall: "InstallYajHFCPort()"
+> Can somebody give me a hint about what am I doing wrong?
+
+To install the fax printer the YajHFC setup uses some custom code written in 
+InnoSetup's RemObject Pascal language ([code] section in the .iss file).
+I have never used innounp, but it seems that it does not extract this code 
+correctly, so that these functions are missing.
+
+Personally (especially for internal deployment), I would rather create some 
+kind of "wrapper" around the setup executables of YajHFC, gs and tiff2pdf.
+If you want to do that, you can use "/SILENT" switch to do a silent 
+installation with the YajHFC (and tiff2pdf) setup for example (see the Inno 
+Setup help or 
+http://unattended.sourceforge.net/InnoSetup_Switches_ExitCodes.html for 
+details).
+
+
+Hope that helps,
+Jonas
+
+
+From sorin at lauserco.com  Sat Feb 14 18:05:58 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Sat, 14 Feb 2009 12:05:58 -0500
+Subject: [Yajhfc-user] Windows Setup repack
+In-Reply-To: <200902140955.31901.jonas.wolz@freenet.de>
+References: <4995F495.3080803@lauserco.com>
+	<200902140955.31901.jonas.wolz@freenet.de>
+Message-ID: <4996F9F6.7050809@lauserco.com>
+
+Jonas Wolz wrote:
+>
+> To install the fax printer the YajHFC setup uses some custom code written in 
+> InnoSetup's RemObject Pascal language ([code] section in the .iss file).
+> I have never used innounp, but it seems that it does not extract this code 
+> correctly, so that these functions are missing.
+>   
+Yeah, I thought so... Could that be possible for me to see that [code] 
+section that you are using? It will be very helpful.
+
+> Personally (especially for internal deployment), I would rather create some 
+> kind of "wrapper" around the setup executables of YajHFC, gs and tiff2pdf.
+>   
+True, but I have to use the recompiled version of your program, the one 
+with only "View own Faxes" enabled, so it will be better if I can repack 
+everything.
+
+> If you want to do that, you can use "/SILENT" switch to do a silent 
+> installation with the YajHFC (and tiff2pdf) setup for example (see the Inno 
+> Setup help or 
+> http://unattended.sourceforge.net/InnoSetup_Switches_ExitCodes.html for 
+> details).
+>
+>   
+I am aware of that, that's the way I do the deployment.
+
+
+> Hope that helps,
+> Jonas
+> _________
+>   
+Thank You, and congratulations! Your program is the only one that I 
+found, working flawless on our heterogenous network of windows, linux 
+and macs. With the added "printer" option in linux and mac it has a 
+perfecly identical behaviour on all platforms. I am preparing the 
+deployment and, while the linux (and mac) users are "technically wiser" 
+and fully capable of running the deployment script, unfortunately, for 
+the windows users it will be a job for the technical department, so I'm 
+trying to do an "one-shoot" installer with all the optional components 
+already in. There are some other technical difficulties, like keeping in 
+sync the usernames/passwords from hylafax with the ldap ones, but that 
+is not my concern for the moment.
+
+
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From jonas.wolz at freenet.de  Sat Feb 14 20:15:20 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 14 Feb 2009 20:15:20 +0100
+Subject: [Yajhfc-user] Windows Setup repack
+In-Reply-To: <4996F9F6.7050809@lauserco.com>
+References: <4995F495.3080803@lauserco.com>
+	<200902140955.31901.jonas.wolz@freenet.de>
+	<4996F9F6.7050809@lauserco.com>
+Message-ID: <200902142015.20394.jonas.wolz@freenet.de>
+
+Am Samstag, 14. Februar 2009 schrieb Sorin Toma:
+> Jonas Wolz wrote:
+> > To install the fax printer the YajHFC setup uses some custom code written
+> > in InnoSetup's RemObject Pascal language ([code] section in the .iss
+> > file). I have never used innounp, but it seems that it does not extract
+> > this code correctly, so that these functions are missing.
+>
+> Yeah, I thought so... Could that be possible for me to see that [code]
+> section that you are using? It will be very helpful.
+
+You can get the original .iss file via CVS, for example by using the following 
+link:
+http://cvs.berlios.de/cgi-bin/viewvc.cgi/yajhfc/extra/winsetup/setup.iss?view=co
+
+> > Personally (especially for internal deployment), I would rather create
+> > some kind of "wrapper" around the setup executables of YajHFC, gs and
+> > tiff2pdf.
+>
+> True, but I have to use the recompiled version of your program, the one
+> with only "View own Faxes" enabled, so it will be better if I can repack
+> everything.
+
+BTW: 0.4.0beta already includes the enhancement from 
+http://lists.berlios.de/pipermail/yajhfc-user/2008-December/000155.html
+So, recompiling probably should not be necessary any more for that feature.
+
+
+HTH,
+Jonas
+
+
+From sorin at lauserco.com  Sat Feb 14 20:41:17 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Sat, 14 Feb 2009 14:41:17 -0500
+Subject: [Yajhfc-user] Windows Setup repack
+In-Reply-To: <200902142015.20394.jonas.wolz@freenet.de>
+References: <4995F495.3080803@lauserco.com>	<200902140955.31901.jonas.wolz@freenet.de>	<4996F9F6.7050809@lauserco.com>
+	<200902142015.20394.jonas.wolz@freenet.de>
+Message-ID: <49971E5D.3070607@lauserco.com>
+
+Jonas Wolz wrote:
+> Am Samstag, 14. Februar 2009 schrieb Sorin Toma:
+>   
+>> Jonas Wolz wrote:
+>>     
+>>> To install the fax printer the YajHFC setup uses some custom code written
+>>> in InnoSetup's RemObject Pascal language ([code] section in the .iss
+>>> file). I have never used innounp, but it seems that it does not extract
+>>> this code correctly, so that these functions are missing.
+>>>       
+>> Yeah, I thought so... Could that be possible for me to see that [code]
+>> section that you are using? It will be very helpful.
+>>     
+>
+> You can get the original .iss file via CVS, for example by using the following 
+> link:
+> http://cvs.berlios.de/cgi-bin/viewvc.cgi/yajhfc/extra/winsetup/setup.iss?view=co
+>
+>   
+Thank you!
+
+>>> Personally (especially for internal deployment), I would rather create
+>>> some kind of "wrapper" around the setup executables of YajHFC, gs and
+>>> tiff2pdf.
+>>>       
+>> True, but I have to use the recompiled version of your program, the one
+>> with only "View own Faxes" enabled, so it will be better if I can repack
+>> everything.
+>>     
+>
+> BTW: 0.4.0beta already includes the enhancement from 
+> http://lists.berlios.de/pipermail/yajhfc-user/2008-December/000155.html
+> So, recompiling probably should not be necessary any more for that feature.
+>
+>   
+Thank you, I was not aware about that :) Indeed, it is not necessary 
+anymore.
+
+-- 
+Best Regards,
+Sorin Toma 
+
+
+
+From rentorbuy at yahoo.com  Wed Feb 18 15:00:37 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Wed, 18 Feb 2009 06:00:37 -0800 (PST)
+Subject: [Yajhfc-user] restrict fax modems to specific fax users
+Message-ID: <509442.21512.qm@web32606.mail.mud.yahoo.com>
+
+Hi,
+
+I would like to restrict the use of outgoing fax modems to specific users.
+
+Say, users 1,2,3 and 4 can only send faxes out on modem 1.
+Users 5,6,7 can only send out on modem 2, etc.
+
+Is it possible to associate a user with a modem, or better yet, a modem with a set of users?
+
+I suppose setting this security measure would be better on the hylafax server than on the client but I haven't yet discovered how to do it.
+
+Any ideas are greatly appreciated.
+
+Vieri
+
+
+
+      
+
+
+From member at horvath.co.za  Fri Feb 20 06:48:38 2009
+From: member at horvath.co.za (member horvath)
+Date: Fri, 20 Feb 2009 07:48:38 +0200
+Subject: [Yajhfc-user] restrict fax modems to specific fax users
+In-Reply-To: <509442.21512.qm@web32606.mail.mud.yahoo.com>
+References: <509442.21512.qm@web32606.mail.mud.yahoo.com>
+Message-ID: <5901eff0902192148j2e2897b8t9a1d15cb5f87c9b1@mail.gmail.com>
+
+Hi,
+
+There is an option within yajhfc to choose a modem, but for large
+deployments this can be an administritive burden, i'm not sure if you
+can restrict a user to ONLY use that modem however.
+To assign users to a secific modem in hylafax itself is very easy, but
+again to explicitly restrict them from using another I'm not sure,
+although I'm sure it can be done.
+
+To assign a modem to a user do the following:
+(Adjust paths to suite your installation)
+
+On the hylafax server edit:
+/var/spool/hylafax/etc/config
+ADD
+JobControlCmd:          etc/jobcontrol
+
+Then create the file:
+/var/spool/hylafax/etc/jobcontrol
+ADD
+#!/bin/sh
+. etc/setup.cache
+. bin/common-functions
+QFILE=sendq/q$1
+parseQfile
+case "$owner" in
+root) echo "Modem: any";;
+user1) echo "Modem: ttyS0";;
+user2) echo "Modem: ttyS1";;
+*) echo "Modem: ttyS2";;
+esac
+exit 0
+Make sure you then configure the clients to log into the hylafax
+server with the relevant user from above script (Perhaps you split
+your users into relevant groups and name them accordingly)
+Also make sure your /var/spool/hylafax/etc/hosts.hfaxd has the allowed users in.
+
+Hope this helps
+
+
+From rentorbuy at yahoo.com  Fri Feb 20 09:08:11 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Fri, 20 Feb 2009 00:08:11 -0800 (PST)
+Subject: [Yajhfc-user] restrict fax modems to specific fax users
+In-Reply-To: <5901eff0902192148j2e2897b8t9a1d15cb5f87c9b1@mail.gmail.com>
+Message-ID: <156527.44377.qm@web32606.mail.mud.yahoo.com>
+
+
+--- On Fri, 2/20/09, member horvath <member at horvath.co.za> wrote:
+
+> Hi,
+> 
+> There is an option within yajhfc to choose a modem, but for
+> large
+> deployments this can be an administritive burden, i'm
+> not sure if you
+> can restrict a user to ONLY use that modem however.
+> To assign users to a secific modem in hylafax itself is
+> very easy, but
+> again to explicitly restrict them from using another
+> I'm not sure,
+> although I'm sure it can be done.
+> 
+> To assign a modem to a user do the following:
+> (Adjust paths to suite your installation)
+> 
+> On the hylafax server edit:
+> /var/spool/hylafax/etc/config
+> ADD
+> JobControlCmd:          etc/jobcontrol
+> 
+> Then create the file:
+> /var/spool/hylafax/etc/jobcontrol
+> ADD
+> #!/bin/sh
+> . etc/setup.cache
+> . bin/common-functions
+> QFILE=sendq/q$1
+> parseQfile
+> case "$owner" in
+> root) echo "Modem: any";;
+> user1) echo "Modem: ttyS0";;
+> user2) echo "Modem: ttyS1";;
+> *) echo "Modem: ttyS2";;
+> esac
+> exit 0
+> Make sure you then configure the clients to log into the
+> hylafax
+> server with the relevant user from above script (Perhaps
+> you split
+> your users into relevant groups and name them accordingly)
+> Also make sure your /var/spool/hylafax/etc/hosts.hfaxd has
+> the allowed users in.
+> 
+> Hope this helps
+
+It definitely helps a lot! Especially the sample script.
+Thanks for pointing out the JobControlCmd keyword that made me find this page: http://hylafax.sourceforge.net/man/jobcontrol.php
+
+Have a nice weekend.
+
+Vieri
+
+
+
+
+      
+
+
+From rentorbuy at yahoo.com  Mon Feb 23 12:21:13 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 23 Feb 2009 03:21:13 -0800 (PST)
+Subject: [Yajhfc-user] ModemGroup
+Message-ID: <187990.36754.qm@web32608.mail.mud.yahoo.com>
+
+Hi,
+
+When sending a fax with yajhfc, the "Modem" drop-down menu displays the tty modems and their FaxNumbers in parentheses as expected.
+
+Could it be possible to display the modem groups instead (as defined in ModemGroup on the Hylafax server)?
+
+Regards,
+
+Vieri
+
+PS: I don't really *need* this feature although I think it could be useful. So if it's too complicated to implement then please ignore it.
+
+
+
+      
+
+
+From jonas.wolz at freenet.de  Tue Feb 24 17:22:14 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 24 Feb 2009 17:22:14 +0100
+Subject: [Yajhfc-user] ModemGroup
+In-Reply-To: <187990.36754.qm@web32608.mail.mud.yahoo.com>
+References: <187990.36754.qm@web32608.mail.mud.yahoo.com>
+Message-ID: <200902241722.14923.jonas.wolz@freenet.de>
+
+Am Montag, 23. Februar 2009 schrieb Vieri:
+> Hi,
+>
+> When sending a fax with yajhfc, the "Modem" drop-down menu displays the tty
+> modems and their FaxNumbers in parentheses as expected.
+>
+> Could it be possible to display the modem groups instead (as defined in
+> ModemGroup on the Hylafax server)?
+
+Not easily, because HylaFAX does not seem to offer a way to retrieve the 
+defined ModemGroups from a client.
+
+Thus, the only way to implement that would be to add an option to define the 
+modem groups manually in YajHFC (overriding the list of modems from the 
+server). 
+
+I cannot promise that something like this will be implemented soon, however.
+
+Best regards,
+Jonas
+
+
+
+
+
+From rentorbuy at yahoo.com  Wed Feb 25 08:37:54 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 24 Feb 2009 23:37:54 -0800 (PST)
+Subject: [Yajhfc-user] ModemGroup
+In-Reply-To: <200902241722.14923.jonas.wolz@freenet.de>
+Message-ID: <580464.68753.qm@web32602.mail.mud.yahoo.com>
+
+
+--- On Tue, 2/24/09, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Not easily, because HylaFAX does not seem to offer a way to
+> retrieve the 
+> defined ModemGroups from a client.
+> 
+> Thus, the only way to implement that would be to add an
+> option to define the 
+> modem groups manually in YajHFC (overriding the list of
+> modems from the 
+> server). 
+> 
+> I cannot promise that something like this will be
+> implemented soon, however.
+
+Never mind, Jonas. It isn't important.
+
+By the way, I hope YajHFC 0.4.0beta will be stabilized soon... ;-)
+
+Cheers,
+
+Vieri
+
+
+
+      
+
+
+From rentorbuy at yahoo.com  Thu Feb 26 09:58:35 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 26 Feb 2009 00:58:35 -0800 (PST)
+Subject: [Yajhfc-user] mark outgoing job to archive
+Message-ID: <576597.61974.qm@web32607.mail.mud.yahoo.com>
+
+
+Does yajhfc mark send jobs to be archived? Does it let the user choose whether to archive the job or not?
+
+I haven't found a specific option for this.
+Maybe yajhfc specifies all jobs to be archived by default (-A) ?
+
+
+
+
+      
+
+
+From Stefano.Lusuardi at snapon.com  Thu Feb 26 13:26:15 2009
+From: Stefano.Lusuardi at snapon.com (Lusuardi, Stefano)
+Date: Thu, 26 Feb 2009 12:26:15 -0000
+Subject: [Yajhfc-user]  resend fax
+Message-ID: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+
+Hello,
+
+I'm new YajHFC 0.4 user, I get following error when try to resend a fax
+from sent queue:
+
+ 
+
+Could not get all of the job information necessary to resend the fax:
+
+503 Permission denied: no read access to job parameter DIALSTRING.
+
+                at
+gnu.hylafax.HylaFAXClientProtocol.jparm(HylaFAXClientProtocol.java:537)
+
+                at gnu.hylafax.job.Job.getProperty(Job.java:218)
+
+                at gnu.hylafax.job.Job.getDialstring(Job.java:128)
+
+                at
+yajhfc.MainWin$15.actualActionPerformed(MainWin.java:1028)
+
+                at
+yajhfc.util.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAct
+ion.java:65)
+
+                at
+javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+
+                at
+javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+
+                at
+javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+
+                at javax.swing.DefaultButtonModel.setPressed(Unknown
+Source)
+
+                at javax.swing.AbstractButton.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown
+Source)
+
+                at java.awt.AWTEventMulticaster.mouseReleased(Unknown
+Source)
+
+                at java.awt.Component.processMouseEvent(Unknown Source)
+
+                at javax.swing.JComponent.processMouseEvent(Unknown
+Source)
+
+                at java.awt.Component.processEvent(Unknown Source)
+
+                at java.awt.Container.processEvent(Unknown Source)
+
+                at java.awt.Component.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+
+                at java.awt.LightweightDispatcher.dispatchEvent(Unknown
+Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Window.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at java.awt.EventQueue.dispatchEvent(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.run(Unknown Source)
+
+ 
+
+Can someone help me ?
+
+Thanks in advance
+
+ 
+
+Stefano Lusuardi
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090226/98632f8b/attachment.html>
+
+From p.rinaldi at comune.livorno.it  Thu Feb 26 15:07:38 2009
+From: p.rinaldi at comune.livorno.it (p.rinaldi at comune.livorno.it)
+Date: Thu, 26 Feb 2009 15:07:38 +0100
+Subject: [Yajhfc-user] client YajHFC and Owner
+Message-ID: <6A5090ABED685B4882EC69ECE2BA9423122F17@mailserver.comune>
+
+I have installed hylafax server and on my desktop YajHFC client 4.0.
+In received tab i see the owner of job is a number (14) not a hylafax user (prinaldi). I set UID of faxadduser of hylafax at 355 the rule is: when sent to xxx xxx355 mail to prinaldi at .... 
+where i set 355=prinaldi?
+Thanks
+ 
+Pierluigi
+--------------------------------------------------------
+dott Pierluigi Rinaldi
+resp. Sistemi e Reti Sistemi Informativi
+Comune di Livorno
+P.za del Municipio 54 57100 Livorno
+tel 0586 820355 fax 0586 892537
+cell. 320 9228111
+p.rinaldi at comune.livorno.it
+---------------------------------------------------------
+
+
+From jonas.wolz at freenet.de  Thu Feb 26 16:18:01 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 26 Feb 2009 16:18:01 +0100
+Subject: [Yajhfc-user] mark outgoing job to archive
+In-Reply-To: <576597.61974.qm@web32607.mail.mud.yahoo.com>
+References: <576597.61974.qm@web32607.mail.mud.yahoo.com>
+Message-ID: <200902261618.01288.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Februar 2009 schrieb Vieri:
+> Does yajhfc mark send jobs to be archived? Does it let the user choose
+> whether to archive the job or not?
+>
+> I haven't found a specific option for this.
+> Maybe yajhfc specifies all jobs to be archived by default (-A) ?
+
+Currently it does not have such an option and does not touch the "archive 
+flag", so the server's default is used (which usually means not to archive 
+jobs).
+
+Adding such an options is a good idea, however, so very likely 0.4.1 will 
+offer a way to set this flag.
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Thu Feb 26 16:32:28 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 26 Feb 2009 16:32:28 +0100
+Subject: [Yajhfc-user] resend fax
+In-Reply-To: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+References: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+Message-ID: <200902261632.28995.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Februar 2009 schrieb Lusuardi, Stefano:
+> Hello,
+>
+> I'm new YajHFC 0.4 user, I get following error when try to resend a fax
+> from sent queue:
+>
+>
+>
+> Could not get all of the job information necessary to resend the fax:
+>
+> 503 Permission denied: no read access to job parameter DIALSTRING.
+
+This message comes from the HylaFAX server. Usually it only allows the owner 
+of a sent fax to view the attached documents and resend the fax.
+
+Unfortunately, there is not much one can do about that in the client (besides 
+retrying to resend the fax in admin mode, of course).
+
+
+HTH,
+Jonas
+
+
+From Stefano.Lusuardi at snapon.com  Thu Feb 26 17:25:52 2009
+From: Stefano.Lusuardi at snapon.com (Lusuardi, Stefano)
+Date: Thu, 26 Feb 2009 16:25:52 -0000
+Subject: [Yajhfc-user]  Distribution List
+In-Reply-To: <200902261632.28995.jonas.wolz@freenet.de>
+References: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+	<200902261632.28995.jonas.wolz@freenet.de>
+Message-ID: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED3EBA@kett-xbck-01-pp.snaponglobal.com>
+
+Hi Jonas,
+actual 0.4 beta release is very good for me (great job!!!).
+I create a Global Phonebook with MySQL Database connected to the client
+and it function very well.
+Do you think it's possible in future release to save different
+Distribution Lists, choosing names from General Phonebook, in order to
+recall them for future usage ?
+
+Thanks
+Stefano Lusuardi
+
+
+From jonas.wolz at freenet.de  Sat Feb 28 14:46:08 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 28 Feb 2009 14:46:08 +0100
+Subject: [Yajhfc-user] Distribution List
+In-Reply-To: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED3EBA@kett-xbck-01-pp.snaponglobal.com>
+References: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+	<200902261632.28995.jonas.wolz@freenet.de>
+	<D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED3EBA@kett-xbck-01-pp.snaponglobal.com>
+Message-ID: <200902281446.08829.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Februar 2009 schrieb Lusuardi, Stefano:
+> Hi Jonas,
+> actual 0.4 beta release is very good for me (great job!!!).
+> I create a Global Phonebook with MySQL Database connected to the client
+> and it function very well.
+> Do you think it's possible in future release to save different
+> Distribution Lists, choosing names from General Phonebook, in order to
+> recall them for future usage ?
+
+It is certainly possible (and a reasonable enhancement), so I put it on the 
+wishlist for features that may be implemented in the future.
+
+Nevertheless, implementing this feature will probably require some work, so I 
+can not promise at the moment that it will already be implemented in the next 
+release.
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sat Feb 28 15:04:23 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 28 Feb 2009 15:04:23 +0100
+Subject: [Yajhfc-user] client YajHFC and Owner
+In-Reply-To: <6A5090ABED685B4882EC69ECE2BA9423122F17@mailserver.comune>
+References: <6A5090ABED685B4882EC69ECE2BA9423122F17@mailserver.comune>
+Message-ID: <200902281504.23246.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Februar 2009 schrieb p.rinaldi at comune.livorno.it:
+> I have installed hylafax server and on my desktop YajHFC client 4.0.
+> In received tab i see the owner of job is a number (14) not a hylafax user
+> (prinaldi). I set UID of faxadduser of hylafax at 355 the rule is: when
+> sent to xxx xxx355 mail to prinaldi at .... where i set 355=prinaldi?
+
+Generally the mapping between UIDs and user names is done in hosts.hfaxd in 
+HylaFAX.
+
+It seems, however, that the HylaFAX server does not map UIDs back to user 
+names when it lists the received faxes, so you see a numeric ID in YajHFC.
+
+Unfortunately, it seems that there is no way for a HylaFAX client to resolve  
+a UID into a user name (or a user name into a UID), so there is not much I 
+can do about that in YajHFC (BTW: If someone knows how to do such a 
+resolution, please let know).
+
+
+Jonas.
+
+

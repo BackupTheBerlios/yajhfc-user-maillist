@@ -1,0 +1,788 @@
+From florian.ruechel at googlemail.com  Tue Sep 14 13:44:11 2010
+From: florian.ruechel at googlemail.com (=?ISO-8859-1?Q?Florian_R=FCchel?=)
+Date: Tue, 14 Sep 2010 13:44:11 +0200
+Subject: [Yajhfc-user] yajhfc just disconnecting
+Message-ID: <4C8F600B.70006@gmail.com>
+
+  Hey Folks,
+
+I've got a problem mit yajhfc disconnecting from my hylafax  server some 
+time after it connected.
+
+So when I try to establish a connection (starting the program oder 
+selecting "Connect" from the menu), it's no problem, it connects, it 
+updates recieved faxes, all seems to be working.
+
+But after some time (randomly, some minutes perhaps) it just 
+disconnects. Reconnecting is possible and faxes can then be recieved 
+again but it will randomly disconnect again.
+The setup is:
+Windows 7 x64 running yajhfc
+Debian Server running hylafax
+to log in i use the user uucp
+
+This is what the log says:
+14.09.2010 13:03:27 yajhfc.MainWin$StatusRefresher run
+WARNUNG: Error refreshing the status:
+java.util.NoSuchElementException
+     at java.util.StringTokenizer.nextToken(Unknown Source)
+     at gnu.inet.ftp.FtpClientProtocol.pasv(FtpClientProtocol.java:1366)
+     at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+     at yajhfc.MainWin$StatusRefresher.run(MainWin.java:2484)
+     at java.util.TimerThread.mainLoop(Unknown Source)
+     at java.util.TimerThread.run(Unknown Source)
+
+14.09.2010 13:03:28 yajhfc.MainWin$TableRefresher run
+WARNUNG: A socket error occured refreshing the tables, logging out.
+java.net.SocketException: Software caused connection abort: socket write 
+error
+     at java.net.SocketOutputStream.socketWrite0(Native Method)
+     at java.net.SocketOutputStream.socketWrite(Unknown Source)
+     at java.net.SocketOutputStream.write(Unknown Source)
+     at sun.nio.cs.StreamEncoder.writeBytes(Unknown Source)
+     at sun.nio.cs.StreamEncoder.implFlushBuffer(Unknown Source)
+     at sun.nio.cs.StreamEncoder.implFlush(Unknown Source)
+     at sun.nio.cs.StreamEncoder.flush(Unknown Source)
+     at java.io.OutputStreamWriter.flush(Unknown Source)
+     at gnu.inet.ftp.FtpClientProtocol.pasv(FtpClientProtocol.java:1357)
+     at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+     at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+     at yajhfc.MainWin$TableRefresher.run(MainWin.java:2545)
+     at java.util.TimerThread.mainLoop(Unknown Source)
+     at java.util.TimerThread.run(Unknown Source)
+
+14.09.2010 13:03:28 yajhfc.HylaClientManager forceLogout
+WARNUNG: In forceLogout: transactionCounter = 1
+
+I am running the German version if that's of any help.
+Would greatly appreciate any suggestions that you have.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100914/d5751b30/attachment.html>
+
+From giulioo at gmail.com  Thu Sep 16 16:05:36 2010
+From: giulioo at gmail.com (Giulio)
+Date: Thu, 16 Sep 2010 16:05:36 +0200
+Subject: [Yajhfc-user] Issue with viewing received faxes as PDF
+Message-ID: <20100916140530.6245BF81F@i3.golden.dom>
+
+YajHFC 0.4.4, Windows 7 64bit.
+
+If I set yajhfc to view received faxes w/o any conversion I can see the tiff
+files ok.
+
+If I set it up to view them as PDF, like this:
+
+	Location of tiff2pdf executable: 
+		C:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe
+	View faxes as single file: X
+	Format for viewing: PDF
+	View faxes always in this format: X	
+	
+then when I double click on a received fax I get an error:
+
+========== error
+	An error occured displaying the fax "fax000011945.tif":
+	Premature end of stream reading stdout from tiff2pdf
+(readLen=-1,buflen=-1).
+
+java.io.IOException: Premature end of stream reading stdout from tiff2pdf
+(readLen=-1, buflen=-1).
+	at
+yajhfc.file.TIFFLibConverter.convertToHylaFormat(TIFFLibConverter.java:80)
+	at
+yajhfc.file.MultiFileConverter.convertMultipleFiles(MultiFileConverter.java:84)
+	at
+yajhfc.file.MultiFileConverter.convertMultipleFilesToSingleFile(MultiFileConverter.java:169)
+	at
+yajhfc.file.MultiFileConverter.viewMultipleFiles(MultiFileConverter.java:144)
+	at yajhfc.MainWin$ShowWorker.doWork(MainWin.java:452)
+	at yajhfc.util.ProgressWorker.run(ProgressWorker.java:181)
+
+YajHFC 0.4.4
+Java 1.6.0_21 (Sun Microsystems Inc.)
+Java(TM) SE Runtime Environment 1.6.0_21-b07
+Java HotSpot(TM) Client VM
+Windows 7 6.1 (x86)
+==========
+
+If I enable the "Log console" and select "Log level: FINEST" I don't get any
+info.
+
+What is the exact command line used by yajhfc?
+
+If I view the fax as tiff (no conversion), save it to disk, and then convert
+it by hand
+C:\a>"c:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe"
+			 fax7032146836801140192.tiff -o fax.pdf
+I get a valid PDF file, so tiff2pdf seems to be working.
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From jonas.wolz at freenet.de  Sun Sep 19 08:16:22 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 19 Sep 2010 08:16:22 +0200
+Subject: [Yajhfc-user] yajhfc just disconnecting
+In-Reply-To: <4C8F600B.70006@gmail.com>
+References: <4C8F600B.70006@gmail.com>
+Message-ID: <201009190816.22228.jonas.wolz@freenet.de>
+
+Am Dienstag, 14. September 2010 schrieb Florian R?chel:
+> I've got a problem mit yajhfc disconnecting from my hylafax  server some
+> time after it connected.
+>
+> So when I try to establish a connection (starting the program oder
+> selecting "Connect" from the menu), it's no problem, it connects, it
+> updates recieved faxes, all seems to be working.
+>
+> But after some time (randomly, some minutes perhaps) it just
+> disconnects. Reconnecting is possible and faxes can then be recieved
+> again but it will randomly disconnect again.
+> The setup is:
+> Windows 7 x64 running yajhfc
+> Debian Server running hylafax
+> to log in i use the user uucp
+>
+> This is what the log says:
+
+Hmm, it is quite difficult to say what the reason is. The log messages you 
+have quoted are basically just subsequent faults from the fact that the 
+connection closed unexpectedly.
+Do you know which side disconnects (the server or the client)?
+
+And, would it be possible for you to send me a complete log (by private mail)?
+
+Thanks
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Sep 19 08:22:13 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 19 Sep 2010 08:22:13 +0200
+Subject: [Yajhfc-user] Issue with viewing received faxes as PDF
+In-Reply-To: <20100916140530.6245BF81F@i3.golden.dom>
+References: <20100916140530.6245BF81F@i3.golden.dom>
+Message-ID: <201009190822.14345.jonas.wolz@freenet.de>
+
+Am Donnerstag, 16. September 2010 schrieb Giulio:
+> YajHFC 0.4.4, Windows 7 64bit.
+>
+> If I set yajhfc to view received faxes w/o any conversion I can see the
+> tiff files ok.
+>
+> If I set it up to view them as PDF, like this:
+>
+> 	Location of tiff2pdf executable:
+> 		C:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe
+> 	View faxes as single file: X
+> 	Format for viewing: PDF
+> 	View faxes always in this format: X
+>
+> then when I double click on a received fax I get an error:
+>
+> ========== error
+> 	An error occured displaying the fax "fax000011945.tif":
+> 	Premature end of stream reading stdout from tiff2pdf
+> (readLen=-1,buflen=-1).
+> [...]
+
+This is a bug with tiff2pdf and Windows Vista/7 (see below for details).
+
+> What is the exact command line used by yajhfc?
+
+"tiff2pdf inputfile"
+
+> If I view the fax as tiff (no conversion), save it to disk, and then
+> convert it by hand
+> C:\a>"c:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe"
+> 			 fax7032146836801140192.tiff -o fax.pdf
+> I get a valid PDF file, so tiff2pdf seems to be working.
+
+If you use "tiff2pdf inputfile > outputfile" (instead of "-o outputfile"), you 
+will probably get a crash from tiff2pdf.
+
+As a workaround I have created the following batch file:
+ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd
+
+Download it, copy it to the directory where tiff2pdf.exe is and then setup 
+YajHFC to use tiff2pdf.cmd instead of tiff2pdf.exe 
+
+Hope that helps
+Jonas
+
+
+From giulioo at gmail.com  Sun Sep 19 15:07:37 2010
+From: giulioo at gmail.com (Giulio)
+Date: Sun, 19 Sep 2010 15:07:37 +0200
+Subject: [Yajhfc-user] Issue with viewing received faxes as PDF
+In-Reply-To: <201009190822.14345.jonas.wolz@freenet.de>
+References: <20100916140530.6245BF81F@i3.golden.dom>
+	<201009190822.14345.jonas.wolz@freenet.de>
+Message-ID: <20100919130737.212C5F81F@i3.golden.dom>
+
+On Sun, 19 Sep 2010 08:22:13 +0200, Jonas Wolz <jonas.wolz at freenet.de>
+wrote:
+
+>If you use "tiff2pdf inputfile > outputfile" (instead of "-o outputfile"), you 
+>will probably get a crash from tiff2pdf.
+Yes.
+
+>As a workaround I have created the following batch file:
+>ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd
+>Download it, copy it to the directory where tiff2pdf.exe is and then setup 
+That works.
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From james.smith at jofco.com  Thu Sep 23 22:20:49 2010
+From: james.smith at jofco.com (James Smith)
+Date: Thu, 23 Sep 2010 16:20:49 -0400
+Subject: [Yajhfc-user] Print only client
+Message-ID: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+
+Hi
+
+I'm looking for a client that does exactly the same as winprinthylafax.
+All I need it to do is ask for the fax number and send it to the server when it gets a file passed to it.
+Would it be possible to get a cut down version of yajhfc to do this?
+
+Thx
+
+
+
+
+[cid:jofco_design_sig2137b.gif]
+
+[cid:drsig251d.gif]
+
+The content of this message is strictly confidential and is intended for the exclusive use of the addressee. Any unauthorized distribution or copying of this communication is forbidden. If you have received this  communication by error, contact sender and delete it immediately.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100923/3d0df323/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: jofco_design_sig2137b.gif
+Type: image/gif
+Size: 1028 bytes
+Desc: jofco_design_sig2137b.gif
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100923/3d0df323/attachment.gif>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: drsig251d.gif
+Type: image/gif
+Size: 10900 bytes
+Desc: drsig251d.gif
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100923/3d0df323/attachment-0001.gif>
+
+From jonas.wolz at freenet.de  Sun Sep 26 09:45:18 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 26 Sep 2010 09:45:18 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+Message-ID: <201009260945.18980.jonas.wolz@freenet.de>
+
+Am Donnerstag, 23. September 2010 schrieb James Smith:
+> I'm looking for a client that does exactly the same as winprinthylafax.
+> All I need it to do is ask for the fax number and send it to the server
+> when it gets a file passed to it. Would it be possible to get a cut down
+> version of yajhfc to do this?
+
+YajHFC already has a "send only" mode where only the send dialog is shown.
+If this is sufficient for you, you can already do this with the current 
+version.
+
+If you need/want a send dialog with reduced options (or a version which only 
+can show such a dialog), this would be theoretically possible, too, of 
+course.
+I am quite hesitant to implement something like that, however, since I do not 
+see a good reason why something like that would be so much better than having 
+a full featured version...
+
+Hope that helps
+Jonas
+
+
+From Mailings at kh-dev.de  Sun Sep 26 13:24:15 2010
+From: Mailings at kh-dev.de (Klaus Hochlehnert)
+Date: Sun, 26 Sep 2010 11:24:15 +0000
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <201009260945.18980.jonas.wolz@freenet.de>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+Message-ID: <8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+
+Hi Jonas,
+
+I'm also using your client and I really think it's works quite good (even if it's Java :) ).
+
+But I would also like to see your client split up in two packages:
+- Basic version for sending only, no GUI (except the send GUI, address book, ...)
+- Add-On to the basic version with fully featured GUI
+
+The reason is that we only have one fax server. Incoming faxes are distributed by mail.
+But some faxes are not for everyone. I actually don't want some users to see them.
+If someone is a bit technically interested he would find the GUI and can watch all the faxes.
+On the other hand they should be able to send faxes.
+
+Thanks,
+Klaus
+
+-----Urspr?ngliche Nachricht-----
+Von: yajhfc-user-bounces at lists.berlios.de [mailto:yajhfc-user-bounces at lists.berlios.de] Im Auftrag von Jonas Wolz
+Gesendet: Sonntag, 26. September 2010 09:45
+An: yajhfc-user at lists.berlios.de
+Cc: James Smith
+Betreff: Re: [Yajhfc-user] Print only client
+
+Am Donnerstag, 23. September 2010 schrieb James Smith:
+> I'm looking for a client that does exactly the same as winprinthylafax.
+> All I need it to do is ask for the fax number and send it to the 
+> server when it gets a file passed to it. Would it be possible to get a 
+> cut down version of yajhfc to do this?
+
+YajHFC already has a "send only" mode where only the send dialog is shown.
+If this is sufficient for you, you can already do this with the current version.
+
+If you need/want a send dialog with reduced options (or a version which only can show such a dialog), this would be theoretically possible, too, of course.
+I am quite hesitant to implement something like that, however, since I do not see a good reason why something like that would be so much better than having a full featured version...
+
+Hope that helps
+Jonas
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+
+
+From giulioo at gmail.com  Sun Sep 26 22:17:32 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Sun, 26 Sep 2010 22:17:32 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+Message-ID: <AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+
+On Sun, Sep 26, 2010 at 13:24, Klaus Hochlehnert <Mailings at kh-dev.de> wrote:
+> I'm also using your client and I really think it's works quite good (even if it's Java :) ).
+>..
+>
+> The reason is that we only have one fax server. Incoming faxes are distributed by mail.
+> But some faxes are not for everyone. I actually don't want some users to see them.
+
+You should solve this issue on the server side, by applying proper
+security to the received faxes, so that you don't have to rely on what
+users install on their systems.
+
+See recvfilemode parameter and/or apply proper uid/gid in FaxDispatch.
+
+-- 
+giulioo at pobox.com
+
+
+From james.smith at jofco.com  Mon Sep 27 15:15:13 2010
+From: james.smith at jofco.com (James Smith)
+Date: Mon, 27 Sep 2010 09:15:13 -0400
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+Message-ID: <434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+
+In an ideal world, yes
+
+But I don't have the time to create usernames/passwords for every user I have, make sure they have hylafax rights and then make sure the passwords sync with AD. Maybe when there is a far simpler and robust method of doing this in linux than the 2 or 3 cobbled together workarounds currently available, I'll do it, but until then, hylafax gets 1 user.
+
+In any case, my users don't want to have to learn *another* client program, they want to print, get the delivery confirmation and forget it.
+I know its not a difficult program to use, but it is another thing to juggle.
+
+
+--
+James Smith
+Network Administrator
+812.481.7215 direct
+812.309.9708 cell
+james.smith at jofco.com
+
+Jofco
+Design at Work
+
+The content of this message is strictly confidential and is intended for the exclusive use of the addressee.
+Any unauthorized distribution or copying of this communication is forbidden.
+If you have received this communication by error, contact sender and delete it immediately.
+
+-----Original Message-----
+From: yajhfc-user-bounces at lists.berlios.de [mailto:yajhfc-user-bounces at lists.berlios.de] On Behalf Of Giulio Orsero
+Sent: Sunday, September 26, 2010 4:18 PM
+To: General discussion about YajHFC
+Subject: Re: [Yajhfc-user] Print only client
+
+On Sun, Sep 26, 2010 at 13:24, Klaus Hochlehnert <Mailings at kh-dev.de> wrote:
+> I'm also using your client and I really think it's works quite good (even if it's Java :) ).
+>..
+>
+> The reason is that we only have one fax server. Incoming faxes are distributed by mail.
+> But some faxes are not for everyone. I actually don't want some users to see them.
+
+You should solve this issue on the server side, by applying proper security to the received faxes, so that you don't have to rely on what users install on their systems.
+
+See recvfilemode parameter and/or apply proper uid/gid in FaxDispatch.
+
+--
+giulioo at pobox.com
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+From jonas.wolz at freenet.de  Mon Sep 27 20:32:12 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 27 Sep 2010 20:32:12 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+Message-ID: <201009272032.12656.jonas.wolz@freenet.de>
+
+Am Montag, 27. September 2010 schrieb James Smith:
+> In any case, my users don't want to have to learn *another* client program,
+> they want to print, get the delivery confirmation and forget it. I know its
+> not a difficult program to use, but it is another thing to juggle.
+
+Maybe I will consider creating a separate "send only" version in a future 
+version, but this does not have a very high priority for me (most likely it 
+won't come this year).
+Especially it does not make sense to me to create a clone of winprinthylafax 
+(if I wanted to do that it would probably be easier to create a fork of that 
+project which works with Windows 7...) -- so what you would probably get is 
+a "send dialog only" version of YajHFC.
+
+And, as Giulio put it, such a stripped down client is *not* a safe security 
+measure, since trying to put the security measures on the client and not the 
+server will usually allow the user to circumvent them.
+This is especially true in the case of HylaFAX whose protocol is based on FTP 
+and thus allows to access the faxes with any FTP client -- if you know what 
+you are doing (which is admittedly not very likely for your average user, 
+however).
+
+
+Jonas.
+
+
+From giulioo at gmail.com  Mon Sep 27 20:48:57 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Mon, 27 Sep 2010 20:48:57 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+Message-ID: <AANLkTikV=vBRmu-vH5ffq-xEe3n4zsX7bV=uaNjW53y6@mail.gmail.com>
+
+On Mon, Sep 27, 2010 at 15:15, James Smith <james.smith at jofco.com> wrote:
+> In an ideal world, yes
+>
+> But I don't have the time to create usernames/passwords for every user I have, make >sure >they have hylafax rights and then make sure the passwords sync with AD. Maybe
+
+If your environment is:
+- received faxes routed via email manually by someone
+- noone should see the received faxes via an hylafax client, but only
+through email
+
+Then you just need
+    RecvFileMode: 0600
+I think, no need for uid's.
+
+-- 
+giulioo at pobox.com
+
+
+From giuseppe at eppesuigoccas.homedns.org  Mon Sep 27 21:14:20 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Mon, 27 Sep 2010 21:14:20 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+Message-ID: <1285614860.4772.18.camel@scarafaggio>
+
+Il giorno lun, 27/09/2010 alle 09.15 -0400, James Smith ha scritto:
+> In an ideal world, yes
+> 
+> But I don't have the time to create usernames/passwords for every user
+> I have, make sure they have hylafax rights and then make sure the
+> passwords sync with AD. Maybe when there is a far simpler and robust
+[...]
+
+why don't you get hylafax use your AD via PAM (winbind) for checking
+credentials? It should work ouf of the box, did you try it?
+
+Bye,
+Giuseppe
+
+
+
+From james.smith at jofco.com  Mon Sep 27 21:34:09 2010
+From: james.smith at jofco.com (James Smith)
+Date: Mon, 27 Sep 2010 15:34:09 -0400
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <1285614860.4772.18.camel@scarafaggio>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+	<1285614860.4772.18.camel@scarafaggio>
+Message-ID: <434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+
+I've never been able to get that to work out "of the box"
+
+I've been trying all day to get pam to authenticate, I've tried ldap, winbind and radius, none of which have worked.
+the radius one is even seeing the username, but not authenticating. I love linux, but when it comes to authenticating outside of the local box, it's a pain in the bits
+
+
+
+--
+James Smith
+Network Administrator
+812.481.7215 direct
+812.309.9708 cell
+james.smith at jofco.com
+
+Jofco
+Design at Work
+
+The content of this message is strictly confidential and is intended for the exclusive use of the addressee.
+Any unauthorized distribution or copying of this communication is forbidden.
+If you have received this communication by error, contact sender and delete it immediately.
+
+-----Original Message-----
+From: yajhfc-user-bounces at lists.berlios.de [mailto:yajhfc-user-bounces at lists.berlios.de] On Behalf Of Giuseppe Sacco
+Sent: Monday, September 27, 2010 3:14 PM
+To: General discussion about YajHFC
+Subject: Re: [Yajhfc-user] Print only client
+
+Il giorno lun, 27/09/2010 alle 09.15 -0400, James Smith ha scritto:
+> In an ideal world, yes
+>
+> But I don't have the time to create usernames/passwords for every user
+> I have, make sure they have hylafax rights and then make sure the
+> passwords sync with AD. Maybe when there is a far simpler and robust
+[...]
+
+why don't you get hylafax use your AD via PAM (winbind) for checking credentials? It should work ouf of the box, did you try it?
+
+Bye,
+Giuseppe
+
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+From giuseppe at eppesuigoccas.homedns.org  Mon Sep 27 22:26:02 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Mon, 27 Sep 2010 22:26:02 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+	<1285614860.4772.18.camel@scarafaggio>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+Message-ID: <1285619162.4772.34.camel@scarafaggio>
+
+Il giorno lun, 27/09/2010 alle 15.34 -0400, James Smith ha scritto:
+> I've never been able to get that to work out "of the box"
+> 
+> I've been trying all day to get pam to authenticate, I've tried ldap,
+> winbind and radius, none of which have worked.
+[...]
+
+I have it working with LDAP and even AD. The complete system
+authenticate local users against an LDAP, so once pam_ldap has been
+configured, I only wrote an /etc/pam.d/hylafax including all common-*
+files.
+
+I understand this list if for a client software, so you may send me
+private emails in order to not be mush OT, but, would you care to
+describe what problems you found?
+
+Bye,
+Giuseppe
+
+
+
+From Mailings at kh-dev.de  Mon Sep 27 22:39:49 2010
+From: Mailings at kh-dev.de (Klaus Hochlehnert)
+Date: Mon, 27 Sep 2010 20:39:49 +0000
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+	<1285614860.4772.18.camel@scarafaggio>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+Message-ID: <8220BA48EF3C9A438124F20C9C76571517D22B43@srv01.khdev.corp>
+
+Hi,
+
+the thing with security is actually pretty bad.
+If you only have one fax extension you just have the possibility to secure all or no faxes.
+
+The thing with RecvFileMode: 0600 has some drawbacks:
+- Nobody will be able to display the faxes (so there's no need for a fully featured fax client at all)
+- You're not able to watch the content, but the faxes still appear in the received/sent fax list
+
+Just consider the following scenario:
+- Small company with 10 employees, no Exchange Server (only POP3)
+- Incoming faxes go to the secretaries mailbox and will be distributed from there
+- The boss doesn't want the faxes in the mailbox, but wants to be able to display them anytime (without having access to the secretaries mailbox)
+- All other users should only be able to send faxes
+
+RecvFileMode: 0600 will prevent also the boss from displaying faxes.
+
+In my opinion the only chance to implement that scenario is on the client side.
+- Fully featured client for the boss and the secretary
+- Send only client for all others
+
+And you still have the HylaFAX logon table with user and password (even if it's not the safest method).
+
+The only thing that needs to be implemented:
+- If you "upgrade" from the send-only to the fully featured version you need to enter the password again (which the end user doesn't know).
+
+If anyone has another solution for that scenario, please tell me.
+
+Thanks, Klaus
+
+
+BTW: Another cool thing would be a centralized management option split up in a global and an user specific part (two files).
+
+
+
+-----Urspr?ngliche Nachricht-----
+Von: yajhfc-user-bounces at lists.berlios.de [mailto:yajhfc-user-bounces at lists.berlios.de] Im Auftrag von James Smith
+Gesendet: Montag, 27. September 2010 21:34
+An: 'General discussion about YajHFC'
+Betreff: Re: [Yajhfc-user] Print only client
+
+I've never been able to get that to work out "of the box"
+
+I've been trying all day to get pam to authenticate, I've tried ldap, winbind and radius, none of which have worked.
+the radius one is even seeing the username, but not authenticating. I love linux, but when it comes to authenticating outside of the local box, it's a pain in the bits
+
+
+
+--
+James Smith
+Network Administrator
+812.481.7215 direct
+812.309.9708 cell
+james.smith at jofco.com
+
+Jofco
+Design at Work
+
+The content of this message is strictly confidential and is intended for the exclusive use of the addressee.
+Any unauthorized distribution or copying of this communication is forbidden.
+If you have received this communication by error, contact sender and delete it immediately.
+
+-----Original Message-----
+From: yajhfc-user-bounces at lists.berlios.de [mailto:yajhfc-user-bounces at lists.berlios.de] On Behalf Of Giuseppe Sacco
+Sent: Monday, September 27, 2010 3:14 PM
+To: General discussion about YajHFC
+Subject: Re: [Yajhfc-user] Print only client
+
+Il giorno lun, 27/09/2010 alle 09.15 -0400, James Smith ha scritto:
+> In an ideal world, yes
+>
+> But I don't have the time to create usernames/passwords for every user 
+> I have, make sure they have hylafax rights and then make sure the 
+> passwords sync with AD. Maybe when there is a far simpler and robust
+[...]
+
+why don't you get hylafax use your AD via PAM (winbind) for checking credentials? It should work ouf of the box, did you try it?
+
+Bye,
+Giuseppe
+
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+
+
+From giuseppe at eppesuigoccas.homedns.org  Mon Sep 27 23:05:49 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Mon, 27 Sep 2010 23:05:49 +0200
+Subject: [Yajhfc-user] Print only client
+In-Reply-To: <8220BA48EF3C9A438124F20C9C76571517D22B43@srv01.khdev.corp>
+References: <434F5A135C90894C9F17B859B056AD5C5077D87ECA@jofexg03>
+	<201009260945.18980.jonas.wolz@freenet.de>
+	<8220BA48EF3C9A438124F20C9C76571517D223B4@srv01.khdev.corp>
+	<AANLkTim30AJPywo+9q1W_f=XEV2KCpdO4peiv3UVOYrF@mail.gmail.com>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F3@jofexg03>
+	<1285614860.4772.18.camel@scarafaggio>
+	<434F5A135C90894C9F17B859B056AD5C5078E970F4@jofexg03>
+	<8220BA48EF3C9A438124F20C9C76571517D22B43@srv01.khdev.corp>
+Message-ID: <1285621549.4772.41.camel@scarafaggio>
+
+Il giorno lun, 27/09/2010 alle 20.39 +0000, Klaus Hochlehnert ha
+scritto:
+> Hi,
+> 
+> the thing with security is actually pretty bad.
+> If you only have one fax extension you just have the possibility to secure all or no faxes.
+
+Right, but this doesn't means that no users or all users will have
+access rights to all received faxes.
+
+Using RecvFileMode you may restrict access to groups. Normally faxes are
+owned by uucp:uucp, so 0600 means that only uucp user may access them,
+but if you create a group TrustedFaxReaders, and add all trusted users
+and uucp user to that group, set RecvFileMode to 0660 and change group
+ownership or received faxes in bin/faxrcvd script, you probably get what
+you need.
+
+Bye,
+Giuseppe
+
+
+

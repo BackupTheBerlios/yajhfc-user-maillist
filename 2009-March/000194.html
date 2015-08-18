@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user]  custom filter on received folder
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20%20custom%20filter%20on%20received%20folder&In-Reply-To=%3CD73B7EDAC56B4B459ACB7ABFF0CFAF87072AB920%40kett-xbck-01-pp.snaponglobal.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000197.html">
+   <LINK REL="Next"  HREF="000195.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user]  custom filter on received folder</H1>
+    <B>Lusuardi, Stefano</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20%20custom%20filter%20on%20received%20folder&In-Reply-To=%3CD73B7EDAC56B4B459ACB7ABFF0CFAF87072AB920%40kett-xbck-01-pp.snaponglobal.com%3E"
+       TITLE="[Yajhfc-user]  custom filter on received folder">Stefano.Lusuardi at snapon.com
+       </A><BR>
+    <I>Tue Mar 24 19:56:13 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000197.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+        <LI>Next message: <A HREF="000195.html">[Yajhfc-user] custom filter on received folder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#194">[ date ]</a>
+              <a href="thread.html#194">[ thread ]</a>
+              <a href="subject.html#194">[ subject ]</a>
+              <a href="author.html#194">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+ 
+
+I'm using JBDC connection with MySQL database in  order to centralize
+read/unread indicator and it functions fine.
+
+I've customized a filter &quot;CIDNumber equals to ....&quot;and after that I've
+seen only filtered faxes as expected but when I'm going to open unread
+fax an error comes up.
+
+ 
+
+The user can see the fax but he must close the windows with error
+message every time (it's a little bit fastidious).
+
+ 
+
+This message occurs every first time I'm opening unread faxes and also
+when I'm forcing the fax as unread.
+
+ 
+
+ERROR MESSAGE:
+
+java.lang.NullPointerException
+
+                at
+yajhfc.model.UnReadMyTableModel.getNumberOfUnreadFaxes(UnReadMyTableMode
+l.java:84)
+
+                at
+yajhfc.tray.YajHFCTrayIcon.updateTooltip(YajHFCTrayIcon.java:157)
+
+                at
+yajhfc.tray.YajHFCTrayIcon.readStateChanged(YajHFCTrayIcon.java:242)
+
+                at
+yajhfc.model.UnReadMyTableModel.fireReadStateChanged(UnReadMyTableModel.
+java:113)
+
+                at yajhfc.model.RecvYajJob.setRead(RecvYajJob.java:59)
+
+                at
+yajhfc.MainWin$10.actualActionPerformed(MainWin.java:897)
+
+                at
+yajhfc.util.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAct
+ion.java:65)
+
+                at
+javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+
+                at
+javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+
+                at
+javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+
+                at
+javax.swing.JToggleButton$ToggleButtonModel.setPressed(Unknown Source)
+
+                at javax.swing.AbstractButton.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown
+Source)
+
+                at java.awt.AWTEventMulticaster.mouseReleased(Unknown
+Source)
+
+                at java.awt.Component.processMouseEvent(Unknown Source)
+
+                at javax.swing.JComponent.processMouseEvent(Unknown
+Source)
+
+                at java.awt.Component.processEvent(Unknown Source)
+
+                at java.awt.Container.processEvent(Unknown Source)
+
+                at java.awt.Component.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+
+                at java.awt.LightweightDispatcher.dispatchEvent(Unknown
+Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Window.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at java.awt.EventQueue.dispatchEvent(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.run(Unknown Source)
+
+ 
+
+ 
+
+Thanks in advance for whichever help.
+
+ 
+
+Stefano Lusuardi
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090324/a6a93d1b/attachment.html">https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090324/a6a93d1b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000197.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+	<LI>Next message: <A HREF="000195.html">[Yajhfc-user] custom filter on received folder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#194">[ date ]</a>
+              <a href="thread.html#194">[ thread ]</a>
+              <a href="subject.html#194">[ subject ]</a>
+              <a href="author.html#194">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

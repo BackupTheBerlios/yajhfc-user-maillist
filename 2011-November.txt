@@ -1,0 +1,32 @@
+From jonas at yajhfc.de  Tue Nov  1 15:41:11 2011
+From: jonas at yajhfc.de (Jonas Wolz)
+Date: Tue, 1 Nov 2011 15:41:11 +0100
+Subject: [Yajhfc-user] YajHFC 0.5.1 released
+Message-ID: <201111011541.11635.jonas@yajhfc.de>
+
+I am pleased to announce that version 0.5.1 of YajHFC has been released today.
+
+The available files with download links can be found on the following page:
+http://www.yajhfc.de/downloads/current-version
+
+New features/changes:
+- Added console only add on
+- Changed URLs from yajhfc.berlios.de to www.yajhfc.de
+- Some bugfixes and minor feature enhancements
+
+This is actually a rather minor release (except for the console add-on). 
+The focus is mainly to collect all the bug fixes and small enhancement from 
+the last half year and of course to update all URLs to the new homepage.
+
+
+If you have any questions and/or feedback about the new release, please write 
+to the yajhfc-user at googlegroups.com mailing list or to support at yajhfc.de
+
+For more information you may also take a look at the homepage at:
+http://www.yajhfc.de/
+
+Have Fun,
+Jonas Wolz
+
+
+

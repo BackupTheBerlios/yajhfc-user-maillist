@@ -1,0 +1,1750 @@
+From anne.yajhfc at free.fr  Fri Apr  2 02:33:32 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Fri, 02 Apr 2010 02:33:32 +0200
+Subject: [Yajhfc-user] see the log files generated when sending and
+	receiving faxes
+Message-ID: <4BB53B5C.6000708@free.fr>
+
+Hi,
+
+How to see the log files generated when sending and receiving faxes with 
+YajHFC?
+(those inside /var/spool/hylafax/log named c00000001 something)
+
+It's possible or not?
+=>
+Right click on a line:
+Show
+Save fax ...
+Save faxes as PDF ...
+Copy
+...
+
+another option with log
+
+Thank you
+Anne
+
+
+From jonas.wolz at freenet.de  Sun Apr  4 11:01:19 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 4 Apr 2010 11:01:19 +0200
+Subject: [Yajhfc-user] see the log files generated when sending and
+	receiving faxes
+In-Reply-To: <4BB53B5C.6000708@free.fr>
+References: <4BB53B5C.6000708@free.fr>
+Message-ID: <201004041101.19750.jonas.wolz@freenet.de>
+
+Am Freitag, 2. April 2010 schrieb anne.yajhfc at free.fr:
+> Hi,
+>
+> How to see the log files generated when sending and receiving faxes with
+> YajHFC?
+> (those inside /var/spool/hylafax/log named c00000001 something)
+>
+> It's possible or not?
+> =>
+> Right click on a line:
+> Show
+> Save fax ...
+> Save faxes as PDF ...
+> Copy
+> ...
+>
+> another option with log
+
+This is currently not possible. 
+It should be possible to implement this, though. I will put this on the "wish 
+list".
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sun Apr  4 10:53:36 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 4 Apr 2010 10:53:36 +0200
+Subject: [Yajhfc-user] send date
+In-Reply-To: <f7477b79e38b52b86b2fb4ca5087fd28@localhost>
+References: <f7477b79e38b52b86b2fb4ca5087fd28@localhost>
+Message-ID: <201004041053.37076.jonas.wolz@freenet.de>
+
+Am Mittwoch, 31. M?rz 2010 schrieb Giuseppe Sacco:
+> Hi all,
+> it seems to me that job send date is always left empty (it is the last
+> column on the sent table).
+> Is it a known problem or am I missing something?
+
+I checked this again and it seems that this column really is always empty for 
+sent faxes (because HylaFAX does not supply a value for it). For faxes in 
+the "Transmitting" tab it shows the scheduled time, however.
+
+In general the problem is that there seems to be no documentation from HylaFAX 
+about the different columns/fields, so I have resort to "trial and error" to 
+find out which columns are reasonable to display and which are not.
+
+So, in future version I will probably change the default layout of the Sent 
+tab to not include this column any more.
+
+
+Thanks
+Jonas
+
+
+
+From anne.yajhfc at free.fr  Sun Apr  4 20:11:01 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sun, 04 Apr 2010 20:11:01 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+Message-ID: <4BB8D635.2050203@free.fr>
+
+Hi,
+I sent a fax with a postscript file (. ps)
+The fax, which was received, has many small squares.
+The fax is illegible.
+
+Can you help me?
+Anne
+
+
+From anne.yajhfc at free.fr  Mon Apr  5 00:38:28 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Mon, 05 Apr 2010 00:38:28 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+In-Reply-To: <4BB8D635.2050203@free.fr>
+References: <4BB8D635.2050203@free.fr>
+Message-ID: <4BB914E4.4060709@free.fr>
+
+anne.yajhfc at free.fr a ?crit :
+> Hi,
+> I sent a fax with a postscript file (. ps)
+> The fax, which was received, has many small squares.
+> The fax is illegible.
+> 
+
+-----
+gs -q -dBATCH -dSAFER -dNOPAUSE -sDEVICE=pdfwrite 
+-sOutputFile=/home/anne/Documents/amdocq/submit_ama2.pdf -sPAPERSIZE=a4 
+-r196 -dPDFSETTINGS=/default -dDownsampleColorImages=true 
+-dDownsampleGrayImages=true -dDownsampleMonoImages=true 
+-dMonoImageDownsampleType=/Bicubic -dGrayImageDownsampleType=/Bicubic 
+-dColorImageDownsampleType=/Bicubic -dMonoImageResolution=196 
+-dGrayImageResolution=196 -dColorImageResolution=196 -dOptimize=true -c 
+.setpdfwrite -f /home/anne/Documents/amdocq/doc122.ps
+-----
+
+With this command, on my client computer, with ghostscript (version 
+8.70), the file 'submit_ama2.pdf is OK
+
+With this same command, on my server, with ghostscript-7.07-33.11.el4, 
+the file 'submit_ama2.pdf' is not ok => lots of small squares
+
+How to solve the problem?
+
+Anne
+
+
+From anne.yajhfc at free.fr  Tue Apr  6 14:08:25 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Tue, 06 Apr 2010 14:08:25 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+In-Reply-To: <4BB914E4.4060709@free.fr>
+References: <4BB8D635.2050203@free.fr> <4BB914E4.4060709@free.fr>
+Message-ID: <4BBB2439.9040600@free.fr>
+
+anne.yajhfc at free.fr a ?crit :
+> anne.yajhfc at free.fr a ?crit :
+>> Hi,
+>> I sent a fax with a postscript file (. ps)
+>> The fax, which was received, has many small squares.
+>> The fax is illegible.
+>>
+> 
+> -----
+> gs -q -dBATCH -dSAFER -dNOPAUSE -sDEVICE=pdfwrite 
+> -sOutputFile=/home/anne/Documents/amdocq/submit_ama2.pdf -sPAPERSIZE=a4 
+> -r196 -dPDFSETTINGS=/default -dDownsampleColorImages=true 
+> -dDownsampleGrayImages=true -dDownsampleMonoImages=true 
+> -dMonoImageDownsampleType=/Bicubic -dGrayImageDownsampleType=/Bicubic 
+> -dColorImageDownsampleType=/Bicubic -dMonoImageResolution=196 
+> -dGrayImageResolution=196 -dColorImageResolution=196 -dOptimize=true -c 
+> .setpdfwrite -f /home/anne/Documents/amdocq/doc122.ps
+> -----
+> 
+> With this command, on my client computer, with ghostscript (version 
+> 8.70), the file 'submit_ama2.pdf is OK
+> 
+> With this same command, on my server, with ghostscript-7.07-33.11.el4, 
+> the file 'submit_ama2.pdf' is not ok => lots of small squares
+
+
+If I send the file itself without coverpage without another file, the 
+page of the fax has not small squares.
+------
+6 avr. 2010 12:37:12 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: -> jparm doneop archive
+6 avr. 2010 12:37:12 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: 213 DONEOP set to "archive".
+6 avr. 2010 12:37:12 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+6 avr. 2010 12:37:12 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Telechargement du document
+6 avr. 2010 12:37:12 gnu.inet.ftp.FtpClientProtocol type
+FIN: -> type I
+6 avr. 2010 12:37:12 gnu.inet.ftp.FtpClientProtocol type
+FIN: 200 Type set to Image.
+------
+
+
+If I send the file  with coverpage without another file, the first page 
+of the fax is good (coverpage). The second page of the fax has many 
+small squares.
+------
+6 avr. 2010 12:55:19 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: -> jparm doneop archive
+6 avr. 2010 12:55:19 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: 213 DONEOP set to "archive".
+6 avr. 2010 12:55:19 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+6 avr. 2010 12:55:19 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Creation de PDF depuis le document a envoyer
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: Ghostscript command line:
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: gs
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -q
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dBATCH
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dSAFER
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dNOPAUSE
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sDEVICE=pdfwrite
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sOutputFile=/tmp/submit7959573225483024442.pdf
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sPAPERSIZE=a4
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -r196
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dPDFSETTINGS=/default
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleColorImages=true
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleGrayImages=true
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleMonoImages=true
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dMonoImageDownsampleType=/Bicubic
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dGrayImageDownsampleType=/Bicubic
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dColorImageDownsampleType=/Bicubic
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dMonoImageResolution=196
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dGrayImageResolution=196
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dColorImageResolution=196
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dOptimize=true
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -c
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: .setpdfwrite
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -f
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: /tmp/cover771891022983898718.ps
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -f
+6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: /home/anne/Documents/hylafax/install_imprimante_sme_anc.ps
+6 avr. 2010 12:55:20 yajhfc.HylaClientManager beginServerTransaction
+FIN: HylaClientManager -> beginServerTransaction: 2
+6 avr. 2010 12:55:20 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: T?l?chargement PDF
+6 avr. 2010 12:55:20 gnu.inet.ftp.FtpClientProtocol type
+FIN: -> type I
+6 avr. 2010 12:55:20 gnu.inet.ftp.FtpClientProtocol type
+FIN: 200 Type set to Image.
+------
+
+
+If I send the file,  without coverpage, with another file, the first 
+page of the fax is good (pdf). The second page of the fax has many small 
+squares (ps).
+------
+6 avr. 2010 13:53:51 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: -> jparm doneop archive
+6 avr. 2010 13:53:51 gnu.hylafax.HylaFAXClientProtocol jparm
+FIN: 213 DONEOP set to "archive".
+6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Convertion /ho...stall_imprimante_sme.pdf
+6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: Creation de PDF depuis le document a envoyer
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: Ghostscript command line:
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: gs
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -q
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dBATCH
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dSAFER
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dNOPAUSE
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sDEVICE=pdfwrite
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sOutputFile=/tmp/submit8164342168071858562.pdf
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -sPAPERSIZE=a4
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -r196
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dPDFSETTINGS=/default
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleColorImages=true
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleGrayImages=true
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dDownsampleMonoImages=true
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dMonoImageDownsampleType=/Bicubic
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dGrayImageDownsampleType=/Bicubic
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dColorImageDownsampleType=/Bicubic
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dMonoImageResolution=196
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dGrayImageResolution=196
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dColorImageResolution=196
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -dOptimize=true
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -c
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: .setpdfwrite
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -f
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: /home/anne/Documents/hylafax/install_imprimante_sme.pdf
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: -f
+6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter 
+convertMultiplePSorPDFFiles
+FIN: /home/anne/Documents/hylafax/install_imprimante_sme_anc.ps
+6 avr. 2010 13:53:51 yajhfc.HylaClientManager beginServerTransaction
+FIN: HylaClientManager -> beginServerTransaction: 2
+6 avr. 2010 13:53:52 yajhfc.util.ProgressWorker$NoteUpdater <init>
+FIN: ProgressWorker setNote: T?l?chargement PDF
+6 avr. 2010 13:53:52 gnu.inet.ftp.FtpClientProtocol type
+FIN: -> type I
+6 avr. 2010 13:53:52 gnu.inet.ftp.FtpClientProtocol type
+FIN: 200 Type set to Image.
+------
+
+The first don't use GS (ghostscript)
+
+> 
+> How to solve the problem?
+> 
+> Anne
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+From jonas.wolz at freenet.de  Tue Apr  6 18:06:09 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 6 Apr 2010 18:06:09 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+In-Reply-To: <4BBB2439.9040600@free.fr>
+References: <4BB8D635.2050203@free.fr> <4BB914E4.4060709@free.fr>
+	<4BBB2439.9040600@free.fr>
+Message-ID: <201004061806.09697.jonas.wolz@freenet.de>
+
+Hi,
+
+thanks for your extensive tests!
+
+Could you send me an example PostScript file where this problem happens?
+
+Currently I think it could be some problem with GhostScript fonts (but this is 
+just a quick guess, so it could equally be some other problem...)
+
+Thanks
+Jonas
+
+Am Dienstag, 6. April 2010 schrieb anne.yajhfc at free.fr:
+> anne.yajhfc at free.fr a ?crit :
+> > anne.yajhfc at free.fr a ?crit :
+> >> Hi,
+> >> I sent a fax with a postscript file (. ps)
+> >> The fax, which was received, has many small squares.
+> >> The fax is illegible.
+> >
+> > -----
+> > gs -q -dBATCH -dSAFER -dNOPAUSE -sDEVICE=pdfwrite
+> > -sOutputFile=/home/anne/Documents/amdocq/submit_ama2.pdf -sPAPERSIZE=a4
+> > -r196 -dPDFSETTINGS=/default -dDownsampleColorImages=true
+> > -dDownsampleGrayImages=true -dDownsampleMonoImages=true
+> > -dMonoImageDownsampleType=/Bicubic -dGrayImageDownsampleType=/Bicubic
+> > -dColorImageDownsampleType=/Bicubic -dMonoImageResolution=196
+> > -dGrayImageResolution=196 -dColorImageResolution=196 -dOptimize=true -c
+> > .setpdfwrite -f /home/anne/Documents/amdocq/doc122.ps
+> > -----
+> >
+> > With this command, on my client computer, with ghostscript (version
+> > 8.70), the file 'submit_ama2.pdf is OK
+> >
+> > With this same command, on my server, with ghostscript-7.07-33.11.el4,
+> > the file 'submit_ama2.pdf' is not ok => lots of small squares
+>
+> If I send the file itself without coverpage without another file, the
+> page of the fax has not small squares.
+> ------
+> 6 avr. 2010 12:37:12 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: -> jparm doneop archive
+> 6 avr. 2010 12:37:12 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: 213 DONEOP set to "archive".
+> 6 avr. 2010 12:37:12 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+> 6 avr. 2010 12:37:12 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Telechargement du document
+> 6 avr. 2010 12:37:12 gnu.inet.ftp.FtpClientProtocol type
+> FIN: -> type I
+> 6 avr. 2010 12:37:12 gnu.inet.ftp.FtpClientProtocol type
+> FIN: 200 Type set to Image.
+> ------
+>
+>
+> If I send the file  with coverpage without another file, the first page
+> of the fax is good (coverpage). The second page of the fax has many
+> small squares.
+> ------
+> 6 avr. 2010 12:55:19 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: -> jparm doneop archive
+> 6 avr. 2010 12:55:19 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: 213 DONEOP set to "archive".
+> 6 avr. 2010 12:55:19 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+> 6 avr. 2010 12:55:19 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Creation de PDF depuis le document a envoyer
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: Ghostscript command line:
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: gs
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -q
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dBATCH
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dSAFER
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dNOPAUSE
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sDEVICE=pdfwrite
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sOutputFile=/tmp/submit7959573225483024442.pdf
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sPAPERSIZE=a4
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -r196
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dPDFSETTINGS=/default
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleColorImages=true
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleGrayImages=true
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleMonoImages=true
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dMonoImageDownsampleType=/Bicubic
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dGrayImageDownsampleType=/Bicubic
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dColorImageDownsampleType=/Bicubic
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dMonoImageResolution=196
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dGrayImageResolution=196
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dColorImageResolution=196
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dOptimize=true
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -c
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: .setpdfwrite
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -f
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: /tmp/cover771891022983898718.ps
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -f
+> 6 avr. 2010 12:55:19 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: /home/anne/Documents/hylafax/install_imprimante_sme_anc.ps
+> 6 avr. 2010 12:55:20 yajhfc.HylaClientManager beginServerTransaction
+> FIN: HylaClientManager -> beginServerTransaction: 2
+> 6 avr. 2010 12:55:20 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: T?l?chargement PDF
+> 6 avr. 2010 12:55:20 gnu.inet.ftp.FtpClientProtocol type
+> FIN: -> type I
+> 6 avr. 2010 12:55:20 gnu.inet.ftp.FtpClientProtocol type
+> FIN: 200 Type set to Image.
+> ------
+>
+>
+> If I send the file,  without coverpage, with another file, the first
+> page of the fax is good (pdf). The second page of the fax has many small
+> squares (ps).
+> ------
+> 6 avr. 2010 13:53:51 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: -> jparm doneop archive
+> 6 avr. 2010 13:53:51 gnu.hylafax.HylaFAXClientProtocol jparm
+> FIN: 213 DONEOP set to "archive".
+> 6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Convertion /ho...stall_imprimante_sme.pdf
+> 6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Convertion /ho...ll_imprimante_sme_anc.ps
+> 6 avr. 2010 13:53:51 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: Creation de PDF depuis le document a envoyer
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: Ghostscript command line:
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: gs
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -q
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dBATCH
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dSAFER
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dNOPAUSE
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sDEVICE=pdfwrite
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sOutputFile=/tmp/submit8164342168071858562.pdf
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -sPAPERSIZE=a4
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -r196
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dPDFSETTINGS=/default
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleColorImages=true
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleGrayImages=true
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dDownsampleMonoImages=true
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dMonoImageDownsampleType=/Bicubic
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dGrayImageDownsampleType=/Bicubic
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dColorImageDownsampleType=/Bicubic
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dMonoImageResolution=196
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dGrayImageResolution=196
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dColorImageResolution=196
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -dOptimize=true
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -c
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: .setpdfwrite
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -f
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: /home/anne/Documents/hylafax/install_imprimante_sme.pdf
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: -f
+> 6 avr. 2010 13:53:51 yajhfc.file.PDFMultiFileConverter
+> convertMultiplePSorPDFFiles
+> FIN: /home/anne/Documents/hylafax/install_imprimante_sme_anc.ps
+> 6 avr. 2010 13:53:51 yajhfc.HylaClientManager beginServerTransaction
+> FIN: HylaClientManager -> beginServerTransaction: 2
+> 6 avr. 2010 13:53:52 yajhfc.util.ProgressWorker$NoteUpdater <init>
+> FIN: ProgressWorker setNote: T?l?chargement PDF
+> 6 avr. 2010 13:53:52 gnu.inet.ftp.FtpClientProtocol type
+> FIN: -> type I
+> 6 avr. 2010 13:53:52 gnu.inet.ftp.FtpClientProtocol type
+> FIN: 200 Type set to Image.
+> ------
+>
+> The first don't use GS (ghostscript)
+>
+> > How to solve the problem?
+> >
+> > Anne
+> > _______________________________________________
+> > Yajhfc-user mailing list
+> > Yajhfc-user at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+
+
+From jonas.wolz at freenet.de  Wed Apr  7 18:47:36 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 7 Apr 2010 18:47:36 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+In-Reply-To: <4BBB72AD.1030502@free.fr>
+References: <4BB8D635.2050203@free.fr>
+	<201004061806.09697.jonas.wolz@freenet.de>
+	<4BBB72AD.1030502@free.fr>
+Message-ID: <201004071847.36743.jonas.wolz@freenet.de>
+
+Am Dienstag, 6. April 2010 schrieb anne.yajhfc at free.fr:
+> Jonas Wolz a ?crit :
+> > Hi,
+> >
+> > thanks for your extensive tests!
+> >
+> > Could you send me an example PostScript file where this problem happens?
+> >
+> > Currently I think it could be some problem with GhostScript fonts (but
+> > this is just a quick guess, so it could equally be some other problem...)
+>
+> I have my 'mail to fax' made with perl.
+> This is my log :
+>
+> /usr/bin/sendfax  -A -n -D -W 9876543210 -f 'anne <anne at xxxxxxx.com>'
+> -d 0123456789 home/tmp/repfax11428/page_garde.txt
+> home/tmp/repfax11428/install_imprimante_sme.pdf
+> home/tmp/repfax11428/install_imprimante_sme_anc.ps
+>
+> sendfax can have multiple files to fax...
+>
+> The page of the fax has not many small squares.
+
+The difference between sendfax and YajHFC is that YajHFC (depending on the 
+settings) creates one PDF file from the input using GhostScript on the 
+client, while sendfax uploads the multiple files unconverted.
+
+You can get the same behaviour as sendfax from YajHFC if you go to the 
+Options->"Paths and Viewers" and select "Multiple files; no conversion" from 
+the "Send multiple files as" combo box. With that option, YajHFC will never 
+invoke gs and upload the PS/PDF files to HylaFAX server as they are.
+
+Apart from that, I think this is certainly a GhostScript problem since YajHFC 
+does not modify the PostScript or PDF itself, but only passes it through 
+GhostScript to create one PDF file.
+
+I was unable to reproduce the problem here so far, however, so I cannot say 
+more at the moment...
+
+
+Hope that helps
+Jonas
+
+
+From anne.yajhfc at free.fr  Tue Apr 13 17:11:52 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Tue, 13 Apr 2010 17:11:52 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file
+In-Reply-To: <201004071847.36743.jonas.wolz@freenet.de>
+References: <4BB8D635.2050203@free.fr>
+	<201004061806.09697.jonas.wolz@freenet.de>
+	<4BBB72AD.1030502@free.fr>
+	<201004071847.36743.jonas.wolz@freenet.de>
+Message-ID: <4BC489B8.7000003@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Dienstag, 6. April 2010 schrieb anne.yajhfc at free.fr:
+>> Jonas Wolz a ?crit :
+>>> Hi,
+>>>
+>>> thanks for your extensive tests!
+>>>
+>>> Could you send me an example PostScript file where this problem happens?
+>>>
+>>> Currently I think it could be some problem with GhostScript fonts (but
+>>> this is just a quick guess, so it could equally be some other problem...)
+>> I have my 'mail to fax' made with perl.
+>> This is my log :
+>>
+>> /usr/bin/sendfax  -A -n -D -W 9876543210 -f 'anne <anne at xxxxxxx.com>'
+>> -d 0123456789 home/tmp/repfax11428/page_garde.txt
+>> home/tmp/repfax11428/install_imprimante_sme.pdf
+>> home/tmp/repfax11428/install_imprimante_sme_anc.ps
+>>
+>> sendfax can have multiple files to fax...
+>>
+>> The page of the fax has not many small squares.
+> 
+> The difference between sendfax and YajHFC is that YajHFC (depending on the 
+> settings) creates one PDF file from the input using GhostScript on the 
+> client, while sendfax uploads the multiple files unconverted.
+> 
+> You can get the same behaviour as sendfax from YajHFC if you go to the 
+> Options->"Paths and Viewers" and select "Multiple files; no conversion" from 
+> the "Send multiple files as" combo box. With that option, YajHFC will never 
+> invoke gs and upload the PS/PDF files to HylaFAX server as they are.
+> 
+> Apart from that, I think this is certainly a GhostScript problem since YajHFC 
+> does not modify the PostScript or PDF itself, but only passes it through 
+> GhostScript to create one PDF file.
+> 
+> I was unable to reproduce the problem here so far, however, so I cannot say 
+> more at the moment...
+> 
+
+I select:
+Options->"Paths and Viewers" and select "Multiple files; no conversion"
+now, It's good.
+
+I have several files in /var/spool/hylafax/docq.
+There are not conversions in a single file.
+Thanks
+
+I am giving the problem I encountered:
+I have gs 8 on my client computer.
+I have gs 7 on my server (with hylafax).
+If a conversion is requested in a single file with yajhfc, the 
+conversion is done on the client with gs 8.
+The server has  gs 7. The server doesn't know  read correctly the  sent 
+file  by yajhfc.
+
+
+Anne
+
+
+From anne.yajhfc at free.fr  Tue Apr 13 23:07:42 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Tue, 13 Apr 2010 23:07:42 +0200
+Subject: [Yajhfc-user] How to delete a fax sent or received?
+Message-ID: <4BC4DD1E.301@free.fr>
+
+Hi,
+
+How to delete a fax sent or received?
+
+I have an error message:
+-----
+error deleting the fax "fax000000035.tif"
+550 recvq/fax000000035.tif: Operation not permitted.
+
+details
+550 recvq/fax000000035.tif: Operation not permitted.
+
+	at  gnu.inet.ftp.FtpClientProtocol.dele(FtpClientProtocol.java:453)
+	at yajhfc.model.RecvYajJob.delete(RecvYajJob.java:86)
+	at yajhfc.MainWin$DeleteWorker.doWork(MainWin.java:247)
+	at yajhfc.util.ProgressWorker.run(ProgressWorker.java:178)
+------
+
+Anne
+
+
+From jonas.wolz at freenet.de  Wed Apr 14 18:25:08 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 14 Apr 2010 18:25:08 +0200
+Subject: [Yajhfc-user] [Yajhfc-announce] yajhfc and Excel Integration
+In-Reply-To: <OFF6905098.8A048BAC-ON80257703.0041E022-80257703.00421799@CDCLN05.LVS.DUPONT.COM>
+References: <OFF6905098.8A048BAC-ON80257703.0041E022-80257703.00421799@CDCLN05.LVS.DUPONT.COM>
+Message-ID: <201004141825.08247.jonas.wolz@freenet.de>
+
+Am Montag, 12. April 2010 schrieb Stephen Kerr:
+> Is it possible for MS Excel to automatically send parameters to the Yajhfc
+> client i.e. Fax Number?
+>
+> I have Excel templates that have different fax numbers, and it would
+> enable me to fax them without having to input the fax number each time.
+
+Please do not post such questions to the yajhfc-announce list, but use 
+yajhfc-user instead.
+
+Now to your question:
+Currently this is not possible (it is very difficult to reliably extract 
+information from PostScript documents produced by a printer driver).
+
+It should be possible to write an Excel macro passing that information to 
+YajHFC, however, if you find a way to convert the Excel sheet to 
+PDF/PostScript using the macro.
+Then you would start YajHFC and pass both the document and the fax number on 
+the command line.
+
+Hope that helps
+Jonas
+
+
+
+From anne-yajhfc at linux-nuts.com  Wed Apr 14 18:36:03 2010
+From: anne-yajhfc at linux-nuts.com (anne-yajhfc)
+Date: Wed, 14 Apr 2010 18:36:03 +0200
+Subject: [Yajhfc-user] How to delete a fax sent or received?
+In-Reply-To: <4BC4DD1E.301@free.fr>
+References: <4BC4DD1E.301@free.fr>
+Message-ID: <4BC5EEF3.3000601@linux-nuts.com>
+
+anne.yajhfc at free.fr a ?crit :
+> Hi,
+> 
+> How to delete a fax sent or received?
+> 
+> I have an error message:
+> -----
+> error deleting the fax "fax000000035.tif"
+> 550 recvq/fax000000035.tif: Operation not permitted.
+> 
+> details
+> 550 recvq/fax000000035.tif: Operation not permitted.
+> 
+>     at  gnu.inet.ftp.FtpClientProtocol.dele(FtpClientProtocol.java:453)
+>     at yajhfc.model.RecvYajJob.delete(RecvYajJob.java:86)
+>     at yajhfc.MainWin$DeleteWorker.doWork(MainWin.java:247)
+>     at yajhfc.util.ProgressWorker.run(ProgressWorker.java:178)
+> ------
+> 
+
+I have found for delete any fax.
+I must be admin.
+
+I must create a hylafas user with the option '-a administrator password'.
+This user can delete any  incoming and outgoing fax.
+
+I would like know how use option  -f  and  -u
+
+Anne
+
+
+
+From jonas.wolz at freenet.de  Wed Apr 14 18:37:38 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 14 Apr 2010 18:37:38 +0200
+Subject: [Yajhfc-user] How to delete a fax sent or received?
+In-Reply-To: <4BC4DD1E.301@free.fr>
+References: <4BC4DD1E.301@free.fr>
+Message-ID: <201004141837.38347.jonas.wolz@freenet.de>
+
+Am Dienstag, 13. April 2010 schrieb anne.yajhfc at free.fr:
+> Hi,
+>
+> How to delete a fax sent or received?
+>
+> I have an error message:
+> -----
+> error deleting the fax "fax000000035.tif"
+> 550 recvq/fax000000035.tif: Operation not permitted.
+>
+> details
+> 550 recvq/fax000000035.tif: Operation not permitted.
+>
+> 	at  gnu.inet.ftp.FtpClientProtocol.dele(FtpClientProtocol.java:453)
+> 	at yajhfc.model.RecvYajJob.delete(RecvYajJob.java:86)
+> 	at yajhfc.MainWin$DeleteWorker.doWork(MainWin.java:247)
+> 	at yajhfc.util.ProgressWorker.run(ProgressWorker.java:178)
+> ------
+
+This problem indicates a permission problem on the HylaFAX server.
+To be able to delete a fax, the user logged in to the server must have "write" 
+rights on the recvq directory or be in admin mode.
+
+HylaFAX uses the same *UNIX* user for all users, the only difference can be in 
+the UNIX group. 
+Which group a user uses is set by the "uid" field in the file hosts.hfaxd (-u 
+parameter of faxadduser). The HylaFAX uid that is set there corresponds to 
+UNIX gids (group IDs).
+
+For you that means, you will have the following choices:
+1. Set the group of the recvq directory to the gid that corresponds to your 
+HylaFAX users
+2. Set the permissions of the recvq directory to 0777 if any user should be 
+allowed to delete faxes.
+3. Go into admin mode if you want to delete faxes.
+
+If any reader of this list knows of another possibility, please let me know.
+
+Hope that helps
+Jonas
+
+
+From anne.yajhfc at free.fr  Thu Apr 15 21:21:06 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Thu, 15 Apr 2010 21:21:06 +0200
+Subject: [Yajhfc-user] How to delete a fax sent or received?
+In-Reply-To: <4BC5EEF3.3000601@linux-nuts.com>
+References: <4BC4DD1E.301@free.fr> <4BC5EEF3.3000601@linux-nuts.com>
+Message-ID: <4BC76722.7020607@free.fr>
+
+anne-yajhfc a ?crit :
+> anne.yajhfc at free.fr a ?crit :
+>> Hi,
+>>
+>> How to delete a fax sent or received?
+>>
+>> I have an error message:
+>> -----
+>> error deleting the fax "fax000000035.tif"
+>> 550 recvq/fax000000035.tif: Operation not permitted.
+>>
+>> details
+>> 550 recvq/fax000000035.tif: Operation not permitted.
+>>
+>>     at  gnu.inet.ftp.FtpClientProtocol.dele(FtpClientProtocol.java:453)
+>>     at yajhfc.model.RecvYajJob.delete(RecvYajJob.java:86)
+>>     at yajhfc.MainWin$DeleteWorker.doWork(MainWin.java:247)
+>>     at yajhfc.util.ProgressWorker.run(ProgressWorker.java:178)
+>> ------
+>>
+> 
+> I have found for delete any fax.
+> I must be admin.
+> 
+> I must create a hylafas user with the option '-a administrator password'.
+> This user can delete any  incoming and outgoing fax.
+> 
+> I would like know how use option  -f  and  -u
+> 
+
+I have found for option -f.
+
+faxadduser -a mdp_admin -f /var/spool/hylafax/etc/new_file  -p mdp_user 
+-u 60004 name_user
+
+# cat /var/spool/hylafax/etc/new_file
+^name_user@:60004:kN622pUhrUqxU:D0t1.4AV1Tkyo
+
+Anne
+
+
+From anne.yajhfc at free.fr  Sat Apr 17 01:42:44 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sat, 17 Apr 2010 01:42:44 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf file
+In-Reply-To: <4BC76722.7020607@free.fr>
+References: <4BC4DD1E.301@free.fr> <4BC5EEF3.3000601@linux-nuts.com>
+	<4BC76722.7020607@free.fr>
+Message-ID: <4BC8F5F4.7050005@free.fr>
+
+Hi,
+
+I sent a  postscript file and a pdf file.
+
+In hylafax/docq, I have doc197.ps and doc198.ps
+
+In hylafax/doneq/q164
+!postscript:0::docq/doc197.ps
+!pdf:0::docq/doc198.ps
+
+The last line has a problem : pdf and doc198.ps
+
+Anne
+
+
+From giuseppe at eppesuigoccas.homedns.org  Sat Apr 17 09:11:52 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Sat, 17 Apr 2010 09:11:52 +0200
+Subject: [Yajhfc-user] How to delete a fax sent or received?
+In-Reply-To: <4BC4DD1E.301@free.fr>
+References: <4BC4DD1E.301@free.fr>
+Message-ID: <1271488312.9760.23.camel@scarafaggio>
+
+Il giorno mar, 13/04/2010 alle 23.07 +0200, anne.yajhfc at free.fr ha
+scritto:
+> Hi,
+> 
+> How to delete a fax sent or received?
+
+sent faxes are owned by the sender, while received faxes are owned by
+the "administrative" user.
+
+In hylafax server, you may play with a few parameters:
+RecvFileMode:           0640
+LogFileMode:            0640
+
+in order to give other authorization on these files.
+
+The key point is to create a unix group on hylafax server, and add all
+users to that group.
+
+Bye,
+Giuseppe
+
+
+
+From jonas.wolz at freenet.de  Sat Apr 17 16:48:52 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 17 Apr 2010 16:48:52 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.3 released
+Message-ID: <201004171648.53802.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.3 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_3.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_3-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_3-setup.exe
+
+RPM packages:
+http://prdownload.berlios.de/yajhfc/yajhfc-0.4.3-1.noarch.rpm
+http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.4.3-1.noarch.rpm
+
+APT line to add to /etc/apt/sources.list for Debian/Ubuntu packages:
+deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+More information about the .deb packages:
+http://prdownload.berlios.de/yajhfc/deb-packages-info-0.4.3.txt
+
+
+New features/changes:
+- Chinese translation added
+- "View log" feature for sent faxes
+- Tray notification message can be turned off
+- Filters for Phone book items
+- "Extended resolution" support (i.e. USEXVRES=yes)
+- New command line parameter: --modem
+- Support for TCP/IP and named pipe virtual printer port
+- Support for default/override configuration in /etc/yajhfc
+- Several bug fixes
+- RPM and DEB packages for YajHFC are available now
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas
+
+
+From giuseppe at eppesuigoccas.homedns.org  Mon Apr 19 10:16:12 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Mon, 19 Apr 2010 10:16:12 +0200
+Subject: [Yajhfc-user] CC in FAX cover
+Message-ID: <1271664972.4330.37.camel@scarafaggio>
+
+Hi all,
+whenever I send a FAX with multiple recipients, a different cover page
+is created for each recipient. I would like to have a single cover page,
+including all recipient names, sent as cover for each fax.
+This is something similar to email: when I send an email with many CC,
+the email message include a list of all CC recipients.
+
+Is this possibile with YajHFc?
+
+Thanks,
+Giuseppe
+
+
+
+From Stephen.Kerr at GBR.dupont.com  Mon Apr 19 17:56:16 2010
+From: Stephen.Kerr at GBR.dupont.com (Stephen Kerr)
+Date: Mon, 19 Apr 2010 16:56:16 +0100
+Subject: [Yajhfc-user] Allow an admin to view ALL sent faxes
+Message-ID: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+
+How do I enable a Hylafax user to be able to view ALL faxes, regardless of 
+who sent them?
+I have JobProtection set to 0440.
+
+At the moment each user can only see their own.  That's fine for most, but 
+I want an overall power user who can see all faxes.
+
+I have created a user using faxadduser with -p and -a options, but makes 
+no difference when I sign into a client as this user.
+
+
+thanks,
+Stephen
+
+This communication is for use by the intended recipient and contains
+information that may be Privileged, confidential or copyrighted under
+applicable law. If you are not the intended recipient, you are hereby
+formally notified that any use, copying or distribution of this e-mail,
+in whole or in part, is strictly prohibited. Please notify the sender by
+return e-mail and delete this e-mail from your system. Unless explicitly
+and conspicuously designated as "E-Contract Intended", this e-mail does
+not constitute a contract offer, a contract amendment, or an acceptance
+of a contract offer. This e-mail does not constitute a consent to the
+use of sender's contact information for direct marketing purposes or for
+transfers of data to third parties.
+
+Francais Deutsch Italiano  Espanol  Portugues  Japanese  Chinese  Korean
+
+           http://www.DuPont.com/corp/email_disclaimer.html
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100419/c5c61ce1/attachment.html>
+
+From jonas.wolz at freenet.de  Mon Apr 19 18:31:04 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 19 Apr 2010 18:31:04 +0200
+Subject: [Yajhfc-user] Allow an admin to view ALL sent faxes
+In-Reply-To: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+References: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+Message-ID: <201004191831.04357.jonas.wolz@freenet.de>
+
+Am Montag, 19. April 2010 schrieb Stephen Kerr:
+> How do I enable a Hylafax user to be able to view ALL faxes, regardless of
+> who sent them?
+> I have JobProtection set to 0440.
+>
+> At the moment each user can only see their own.  That's fine for most, but
+> I want an overall power user who can see all faxes.
+>
+> I have created a user using faxadduser with -p and -a options, but makes
+> no difference when I sign into a client as this user.
+
+Does it work when you actually go into admin mode with that user? 
+(Extras->Admin mode)
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Mon Apr 19 18:32:30 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 19 Apr 2010 18:32:30 +0200
+Subject: [Yajhfc-user] CC in FAX cover
+In-Reply-To: <1271664972.4330.37.camel@scarafaggio>
+References: <1271664972.4330.37.camel@scarafaggio>
+Message-ID: <201004191832.30123.jonas.wolz@freenet.de>
+
+Am Montag, 19. April 2010 schrieb Giuseppe Sacco:
+> Hi all,
+> whenever I send a FAX with multiple recipients, a different cover page
+> is created for each recipient. I would like to have a single cover page,
+> including all recipient names, sent as cover for each fax.
+> This is something similar to email: when I send an email with many CC,
+> the email message include a list of all CC recipients.
+>
+> Is this possibile with YajHFc?
+
+Currently this is not possible.
+
+I will put it on the "wish list" for future feature enhancements.
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Mon Apr 19 18:35:07 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 19 Apr 2010 18:35:07 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+	file
+In-Reply-To: <4BC8F5F4.7050005@free.fr>
+References: <4BC4DD1E.301@free.fr> <4BC76722.7020607@free.fr>
+	<4BC8F5F4.7050005@free.fr>
+Message-ID: <201004191835.07823.jonas.wolz@freenet.de>
+
+Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+> Hi,
+>
+> I sent a  postscript file and a pdf file.
+>
+> In hylafax/docq, I have doc197.ps and doc198.ps
+>
+> In hylafax/doneq/q164
+> !postscript:0::docq/doc197.ps
+> !pdf:0::docq/doc198.ps
+>
+> The last line has a problem : pdf and doc198.ps
+
+Does YajHFC 0.4.3 still have this problem?
+
+(I fixed a bug there which could be related to this.)
+
+Jonas.
+
+
+From anne.yajhfc at free.fr  Mon Apr 19 19:09:25 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Mon, 19 Apr 2010 19:09:25 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+ file
+In-Reply-To: <201004191835.07823.jonas.wolz@freenet.de>
+References: <4BC4DD1E.301@free.fr> <4BC76722.7020607@free.fr>
+	<4BC8F5F4.7050005@free.fr>
+	<201004191835.07823.jonas.wolz@freenet.de>
+Message-ID: <4BCC8E45.6070200@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+>> Hi,
+>>
+>> I sent a  postscript file and a pdf file.
+>>
+>> In hylafax/docq, I have doc197.ps and doc198.ps
+>>
+>> In hylafax/doneq/q164
+>> !postscript:0::docq/doc197.ps
+>> !pdf:0::docq/doc198.ps
+>>
+>> The last line has a problem : pdf and doc198.ps
+> 
+> Does YajHFC 0.4.3 still have this problem?
+> 
+> (I fixed a bug there which could be related to this.)
+> 
+How do I update YajHFC in 0.4.3?
+
+I should removed the version 0.4.2 or not?
+
+Thank you
+Anne
+
+
+From jonas.wolz at freenet.de  Mon Apr 19 19:27:25 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 19 Apr 2010 19:27:25 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+	file
+In-Reply-To: <4BCC8E45.6070200@free.fr>
+References: <4BC4DD1E.301@free.fr> <201004191835.07823.jonas.wolz@freenet.de>
+	<4BCC8E45.6070200@free.fr>
+Message-ID: <201004191927.26060.jonas.wolz@freenet.de>
+
+Am Montag, 19. April 2010 schrieb anne.yajhfc at free.fr:
+> Jonas Wolz a ?crit :
+> > Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+> >> Hi,
+> >>
+> >> I sent a  postscript file and a pdf file.
+> >>
+> >> In hylafax/docq, I have doc197.ps and doc198.ps
+> >>
+> >> In hylafax/doneq/q164
+> >> !postscript:0::docq/doc197.ps
+> >> !pdf:0::docq/doc198.ps
+> >>
+> >> The last line has a problem : pdf and doc198.ps
+> >
+> > Does YajHFC 0.4.3 still have this problem?
+> >
+> > (I fixed a bug there which could be related to this.)
+>
+> How do I update YajHFC in 0.4.3?
+>
+> I should removed the version 0.4.2 or not?
+
+Usually you can just install the new version over the old one (basically it is 
+sufficient to just replace yajhfc.jar with a new version in most cases).
+
+Hope that helps 
+Jonas
+
+
+From anne.yajhfc at free.fr  Mon Apr 19 21:01:56 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Mon, 19 Apr 2010 21:01:56 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+ file
+In-Reply-To: <201004191927.26060.jonas.wolz@freenet.de>
+References: <4BC4DD1E.301@free.fr> <201004191835.07823.jonas.wolz@freenet.de>
+	<4BCC8E45.6070200@free.fr>
+	<201004191927.26060.jonas.wolz@freenet.de>
+Message-ID: <4BCCA8A4.30009@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Montag, 19. April 2010 schrieb anne.yajhfc at free.fr:
+>> Jonas Wolz a ?crit :
+>>> Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+>>>> Hi,
+>>>>
+>>>> I sent a  postscript file and a pdf file.
+>>>>
+>>>> In hylafax/docq, I have doc197.ps and doc198.ps
+>>>>
+>>>> In hylafax/doneq/q164
+>>>> !postscript:0::docq/doc197.ps
+>>>> !pdf:0::docq/doc198.ps
+>>>>
+>>>> The last line has a problem : pdf and doc198.ps
+>>> Does YajHFC 0.4.3 still have this problem?
+>>>
+>>> (I fixed a bug there which could be related to this.)
+>> How do I update YajHFC in 0.4.3?
+>>
+>> I should removed the version 0.4.2 or not?
+> 
+> Usually you can just install the new version over the old one (basically it is 
+> sufficient to just replace yajhfc.jar with a new version in most cases).
+> 
+
+I tested
+
+The same problem:
+in file q171 =>
+!postscript:0::docq/doc211.ps
+!pdf:0::docq/doc212.ps
+
+Anne
+
+
+
+From anne-yajhfc at linux-nuts.com  Mon Apr 19 22:32:43 2010
+From: anne-yajhfc at linux-nuts.com (anne-yajhfc)
+Date: Mon, 19 Apr 2010 22:32:43 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+ file
+In-Reply-To: <4BCCA8A4.30009@free.fr>
+References: <4BC4DD1E.301@free.fr>
+	<201004191835.07823.jonas.wolz@freenet.de>	<4BCC8E45.6070200@free.fr>	<201004191927.26060.jonas.wolz@freenet.de>
+	<4BCCA8A4.30009@free.fr>
+Message-ID: <4BCCBDEB.3080605@linux-nuts.com>
+
+anne.yajhfc at free.fr a ?crit :
+> Jonas Wolz a ?crit :
+>> Am Montag, 19. April 2010 schrieb anne.yajhfc at free.fr:
+>>> Jonas Wolz a ?crit :
+>>>> Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+>>>>> Hi,
+>>>>>
+>>>>> I sent a  postscript file and a pdf file.
+>>>>>
+>>>>> In hylafax/docq, I have doc197.ps and doc198.ps
+>>>>>
+>>>>> In hylafax/doneq/q164
+>>>>> !postscript:0::docq/doc197.ps
+>>>>> !pdf:0::docq/doc198.ps
+>>>>>
+>>>>> The last line has a problem : pdf and doc198.ps
+>>>> Does YajHFC 0.4.3 still have this problem?
+>>>>
+>>>> (I fixed a bug there which could be related to this.)
+>>> How do I update YajHFC in 0.4.3?
+>>>
+>>> I should removed the version 0.4.2 or not?
+>>
+>> Usually you can just install the new version over the old one 
+>> (basically it is sufficient to just replace yajhfc.jar with a new 
+>> version in most cases).
+>>
+> 
+> I tested
+> 
+> The same problem:
+> in file q171 =>
+> !postscript:0::docq/doc211.ps
+> !pdf:0::docq/doc212.ps
+
+I changed !pdf:0::docq/doc212.ps  => !pdf:0::docq/doc212.pdf  in doneq/q171
+I changed  mv docq/doc212.ps docq/doc212.pdf
+
+Now It's good
+
+Anne
+
+
+From Stephen.Kerr at GBR.dupont.com  Tue Apr 20 10:02:28 2010
+From: Stephen.Kerr at GBR.dupont.com (Stephen Kerr)
+Date: Tue, 20 Apr 2010 09:02:28 +0100
+Subject: [Yajhfc-user] Allow an admin to view ALL sent faxes
+In-Reply-To: <201004191831.04357.jonas.wolz@freenet.de>
+References: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+	<201004191831.04357.jonas.wolz@freenet.de>
+Message-ID: <OFF8B6C4DF.21D40CBB-ON8025770B.002C0CEA-8025770B.002C2DD1@CDCLN05.LVS.DUPONT.COM>
+
+At the moment my test Power user has the same password for normal and 
+admin.
+If I go into Admin mode nothing changes i.e. I can still only see faxes 
+owned by the power user.
+
+I'll try changing the admin password to something else and retry.
+
+thanks,
+Stephen
+
+
+
+Jonas Wolz <jonas.wolz at freenet.de> 
+19/04/2010 17:31
+
+To
+yajhfc-user at lists.berlios.de
+cc
+Stephen Kerr/GB/CSC/DPT at DPT
+Subject
+Re: [Yajhfc-user] Allow an admin to view ALL sent faxes
+
+
+
+
+
+
+Am Montag, 19. April 2010 schrieb Stephen Kerr:
+> How do I enable a Hylafax user to be able to view ALL faxes, regardless 
+of
+> who sent them?
+> I have JobProtection set to 0440.
+>
+> At the moment each user can only see their own.  That's fine for most, 
+but
+> I want an overall power user who can see all faxes.
+>
+> I have created a user using faxadduser with -p and -a options, but makes
+> no difference when I sign into a client as this user.
+
+Does it work when you actually go into admin mode with that user? 
+(Extras->Admin mode)
+
+Hope that helps
+Jonas
+
+
+This communication is for use by the intended recipient and contains
+information that may be Privileged, confidential or copyrighted under
+applicable law. If you are not the intended recipient, you are hereby
+formally notified that any use, copying or distribution of this e-mail,
+in whole or in part, is strictly prohibited. Please notify the sender by
+return e-mail and delete this e-mail from your system. Unless explicitly
+and conspicuously designated as "E-Contract Intended", this e-mail does
+not constitute a contract offer, a contract amendment, or an acceptance
+of a contract offer. This e-mail does not constitute a consent to the
+use of sender's contact information for direct marketing purposes or for
+transfers of data to third parties.
+
+Francais Deutsch Italiano  Espanol  Portugues  Japanese  Chinese  Korean
+
+           http://www.DuPont.com/corp/email_disclaimer.html
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100420/ba31d7ff/attachment.html>
+
+From jonas.wolz at freenet.de  Sat Apr 24 09:49:38 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 24 Apr 2010 09:49:38 +0200
+Subject: [Yajhfc-user] Allow an admin to view ALL sent faxes
+In-Reply-To: <OFF8B6C4DF.21D40CBB-ON8025770B.002C0CEA-8025770B.002C2DD1@CDCLN05.LVS.DUPONT.COM>
+References: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+	<201004191831.04357.jonas.wolz@freenet.de>
+	<OFF8B6C4DF.21D40CBB-ON8025770B.002C0CEA-8025770B.002C2DD1@CDCLN05.LVS.DUPONT.COM>
+Message-ID: <201004240949.38587.jonas.wolz@freenet.de>
+
+Am Dienstag, 20. April 2010 schrieb Stephen Kerr:
+> At the moment my test Power user has the same password for normal and
+> admin.
+
+Using the same password should be no problem.
+
+> If I go into Admin mode nothing changes i.e. I can still only see faxes
+> owned by the power user.
+
+What do you mean with "see"?
+Are the faxes not listed in the list of faxes or are you not able to open 
+them?
+
+Jonas.
+
+
+From Stephen.Kerr at GBR.dupont.com  Mon Apr 26 10:15:30 2010
+From: Stephen.Kerr at GBR.dupont.com (Stephen Kerr)
+Date: Mon, 26 Apr 2010 09:15:30 +0100
+Subject: [Yajhfc-user] Allow an admin to view ALL sent faxes
+In-Reply-To: <201004240949.38587.jonas.wolz@freenet.de>
+References: <OF418D4E2F.C39E0221-ON8025770A.0057339F-8025770A.00578CAA@CDCLN05.LVS.DUPONT.COM>
+	<201004191831.04357.jonas.wolz@freenet.de>
+	<OFF8B6C4DF.21D40CBB-ON8025770B.002C0CEA-8025770B.002C2DD1@CDCLN05.LVS.DUPONT.COM>
+	<201004240949.38587.jonas.wolz@freenet.de>
+Message-ID: <OF8EFC3588.9D2E97BE-ON80257711.002D1E0E-80257711.002D5F6D@CDCLN05.LVS.DUPONT.COM>
+
+OK, I had to set JobProtection in /usr/local/lib/fax/hfaxd.conf to 0440.
+Admin user can now see all faxes.
+
+thanks,
+Stephen
+
+
+
+Jonas Wolz <jonas.wolz at freenet.de> 
+24/04/2010 08:49
+
+To
+yajhfc-user at lists.berlios.de
+cc
+Stephen Kerr/GB/CSC/DPT at DPT
+Subject
+Re: [Yajhfc-user] Allow an admin to view ALL sent faxes
+
+
+
+
+
+
+Am Dienstag, 20. April 2010 schrieb Stephen Kerr:
+> At the moment my test Power user has the same password for normal and
+> admin.
+
+Using the same password should be no problem.
+
+> If I go into Admin mode nothing changes i.e. I can still only see faxes
+> owned by the power user.
+
+What do you mean with "see"?
+Are the faxes not listed in the list of faxes or are you not able to open 
+them?
+
+Jonas.
+
+
+This communication is for use by the intended recipient and contains
+information that may be Privileged, confidential or copyrighted under
+applicable law. If you are not the intended recipient, you are hereby
+formally notified that any use, copying or distribution of this e-mail,
+in whole or in part, is strictly prohibited. Please notify the sender by
+return e-mail and delete this e-mail from your system. Unless explicitly
+and conspicuously designated as "E-Contract Intended", this e-mail does
+not constitute a contract offer, a contract amendment, or an acceptance
+of a contract offer. This e-mail does not constitute a consent to the
+use of sender's contact information for direct marketing purposes or for
+transfers of data to third parties.
+
+Francais Deutsch Italiano  Espanol  Portugues  Japanese  Chinese  Korean
+
+           http://www.DuPont.com/corp/email_disclaimer.html
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100426/4699d9b2/attachment.html>
+
+From anne.yajhfc at free.fr  Wed Apr 28 16:56:10 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Wed, 28 Apr 2010 16:56:10 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+ file
+In-Reply-To: <201004191835.07823.jonas.wolz@freenet.de>
+References: <4BC4DD1E.301@free.fr> <4BC76722.7020607@free.fr>
+	<4BC8F5F4.7050005@free.fr>
+	<201004191835.07823.jonas.wolz@freenet.de>
+Message-ID: <4BD84C8A.6060306@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Samstag, 17. April 2010 schrieb anne.yajhfc at free.fr:
+>> Hi,
+>>
+>> I sent a  postscript file and a pdf file.
+>>
+>> In hylafax/docq, I have doc197.ps and doc198.ps
+>>
+>> In hylafax/doneq/q164
+>> !postscript:0::docq/doc197.ps
+>> !pdf:0::docq/doc198.ps
+>>
+>> The last line has a problem : pdf and doc198.ps
+> 
+> Does YajHFC 0.4.3 still have this problem?
+> 
+> (I fixed a bug there which could be related to this.)
+> 
+hi,
+
+With my ubuntu 9.10, I have version 0.4.3 beta 1-2 of yajhfc ... :(
+
+I just downloaded version yajhfc-0_4_3.jar on 
+http://developer.berlios.de/project/showfiles.php?group_id=7813 for test.
+
+I tested with the command:
+java -jar /home/anne/Bureau/yajhfc-0_4_3.jar --debug --logfile 
+/home/anne/Documents/somefile56.log
+
+With YajHFC, Sent option, right click, I have the option 'View log'. 
+Thank you very much. ;)
+
+For ps and pdf files, that's ok too.
+
+In the directory /var/spool/hylafax/docq/:
+-Rw-r ----- 1 uucp 60 002 27 084 April 28 4:23 p.m. doc244.ps
+-Rw-r ----- 1 uucp 60002 8407 April 28 doc245.pdf 4:23 p.m.
+
+In the file /var/spool/hylafax/doneq/q185:
+! Postscript: 0:: docq/doc244.ps
+! Pdf: 0:: docq/doc245.pdf
+
+Everything is ok.
+Thank you for all the work.
+
+I don't understand why I have version  0.4.3 beta 1-2  with ubuntu 9.10.
+This version, it's not good.
+
+Anne
+
+
+From jonas.wolz at freenet.de  Wed Apr 28 18:18:03 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 28 Apr 2010 18:18:03 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+	file
+In-Reply-To: <4BD84C8A.6060306@free.fr>
+References: <4BC4DD1E.301@free.fr> <201004191835.07823.jonas.wolz@freenet.de>
+	<4BD84C8A.6060306@free.fr>
+Message-ID: <201004281818.04157.jonas.wolz@freenet.de>
+
+Am Mittwoch, 28. April 2010 schrieb anne.yajhfc at free.fr:
+> I don't understand why I have version  0.4.3 beta 1-2  with ubuntu 9.10.
+> This version, it's not good.
+
+If you have installed the program using the APT repository a "apt-get update 
+&& aptitude upgrade" should fix that.
+
+If this does not work (which is strange...), you can download the 0.4.3-1 
+package from ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/deb-all/ 
+and install it manually.
+
+Hope that helps
+Jonas
+
+
+From anne.yajhfc at free.fr  Wed Apr 28 19:54:16 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Wed, 28 Apr 2010 19:54:16 +0200
+Subject: [Yajhfc-user] problem with sending a postscript file and a pdf
+ file
+In-Reply-To: <201004281818.04157.jonas.wolz@freenet.de>
+References: <4BC4DD1E.301@free.fr> <201004191835.07823.jonas.wolz@freenet.de>
+	<4BD84C8A.6060306@free.fr>
+	<201004281818.04157.jonas.wolz@freenet.de>
+Message-ID: <4BD87648.2020305@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Mittwoch, 28. April 2010 schrieb anne.yajhfc at free.fr:
+>> I don't understand why I have version  0.4.3 beta 1-2  with ubuntu 9.10.
+>> This version, it's not good.
+> 
+> If you have installed the program using the APT repository a "apt-get update 
+> && aptitude upgrade" should fix that.
+> 
+> If this does not work (which is strange...), you can download the 0.4.3-1 
+> package from ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/deb-all/ 
+> and install it manually.
+> 
+
+I had over the line with synaptic.
+deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+strange
+
+I add this line again.
+It's ok.
+
+thanks
+Anne
+
+
+

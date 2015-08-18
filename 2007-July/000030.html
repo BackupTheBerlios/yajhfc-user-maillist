@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] feature requests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C762248.12319.qm%40web32603.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000029.html">
+   <LINK REL="Next"  HREF="000027.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] feature requests</H1>
+    <B>Vieri</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C762248.12319.qm%40web32603.mail.mud.yahoo.com%3E"
+       TITLE="[Yajhfc-user] feature requests">rentorbuy at yahoo.com
+       </A><BR>
+    <I>Fri Jul 20 17:06:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000029.html">[Yajhfc-user] feature requests
+</A></li>
+        <LI>Next message: <A HREF="000027.html">[Yajhfc-user] YajHFC 0.3.4 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+--- Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt; wrote:
+
+&gt;<i> Am Dienstag, 17. Juli 2007 17:19 schrieb Jonas Wolz:
+</I>&gt;<i> &gt; &gt; Also, I noticed that when a user has a lot of
+</I>&gt;<i> jobs in
+</I>&gt;<i> &gt; &gt; the &quot;sent&quot; table and is about to send another
+</I>&gt;<i> fax via
+</I>&gt;<i> &gt; &gt; printing redirection, there is a significant
+</I>&gt;<i> delay
+</I>&gt;<i> &gt; &gt; before the send dialog actually appears.
+</I>
+&gt;<i> As the HylaFAX protocol seemingly doesn't support
+</I>&gt;<i> limiting the retrieved list 
+</I>&gt;<i> in a reasonable way this means that there is
+</I>&gt;<i> probably not much potential to 
+</I>&gt;<i> optimize...
+</I>
+Thank you Jonas for all your work.
+I will start testing 0.3.4 on Monday.
+As far as the above issue is concerned, *maybe* the
+initial 2-second delay can be eliminated by avoiding
+the job list retrieval. I'm saying this because most
+of the time users just &quot;print to a fax virtual
+printer&quot;, enter the dest fax number, press send and
+that's it. Besides, we have it configured so that
+yajhfc terminates after the user presses &quot;send&quot; on the
+dialog box.
+
+So maybe just the dialog box could show up when
+configured this way (thus no need to display and fill
+the job grid data)
+-OR-
+if it's programmatically simpler, let the main
+application appear behind the dialog box *but* disable
+job list retrieval internally, as it won't be used by
+the user anyway.
+The only thing that yajhfc would need to do before
+actually sending the new fax is grab the user's login
+credentials.
+
+Anyway, I'll check 0.3.4 out as you say that it's now
+in a different thread.
+
+By the way, your 2-second delay is a tad more for me
+because my HylaFAX service is on a robust but weaker
+server (pentium 2, etc.). :-(
+
+Have a nice weekend.
+
+
+
+      ____________________________________________________________________________________
+Shape Yahoo! in your own image.  Join our Network Research Panel today!   <A HREF="http://surveylink.yahoo.com/gmrs/yahoo_panel_invite.asp?a=7">http://surveylink.yahoo.com/gmrs/yahoo_panel_invite.asp?a=7</A> 
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000029.html">[Yajhfc-user] feature requests
+</A></li>
+	<LI>Next message: <A HREF="000027.html">[Yajhfc-user] YajHFC 0.3.4 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

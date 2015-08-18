@@ -1,0 +1,498 @@
+From jonas.wolz at freenet.de  Wed Oct 10 21:01:09 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 10 Oct 2007 21:01:09 +0200
+Subject: [Yajhfc-user] OpenOffice plugin for YajHFC
+Message-ID: <200710102101.09724.jonas.wolz@freenet.de>
+
+I created a small OpenOffice plugin that adds a toolbar button to send the 
+current document as a fax with YajHFC.
+
+You can download it at:
+ftp://ftp.berlios.de/pub/yajhfc/download/yajhfc-OO-plugin.zip
+
+Currently it only has been tested with OpenOffice 2.3 in Linux, but it should 
+work with other versions/operating systems, too.
+
+If it does not work for you or if you have any feedback about it, please let 
+me know.
+
+Have fun,
+Jonas
+
+
+
+From MWilson at acesappraisal.com  Thu Oct 11 12:28:26 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Thu, 11 Oct 2007 06:28:26 -0400
+Subject: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336066E53@claims-new>
+
+I use Yajhfc as a windows client and its great.  I also like to put a
+lot of notes/comments on my cover pages.  Often if I'm faxing a document
+to someone,  rather than writing a separate cover letter for
+instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+create forced word wrap that corresponds to the size of the send dialog
+box.  On the final fax, this comments area ends up being a small column
+that does not use the full page width.  Also, there seems to be a limit
+as to how many lines of the comments will get transmitted, but no
+indication that the comments have been truncated.
+
+ 
+
+Any way we can get the cover page comments to only respond to /n (new
+line) or word wrap at full page width?  And get a visual indicator that
+the comments are too long?
+
+ 
+
+Thanks,
+
+ 
+
+Mike Wilson
+
+ACES Appraisal Group, Inc.
+
+P.O. Box 300
+
+Christiansburg, VA 24068
+
+540-268-5558 x 201
+
+Fax 540-268-1167
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20071011/4935b473/attachment.html>
+
+From jonas.wolz at freenet.de  Fri Oct 12 11:26:21 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 12 Oct 2007 11:26:21 +0200
+Subject: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+In-Reply-To: <B55301ABE760AA49BE5ADB32BF27A336066E53@claims-new>
+References: <B55301ABE760AA49BE5ADB32BF27A336066E53@claims-new>
+Message-ID: <200710121126.21667.jonas.wolz@freenet.de>
+
+Am Donnerstag, 11. Oktober 2007 12:28 schrieb MWilson at acesappraisal.com:
+> I use Yajhfc as a windows client and its great.  I also like to put a
+> lot of notes/comments on my cover pages.  Often if I'm faxing a document
+> to someone,  rather than writing a separate cover letter for
+> instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+> create forced word wrap that corresponds to the size of the send dialog
+> box.  On the final fax, this comments area ends up being a small column
+> that does not use the full page width.  Also, there seems to be a limit
+> as to how many lines of the comments will get transmitted, but no
+> indication that the comments have been truncated.
+>
+> Any way we can get the cover page comments to only respond to /n (new
+> line) or word wrap at full page width?
+
+Difficult (see explanation below).
+
+> And get a visual indicator that 
+> the comments are too long?
+
+Should be possible.
+
+The YajHFC cover page code has been ported directly from the HylaFAX C++ 
+client code, so that it may use the same PostScript cover page format (this 
+is not exactly required, however, as the HylaFAX server accepts any 
+PostScript file as a cover page).
+
+Unfortunately that code does all the word wrapping in PostScript and as I 
+don't know any PostScript it is quite difficult for me to change that 
+behaviour.
+What I know is that the code seems to wrap always after 35 characters (not 
+after a certain width) and that it supports a maximum of 9 lines of text.
+So a visual indicator about those limitations should be doable.
+
+To be honest I am also a bit dissatisfied about the current cover page support 
+in YajHFC especially because there is no really user friendly cover page 
+designer out there.
+On the other hand I don't want to spend a lot of time writing my own cover 
+page editor and I also don't know of any open source/freeware editor I could 
+use (if any reader knows one, please tell me!).
+
+To make it short: 
+Some visual indication will probably be implemented in the next version, but 
+a "clean" solution to the problem will probably take a bit longer.
+
+Greetings,
+Jonas
+
+
+From MWilson at acesappraisal.com  Sat Oct 13 11:15:52 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Sat, 13 Oct 2007 05:15:52 -0400
+Subject: [Yajhfc-user] Cover Page & .3.5 problems
+In-Reply-To: <8A94412A68384161AE1F4440F970F29B@AAG.local>
+References: <8A94412A68384161AE1F4440F970F29B@AAG.local>
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336066E90@claims-new>
+
+I have not looked at the code, nor do I have much experience with Java
+(I do mostly Database stuff with Delphi).  However, based on the
+behavior, I think the comments area is simply stored in an array.  I
+think the word wrap is actually being done by the memo/edit control of
+Java.  Thus, when the code passes the memo.lines[] array of strings to
+the cover page code, it does not reformat them, just passes each line
+un-modified.  This is probably the correct behavior.  As a test of my
+theory, if the dialog box was resizable, and thus the memo control could
+be made bigger, I expect each line would get appropriately longer. 
+
+While on the subject of Cover pages, I would like to suggest a minor
+change in the send dialog.  I am a big fan of producing interfaces that
+are workable from the keyboard without having to go to the mouse unless
+desired.  The two-tabbed approach breaks this for me.  If we could
+combine these tabs into one larger dialog, or move the cover page stuff
+to the front tab, and relegate the file input box and other options to
+the second tab, I think it might flow better.  Of course, I almost only
+use this from a --stdin perspective.  It may make more sense the way it
+is if you do a lot of sending from files.  In that case, maybe a switch
+internally that shows different dialogs for --stdin & launching directly
+from the UI?
+
+Also,  I tried to use .3.5 and while it works from the UI, I cannot get
+it to work from --stdin and Redmon.  I am using Vista, which has been
+difficult to get to work at all, but I'm now pretty stable with .3.4a
+and the CScript.  
+
+
+Thanks for such a great program
+
+
+
+Mike Wilson
+ACES Appraisal Group, Inc.
+P.O. Box 300
+Christiansburg, VA 24068
+540-268-5558 x 201
+Fax 540-268-1167
+
+
+-----Original Message-----
+From: yajhfc-user-bounces at lists.berlios.de
+[mailto:yajhfc-user-bounces at lists.berlios.de] On Behalf Of
+yajhfc-user-request at lists.berlios.de
+Sent: Friday, October 12, 2007 10:30 AM
+To: yajhfc-user at lists.berlios.de
+Subject: Yajhfc-user Digest, Vol 7, Issue 2
+
+Send Yajhfc-user mailing list submissions to
+	yajhfc-user at lists.berlios.de
+
+To subscribe or unsubscribe via the World Wide Web, visit
+	https://lists.berlios.de/mailman/listinfo/yajhfc-user
+or, via email, send a message with subject or body 'help' to
+	yajhfc-user-request at lists.berlios.de
+
+You can reach the person managing the list at
+	yajhfc-user-owner at lists.berlios.de
+
+When replying, please edit your Subject line so it is more specific
+than "Re: Contents of Yajhfc-user digest..."
+
+
+Today's Topics:
+
+   1. Fax Cover Page and Word Wrap/Length of Comments
+      (MWilson at acesappraisal.com)
+   2. Re: Fax Cover Page and Word Wrap/Length of Comments (Jonas Wolz)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Thu, 11 Oct 2007 06:28:26 -0400
+From: <MWilson at acesappraisal.com>
+Subject: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of Comments
+To: <yajhfc-user at lists.berlios.de>
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336066E53 at claims-new>
+Content-Type: text/plain; charset="us-ascii"
+
+I use Yajhfc as a windows client and its great.  I also like to put a
+lot of notes/comments on my cover pages.  Often if I'm faxing a document
+to someone,  rather than writing a separate cover letter for
+instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+create forced word wrap that corresponds to the size of the send dialog
+box.  On the final fax, this comments area ends up being a small column
+that does not use the full page width.  Also, there seems to be a limit
+as to how many lines of the comments will get transmitted, but no
+indication that the comments have been truncated.
+
+ 
+
+Any way we can get the cover page comments to only respond to /n (new
+line) or word wrap at full page width?  And get a visual indicator that
+the comments are too long?
+
+ 
+
+Thanks,
+
+ 
+
+Mike Wilson
+
+ACES Appraisal Group, Inc.
+
+P.O. Box 300
+
+Christiansburg, VA 24068
+
+540-268-5558 x 201
+
+Fax 540-268-1167
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL:
+https://lists.berlios.de/pipermail/yajhfc-user/attachments/20071011/4935
+b473/attachment-0001.html 
+
+------------------------------
+
+Message: 2
+Date: Fri, 12 Oct 2007 11:26:21 +0200
+From: Jonas Wolz <jonas.wolz at freenet.de>
+Subject: Re: [Yajhfc-user] Fax Cover Page and Word Wrap/Length of
+	Comments
+To: General discussion about YajHFC <yajhfc-user at lists.berlios.de>
+Message-ID: <200710121126.21667.jonas.wolz at freenet.de>
+Content-Type: text/plain;  charset="iso-8859-15"
+
+Am Donnerstag, 11. Oktober 2007 12:28 schrieb MWilson at acesappraisal.com:
+> I use Yajhfc as a windows client and its great.  I also like to put a
+> lot of notes/comments on my cover pages.  Often if I'm faxing a
+document
+> to someone,  rather than writing a separate cover letter for
+> instructions, etc, I like to use the fax cover sheet.  Yajhfc seems to
+> create forced word wrap that corresponds to the size of the send
+dialog
+> box.  On the final fax, this comments area ends up being a small
+column
+> that does not use the full page width.  Also, there seems to be a
+limit
+> as to how many lines of the comments will get transmitted, but no
+> indication that the comments have been truncated.
+>
+> Any way we can get the cover page comments to only respond to /n (new
+> line) or word wrap at full page width?
+
+Difficult (see explanation below).
+
+> And get a visual indicator that 
+> the comments are too long?
+
+Should be possible.
+
+The YajHFC cover page code has been ported directly from the HylaFAX C++
+
+client code, so that it may use the same PostScript cover page format
+(this 
+is not exactly required, however, as the HylaFAX server accepts any 
+PostScript file as a cover page).
+
+Unfortunately that code does all the word wrapping in PostScript and as
+I 
+don't know any PostScript it is quite difficult for me to change that 
+behaviour.
+What I know is that the code seems to wrap always after 35 characters
+(not 
+after a certain width) and that it supports a maximum of 9 lines of
+text.
+So a visual indicator about those limitations should be doable.
+
+To be honest I am also a bit dissatisfied about the current cover page
+support 
+in YajHFC especially because there is no really user friendly cover page
+
+designer out there.
+On the other hand I don't want to spend a lot of time writing my own
+cover 
+page editor and I also don't know of any open source/freeware editor I
+could 
+use (if any reader knows one, please tell me!).
+
+To make it short: 
+Some visual indication will probably be implemented in the next version,
+but 
+a "clean" solution to the problem will probably take a bit longer.
+
+Greetings,
+Jonas
+
+
+------------------------------
+
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+End of Yajhfc-user Digest, Vol 7, Issue 2
+*****************************************
+
+
+
+
+From jonas.wolz at freenet.de  Sat Oct 13 17:20:15 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 13 Oct 2007 17:20:15 +0200
+Subject: [Yajhfc-user] Cover Page & .3.5 problems
+In-Reply-To: <B55301ABE760AA49BE5ADB32BF27A336066E90@claims-new>
+References: <8A94412A68384161AE1F4440F970F29B@AAG.local>
+	<B55301ABE760AA49BE5ADB32BF27A336066E90@claims-new>
+Message-ID: <200710131720.16381.jonas.wolz@freenet.de>
+
+Am Samstag, 13. Oktober 2007 11:15 schrieb MWilson at acesappraisal.com:
+> I have not looked at the code, nor do I have much experience with Java
+> (I do mostly Database stuff with Delphi).  However, based on the
+> behavior, I think the comments area is simply stored in an array.  I
+> think the word wrap is actually being done by the memo/edit control of
+> Java.  Thus, when the code passes the memo.lines[] array of strings to
+> the cover page code, it does not reformat them, just passes each line
+> un-modified.  This is probably the correct behavior.  As a test of my
+> theory, if the dialog box was resizable, and thus the memo control could
+> be made bigger, I expect each line would get appropriately longer.
+
+Sorry, but I *know* for sure that the string I get from the "memo" (JTextArea) 
+is not wrapped (at least when I output it to the console for testing).
+You can confirm that behaviour by entering a line 
+containing "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii..."  and another line 
+containing "WWWWWWWWWWWWWWWWWWWWW..." into the comment area. On the screen 
+much more i's than W's will fit in a line while on the cover page the number 
+will be the same.
+
+Making the dialog box resizable should be no problem and is a good idea, 
+however.
+
+> While on the subject of Cover pages, I would like to suggest a minor
+> change in the send dialog.  I am a big fan of producing interfaces that
+> are workable from the keyboard without having to go to the mouse unless
+> desired.  The two-tabbed approach breaks this for me.  If we could
+> combine these tabs into one larger dialog, or move the cover page stuff
+> to the front tab, and relegate the file input box and other options to
+> the second tab, I think it might flow better.  Of course, I almost only
+> use this from a --stdin perspective.  It may make more sense the way it
+> is if you do a lot of sending from files.  In that case, maybe a switch
+> internally that shows different dialogs for --stdin & launching directly
+> from the UI?
+
+I will think about it but I don't want to promise anything right now (you 
+certainly have a point here...).
+
+> Also,  I tried to use .3.5 and while it works from the UI, I cannot get
+> it to work from --stdin and Redmon.  I am using Vista, which has been
+> difficult to get to work at all, but I'm now pretty stable with .3.4a
+> and the CScript.
+
+As I currently don't own a Vista copy for testing, could you tell some details 
+about "how" 0.3.5 does not work in Vista (does it start, is the Send dialog 
+shown, is there no data/is it corrupted, ...)?
+
+BTW, did you have to use any "special tricks" (apart from using the 
+yajhfc-launch.vbs script) to get 0.3.4a to work with Redmon on Vista?
+If yes, could you maybe give a short description of what you had to do (to 
+make life a bit easier for other users)?
+
+Thanks again for your feedback,
+Jonas
+
+
+From MWilson at acesappraisal.com  Tue Oct 23 02:31:10 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Mon, 22 Oct 2007 20:31:10 -0400
+Subject: [Yajhfc-user] YajHFC and Vista Instal
+In-Reply-To: <8951187A79354820B0D3B75212456020@AAG.local>
+References: <8951187A79354820B0D3B75212456020@AAG.local>
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336066FD8@claims-new>
+
+Sorry it took me a while to respond to this, but I couldn't remember all
+the issues I had with my workstation.  I also knew that I was getting
+ready to setup a new Vista station, so I wanted to do it 'from scratch'.
+I ran the 'windows setup' release (I think this actually has 3.3?).  And
+this bombed due to not being able to find a proper PS driver (Vista does
+not come with the Apple Drivers ... go figure).  However, it did install
+Redmon, and setup the Virtual Port.
+I then copies the 3.5 jar into c:\Yajhfc as well as the
+yajhfc-launch.vbs file.  I corrected all the paths and file names, setup
+the redmon port to call cscripte.exe and pointed it at the VBS file and
+it seems to be working just fine.  I think I am using an HP Laserjet 4
+driver.
+
+So, I'll rescind my statement that 3.5 is broken.  Apparently I need to
+dig a little deeper on my personal workstation, as on the fresh install
+I did this weekend, it seems to have gone Ok, except for the initial
+install problem of Apple drivers.
+
+
+>As I currently don't own a Vista copy for testing, could you tell some
+details 
+>about "how" 0.3.5 does not work in Vista (does it start, is the Send
+dialog 
+>shown, is there no data/is it corrupted, ...)?
+>
+>BTW, did you have to use any "special tricks" (apart from using the 
+>yajhfc-launch.vbs script) to get 0.3.4a to work with Redmon on Vista?
+>If yes, could you maybe give a short description of what you had to do
+(to 
+>make life a bit easier for other users)?
+>
+>Thanks again for your feedback,
+>Jonas
+
+
+
+
+From jonas.wolz at freenet.de  Tue Oct 23 18:30:56 2007
+From: jonas.wolz at freenet.de (Jonas wolz)
+Date: Tue, 23 Oct 2007 18:30:56 +0200
+Subject: [Yajhfc-user] YajHFC and Vista Instal
+In-Reply-To: <B55301ABE760AA49BE5ADB32BF27A336066FD8@claims-new>
+References: <8951187A79354820B0D3B75212456020@AAG.local>
+	<B55301ABE760AA49BE5ADB32BF27A336066FD8@claims-new>
+Message-ID: <200710231830.56757.jonas.wolz@freenet.de>
+
+Am Dienstag, 23. Oktober 2007 schrieb MWilson at acesappraisal.com:
+> Sorry it took me a while to respond to this, but I couldn't remember all
+> the issues I had with my workstation.  I also knew that I was getting
+> ready to setup a new Vista station, so I wanted to do it 'from scratch'.
+> I ran the 'windows setup' release (I think this actually has 3.3?).
+
+No problem for me. It's better to wait a few days than to get "incorrect" 
+feedback. ;-)
+
+> And 
+> this bombed due to not being able to find a proper PS driver (Vista does
+> not come with the Apple Drivers ... go figure).  However, it did install
+> Redmon, and setup the Virtual Port.
+> I then copies the 3.5 jar into c:\Yajhfc as well as the
+> yajhfc-launch.vbs file.  I corrected all the paths and file names, setup
+> the redmon port to call cscripte.exe and pointed it at the VBS file and
+> it seems to be working just fine.  I think I am using an HP Laserjet 4
+> driver.
+
+OK, fine. If the selection of the printer driver is the only problem with 
+Vista, adding Vista support to the Setup should be pretty easy to do.
+As I will probably get access to a Vista installation during the next few 
+weeks, this might be done soon.
+
+> So, I'll rescind my statement that 3.5 is broken.  Apparently I need to
+> dig a little deeper on my personal workstation, as on the fresh install
+> I did this weekend, it seems to have gone Ok, except for the initial
+> install problem of Apple drivers.
+
+It is of course still perfectly possible that this is caused by problems in 
+0.3.5 since I had to change the login code to add the progress bar (so 0.3.5 
+*might* behave a bit different from 0.3.4a).
+If you have any new findings please let me know.
+
+Thanks again for your feedback,
+Jonas
+
+

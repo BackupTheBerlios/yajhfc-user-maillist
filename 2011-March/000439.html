@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] YajHFC 0.5.0 release candiate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.5.0%20release%20candiate&In-Reply-To=%3C201103161809.36607.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000438.html">
+   <LINK REL="Next"  HREF="000440.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] YajHFC 0.5.0 release candiate</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.5.0%20release%20candiate&In-Reply-To=%3C201103161809.36607.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] YajHFC 0.5.0 release candiate">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Mar 16 18:09:36 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000438.html">[Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+</A></li>
+        <LI>Next message: <A HREF="000440.html">[Yajhfc-user] 0.5.0rc5 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#439">[ date ]</a>
+              <a href="thread.html#439">[ thread ]</a>
+              <a href="subject.html#439">[ subject ]</a>
+              <a href="author.html#439">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 15. M&#228;rz 2011 schrieb Vieri:
+&gt;<i> I haven't tried this release yet but I would like to know what &quot;Support for
+</I>&gt;<i> multiple servers&quot; means exactly.
+</I>
+It means that you can add connection profiles for multiple servers (or 
+multiple users on the same server).
+
+&gt;<i> Is there any way of telling yajhfc to automatically resend a failed fax job
+</I>&gt;<i> to &quot;the next server on the list&quot;?
+</I>&gt;<i> 
+</I>&gt;<i> Maybe this could be done at server level only (ie. hylafax server 1 can
+</I>&gt;<i> pass the failed fax job to hylafax server 2, OR hylafax server 1 can try
+</I>&gt;<i> to use hylafax server 2's modems via TCP/IP) but I haven't managed to do
+</I>&gt;<i> it for now.
+</I>&gt;<i> 
+</I>&gt;<i> So I'm wondering if YajHFC 0.5.0 can re-send a failed job sequentially to
+</I>&gt;<i> its list of multiple servers. If the last server on the list also fails
+</I>&gt;<i> then abort.
+</I>
+No, version 0.5.0 cannot do this. 
+This would not be that easy to do anyway, since a client does not get any 
+explicit success/failure information from the server. So the only method to 
+detect a failure would be scanning the sent/transmitting tables for failed 
+faxes and then cancel them on server 1 and create a new job on server 2.
+To be honest it is quite unlikely this will be implemented any time soon... 
+
+
+Best regards
+Jonas
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000438.html">[Yajhfc-user] Batch job identify/jobinfo/jobtag/sendfax -i
+</A></li>
+	<LI>Next message: <A HREF="000440.html">[Yajhfc-user] 0.5.0rc5 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#439">[ date ]</a>
+              <a href="thread.html#439">[ thread ]</a>
+              <a href="subject.html#439">[ subject ]</a>
+              <a href="author.html#439">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Splitting of incoming faxes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Splitting%20of%20incoming%20faxes&In-Reply-To=%3C494B6348.602%40mezonplus.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Splitting of incoming faxes</H1>
+    <B>Alexander Moisseev</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Splitting%20of%20incoming%20faxes&In-Reply-To=%3C494B6348.602%40mezonplus.ru%3E"
+       TITLE="[Yajhfc-user] Splitting of incoming faxes">moiseev at mezonplus.ru
+       </A><BR>
+    <I>Fri Dec 19 10:03:04 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000152.html">[Yajhfc-user] When to use as root
+</A></li>
+        <LI>Next message: <A HREF="000150.html">[Yajhfc-user] Splitting of incoming faxes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>We have a lot of incoming faxes without page breaks (to be more exact, unlimited page length), e.g. forwarded rolls from thermofaxes, pages manually added to fax machine tray during transmission, etc.
+Our users have problems with printing or viewing such faxes.
+
+On Lee Howard's advice from HylaFAX users mailing list I have tried configure modem to not permit unlimited length pages by replacing +FDCC response.
+
+I done some experimenting and have as result 3 types of behavior of fax machines:
+
+1. Remote fax machine send unlimited page anyway.
+2. Remote fax machine send 297mm of inserted page and report transmission error to the user.
+3. Remote fax machine send 297mm of inserted page and hangs.
+
+In all cases I had A4 page length negotiated on handshake.
+I suppose that type 2 is absolutely correct behavior. But users don't mind that &quot;transmission error&quot; means unsupported page length! They simply repeat transmission again and again.
+
+Evidently prohibiting of unlimited length pages must not be used.
+
+I find a way to automatically split tif files analogically with tiff2fax, i.e. detect faxes with long pages with tiffcheck and split it with ($TIFF2PS -a -H11.7 $fil | $PS2FAX -o $out $opt). But I lose fax information in out file. I can't find the way to retain or recreate information about received fax in resulting file.
+Because of that I cant do such file processing directly on HylaFAX server. Instead I wrote script that automatically splits incoming fax and exports it to samba share on remote server.
+
+As new version of YajHFC will have some faxprocessing capabilities, is it possible add a feature for splitting faxes on pages?
+
+Regards,
+Alexander
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000152.html">[Yajhfc-user] When to use as root
+</A></li>
+	<LI>Next message: <A HREF="000150.html">[Yajhfc-user] Splitting of incoming faxes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

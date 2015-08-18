@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Yajhfc &quot;printer&quot; on linux client
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20%22printer%22%20on%20linux%20client&In-Reply-To=%3C4991ABFB.4060903%40lauserco.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000168.html">
+   <LINK REL="Next"  HREF="000170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Yajhfc &quot;printer&quot; on linux client</H1>
+    <B>Sorin Toma</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20%22printer%22%20on%20linux%20client&In-Reply-To=%3C4991ABFB.4060903%40lauserco.com%3E"
+       TITLE="[Yajhfc-user] Yajhfc &quot;printer&quot; on linux client">sorin at lauserco.com
+       </A><BR>
+    <I>Tue Feb 10 17:31:55 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000168.html">[Yajhfc-user] help - fop plugin
+</A></li>
+        <LI>Next message: <A HREF="000170.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+In order to create a &quot;printer&quot; in linux, I've created a &quot;print-to file&quot; 
+printer, that calls yajhfc.jar with the option --stdin, like the one in 
+windoze does. This is my setup:
+Create a local port in order to make print to file:
+
+==========Cut Here=================
+
+#!/usr/bin/perl
+use IO::Socket::INET;
+#( $port, $prfile ) = @ARGV;
+$port=19100;
+$prfile=/tmp/prtofil;
+# print &quot;port=$port file=$prfile $!\n&quot;;
+$psrv=IO::Socket::INET-&gt;new(LocalPort =&gt; $port,Type=&gt;SOCK_STREAM,Reuse=&gt;1,Listen=&gt;1) or die &quot;Error! It seems like port $port is used $!\n&quot;;
+while ($pjob=$psrv-&gt;accept()) {
+    open(J,&quot;&gt;$prfile&quot;) or die &quot;Error writing to $prfile $!\n&quot;;
+    while (&lt;$pjob&gt;) {
+	print J &quot;$_&quot;;
+	}
+    close J;
+    system (&quot;/bin/cat&quot;, $prfile, &quot;| sudo -u myusername /usr/bin/java -jar /usr/local/bin/yajhfc.jar --stdin --bckground&quot;, &quot;&gt;&gt;/tmp/result 2&gt;&amp;1&quot;) ;
+    close $pjob;
+    }
+
+===========Cut Here=================
+
+then, in cups I configured a printer called &quot;Yajhfc&quot; type Apple 
+LaserWriter 12/600 PS (to be able to print any type of file - otherwise 
+I will be forced to print only PS, PDF, JPG...). The connection for this 
+printer is &quot;<A HREF="socket://127.0.0.1:19100">socket://127.0.0.1:19100</A>&quot;.
+That's it!
+
+-- 
+Best Regards,
+Sorin Toma
+Lauserco Inc.
+514-354-5050 ext:223
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000168.html">[Yajhfc-user] help - fop plugin
+</A></li>
+	<LI>Next message: <A HREF="000170.html">[Yajhfc-user] Windows Setup repack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

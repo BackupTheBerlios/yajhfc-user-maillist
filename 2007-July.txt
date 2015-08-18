@@ -1,0 +1,1138 @@
+From MWilson at acesappraisal.com  Sun Jul  1 23:25:13 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Sun, 1 Jul 2007 17:25:13 -0400
+Subject: [Yajhfc-user] Error when using cable modem service and connecting
+	to server over internet.
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336066235@claims-new>
+
+Hi,
+ 
+I've been using Yajhfc to connect to my internal hylafax server with
+great sucess.  However, I need to migrate that server to a Virtual
+Private Server to take the bandwidth load off of my home/office
+connection.
+ 
+I have successfully setup my new Hylafax server and can access it via
+Webmin, and send/receive faxes from the server.
+ 
+However, when I try to connect to it via Yajhfc (and all other Java
+clients I have tried ... so this is a Java problem, not a Yajhfc
+problem).  I get this error:
+ 
+130 Warning, no inverse address mapping for client host name
+"75-144-35-141-Chesterfield.hfc.comcastbusiness.net".
+ 
+ at gnu.inet.ftp.FtpClientProtocol.connect(FtpClientProtocol.java:1453)
+ at gnu.inet.ftp.FtpClientProtocol.open(FtpClientProtocol.java:114)
+ at yajhfc.mainwin.reconnectToServer(mainwin.java:978)
+ at yajhfc.mainwin$1.actionPerformed(mainwin.java:343)
+ at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+ at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+ at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+ at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+ at javax.swing.AbstractButton.doClick(Unknown Source)
+ at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+ at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown
+Source)
+ at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+ at java.awt.Component.processMouseEvent(Unknown Source)
+ at javax.swing.JComponent.processMouseEvent(Unknown Source)
+ at java.awt.Component.processEvent(Unknown Source)
+ at java.awt.Container.processEvent(Unknown Source)
+ at java.awt.Component.dispatchEventImpl(Unknown Source)
+ at java.awt.Container.dispatchEventImpl(Unknown Source)
+ at java.awt.Component.dispatchEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+ at java.awt.Container.dispatchEventImpl(Unknown Source)
+ at java.awt.Window.dispatchEventImpl(Unknown Source)
+ at java.awt.Component.dispatchEvent(Unknown Source)
+ at java.awt.EventQueue.dispatchEvent(Unknown Source)
+ at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+ at java.awt.EventDispatchThread.run(Unknown Source)
+
+ 
+I know that this has something to do with my cable provider not mapping
+that Domain back to an IP.  This is a static IP, and I do have it mapped
+to a DynDNS name, and I've even put a static entry in my hosts file to
+map it.  However,  JAVA appears unable to see this.
+ 
+Is there any way to work around this?
+ 
+Mike Wilson
+ACES Appraisal Group, Inc.
+P.O. Box 300
+Christiansburg, VA 24068
+540-268-5558 x 201
+Fax: 540-268-1167
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20070701/85e71ded/attachment.html>
+
+From jonas.wolz at freenet.de  Tue Jul  3 17:49:31 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 03 Jul 2007 17:49:31 +0200
+Subject: [Yajhfc-user] Error when using cable modem service and
+ connecting to server over internet.
+In-Reply-To: <B55301ABE760AA49BE5ADB32BF27A336066235@claims-new>
+References: <B55301ABE760AA49BE5ADB32BF27A336066235@claims-new>
+Message-ID: <468A700B.4020303@freenet.de>
+
+Hello,
+
+MWilson at acesappraisal.com schrieb:
+> However, when I try to connect to it via Yajhfc (and all other Java 
+> clients I have tried ... so this is a Java problem, not a Yajhfc 
+> problem).  I get this error:
+>  
+> 130 Warning, no inverse address mapping for client host name 
+> "75-144-35-141-Chesterfield.hfc.comcastbusiness.net".
+
+Actually that is a warning message from the HylaFAX server and not from 
+Java.
+It seems that the gnu.hylafax library (that YajHFC and probably most 
+other Java clients use) interprets this as an error and not as a 
+warning. So this is most probably a bug in that library.
+
+Nevertheless I must do a more thorough analysis (i.e. reproduce that 
+error) before I can be really sure about that.
+
+> Is there any way to work around this?
+
+Configure the HylaFAX server in a way so that it doesn't issue that 
+warning. ;-)
+Seriously: I currently don't know a "real" work around for that problem.
+
+In the next days I will also check if this bug is still present in the 
+latest version of the gnu.hylafax library and report it to the 
+developers if it is (for "historical reasons" YajHFC currently uses a 
+own fork of that library, but it also builds against the "stock" version 
+and I'm planning to stop using the fork in one of the next YajHFC versions).
+
+If a quick fix is possible, I'll probably publish a YajHFC jar with the 
+fix included.
+
+Regards,
+Jonas
+
+
+From MWilson at acesappraisal.com  Wed Jul  4 12:56:49 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Wed, 4 Jul 2007 06:56:49 -0400
+Subject: [Yajhfc-user] Yajhfc-user Digest, Vol 4, Issue 2
+In-Reply-To: <88993569A0C1492F90E7B83C108D9C54@AAG.local>
+References: <88993569A0C1492F90E7B83C108D9C54@AAG.local>
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A33606628C@claims-new>
+
+I did a little more searching on this and you are correct.  This is a
+Hylafax warning and not related to Java.  However, it appeared that only
+the Java clients I had tried were having an issue with it, thus I
+thought this was a java thing.
+
+I found a thread where someone had posted a patch for hylafax that
+syslog'd the 'warning' rather than replying to the client.  I patched my
+version of hylafax and recompiled and I'm working fine now.
+
+However, what probably needs to happen is the Client handle this
+response as the warning that it is and not a fatal error.  I think many
+in the situation that I am in  (on a cable modem or DSL connection where
+the ISP isn't properly setting up their DNS) are going to have this
+problem.  It would be useful to warn the user but continue operation
+anyway (it's not a fatal error ... and possibly a check box to 'not show
+this error' again, when the user has no way of fixing the issue).
+
+
+-----Original Message-----
+From: yajhfc-user-bounces at lists.berlios.de
+[mailto:yajhfc-user-bounces at lists.berlios.de] On Behalf Of
+yajhfc-user-request at lists.berlios.de
+Sent: Wednesday, July 04, 2007 6:16 AM
+To: yajhfc-user at lists.berlios.de
+Subject: Yajhfc-user Digest, Vol 4, Issue 2
+
+Send Yajhfc-user mailing list submissions to
+	yajhfc-user at lists.berlios.de
+
+To subscribe or unsubscribe via the World Wide Web, visit
+	https://lists.berlios.de/mailman/listinfo/yajhfc-user
+or, via email, send a message with subject or body 'help' to
+	yajhfc-user-request at lists.berlios.de
+
+You can reach the person managing the list at
+	yajhfc-user-owner at lists.berlios.de
+
+When replying, please edit your Subject line so it is more specific
+than "Re: Contents of Yajhfc-user digest..."
+
+
+Today's Topics:
+
+   1. Re: Error when using cable modem service and connecting to
+      server over internet. (Jonas Wolz)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Tue, 03 Jul 2007 17:49:31 +0200
+From: Jonas Wolz <jonas.wolz at freenet.de>
+Subject: Re: [Yajhfc-user] Error when using cable modem service and
+	connecting to server over internet.
+To: General discussion about YajHFC <yajhfc-user at lists.berlios.de>
+Message-ID: <468A700B.4020303 at freenet.de>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+
+Hello,
+
+MWilson at acesappraisal.com schrieb:
+> However, when I try to connect to it via Yajhfc (and all other Java 
+> clients I have tried ... so this is a Java problem, not a Yajhfc 
+> problem).  I get this error:
+>  
+> 130 Warning, no inverse address mapping for client host name 
+> "75-144-35-141-Chesterfield.hfc.comcastbusiness.net".
+
+Actually that is a warning message from the HylaFAX server and not from 
+Java.
+It seems that the gnu.hylafax library (that YajHFC and probably most 
+other Java clients use) interprets this as an error and not as a 
+warning. So this is most probably a bug in that library.
+
+Nevertheless I must do a more thorough analysis (i.e. reproduce that 
+error) before I can be really sure about that.
+
+> Is there any way to work around this?
+
+Configure the HylaFAX server in a way so that it doesn't issue that 
+warning. ;-)
+Seriously: I currently don't know a "real" work around for that problem.
+
+In the next days I will also check if this bug is still present in the 
+latest version of the gnu.hylafax library and report it to the 
+developers if it is (for "historical reasons" YajHFC currently uses a 
+own fork of that library, but it also builds against the "stock" version
+
+and I'm planning to stop using the fork in one of the next YajHFC
+versions).
+
+If a quick fix is possible, I'll probably publish a YajHFC jar with the 
+fix included.
+
+Regards,
+Jonas
+
+
+------------------------------
+
+_______________________________________________
+Yajhfc-user mailing list
+Yajhfc-user at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+
+End of Yajhfc-user Digest, Vol 4, Issue 2
+*****************************************
+
+
+
+
+From jonas.wolz at freenet.de  Wed Jul 11 18:21:57 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 11 Jul 2007 18:21:57 +0200
+Subject: [Yajhfc-user] Error when using cable modem service and
+ connecting to server over internet.
+In-Reply-To: <468A700B.4020303@freenet.de>
+References: <B55301ABE760AA49BE5ADB32BF27A336066235@claims-new>
+	<468A700B.4020303@freenet.de>
+Message-ID: <469503A5.8040608@freenet.de>
+
+Jonas Wolz schrieb:
+> MWilson at acesappraisal.com schrieb:
+>> However, when I try to connect to it via Yajhfc (and all other Java 
+>> clients I have tried ... so this is a Java problem, not a Yajhfc 
+>> problem).  I get this error:
+>>  
+>> 130 Warning, no inverse address mapping for client host name 
+>> "75-144-35-141-Chesterfield.hfc.comcastbusiness.net".
+> 
+> Actually that is a warning message from the HylaFAX server and not from 
+> Java.
+> It seems that the gnu.hylafax library (that YajHFC and probably most 
+> other Java clients use) interprets this as an error and not as a 
+> warning. So this is most probably a bug in that library.
+> [...]
+> 
+>> Is there any way to work around this?
+> 
+> Configure the HylaFAX server in a way so that it doesn't issue that 
+> warning. ;-)
+> Seriously: I currently don't know a "real" work around for that problem.
+> 
+> In the next days I will also check if this bug is still present in the 
+> latest version of the gnu.hylafax library and report it to the 
+> developers if it is [...]
+
+This has been fixed in the gnu.hylafax library, so the next YajHFC 
+release (0.3.4, will probably get done in early August/late July) will 
+include the bug fix, too.
+If somebody else encounters this bug before 0.3.4 is released, please 
+contact me (in that case I can send you a "pre-release" jar file with 
+the bugfix included).
+
+Regards,
+Jonas
+
+
+From rentorbuy at yahoo.com  Mon Jul 16 15:01:46 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 16 Jul 2007 06:01:46 -0700 (PDT)
+Subject: [Yajhfc-user] feature requests
+Message-ID: <73139.70110.qm@web32609.mail.mud.yahoo.com>
+
+Hi again!
+
+I would like to make two non-urgent feature requests
+for future yajhfc releases.
+
+1) automatic row count or labelling, especially useful
+on the sent table which can be very long even when
+filters are applied. I can select all and copy/paste
+to Excel/OO and get row numbers but it would be
+quicker to have it on yajhfc.
+
+2) in user options, "kill time" should be customizable
+(either as a general option or as a per-job option or
+both).
+
+Anyway, these are just suggestions. ;-)
+
+0.3.3 has been very stable until now (1911 faxes
+sent).
+
+
+
+ 
+____________________________________________________________________________________
+Looking for earth-friendly autos? 
+Browse Top Cars by "Green Rating" at Yahoo! Autos' Green Center.
+http://autos.yahoo.com/green_center/
+
+
+From jonas.wolz at freenet.de  Mon Jul 16 17:38:05 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 16 Jul 2007 17:38:05 +0200
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <73139.70110.qm@web32609.mail.mud.yahoo.com>
+References: <73139.70110.qm@web32609.mail.mud.yahoo.com>
+Message-ID: <469B90DD.2010208@freenet.de>
+
+Vieri schrieb:
+> I would like to make two non-urgent feature requests
+> for future yajhfc releases.
+> 
+> 1) automatic row count or labelling, especially useful
+> on the sent table which can be very long even when
+> filters are applied. I can select all and copy/paste
+> to Excel/OO and get row numbers but it would be
+> quicker to have it on yajhfc.
+
+Should be easy to add (although this feature certainly won't be in the 
+next release which probably will be done next weekend ;-) ).
+
+> 2) in user options, "kill time" should be customizable
+> (either as a general option or as a per-job option or
+> both).
+
+"Cancel job after (minutes)" in the send dialog should probably do what 
+you want (or do you mean something different?).
+
+> 0.3.3 has been very stable until now (1911 faxes
+> sent).
+
+Good to hear :-)
+
+
+Greetings,
+Jonas
+
+
+From rentorbuy at yahoo.com  Mon Jul 16 17:49:46 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 16 Jul 2007 08:49:46 -0700 (PDT)
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <469B90DD.2010208@freenet.de>
+Message-ID: <21533.51838.qm@web32607.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> "kill time" should be
+> customizable
+> 
+> "Cancel job after (minutes)" in the send dialog
+
+I didn't notice that option was there, silly me...
+Thanks Jonas!
+
+
+
+ 
+____________________________________________________________________________________
+It's here! Your new message!  
+Get new email alerts with the free Yahoo! Toolbar.
+http://tools.search.yahoo.com/toolbar/features/mail/
+
+
+From rentorbuy at yahoo.com  Tue Jul 17 08:40:28 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 16 Jul 2007 23:40:28 -0700 (PDT)
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <469B90DD.2010208@freenet.de>
+Message-ID: <388452.86202.qm@web32605.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> > 2) in user options, "kill time" should be
+> customizable
+> "Cancel job after (minutes)" in the send dialog
+
+Hi Jonas,
+
+could a "default killtime" be specified in the
+"settings" config file (just like max tries)?
+
+Also, I noticed that when a user has a lot of jobs in
+the "sent" table and is about to send another fax via
+printing redirection, there is a significant delay
+before the send dialog actually appears. It's probably
+because it has to wait for the hylafax server to
+transfer the whole job list so that yajhfc can display
+it in its grid and THEN the "send" dialog box appears.
+Can we find a way to reduce or elinminate this delay?
+If threading is not doable, can the sent and received
+tables be "invisible" (thus no hylafax job list
+transfer necessary) until a user specifically
+activates the table views?
+Basically, yajhfc doesn't need to "load" the job list
+from hylafax if it's a printing redirection and if
+yajhfc is configured to automatically close itself
+once the job has been submitted.
+
+Just a thought...
+
+Vieri
+
+
+
+       
+____________________________________________________________________________________
+Take the Internet to Go: Yahoo!Go puts the Internet in your pocket: mail, news, photos & more. 
+http://mobile.yahoo.com/go?refer=1GNXIC
+
+
+From rentorbuy at yahoo.com  Tue Jul 17 10:39:18 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 17 Jul 2007 01:39:18 -0700 (PDT)
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <388452.86202.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <844333.31769.qm@web32602.mail.mud.yahoo.com>
+
+Still another request would be to review the way
+yajhfc saves the redirected printer port data to a
+temp file for sending.
+In Windows XP it seems that yajhfc needs to write to
+C:\WINDOWS\TEMP but this dir is usually not writable
+to standard domain users. 
+What I did was make it writable but it would be better
+if yajhfc could use the user profile's temp dir.
+In VBS you can retrieve it like so:
+Set oEnv = WshShell.Environment("Process")
+TMP = oEnv.item("TEMP")
+
+I don't know how you can do that in Java and if it's
+"portable".
+
+--- Vieri <rentorbuy at yahoo.com> wrote:
+
+> 
+> --- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> 
+> > > 2) in user options, "kill time" should be
+> > customizable
+> > "Cancel job after (minutes)" in the send dialog
+> 
+> Hi Jonas,
+> 
+> could a "default killtime" be specified in the
+> "settings" config file (just like max tries)?
+> 
+> Also, I noticed that when a user has a lot of jobs
+> in
+> the "sent" table and is about to send another fax
+> via
+> printing redirection, there is a significant delay
+> before the send dialog actually appears. It's
+> probably
+> because it has to wait for the hylafax server to
+> transfer the whole job list so that yajhfc can
+> display
+> it in its grid and THEN the "send" dialog box
+> appears.
+> Can we find a way to reduce or elinminate this
+> delay?
+> If threading is not doable, can the sent and
+> received
+> tables be "invisible" (thus no hylafax job list
+> transfer necessary) until a user specifically
+> activates the table views?
+> Basically, yajhfc doesn't need to "load" the job
+> list
+> from hylafax if it's a printing redirection and if
+> yajhfc is configured to automatically close itself
+> once the job has been submitted.
+> 
+> Just a thought...
+> 
+> Vieri
+
+
+
+       
+____________________________________________________________________________________
+Building a website is a piece of cake. Yahoo! Small Business gives you all the tools to get online.
+http://smallbusiness.yahoo.com/webhosting 
+
+
+From jonas.wolz at freenet.de  Tue Jul 17 17:19:42 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 17 Jul 2007 17:19:42 +0200
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <388452.86202.qm@web32605.mail.mud.yahoo.com>
+References: <388452.86202.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <469CDE0E.80100@freenet.de>
+
+Vieri schrieb:
+> could a "default killtime" be specified in the
+> "settings" config file (just like max tries)?
+
+No problem, will be in 0.3.4 (actually I thought it would already save 
+this...).
+
+> Also, I noticed that when a user has a lot of jobs in
+> the "sent" table and is about to send another fax via
+> printing redirection, there is a significant delay
+> before the send dialog actually appears. It's probably
+> because it has to wait for the hylafax server to
+> transfer the whole job list so that yajhfc can display
+> it in its grid and THEN the "send" dialog box appears.
+> Can we find a way to reduce or elinminate this delay?
+
+I see the problem you mean.
+Actually the table refresh is already multi-threaded, but for the first 
+time after connecting it is currently still done in the UI thread. 
+Before changing that I have to look if there is (still) a reason for 
+that or if it can be safely removed.
+Anyway, I will try to find some solution for that.
+
+Greetings,
+Jonas
+
+
+From jonas.wolz at freenet.de  Tue Jul 17 17:32:08 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 17 Jul 2007 17:32:08 +0200
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <844333.31769.qm@web32602.mail.mud.yahoo.com>
+References: <844333.31769.qm@web32602.mail.mud.yahoo.com>
+Message-ID: <469CE0F8.40000@freenet.de>
+
+Vieri schrieb:
+> Still another request would be to review the way
+> yajhfc saves the redirected printer port data to a
+> temp file for sending.
+> In Windows XP it seems that yajhfc needs to write to
+> C:\WINDOWS\TEMP but this dir is usually not writable
+> to standard domain users. 
+> What I did was make it writable but it would be better
+> if yajhfc could use the user profile's temp dir.
+> In VBS you can retrieve it like so:
+> Set oEnv = WshShell.Environment("Process")
+> TMP = oEnv.item("TEMP")
+> 
+> I don't know how you can do that in Java and if it's
+> "portable".
+
+Reading environment variables is no problem in Java, but I doubt it 
+would help as the environment is often "broken" during printing 
+redirection (i.e. probably the TEMP environment variable points to 
+C:\WINDOWS\TEMP there).
+So, this probably needs to be fixed in the launcher script (by including 
+-Djava.io.tmpdir=... on the java command line).
+
+I will try to analyse this problem when I have some time in the next 
+days/weeks. After I have found a solution I will write another mail to 
+this list.
+
+Greetings,
+Jonas
+
+
+From jonas.wolz at freenet.de  Fri Jul 20 14:44:09 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 20 Jul 2007 14:44:09 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.4 released
+Message-ID: <200707201444.10032.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.4 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_4-setup.exe
+
+New features/changes:
+- Support to specify recipients on the command line
+- Suspend/Resume for fax jobs
+- French translation added
+- Initially displayed tab can be set by a command line argument
+- The "stock" gnu.hylafax library is now used by default (which fixes some 
+bugs)
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+
+From jonas.wolz at freenet.de  Fri Jul 20 14:45:14 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 20 Jul 2007 14:45:14 +0200
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <469CE0F8.40000@freenet.de>
+References: <844333.31769.qm@web32602.mail.mud.yahoo.com>
+	<469CE0F8.40000@freenet.de>
+Message-ID: <200707201445.14392.jonas.wolz@freenet.de>
+
+Am Dienstag, 17. Juli 2007 17:32 schrieb Jonas Wolz:
+> Reading environment variables is no problem in Java, but I doubt it
+> would help as the environment is often "broken" during printing
+> redirection (i.e. probably the TEMP environment variable points to
+> C:\WINDOWS\TEMP there).
+> So, this probably needs to be fixed in the launcher script (by including
+> -Djava.io.tmpdir=... on the java command line).
+>
+> I will try to analyse this problem when I have some time in the next
+> days/weeks. After I have found a solution I will write another mail to
+> this list.
+
+As suspected above the problem was that the TEMP and TMP variables pointed to  
+C:\WINDOWS\TEMP. 
+I added some code to the launcher script to correct this (the updated version 
+can be downloaded from the homepage and is included in the 0.3.4 setup.exe, 
+too).
+
+Greetings,
+Jonas
+
+
+From jonas.wolz at freenet.de  Fri Jul 20 15:30:03 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 20 Jul 2007 15:30:03 +0200
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <469CDE0E.80100@freenet.de>
+References: <388452.86202.qm@web32605.mail.mud.yahoo.com>
+	<469CDE0E.80100@freenet.de>
+Message-ID: <200707201530.03601.jonas.wolz@freenet.de>
+
+Am Dienstag, 17. Juli 2007 17:19 schrieb Jonas Wolz:
+> > Also, I noticed that when a user has a lot of jobs in
+> > the "sent" table and is about to send another fax via
+> > printing redirection, there is a significant delay
+> > before the send dialog actually appears. It's probably
+> > because it has to wait for the hylafax server to
+> > transfer the whole job list so that yajhfc can display
+> > it in its grid and THEN the "send" dialog box appears.
+> > Can we find a way to reduce or elinminate this delay?
+>
+> I see the problem you mean.
+> Actually the table refresh is already multi-threaded, but for the first
+> time after connecting it is currently still done in the UI thread.
+> Before changing that I have to look if there is (still) a reason for
+> that or if it can be safely removed.
+> Anyway, I will try to find some solution for that.
+
+In 0.3.4 the initial display is now also done in the refresh thread. I don't 
+know if this how much that helps, however, as the login is still done in the 
+UI thread.
+
+Related to that I set up a test server with 2000 faxes in the receive and done 
+queue and made some measurements why the initial display takes a while:
+On my test box here (AMD Athlon 850MHz/512 MB RAM with the test server running 
+in a VMWare instance) it took about 2 seconds to retrieve a queue's job list 
+from the server and below 0.2 seconds to process the retrieved data in 
+YajHFC.
+As the HylaFAX protocol seemingly doesn't support limiting the retrieved list 
+in a reasonable way this means that there is probably not much potential to 
+optimize...
+
+However:
+If anybody reading this knows a (preferably Open Source) client that refreshes 
+noticeably faster than YajHFC, it would be nice if he or she could tell me 
+its name. Then I could take a look at it trying to find out how the faster 
+refresh is achieved.
+
+Greetings,
+Jonas
+
+
+From rentorbuy at yahoo.com  Fri Jul 20 17:06:56 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Fri, 20 Jul 2007 08:06:56 -0700 (PDT)
+Subject: [Yajhfc-user] feature requests
+In-Reply-To: <200707201530.03601.jonas.wolz@freenet.de>
+Message-ID: <762248.12319.qm@web32603.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Am Dienstag, 17. Juli 2007 17:19 schrieb Jonas Wolz:
+> > > Also, I noticed that when a user has a lot of
+> jobs in
+> > > the "sent" table and is about to send another
+> fax via
+> > > printing redirection, there is a significant
+> delay
+> > > before the send dialog actually appears.
+
+> As the HylaFAX protocol seemingly doesn't support
+> limiting the retrieved list 
+> in a reasonable way this means that there is
+> probably not much potential to 
+> optimize...
+
+Thank you Jonas for all your work.
+I will start testing 0.3.4 on Monday.
+As far as the above issue is concerned, *maybe* the
+initial 2-second delay can be eliminated by avoiding
+the job list retrieval. I'm saying this because most
+of the time users just "print to a fax virtual
+printer", enter the dest fax number, press send and
+that's it. Besides, we have it configured so that
+yajhfc terminates after the user presses "send" on the
+dialog box.
+
+So maybe just the dialog box could show up when
+configured this way (thus no need to display and fill
+the job grid data)
+-OR-
+if it's programmatically simpler, let the main
+application appear behind the dialog box *but* disable
+job list retrieval internally, as it won't be used by
+the user anyway.
+The only thing that yajhfc would need to do before
+actually sending the new fax is grab the user's login
+credentials.
+
+Anyway, I'll check 0.3.4 out as you say that it's now
+in a different thread.
+
+By the way, your 2-second delay is a tad more for me
+because my HylaFAX service is on a robust but weaker
+server (pentium 2, etc.). :-(
+
+Have a nice weekend.
+
+
+
+      ____________________________________________________________________________________
+Shape Yahoo! in your own image.  Join our Network Research Panel today!   http://surveylink.yahoo.com/gmrs/yahoo_panel_invite.asp?a=7 
+
+
+
+
+From rentorbuy at yahoo.com  Thu Jul 26 09:37:59 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 26 Jul 2007 00:37:59 -0700 (PDT)
+Subject: [Yajhfc-user] berlios down?
+Message-ID: <407249.55152.qm@web32603.mail.mud.yahoo.com>
+
+Am I the only one having trouble accessing BerliOS?
+The system has been down for a while now and I can't
+download yajhfc.
+Actually, this email will probably not reach any ML
+subscriber until the system is back up... :-(
+
+
+
+      ____________________________________________________________________________________
+Park yourself in front of a world of choices in alternative vehicles. Visit the Yahoo! Auto Green Center.
+http://autos.yahoo.com/green_center/ 
+
+
+From MWilson at acesappraisal.com  Thu Jul 26 15:18:19 2007
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Thu, 26 Jul 2007 09:18:19 -0400
+Subject: [Yajhfc-user] Java Problem?
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A33606656C@claims-new>
+
+All of a sudden my Redmon/Yajhfc clients have stopped working.  I have
+done some googling on the Java error indicated but nothing on how to
+fix.
+Here is the output from Redmon Log:  Anyone have any ideas?  I can still
+connect to my server and see the faxes ... I can send from the send fax
+dialog from within the client (if sending a file) - but can't use
+redmon/--stdin to print to fax driver?
+ 
+RedMon - Redirection Port Monitor Vx
+
+Copyright (C) 1997-2001, Ghostgum Software Pty Ltd. All Rights Reserved.
+
+Copyright (C) 2004, internet-support foehr.com All Rights Reserved
+
+Oct 15 2005 Version 1.8 (EE)
+
+Environment:
+
+ALLUSERSPROFILE=C:\Documents and Settings\All Users
+
+CLASSPATH=.;C:\Program Files\Java\jre1.6.0_01\lib\ext\QTJava.zip
+
+CommonProgramFiles=C:\Program Files\Common Files
+
+COMPUTERNAME=XPBOSS
+
+ComSpec=C:\WINDOWS\system32\cmd.exe
+
+FP_NO_HOST_CHECK=NO
+
+NUMBER_OF_PROCESSORS=2
+
+OS=Windows_NT
+
+Path=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program
+Files\QuickTime\QTSystem\
+
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH
+
+PROCESSOR_ARCHITECTURE=x86
+
+PROCESSOR_IDENTIFIER=x86 Family 15 Model 67 Stepping 3, AuthenticAMD
+
+PROCESSOR_LEVEL=15
+
+PROCESSOR_REVISION=4303
+
+ProgramFiles=C:\Program Files
+
+QTJAVA=C:\Program Files\Java\jre1.6.0_01\lib\ext\QTJava.zip
+
+REDMON_FILENAME=
+
+SystemDrive=C:
+
+SystemRoot=C:\WINDOWS
+
+TEMP=C:\WINDOWS\TEMP
+
+TMP=C:\WINDOWS\TEMP
+
+USERPROFILE=C:\Documents and Settings\LocalService
+
+windir=C:\WINDOWS
+
+REDMON_PORT=YajhfcPort:
+
+REDMON_JOB=35
+
+REDMON_PRINTER=Yajhfc
+
+REDMON_MACHINE=\\XPBOSS
+
+REDMON_USER=mike wilson
+
+REDMON_DOCNAME=Test Page
+
+REDMON_FILENAME=
+
+REDMON_SESSIONID=0
+
+StartDocPort: working process is
+
+len=107 Command = ["javaw.exe" -jar c:\YajHFC\yajhfc.jar --stdin
+--configdir="C:\Documents and Settings\Mike Wilson\.yajhfc"].
+
+StartDocPort: After Works process is
+
+len=1 Command = [ ].
+
+REDMON StartDocPort: returning 1
+
+"javaw.exe" -jar c:\YajHFC\yajhfc.jar --stdin --configdir="C:\Documents
+and Settings\Mike Wilson\.yajhfc"
+
+Printer=Yajhfc
+
+JobId=35
+
+REDMON WriteThread: started
+
+Level=1
+
+DocumentName="Test Page"
+
+OutputFile=""
+
+Datatype="(null)"
+
+output=0 show=0 delay=300
+
+REDMON WritePort: about to write 65536 bytes to port.
+
+Exception in thread "AWT-EventQueue-0" java.lang.RuntimeException:
+java.io.IOException: Could not get shell folder ID list
+
+at sun.awt.shell.Win32ShellFolder2$ComTask.execute(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolder2.getFileSystemPath(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolderManager2.getRecent(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolderManager2.get(Unknown Source)
+
+at sun.awt.shell.ShellFolder.get(Unknown Source)
+
+at sun.swing.WindowsPlacesBar.<init>(Unknown Source)
+
+at
+com.sun.java.swing.plaf.windows.WindowsFileChooserUI.updateUseShellFolde
+r(Unknown Source)
+
+at
+com.sun.java.swing.plaf.windows.WindowsFileChooserUI.installComponents(U
+nknown Source)
+
+at javax.swing.plaf.basic.BasicFileChooserUI.installUI(Unknown Source)
+
+at
+com.sun.java.swing.plaf.windows.WindowsFileChooserUI.installUI(Unknown
+Source)
+
+at javax.swing.JComponent.setUI(Unknown Source)
+
+at javax.swing.JFileChooser.updateUI(Unknown Source)
+
+at javax.swing.JFileChooser.setup(Unknown Source)
+
+at javax.swing.JFileChooser.<init>(Unknown Source)
+
+at javax.swing.JFileChooser.<init>(Unknown Source)
+
+at yajhfc.FileTextField.<init>(FileTextField.java:123)
+
+at yajhfc.SendWin$8.<init>(SendWin.java:556)
+
+at yajhfc.SendWin.getFtfFilename(SendWin.java:554)
+
+at yajhfc.SendWin.getPaneCommon(SendWin.java:308)
+
+at yajhfc.SendWin.getTabMain(SendWin.java:399)
+
+at yajhfc.SendWin.getJContentPane(SendWin.java:432)
+
+at yajhfc.SendWin.initialize(SendWin.java:166)
+
+at yajhfc.SendWin.<init>(SendWin.java:151)
+
+at yajhfc.SendWin.<init>(SendWin.java:141)
+
+at yajhfc.Launcher$SubmitRunner.doSubmit(Launcher.java:644)
+
+at yajhfc.Launcher$NewInstRunner.run(Launcher.java:462)
+
+at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+
+at java.awt.EventQueue.dispatchEvent(Unknown Source)
+
+at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+
+at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+
+at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+
+at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+
+at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+
+at java.awt.EventDispatchThread.run(Unknown Source)
+
+Caused by: java.io.IOException: Could not get shell folder ID list
+
+at sun.awt.shell.Win32ShellFolder2.getFileSystemPath0(Native Method)
+
+at sun.awt.shell.Win32ShellFolder2.access$1000(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolder2$8.call(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolder2$8.call(Unknown Source)
+
+at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+
+at java.util.concurrent.FutureTask.run(Unknown Source)
+
+at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown
+Source)
+
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+
+at sun.awt.shell.Win32ShellFolder2$ComTaskExecutor$2.run(Unknown Source)
+
+at java.lang.Thread.run(Unknown Source)
+
+REDMON check_process: process isn't running.
+
+REDMON check_process: flushing child stdin to unblock WriteThread.
+
+REDMON WriteThread: ending
+
+%!PS-Adobe-3.0
+
+%%Title: Test Page
+
+%%Creator: PScript5.dll Version 5.2.2
+
+%%CreationDate: 7/26/2007 9:13:30
+
+%%For: mike wilson
+
+%%BoundingBox: (atend)
+
+%%Pages: (atend)
+
+%%Orientation: Portrait
+
+%%PageOrder: Special
+
+%%DocumentNeededResources: (atend)
+
+%%DocumentSuppliedResources: (atend)
+
+%%DocumentData: Clean7Bit
+
+%%TargetDevice: (LaserWriter 12/640 PS) (2015.105) 1
+
+%%LanguageLevel: 2
+
+%%EndComments
+
+ 
+ 
+ 
+Mike Wilson
+ACES Appraisal Group, Inc.
+P.O. Box 300
+Christiansburg, VA 24068
+540-268-5558 x 201
+Fax: 540-268-1167
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20070726/83d41be2/attachment.html>
+
+From jonas.wolz at freenet.de  Thu Jul 26 15:37:12 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 26 Jul 2007 15:37:12 +0200
+Subject: [Yajhfc-user] berlios down?
+In-Reply-To: <407249.55152.qm@web32603.mail.mud.yahoo.com>
+References: <407249.55152.qm@web32603.mail.mud.yahoo.com>
+Message-ID: <200707261537.12944.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Juli 2007 09:37 schrieb Vieri:
+> Am I the only one having trouble accessing BerliOS?
+> The system has been down for a while now and I can't
+> download yajhfc.
+> Actually, this email will probably not reach any ML
+> subscriber until the system is back up... :-(
+
+Currently the berlios HTTP server seems to be up again.
+
+Nevertheless, what I noticed when BerliOS had really severe availability 
+problems in early January (due to a dDOS attack) was that the HTTPS service 
+often was still up while HTTP was down, i.e. https://yajhfc.berlios.de/ 
+worked while http://yajhfc.berlios.de/ was down.
+Maybe that helps in the future...
+
+
+From jonas.wolz at freenet.de  Thu Jul 26 16:03:09 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 26 Jul 2007 16:03:09 +0200
+Subject: [Yajhfc-user] Java Problem?
+In-Reply-To: <B55301ABE760AA49BE5ADB32BF27A33606656C@claims-new>
+References: <B55301ABE760AA49BE5ADB32BF27A33606656C@claims-new>
+Message-ID: <200707261603.09351.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. Juli 2007 15:18 schrieb MWilson at acesappraisal.com:
+> All of a sudden my Redmon/Yajhfc clients have stopped working.  I have
+> done some googling on the Java error indicated but nothing on how to
+> fix.
+> Here is the output from Redmon Log:  Anyone have any ideas?  I can still
+> connect to my server and see the faxes ... I can send from the send fax
+> dialog from within the client (if sending a file) - but can't use
+> redmon/--stdin to print to fax driver?
+
+I only found the following bug database entry, too:
+http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6544857
+
+According to it the bug only occurs with Java 6 update 2, so the obvious 
+workaround would be to simply install another Java version.
+
+As it seems to work from your user account you might also try to use the 
+wrapper script at 
+http://yajhfc.berlios.de/doc/yajhfc-launcher.shtml
+to launch YajHFC from Redmon (that script sets the correct values for some 
+environment variables which are still set to values for the user LocalService 
+when a program is started by Redmon).
+I don't know if the latter will be of any help, however.
+
+Hope that helps,
+Jonas
+
+
+From rentorbuy at yahoo.com  Thu Jul 26 21:37:27 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 26 Jul 2007 12:37:27 -0700 (PDT)
+Subject: [Yajhfc-user] berlios down?
+In-Reply-To: <200707261537.12944.jonas.wolz@freenet.de>
+Message-ID: <77354.20717.qm@web32611.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> https://yajhfc.berlios.de/ 
+> worked while http://yajhfc.berlios.de/ was down.
+> Maybe that helps in the future...
+
+Nice to know!
+Will add that to my bookmarks... ;-)
+
+
+
+       
+____________________________________________________________________________________
+Choose the right car based on your needs.  Check out Yahoo! Autos new Car Finder tool.
+http://autos.yahoo.com/carfinder/
+
+

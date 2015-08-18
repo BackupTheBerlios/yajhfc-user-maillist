@@ -1,0 +1,24 @@
+From jonas.wolz at freenet.de  Mon Jun 20 14:47:32 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 20 Jun 2011 14:47:32 +0200
+Subject: [Yajhfc-user] YajHFC command line only mode
+Message-ID: <201106201447.32467.jonas.wolz@freenet.de>
+
+Hello,
+
+due to "public demand", I created (kind of) an addon to YajHFC which supports 
+command line only operation without a graphical user interface.
+
+You can download it from:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-console.zip
+
+It is still an early beta and has not got much testing, so you should probably 
+not use it in production yet.
+
+If you are interested in such a operation mode, please test this version and 
+let me know about all bugs (or important missing features) you find.
+
+Have fun,
+Jonas Wolz
+
+

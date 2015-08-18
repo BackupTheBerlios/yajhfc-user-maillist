@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] YajHFC 0.4.0beta released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.4.0beta%20released&In-Reply-To=%3C200901071939.05167.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] YajHFC 0.4.0beta released</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.4.0beta%20released&In-Reply-To=%3C200901071939.05167.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] YajHFC 0.4.0beta released">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Jan  7 19:39:05 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000157.html">[Yajhfc-user] YajHFC 0.4.0beta released
+</A></li>
+        <LI>Next message: <A HREF="000159.html">[Yajhfc-user] YajHFC 0.4.0beta released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 6. Januar 2009 schrieb Andy Rogers:
+&gt;<i> But I do have a question about the new archive view.
+</I>&gt;<i>
+</I>&gt;<i> Currently when I log into yajhfc I go under my usuall logon details for a
+</I>&gt;<i> general user, and in the archive I can only view faxes which I have sent
+</I>&gt;<i> which is what I would expect.
+</I>&gt;<i>
+</I>&gt;<i> However when I change to admin mode under the same username, in the
+</I>&gt;<i> archive view I would expect to be able to see all users sent faxes, but I
+</I>&gt;<i> can't I can still only see the ones which I haev sent.  Should it work
+</I>&gt;<i> this way?
+</I>&gt;<i>
+</I>&gt;<i> In archive, should I also be able to delete a file which has been
+</I>&gt;<i> archived?  When I try I get &quot;java.io.IOException: Could not delete the
+</I>&gt;<i> file&quot; errors.  Or is this something that can't be done or would it be an
+</I>&gt;<i> actual file premission problem on the actual server?  This happens in
+</I>&gt;<i> normal &amp; admin mode.
+</I>
+The archive view completely bypasses the HylaFAX server and uses the file 
+system directly (theoretically it would work without even connecting to 
+HylaFAX). 
+Because of that the only permissions taking effect are the &quot;normal&quot; file 
+permissions on the server -- so it is no bug when the admin mode does not 
+change anything here.
+
+Nevertheless it is a bit odd that you can only view faxes sent by yourself (as 
+long as &quot;View-&gt;Only own faxes&quot; is *not* checked, of course ;-) ).
+Most likely this is a permission problem, but it also might be a bug in YajHFC 
+(because the archive code has not been tested very much so far).
+
+You can check for a permission problem by browsing the archive directory with 
+a file manager on the client and trying if you can open the &quot;qX&quot; files inside 
+the sub directories of the archive directory (where X is the name of the sub 
+directory).
+
+For example, if you cannot see job 123, check if you can 
+open &quot;archive/123/q123&quot; with a text editor. 
+If you can read this file on the client, but YajHFC does not show that job, 
+this is a bug in YajHFC.
+
+Similarly you can check if deleting jobs fails due to a bug in YajHFC or due 
+to a permission problem: If you can delete the subdirectory belonging to the 
+job with a file manager, but not with YajHFC, it is a bug. 
+
+For example, if YajHFC cannot delete job 123, check if you can remove the 
+directory &quot;archive/123&quot;.
+
+Regards,
+Jonas 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000157.html">[Yajhfc-user] YajHFC 0.4.0beta released
+</A></li>
+	<LI>Next message: <A HREF="000159.html">[Yajhfc-user] YajHFC 0.4.0beta released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

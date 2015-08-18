@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Error when using cable modem service and connecting	to server over internet.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20when%20using%20cable%20modem%20service%20and%20connecting%0A%09to%20server%20over%20internet.&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A336066235%40claims-new%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Error when using cable modem service and connecting	to server over internet.</H1>
+    <B>MWilson at acesappraisal.com</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20when%20using%20cable%20modem%20service%20and%20connecting%0A%09to%20server%20over%20internet.&In-Reply-To=%3CB55301ABE760AA49BE5ADB32BF27A336066235%40claims-new%3E"
+       TITLE="[Yajhfc-user] Error when using cable modem service and connecting	to server over internet.">MWilson at acesappraisal.com
+       </A><BR>
+    <I>Sun Jul  1 23:25:13 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000017.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+ 
+I've been using Yajhfc to connect to my internal hylafax server with
+great sucess.  However, I need to migrate that server to a Virtual
+Private Server to take the bandwidth load off of my home/office
+connection.
+ 
+I have successfully setup my new Hylafax server and can access it via
+Webmin, and send/receive faxes from the server.
+ 
+However, when I try to connect to it via Yajhfc (and all other Java
+clients I have tried ... so this is a Java problem, not a Yajhfc
+problem).  I get this error:
+ 
+130 Warning, no inverse address mapping for client host name
+&quot;75-144-35-141-Chesterfield.hfc.comcastbusiness.net&quot;.
+ 
+ at gnu.inet.ftp.FtpClientProtocol.connect(FtpClientProtocol.java:1453)
+ at gnu.inet.ftp.FtpClientProtocol.open(FtpClientProtocol.java:114)
+ at yajhfc.mainwin.reconnectToServer(mainwin.java:978)
+ at yajhfc.mainwin$1.actionPerformed(mainwin.java:343)
+ at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+ at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+ at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+ at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+ at javax.swing.AbstractButton.doClick(Unknown Source)
+ at javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+ at javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown
+Source)
+ at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+ at java.awt.Component.processMouseEvent(Unknown Source)
+ at javax.swing.JComponent.processMouseEvent(Unknown Source)
+ at java.awt.Component.processEvent(Unknown Source)
+ at java.awt.Container.processEvent(Unknown Source)
+ at java.awt.Component.dispatchEventImpl(Unknown Source)
+ at java.awt.Container.dispatchEventImpl(Unknown Source)
+ at java.awt.Component.dispatchEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+ at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+ at java.awt.Container.dispatchEventImpl(Unknown Source)
+ at java.awt.Window.dispatchEventImpl(Unknown Source)
+ at java.awt.Component.dispatchEvent(Unknown Source)
+ at java.awt.EventQueue.dispatchEvent(Unknown Source)
+ at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+ at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+ at java.awt.EventDispatchThread.run(Unknown Source)
+
+ 
+I know that this has something to do with my cable provider not mapping
+that Domain back to an IP.  This is a static IP, and I do have it mapped
+to a DynDNS name, and I've even put a static entry in my hosts file to
+map it.  However,  JAVA appears unable to see this.
+ 
+Is there any way to work around this?
+ 
+Mike Wilson
+ACES Appraisal Group, Inc.
+P.O. Box 300
+Christiansburg, VA 24068
+540-268-5558 x 201
+Fax: 540-268-1167
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yajhfc-user/attachments/20070701/85e71ded/attachment.html">https://lists.berlios.de/pipermail/yajhfc-user/attachments/20070701/85e71ded/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000017.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

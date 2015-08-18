@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Issue with viewing received faxes as PDF
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Issue%20with%20viewing%20received%20faxes%20as%20PDF&In-Reply-To=%3C201009190822.14345.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000398.html">
+   <LINK REL="Next"  HREF="000401.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Issue with viewing received faxes as PDF</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Issue%20with%20viewing%20received%20faxes%20as%20PDF&In-Reply-To=%3C201009190822.14345.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Issue with viewing received faxes as PDF">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sun Sep 19 08:22:13 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000398.html">[Yajhfc-user] Issue with viewing received faxes as PDF
+</A></li>
+        <LI>Next message: <A HREF="000401.html">[Yajhfc-user] Issue with viewing received faxes as PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Donnerstag, 16. September 2010 schrieb Giulio:
+&gt;<i> YajHFC 0.4.4, Windows 7 64bit.
+</I>&gt;<i>
+</I>&gt;<i> If I set yajhfc to view received faxes w/o any conversion I can see the
+</I>&gt;<i> tiff files ok.
+</I>&gt;<i>
+</I>&gt;<i> If I set it up to view them as PDF, like this:
+</I>&gt;<i>
+</I>&gt;<i> 	Location of tiff2pdf executable:
+</I>&gt;<i> 		C:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe
+</I>&gt;<i> 	View faxes as single file: X
+</I>&gt;<i> 	Format for viewing: PDF
+</I>&gt;<i> 	View faxes always in this format: X
+</I>&gt;<i>
+</I>&gt;<i> then when I double click on a received fax I get an error:
+</I>&gt;<i>
+</I>&gt;<i> ========== error
+</I>&gt;<i> 	An error occured displaying the fax &quot;fax000011945.tif&quot;:
+</I>&gt;<i> 	Premature end of stream reading stdout from tiff2pdf
+</I>&gt;<i> (readLen=-1,buflen=-1).
+</I>&gt;<i> [...]
+</I>
+This is a bug with tiff2pdf and Windows Vista/7 (see below for details).
+
+&gt;<i> What is the exact command line used by yajhfc?
+</I>
+&quot;tiff2pdf inputfile&quot;
+
+&gt;<i> If I view the fax as tiff (no conversion), save it to disk, and then
+</I>&gt;<i> convert it by hand
+</I>&gt;<i> C:\a&gt;&quot;c:\Program Files (x86)\GnuWin32\bin\tiff2pdf.exe&quot;
+</I>&gt;<i> 			 fax7032146836801140192.tiff -o fax.pdf
+</I>&gt;<i> I get a valid PDF file, so tiff2pdf seems to be working.
+</I>
+If you use &quot;tiff2pdf inputfile &gt; outputfile&quot; (instead of &quot;-o outputfile&quot;), you 
+will probably get a crash from tiff2pdf.
+
+As a workaround I have created the following batch file:
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd">ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd</A>
+
+Download it, copy it to the directory where tiff2pdf.exe is and then setup 
+YajHFC to use tiff2pdf.cmd instead of tiff2pdf.exe 
+
+Hope that helps
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000398.html">[Yajhfc-user] Issue with viewing received faxes as PDF
+</A></li>
+	<LI>Next message: <A HREF="000401.html">[Yajhfc-user] Issue with viewing received faxes as PDF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

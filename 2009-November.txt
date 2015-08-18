@@ -1,0 +1,423 @@
+From giuseppe at eppesuigoccas.homedns.org  Sun Nov  1 08:57:33 2009
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Sun, 01 Nov 2009 08:57:33 +0100
+Subject: [Yajhfc-user] Questions about sorting faxes and printing to virtual
+	printer
+Message-ID: <1257062253.24556.173.camel@scarafaggio>
+
+Hi all,
+I am new to yajhfc, so I do have a few questions about usability.
+
+It seems all faxes are initially sorted by their job id, but user may
+always change the sorted column or direction clicking on the column
+title. My question is: how do I change default ordering, or how do I
+tell the system to remember my current sort preference?
+
+Another question (it might be a bug) is about the fax printer and its
+cscript invoked visual basic command. I noticed that it only works when
+yajhfc is running. When the client is not opened, i.e., its icon is
+missing from Windows tray, and user print on the fax printer, the client
+is started, a window for fax details is opened, but then, when user
+press Send, it stop working. Is this the intended behaviour?
+
+Thanks,
+Giuseppe
+
+
+
+From jonas.wolz at freenet.de  Sat Nov  7 14:05:34 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 7 Nov 2009 14:05:34 +0100
+Subject: [Yajhfc-user] Questions about sorting faxes and printing to
+	virtual printer
+In-Reply-To: <1257062253.24556.173.camel@scarafaggio>
+References: <1257062253.24556.173.camel@scarafaggio>
+Message-ID: <200911071405.34437.jonas.wolz@freenet.de>
+
+Hello,
+
+thanks for your bug report!
+
+> It seems all faxes are initially sorted by their job id, but user may
+> always change the sorted column or direction clicking on the column
+> title. My question is: how do I change default ordering, or how do I
+> tell the system to remember my current sort preference?
+
+Normally the last ordering should be saved when you quit the program.
+
+Saving settings when the user logs off is always a bit problematic, however 
+(due to a bug in Java itself).
+Did you try if the ordering is saved when you exit the program by Fax -> Quit?
+
+> Another question (it might be a bug) is about the fax printer and its
+> cscript invoked visual basic command. I noticed that it only works when
+> yajhfc is running. When the client is not opened, i.e., its icon is
+> missing from Windows tray, and user print on the fax printer, the client
+> is started, a window for fax details is opened, but then, when user
+> press Send, it stop working. Is this the intended behaviour?
+
+This is not the intended behaviour. The program should keep running after the 
+fax has been sent.
+In what respect does YajHFC stop working? Is the main window not visible any 
+more, do you get an error message, does it stop responding, etc.?
+
+Thanks,
+Jonas.
+
+
+
+
+From sorin at lauserco.com  Wed Nov 11 20:16:18 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Wed, 11 Nov 2009 14:16:18 -0500
+Subject: [Yajhfc-user] Print PhoneBook
+Message-ID: <4AFB0D82.2080706@lauserco.com>
+
+Hello Jonas,
+
+One of my users would like to print his phonebooks (and he's got some :) 
+), I'm wondering if you can give me some hints about how can I do that...
+What I've done 'till now:
+modified NewPhoneBookWin, imported print functions, create a new action 
+called listActionPrint, create a menu entry for listActionPrint  
+(replicating the "Remove from list") and I'm pretty stuck in defining 
+the printing function. I thaught that I can duplicate somehow the "print 
+table" one, from the MainWin - well... WRONG! It's not the same thing at 
+all, so please, help a guy who said "YES, WE CAN DO IT" way to fast! :)
+
+-- 
+Best Regards,
+Sorin Toma
+Lauserco Inc.
+514-354-5050 ext:223
+
+
+
+From syscon780 at gmail.com  Fri Nov 13 20:41:10 2009
+From: syscon780 at gmail.com (Joseph)
+Date: Fri, 13 Nov 2009 12:41:10 -0700
+Subject: [Yajhfc-user] Cover page - number of pages incorrect
+Message-ID: <20091113194110.GA10957@syscon4.inet>
+
+I just trying version: yajhfc-0_4_2a.jar and all I can say WOW!
+This is the best client for Hylafax I've tested so far on Linux.  The installation was super easy.
+
+1.) Though I think there is a bug with Cover Page. I sent 1-page fax + cover page when I received the fax the cover page said:
+Pages: 12
+
+I think that should be "2"
+
+2.) Search by date doesn't work
+
+Please enter a valid compare value.
+Unparseable date: "11/13/2009"
+
+java.text.ParseException: Unparseable date: "11/13/2009"
+	at java.text.DateFormat.parse(DateFormat.java:337)
+	at yajhfc.filters.FilterCreator.getFilter(FilterCreator.java:77)
+	at yajhfc.filters.ui.SearchWin.actionPerformed(SearchWin.java:91)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1995)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2318)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:387)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:242)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:236)
+	at java.awt.Component.processMouseEvent(Component.java:6263)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3255)
+	at java.awt.Component.processEvent(Component.java:6028)
+	at java.awt.Container.processEvent(Container.java:2041)
+	at java.awt.Component.dispatchEventImpl(Component.java:4630)
+	at java.awt.Container.dispatchEventImpl(Container.java:2099)
+	at java.awt.Component.dispatchEvent(Component.java:4460)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4574)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4238)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4168)
+	at java.awt.Container.dispatchEventImpl(Container.java:2085)
+	at java.awt.Window.dispatchEventImpl(Window.java:2475)
+	at java.awt.Component.dispatchEvent(Component.java:4460)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:599)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:269)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:184)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:174)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:169)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:161)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:122)
+
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Sun Nov 15 09:07:43 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 15 Nov 2009 09:07:43 +0100
+Subject: [Yajhfc-user] Print PhoneBook
+In-Reply-To: <4AFB0D82.2080706@lauserco.com>
+References: <4AFB0D82.2080706@lauserco.com>
+Message-ID: <200911150907.43954.jonas.wolz@freenet.de>
+
+Am Mittwoch, 11. November 2009 schrieb Sorin Toma:
+> What I've done 'till now:
+> modified NewPhoneBookWin, imported print functions, create a new action
+> called listActionPrint, create a menu entry for listActionPrint
+> (replicating the "Remove from list") and I'm pretty stuck in defining
+> the printing function. I thaught that I can duplicate somehow the "print
+> table" one, from the MainWin - well... WRONG! It's not the same thing at
+> all, so please, help a guy who said "YES, WE CAN DO IT" way to fast! :)
+
+Well, I don't think there is an easy, quick and clean way to do that.
+
+A quick and dirty workaround (untested) could be to load the phone book into a 
+JTable using a PhoneBookTableModel and then printing that table like the one 
+in MainWin. 
+I think this should work without adding the JTable to a window, but I'm not 
+sure about that.
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Nov 15 09:15:40 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 15 Nov 2009 09:15:40 +0100
+Subject: [Yajhfc-user] Cover page - number of pages incorrect
+In-Reply-To: <20091113194110.GA10957@syscon4.inet>
+References: <20091113194110.GA10957@syscon4.inet>
+Message-ID: <200911150915.40823.jonas.wolz@freenet.de>
+
+Am Freitag, 13. November 2009 schrieb Joseph:
+> 1.) Though I think there is a bug with Cover Page. I sent 1-page fax +
+> cover page when I received the fax the cover page said: Pages: 12
+>
+> I think that should be "2"
+
+Yes. Unfortunately I cannot reproduce that problem here (i.e. I see "2" here).
+With which kind of files have you tried that? (Or even better: Could you send 
+me an example file that gives you "12" here?)
+
+> 2.) Search by date doesn't work
+>
+> Please enter a valid compare value.
+> Unparseable date: "11/13/2009"
+
+The date parse function is quite picky about the format (as I still use the 
+stock Java one -- changing it to something more user friendly is already on 
+the list of things to do...).
+That means you will have to enter both date and time for a search value to be 
+accepted (e.g. something like "11/13/2009 00:00:00").
+
+
+Hope that helps
+Jonas
+
+
+
+From hylafax at andyscomp.f9.co.uk  Wed Nov 25 15:44:46 2009
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Wed, 25 Nov 2009 14:44:46 +0000
+Subject: [Yajhfc-user] Error Column
+Message-ID: <de8c2ec00911250644t5fe58022qfdeeed532cbaf6b3@mail.gmail.com>
+
+Jonas
+
+I am currently using yajhfc 0.4.2.a with Hylafax 6.0.3 on Cent 0s 5.4 .
+
+In the default view in yajhfc the error column is always showen but no
+information ever get reported in yajhfc even through we do get faxes with
+error's in like partial faxes etc.
+
+Do I need to set up something for this to work, or this something that needs
+fixing in yajhfc?
+
+This information is being stored by hylafax in the xferfaxlog log files on
+the server.
+
+Thanks
+
+Andy
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20091125/eb07b836/attachment.html>
+
+From giuseppe at eppesuigoccas.homedns.org  Thu Nov 26 11:09:35 2009
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Thu, 26 Nov 2009 11:09:35 +0100
+Subject: [Yajhfc-user] Questions about sorting faxes and printing to
+ virtual printer
+In-Reply-To: <200911071405.34437.jonas.wolz@freenet.de>
+References: <1257062253.24556.173.camel@scarafaggio>
+	<200911071405.34437.jonas.wolz@freenet.de>
+Message-ID: <1259230175.5764.32.camel@scarafaggio>
+
+Il giorno sab, 07/11/2009 alle 14.05 +0100, Jonas Wolz ha scritto:
+> Hello,
+> 
+> thanks for your bug report!
+> 
+> > It seems all faxes are initially sorted by their job id, but user may
+> > always change the sorted column or direction clicking on the column
+> > title. My question is: how do I change default ordering, or how do I
+> > tell the system to remember my current sort preference?
+> 
+> Normally the last ordering should be saved when you quit the program.
+> 
+> Saving settings when the user logs off is always a bit problematic, however 
+> (due to a bug in Java itself).
+> Did you try if the ordering is saved when you exit the program by Fax -> Quit?
+
+Yes, you are right: ordering settings are correctly saved and restored
+automatically.
+
+Thanks,
+Giuseppe Sacco
+
+
+
+From giuseppe at eppesuigoccas.homedns.org  Thu Nov 26 11:13:17 2009
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Thu, 26 Nov 2009 11:13:17 +0100
+Subject: [Yajhfc-user] Number of pages seems wrong when forwarding received
+	faxes
+Message-ID: <1259230397.5764.37.camel@scarafaggio>
+
+Hi,
+I am trying to understand if what we are facing is a problem in our
+installation or if it is a generalised bug. What happen is that the
+number of pages, as displayed in cover page, is always zero when
+forwarding faxes. If we send a fax using a PDF or TIFF file, this number
+is correctly computer, while if this is a received fax (still stored in
+hylafax) the same number is always zero.
+
+Does anyone have the same problem?
+
+Thanks,
+Giuseppe
+
+
+
+From jonas.wolz at freenet.de  Sun Nov 29 14:17:37 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 29 Nov 2009 14:17:37 +0100
+Subject: [Yajhfc-user] Number of pages seems wrong when forwarding
+	received faxes
+In-Reply-To: <1259230397.5764.37.camel@scarafaggio>
+References: <1259230397.5764.37.camel@scarafaggio>
+Message-ID: <200911291417.38089.jonas.wolz@freenet.de>
+
+Am Donnerstag, 26. November 2009 schrieb Giuseppe Sacco:
+> Hi,
+> I am trying to understand if what we are facing is a problem in our
+> installation or if it is a generalised bug. What happen is that the
+> number of pages, as displayed in cover page, is always zero when
+> forwarding faxes. If we send a fax using a PDF or TIFF file, this number
+> is correctly computer, while if this is a received fax (still stored in
+> hylafax) the same number is always zero.
+>
+> Does anyone have the same problem?
+
+I guess everyone has this problem. ;-)
+
+When forwarding an existing fax currently the number of pages is not counted 
+(basically this is an oversight...).
+I will add this functionality in one of the next releases.
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sun Nov 29 14:49:44 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 29 Nov 2009 14:49:44 +0100
+Subject: [Yajhfc-user] Error Column
+In-Reply-To: <de8c2ec00911250644t5fe58022qfdeeed532cbaf6b3@mail.gmail.com>
+References: <de8c2ec00911250644t5fe58022qfdeeed532cbaf6b3@mail.gmail.com>
+Message-ID: <200911291449.45202.jonas.wolz@freenet.de>
+
+Am Mittwoch, 25. November 2009 schrieb Andy Rogers:
+> Jonas
+>
+> I am currently using yajhfc 0.4.2.a with Hylafax 6.0.3 on Cent 0s 5.4 .
+>
+> In the default view in yajhfc the error column is always showen but no
+> information ever get reported in yajhfc even through we do get faxes with
+> error's in like partial faxes etc.
+>
+> Do I need to set up something for this to work, or this something that
+> needs fixing in yajhfc?
+>
+> This information is being stored by hylafax in the xferfaxlog log files on
+> the server.
+
+I tested this today and this seems to be a HylaFAX problem.
+
+When I set the RcvFmt to "%-7m %4p%1z %-8.8o %14.14s %7t %f %e" for faxstat 
+and did a "faxstat -r" the error information was not shown either.
+
+A look at the HylaFAX source code (V 4.4.4) seems to confirm this: 
+All information from the received queue is read from the TIFF header of the 
+individual TIFF files in the recvq. For me it looks like the error field is 
+never filled there (tiffinfo also does not show such information).
+
+
+So there is probably not much I can do about that (except hiding the error 
+column in the default view...).
+
+
+Jonas.
+
+
+From hylafax at andyscomp.f9.co.uk  Sun Nov 29 23:02:01 2009
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Sun, 29 Nov 2009 22:02:01 +0000
+Subject: [Yajhfc-user] Error Column
+In-Reply-To: <200911291449.45202.jonas.wolz@freenet.de>
+References: <de8c2ec00911250644t5fe58022qfdeeed532cbaf6b3@mail.gmail.com>
+	<200911291449.45202.jonas.wolz@freenet.de>
+Message-ID: <de8c2ec00911291402qddc153w283045b3987dfde9@mail.gmail.com>
+
+Thankyou Jonas
+
+I was going to say I would report this to the developers as a bug, but you
+have already beatn me to this.
+
+Thanks
+Andy
+
+2009/11/29 Jonas Wolz <jonas.wolz at freenet.de>
+
+> Am Mittwoch, 25. November 2009 schrieb Andy Rogers:
+> > Jonas
+> >
+> > I am currently using yajhfc 0.4.2.a with Hylafax 6.0.3 on Cent 0s 5.4 .
+> >
+> > In the default view in yajhfc the error column is always showen but no
+> > information ever get reported in yajhfc even through we do get faxes with
+> > error's in like partial faxes etc.
+> >
+> > Do I need to set up something for this to work, or this something that
+> > needs fixing in yajhfc?
+> >
+> > This information is being stored by hylafax in the xferfaxlog log files
+> on
+> > the server.
+>
+> I tested this today and this seems to be a HylaFAX problem.
+>
+> When I set the RcvFmt to "%-7m %4p%1z %-8.8o %14.14s %7t %f %e" for faxstat
+> and did a "faxstat -r" the error information was not shown either.
+>
+> A look at the HylaFAX source code (V 4.4.4) seems to confirm this:
+> All information from the received queue is read from the TIFF header of the
+> individual TIFF files in the recvq. For me it looks like the error field is
+> never filled there (tiffinfo also does not show such information).
+>
+>
+> So there is probably not much I can do about that (except hiding the error
+> column in the default view...).
+>
+>
+> Jonas.
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20091129/0adf9d3b/attachment.html>
+

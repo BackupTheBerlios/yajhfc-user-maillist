@@ -1,0 +1,220 @@
+From jonas.wolz at freenet.de  Mon Oct 12 11:51:21 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 12 Oct 2009 11:51:21 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.2a released
+Message-ID: <200910121151.21794.jonas.wolz@freenet.de>
+
+Version 0.4.2a of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2a.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2a-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_2a-setup.exe
+
+This version is a bug fix release. It fixes a bug that prevented YajHFC from 
+saving its settings when there was no old settings file is present.
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas
+
+
+From 2bsolutions at 2bsolutions.it  Wed Oct 14 09:22:23 2009
+From: 2bsolutions at 2bsolutions.it (2B Solutions S.a.s.)
+Date: Wed, 14 Oct 2009 09:22:23 +0200
+Subject: [Yajhfc-user] Search Date Problem
+Message-ID: <4AD57C2F.3020706@2bsolutions.it>
+
+Hi,
+I've been test YajHFC, and I found that it's great.
+
+But I not understand the SEARCH function by time/date. On table, date is 
+display by dd/mm/yyyy, but if i put on search string 23/09/2009, the 
+result is nothing.
+
+I read the FAQ, said that the date is in a java SimpleDateFormat.
+
+What is the corret string to put on search string for a corret date filter?
+
+Thanks in advance
+
+
+From jonas.wolz at freenet.de  Wed Oct 14 16:38:05 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 14 Oct 2009 16:38:05 +0200
+Subject: [Yajhfc-user] Search Date Problem
+In-Reply-To: <4AD57C2F.3020706@2bsolutions.it>
+References: <4AD57C2F.3020706@2bsolutions.it>
+Message-ID: <200910141638.05239.jonas.wolz@freenet.de>
+
+Am Mittwoch, 14. Oktober 2009 schrieb 2B Solutions S.a.s.:
+> Hi,
+> I've been test YajHFC, and I found that it's great.
+>
+> But I not understand the SEARCH function by time/date. On table, date is
+> display by dd/mm/yyyy, but if i put on search string 23/09/2009, the
+> result is nothing.
+>
+> I read the FAQ, said that the date is in a java SimpleDateFormat.
+>
+> What is the corret string to put on search string for a corret date filter?
+
+In which column you are trying to search?
+
+Thanks,
+Jonas
+
+
+From jonas.wolz at freenet.de  Wed Oct 14 18:34:51 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 14 Oct 2009 18:34:51 +0200
+Subject: [Yajhfc-user] Search Date Problem
+In-Reply-To: <4AD5E944.5090504@2bsolutions.it>
+References: <4AD57C2F.3020706@2bsolutions.it>
+	<200910141638.05239.jonas.wolz@freenet.de>
+	<4AD5E944.5090504@2bsolutions.it>
+Message-ID: <200910141834.51958.jonas.wolz@freenet.de>
+
+Am Mittwoch, 14. Oktober 2009 schrieben Sie:
+> I'm try to search on Time/Date column.
+> I've try several combination of string, but without success...
+> On other columns the search seems work...
+
+Most likely the problem is that if you enter only a date internally a time of 
+00:00:00 is assumed (so the date/time of faxes at the same date, but another 
+time of day will not be considered equal to the date you entered).
+
+To work around this problem, you can try searching with the "greater or equal" 
+operator.
+
+If it still does not work, please write me another mail.
+
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Thu Oct 15 09:32:54 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 15 Oct 2009 09:32:54 +0200
+Subject: [Yajhfc-user] Search Date Problem
+In-Reply-To: <4AD6C193.2090206@2bsolutions.it>
+References: <4AD57C2F.3020706@2bsolutions.it>
+	<200910141834.51958.jonas.wolz@freenet.de>
+	<4AD6C193.2090206@2bsolutions.it>
+Message-ID: <200910150932.55224.jonas.wolz@freenet.de>
+
+Am Donnerstag, 15. Oktober 2009 schrieb 2B Solutions S.a.s.:
+> Thanks for reply Jonas,
+>
+> I try your workaround, and work on SEARCH windows (with "greater or
+> equal"). But my target is to search a specified date typing a string (the
+> date on dd/mm/yyyy format) on search _BAR_, (bar over the table Received
+> and Send), to display the send or received fax for the specified period.
+
+OK, then I misunderstood you, sorry.
+
+> At this moment, if i put on bar the string "2009" (potentially for seach
+> all fax on year), the result display nothing...
+> It would be a nice feature...
+
+The search bar currently does not search for date/time. 
+I will put extending it to do that on the "wishlist" for future feature 
+enhancements.
+
+
+Jonas.
+
+
+From 2bsolutions at 2bsolutions.it  Thu Oct 15 10:02:16 2009
+From: 2bsolutions at 2bsolutions.it (2B Solutions S.a.s.)
+Date: Thu, 15 Oct 2009 10:02:16 +0200
+Subject: [Yajhfc-user] Icon Image Substitution
+Message-ID: <4AD6D708.1090101@2bsolutions.it>
+
+Hi Jonas,
+
+I have another question.
+I see on source code that the image is a part of a Java package.
+Can I change to icon image ( Send Faxes, Phonebook, etc..), substituting 
+the image mantaining the same file-name, without "break any license" 
+(yours or Sun)?
+
+Thanks in advance.
+
+
+From jonas.wolz at freenet.de  Thu Oct 15 21:07:56 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 15 Oct 2009 21:07:56 +0200
+Subject: [Yajhfc-user] Icon Image Substitution
+In-Reply-To: <4AD6D708.1090101@2bsolutions.it>
+References: <4AD6D708.1090101@2bsolutions.it>
+Message-ID: <200910152107.56259.jonas.wolz@freenet.de>
+
+Am Donnerstag, 15. Oktober 2009 schrieb 2B Solutions S.a.s.:
+> I have another question.
+> I see on source code that the image is a part of a Java package.
+> Can I change to icon image ( Send Faxes, Phonebook, etc..), substituting
+> the image mantaining the same file-name, without "break any license"
+> (yours or Sun)?
+
+In my opinion replacing them should be no problem (I am not a lawyer, 
+however...).
+
+
+Hope that helps
+Jonas
+
+
+From 2bsolutions at 2bsolutions.it  Mon Oct 19 16:21:59 2009
+From: 2bsolutions at 2bsolutions.it (2B Solutions S.a.s.)
+Date: Mon, 19 Oct 2009 16:21:59 +0200
+Subject: [Yajhfc-user] Phonebook JDBC Problem
+Message-ID: <4ADC7607.8040802@2bsolutions.it>
+
+Hi Jonas,
+
+I setup a JDBC connection for my phonebook that pick the field form a 
+mysql database. Everythings goes fine, i setup the correct filed and the 
+preview of fax is OK.
+The problem appear when i  click the CLOSE button on phonebook windows 
+WHEN the "Opening phone books... Loading" is prompt.
+At this point, the phonebook DISAPPEAR fron the phonebook list, and it 
+must be reload from stratch.
+
+If i wait the connection, all works fine.
+
+Thanks in advance.
+
+
+From jonas.wolz at freenet.de  Sun Oct 25 09:17:58 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 25 Oct 2009 09:17:58 +0100
+Subject: [Yajhfc-user] Phonebook JDBC Problem
+In-Reply-To: <4ADC7607.8040802@2bsolutions.it>
+References: <4ADC7607.8040802@2bsolutions.it>
+Message-ID: <200910250917.58775.jonas.wolz@freenet.de>
+
+Am Montag, 19. Oktober 2009 schrieb 2B Solutions S.a.s.:
+> I setup a JDBC connection for my phonebook that pick the field form a
+> mysql database. Everythings goes fine, i setup the correct filed and the
+> preview of fax is OK.
+> The problem appear when i  click the CLOSE button on phonebook windows
+> WHEN the "Opening phone books... Loading" is prompt.
+> At this point, the phonebook DISAPPEAR fron the phonebook list, and it
+> must be reload from stratch.
+
+This is a bug. It will be fixed in the next version.
+
+
+Thanks for the bug report,
+Jonas
+
+

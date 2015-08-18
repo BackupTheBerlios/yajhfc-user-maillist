@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] problem with sending a postscript file and a pdf file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20sending%20a%20postscript%20file%20and%20a%20pdf%0A%20file&In-Reply-To=%3C4BD84C8A.6060306%40free.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000348.html">
+   <LINK REL="Next"  HREF="000353.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] problem with sending a postscript file and a pdf file</H1>
+    <B>anne.yajhfc at free.fr</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20problem%20with%20sending%20a%20postscript%20file%20and%20a%20pdf%0A%20file&In-Reply-To=%3C4BD84C8A.6060306%40free.fr%3E"
+       TITLE="[Yajhfc-user] problem with sending a postscript file and a pdf file">anne.yajhfc at free.fr
+       </A><BR>
+    <I>Wed Apr 28 16:56:10 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000348.html">[Yajhfc-user] problem with sending a postscript file and a pdf file
+</A></li>
+        <LI>Next message: <A HREF="000353.html">[Yajhfc-user] problem with sending a postscript file and a pdf	file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#352">[ date ]</a>
+              <a href="thread.html#352">[ thread ]</a>
+              <a href="subject.html#352">[ subject ]</a>
+              <a href="author.html#352">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jonas Wolz a &#233;crit :
+&gt;<i> Am Samstag, 17. April 2010 schrieb <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">anne.yajhfc at free.fr</A>:
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I sent a  postscript file and a pdf file.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In hylafax/docq, I have doc197.ps and doc198.ps
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In hylafax/doneq/q164
+</I>&gt;&gt;<i> !postscript:0::docq/doc197.ps
+</I>&gt;&gt;<i> !pdf:0::docq/doc198.ps
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The last line has a problem : pdf and doc198.ps
+</I>&gt;<i> 
+</I>&gt;<i> Does YajHFC 0.4.3 still have this problem?
+</I>&gt;<i> 
+</I>&gt;<i> (I fixed a bug there which could be related to this.)
+</I>&gt;<i> 
+</I>hi,
+
+With my ubuntu 9.10, I have version 0.4.3 beta 1-2 of yajhfc ... :(
+
+I just downloaded version yajhfc-0_4_3.jar on 
+<A HREF="http://developer.berlios.de/project/showfiles.php?group_id=7813">http://developer.berlios.de/project/showfiles.php?group_id=7813</A> for test.
+
+I tested with the command:
+java -jar /home/anne/Bureau/yajhfc-0_4_3.jar --debug --logfile 
+/home/anne/Documents/somefile56.log
+
+With YajHFC, Sent option, right click, I have the option 'View log'. 
+Thank you very much. ;)
+
+For ps and pdf files, that's ok too.
+
+In the directory /var/spool/hylafax/docq/:
+-Rw-r ----- 1 uucp 60 002 27 084 April 28 4:23 p.m. doc244.ps
+-Rw-r ----- 1 uucp 60002 8407 April 28 doc245.pdf 4:23 p.m.
+
+In the file /var/spool/hylafax/doneq/q185:
+! Postscript: 0:: docq/doc244.ps
+! Pdf: 0:: docq/doc245.pdf
+
+Everything is ok.
+Thank you for all the work.
+
+I don't understand why I have version  0.4.3 beta 1-2  with ubuntu 9.10.
+This version, it's not good.
+
+Anne
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000348.html">[Yajhfc-user] problem with sending a postscript file and a pdf file
+</A></li>
+	<LI>Next message: <A HREF="000353.html">[Yajhfc-user] problem with sending a postscript file and a pdf	file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#352">[ date ]</a>
+              <a href="thread.html#352">[ thread ]</a>
+              <a href="subject.html#352">[ subject ]</a>
+              <a href="author.html#352">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

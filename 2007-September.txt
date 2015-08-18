@@ -1,0 +1,33 @@
+From jonas.wolz at freenet.de  Tue Sep 18 15:34:16 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 18 Sep 2007 15:34:16 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.5 released
+Message-ID: <200709181534.17195.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.5 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_5.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_5-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_5-setup.exe
+
+New features/changes:
+- Some UI improvements/"polishing" (e.g. progress bar for the fax list and 
+more icons)
+- Removed some restrictions on visible columns 
+  (e.g.: the job ID does no longer have to be visible)
+- New fax actions now are executed only *after* the faxes are no longer "in 
+progress"
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+

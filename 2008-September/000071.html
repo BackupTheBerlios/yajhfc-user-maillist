@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] YajHFC 0.3.8 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.3.8%20released&In-Reply-To=%3C83289.53751.qm%40web32607.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000070.html">
+   <LINK REL="Next"  HREF="000072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] YajHFC 0.3.8 released</H1>
+    <B>Vieri</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.3.8%20released&In-Reply-To=%3C83289.53751.qm%40web32607.mail.mud.yahoo.com%3E"
+       TITLE="[Yajhfc-user] YajHFC 0.3.8 released">rentorbuy at yahoo.com
+       </A><BR>
+    <I>Thu Sep 11 19:20:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000070.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+        <LI>Next message: <A HREF="000072.html">[Yajhfc-user] Operation with multiple rows from context menu	(feature request)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+--- On Wed, 9/10/08, Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt; wrote:
+
+&gt;<i> &gt; I've recently upgraded from yajhfc-0_3_6 to
+</I>&gt;<i> yajhfc-0_3_8 and some users are
+</I>&gt;<i> &gt; reporting errors such as the one I'm attaching.
+</I>&gt;<i> This happens when they use
+</I>&gt;<i> &gt; the JDBC agenda.
+</I>&gt;<i> 
+</I>&gt;<i> Only for the JDBC phone book or also for other phone book
+</I>&gt;<i> types?
+</I>
+The users only have JDBC phone books.
+
+&gt;<i> &gt; In the attached image, the 902... fax number is the
+</I>&gt;<i> only FAX number in the
+</I>&gt;<i> &gt; client database. The &quot;other&quot; number is in
+</I>&gt;<i> the PHONE field. Curiously
+</I>&gt;<i> &gt; enough, after the attached error message displays and
+</I>&gt;<i> the user dismisses it
+</I>&gt;<i> &gt; by pressing &quot;accept&quot; the fax job is
+</I>&gt;<i> completed successfully and the user
+</I>&gt;<i> &gt; receives the e-mail notification.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It seems that this error message dose not display with
+</I>&gt;<i> yajhfc-0_3_6.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Any ideas?
+</I>&gt;<i> 
+</I>&gt;<i> The error occurs when the gnu.hylafax library parses the
+</I>&gt;<i> response to the &quot;job 
+</I>&gt;<i> submit&quot; command from the HylaFAX server.
+</I>&gt;<i> Between version 0.3.6 and 0.3.7 I upgraded to the neweset
+</I>&gt;<i> version of that 
+</I>&gt;<i> library, so this could be a bug in that library (according
+</I>&gt;<i> to your 
+</I>&gt;<i> description the fax job was in fact submitted successfully,
+</I>&gt;<i> but the server 
+</I>&gt;<i> response was interpreted in a wrong way).
+</I>
+Correct. The fax is sent successfully but the user gets an error message which confuses him/her.
+
+&gt;<i> Could you send me a debug log file for this error, so I can
+</I>&gt;<i> look at the exact 
+</I>&gt;<i> server response which triggered it?
+</I>&gt;<i> (Run YajHFC with additional command line arguments 
+</I>&gt;<i> of &quot;--debug --logfile=:prompt:&quot; to get such a log
+</I>&gt;<i> file)
+</I>
+I'll try to (it may take me a while).
+
+Thanks for your time (it's not urgent and I'm happy with yajhfc-0_3_6).
+
+Vieri
+
+
+
+      
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000070.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+	<LI>Next message: <A HREF="000072.html">[Yajhfc-user] Operation with multiple rows from context menu	(feature request)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

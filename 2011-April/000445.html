@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] YajHFC 0.5.0 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.5.0%20released&In-Reply-To=%3C4817594.8955.1301899491979.JavaMail.root%40teamup.shd.lan%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000444.html">
+   <LINK REL="Next"  HREF="000446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] YajHFC 0.5.0 released</H1>
+    <B>Christian Metzen</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.5.0%20released&In-Reply-To=%3C4817594.8955.1301899491979.JavaMail.root%40teamup.shd.lan%3E"
+       TITLE="[Yajhfc-user] YajHFC 0.5.0 released">met at shd.de
+       </A><BR>
+    <I>Mon Apr  4 08:44:44 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000444.html">[Yajhfc-user] YajHFC 0.5.0 released
+</A></li>
+        <LI>Next message: <A HREF="000446.html">[Yajhfc-user] YajHFC 0.5.0 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+thanks for the new release Jonas.
+
+I tried to build the sources, but seem to missing something,
+
+    [javac] 
+/home/met/Sources/yajhfc-0.5.0/src/yajhfc/HylaClientManager.java:129: 
+cannot find symbol
+     [javac] symbol  : method setCharacterEncoding(java.lang.String)
+     [javac] location: class gnu.hylafax.HylaFAXClient
+     [javac]                 
+client.setCharacterEncoding(myopts.hylaFAXCharacterEncoding);
+
+Building 0.4.4 works without problems using gnu-hylfax 1.0.3. Are using 
+any other sources for that now?
+
+Regards,
+Christian
+
+On 03.04.2011 11:11, Jonas Wolz wrote:
+&gt;<i> I am pleased to announce that version 0.5.0 of YajHFC has been released today.
+</I>&gt;<i>
+</I>&gt;<i> Download:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0.jar">http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0.jar</A>
+</I>&gt;<i>
+</I>&gt;<i> Source code:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-src.zip">http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-src.zip</A>
+</I>&gt;<i>
+</I>&gt;<i> Windows setup.exe:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-setup.exe">http://prdownload.berlios.de/yajhfc/yajhfc-0_5_0-setup.exe</A>
+</I>&gt;<i>
+</I>&gt;<i> RPM packages:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-0.5.0-1.noarch.rpm">http://prdownload.berlios.de/yajhfc/yajhfc-0.5.0-1.noarch.rpm</A>
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.5.0-1.noarch.rpm">http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.5.0-1.noarch.rpm</A>
+</I>&gt;<i>
+</I>&gt;<i> APT line to add to /etc/apt/sources.list for Debian/Ubuntu packages:
+</I>&gt;<i> deb <A HREF="ftp://ftp.berlios.de/pub/yajhfc/repository/apt">ftp://ftp.berlios.de/pub/yajhfc/repository/apt</A> stable/
+</I>&gt;<i>
+</I>&gt;<i> More information about the DEB packages:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/deb-packages-info-0.5.0.txt">http://prdownload.berlios.de/yajhfc/deb-packages-info-0.5.0.txt</A>
+</I>&gt;<i>
+</I>&gt;<i> Mac App:
+</I>&gt;<i> <A HREF="http://prdownload.berlios.de/yajhfc/yajhfc-macapp-0.5.0.zip">http://prdownload.berlios.de/yajhfc/yajhfc-macapp-0.5.0.zip</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> New features/changes:
+</I>&gt;<i> - Support for local caching of the fax lists, probably making the start-up of
+</I>&gt;<i> the application feel much quicker
+</I>&gt;<i> - Experimental support for direct reading to the recvq and doneq directory,
+</I>&gt;<i> bypassing the HylaFAX server (and the HylaFAX user authentication). This
+</I>&gt;<i> might lead to a lower server load with large queues since only modified files
+</I>&gt;<i> are read to refresh the fax lists. This still needs some testing, however...
+</I>&gt;<i> (any feedback on this feature is very welcome!)
+</I>&gt;<i> - Options dialog should open a bit faster than before
+</I>&gt;<i> - &quot;Test connection&quot; button in the Options dialog
+</I>&gt;<i> - Support for multiple servers
+</I>&gt;<i> - Support for multiple identities
+</I>&gt;<i> - Lists of faxes can be saved in CSV, HTML or XML format
+</I>&gt;<i> - Support for configurable keyboard accelerators
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> For more information you may also take a look at the homepage at:
+</I>&gt;<i> <A HREF="http://yajhfc.berlios.de/">http://yajhfc.berlios.de/</A>
+</I>&gt;<i>
+</I>&gt;<i> Have Fun,
+</I>&gt;<i> Jonas Wolz
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yajhfc-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000444.html">[Yajhfc-user] YajHFC 0.5.0 released
+</A></li>
+	<LI>Next message: <A HREF="000446.html">[Yajhfc-user] YajHFC 0.5.0 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

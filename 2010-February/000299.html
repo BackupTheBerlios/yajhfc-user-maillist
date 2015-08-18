@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Italian translations update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Italian%20translations%20update&In-Reply-To=%3C201002131950.32756.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000296.html">
+   <LINK REL="Next"  HREF="000301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Italian translations update</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Italian%20translations%20update&In-Reply-To=%3C201002131950.32756.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Italian translations update">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sat Feb 13 19:50:32 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000296.html">[Yajhfc-user] Italian translations update
+</A></li>
+        <LI>Next message: <A HREF="000301.html">[Yajhfc-user] Italian translations update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#299">[ date ]</a>
+              <a href="thread.html#299">[ thread ]</a>
+              <a href="subject.html#299">[ subject ]</a>
+              <a href="author.html#299">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 9. Februar 2010 schrieb Giulio:
+&gt;<i> I tried to keep them in sync, meaning using the exact same translation in
+</I>&gt;<i> all of them.
+</I>&gt;<i>
+</I>&gt;<i> I didn't find a way to update the docs just by adding a .mo file, so if you
+</I>&gt;<i> speak Italian, please test the translation by downloading the UNOFFICIAL
+</I>&gt;<i> jar file of 0.4.2a recompiled with the updated Italian stuff:
+</I>&gt;<i> <A HREF="http://rapidshare.de/files/49125607/yajhfc.jar.html">http://rapidshare.de/files/49125607/yajhfc.jar.html</A>
+</I>&gt;<i> (look into &quot;aiuto -&gt; documentazione&quot; too).
+</I>
+Thank you very much for your work! 
+I will try to make an updated developer version of YajHFC and a &quot;compiled&quot; 
+version of the FAQ available tomorrow.
+
+(You are right that there is no way to update the messages just by adding 
+a .mo file since I use gettext's feature to directly compile .po files into 
+Java classes (so I do not need to include extra gettext libs)).
+
+&gt;<i> 1) I intentionally changed all the direct forms like &quot;please, do this&quot;,
+</I>&gt;<i> &quot;you can ...&quot; (program speaking to you directly) into &quot;it's necessary to do
+</I>&gt;<i> this&quot; &quot;It's possible...&quot; (impersonal), because this is how usually programs
+</I>&gt;<i> &quot;talk&quot; to the user in Italian.
+</I>&gt;<i> I left the &quot;direct&quot; form in the faq, since the faq is usually informal.
+</I>
+OK, since I do not speak Italian I cannot judge which version is better.
+
+&gt;<i> 2) I intentionally used more &quot;relaxed&quot; translations for all the JobFmt,
+</I>&gt;<i> RcvFmt... parameters. I see in the English translation they are taken as is
+</I>&gt;<i> from the faxstat man page, the problem is the faxstat man page is very
+</I>&gt;<i> terse and often confusing, a direct translation into Italian would be even
+</I>&gt;<i> more so.
+</I>&gt;<i> I also restructured all these items to use the main word at the beginning,
+</I>&gt;<i> when possible, so that they get display together in the option dialog, ie:
+</I>&gt;<i> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;consecutive failed dials
+</I>&gt;<i> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;total dials
+</I>&gt;<i> into
+</I>&gt;<i> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dials failed consecutively
+</I>&gt;<i> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;dials total &#160; &#160;(the Italian equivalent sounds more OK...)
+</I>
+This probably should also have been done in the English translation (which 
+will not be changed in the near future, however). So your translation is most 
+likely better than the &quot;original&quot; here...
+
+
+&gt;<i> 3) &quot;fax&quot; and &quot;fax job&quot;
+</I>&gt;<i> In the English translation sometimes &quot;fax&quot; is used, sometimes &quot;fax job&quot;.
+</I>&gt;<i> It seems &quot;fax job&quot; is used for queued (not completed) faxes, and &quot;fax&quot; for
+</I>&gt;<i> completed ones, but not always.
+</I>&gt;<i> Also, since HylaFAX supports &quot;page&quot;, it could be said that &quot;fax job&quot; is
+</I>&gt;<i> used to distinguish the various kind of jobs HylaFAX supports.
+</I>&gt;<i> However, HylaFAX is used 99,99% of the times to send fax, and in Italian
+</I>&gt;<i> the word &quot;job&quot; cannot be translated in a meaningful and natural way in this
+</I>&gt;<i> context; so I translated both &quot;fax&quot; and &quot;fax job&quot; with &quot;fax&quot;.
+</I>&gt;<i> When &quot;job&quot; is used like &quot;blah blah fax: job 123&quot; I used &quot;blah blah fax: ID
+</I>&gt;<i> 123&quot;.
+</I>
+Well, most likely &quot;fax&quot; and &quot;fax job&quot; are simply used inconsistencely 
+throughout the program (since it grew over several years and I did not really 
+have a formal distinction between &quot;fax&quot; and &quot;fax job&quot; in mind while writing 
+it...).
+
+&gt;<i> 4) I really don't know how to correctly translate &quot;descriptor&quot; in the phone
+</I>&gt;<i> book windows. I understand what it means, but I don't know if there is a
+</I>&gt;<i> conventional/common use Italian expression to indicate that thing.
+</I>
+Probably &quot;descriptor&quot; is not the most user friendly English term for it 
+either... (in the German translation I also kept it virtually untranslated 
+(&quot;Deskriptor&quot;)).
+
+
+Thanks again for your efforts
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000296.html">[Yajhfc-user] Italian translations update
+</A></li>
+	<LI>Next message: <A HREF="000301.html">[Yajhfc-user] Italian translations update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#299">[ date ]</a>
+              <a href="thread.html#299">[ thread ]</a>
+              <a href="subject.html#299">[ subject ]</a>
+              <a href="author.html#299">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

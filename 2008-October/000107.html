@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] cannot print
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-14894-20081021-233033.00%40nerijus.sat.lt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000106.html">
+   <LINK REL="Next"  HREF="000108.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] cannot print</H1>
+    <B>Nerijus Baliunas</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20cannot%20print&In-Reply-To=%3CMahogany-0.67.2-14894-20081021-233033.00%40nerijus.sat.lt%3E"
+       TITLE="[Yajhfc-user] cannot print">nerijus at users.sourceforge.net
+       </A><BR>
+    <I>Tue Oct 21 22:30:33 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000106.html">[Yajhfc-user] cannot print
+</A></li>
+        <LI>Next message: <A HREF="000108.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#107">[ date ]</a>
+              <a href="thread.html#107">[ thread ]</a>
+              <a href="subject.html#107">[ subject ]</a>
+              <a href="author.html#107">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 21 Oct 2008 22:45:18 +0300 Nerijus Baliunas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">nerijus at users.sourceforge.net</A>&gt; wrote:
+
+&gt;<i> Some good news. wshNet.UserDomain is empty (probably because the script is run
+</I>&gt;<i> as local service), and because of this the &quot;hard way&quot; of getting the user profile fails.
+</I>&gt;<i> If I run printlaunch.vbs manually, I can see wshNet.UserDomain is correct, but if I
+</I>&gt;<i> run from redmon it is empty. Everything works if I hardcode domain in the line
+</I>&gt;<i> Set Account = WMIService.Get(&quot;Win32_UserAccount.Name='&quot; &amp; WshNet.UserName &amp; &quot;',Domain='&quot; &amp; 
+</I>&gt;<i> wshNet.UserDomain &amp; &quot;'&quot;)
+</I>&gt;<i> Now I need to find out how to get the domain name when the script is run from redmon...
+</I>
+I added between lines &quot;userprofile = WshShell.ExpandEnvironmentStrings...&quot; and &quot;else&quot;
+the following code, and now everything works:
+
+	if (IsEmpty(userprofile)) then
+	    ' Probably domain name was empty, try to find it in registry
+	    Set Account = WMIService.Get(&quot;Win32_UserAccount.Name='&quot; &amp; WshNet.UserName &amp; &quot;',Domain='&quot; &amp; 
+wshshell.regread(&quot;HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachePrimaryDomain&quot;) &amp; 
+&quot;'&quot;)
+
+	    userprofile = 
+WshShell.ExpandEnvironmentStrings(WshShell.RegRead(&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows 
+NT\CurrentVersion\ProfileList\&quot; + Account.SID + &quot;\ProfileImagePath&quot;))
+	end if
+
+
+Regards,
+Nerijus
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000106.html">[Yajhfc-user] cannot print
+</A></li>
+	<LI>Next message: <A HREF="000108.html">[Yajhfc-user] cannot print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#107">[ date ]</a>
+              <a href="thread.html#107">[ thread ]</a>
+              <a href="subject.html#107">[ subject ]</a>
+              <a href="author.html#107">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

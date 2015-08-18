@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] feature requests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C469CE0F8.40000%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000024.html">
+   <LINK REL="Next"  HREF="000028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] feature requests</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C469CE0F8.40000%40freenet.de%3E"
+       TITLE="[Yajhfc-user] feature requests">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Tue Jul 17 17:32:08 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000024.html">[Yajhfc-user] feature requests
+</A></li>
+        <LI>Next message: <A HREF="000028.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vieri schrieb:
+&gt;<i> Still another request would be to review the way
+</I>&gt;<i> yajhfc saves the redirected printer port data to a
+</I>&gt;<i> temp file for sending.
+</I>&gt;<i> In Windows XP it seems that yajhfc needs to write to
+</I>&gt;<i> C:\WINDOWS\TEMP but this dir is usually not writable
+</I>&gt;<i> to standard domain users. 
+</I>&gt;<i> What I did was make it writable but it would be better
+</I>&gt;<i> if yajhfc could use the user profile's temp dir.
+</I>&gt;<i> In VBS you can retrieve it like so:
+</I>&gt;<i> Set oEnv = WshShell.Environment(&quot;Process&quot;)
+</I>&gt;<i> TMP = oEnv.item(&quot;TEMP&quot;)
+</I>&gt;<i> 
+</I>&gt;<i> I don't know how you can do that in Java and if it's
+</I>&gt;<i> &quot;portable&quot;.
+</I>
+Reading environment variables is no problem in Java, but I doubt it 
+would help as the environment is often &quot;broken&quot; during printing 
+redirection (i.e. probably the TEMP environment variable points to 
+C:\WINDOWS\TEMP there).
+So, this probably needs to be fixed in the launcher script (by including 
+-Djava.io.tmpdir=... on the java command line).
+
+I will try to analyse this problem when I have some time in the next 
+days/weeks. After I have found a solution I will write another mail to 
+this list.
+
+Greetings,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000024.html">[Yajhfc-user] feature requests
+</A></li>
+	<LI>Next message: <A HREF="000028.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

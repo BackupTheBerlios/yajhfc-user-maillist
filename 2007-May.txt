@@ -1,0 +1,312 @@
+From rentorbuy at yahoo.com  Tue May 15 12:34:10 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 15 May 2007 03:34:10 -0700 (PDT)
+Subject: [Yajhfc-user] destination fax from agenda
+Message-ID: <522708.15734.qm@web32613.mail.mud.yahoo.com>
+
+Hi again Jonas et al.!
+
+Is it possible to include not just the destination fax
+number in the hylafax report but also the destination
+name/company name?
+
+As far as YAJHFC is concerned, it seems that each time
+it sends a fax it only grabs the faxnumber field from
+the agenda (we use the JDBC MySQL agenda). Could it be
+configured so that it sends ''Company name at faxnumber''
+(by automatically combining database fields)?
+
+
+
+       
+____________________________________________________________________________________Building a website is a piece of cake. Yahoo! Small Business gives you all the tools to get online.
+http://smallbusiness.yahoo.com/webhosting 
+
+
+From rentorbuy at yahoo.com  Tue May 15 12:50:06 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 15 May 2007 03:50:06 -0700 (PDT)
+Subject: [Yajhfc-user] table elements
+Message-ID: <858107.22160.qm@web32606.mail.mud.yahoo.com>
+
+Hi,
+
+I'd like to make another request ;-).
+
+Could it be possible to limit the number of rows
+displayed in each table (mostly doneq). For instance,
+"display the most recent 50 rows".
+
+We currently have 1060 lines in our "doneq" table and
+it's starting to be heavy on the refresh routine. I
+don't know if the hylafax protocol has a way of doing
+this (which would be best as to limit bandwidth
+consumption as much as possible) but otherwise, yajhfc
+can just filter out the rows itself (at least it saves
+on graphic display and mem usage).
+
+Thanks
+
+Vieri
+
+
+
+ 
+____________________________________________________________________________________
+Expecting? Get great news right away with email Auto-Check. 
+Try the Yahoo! Mail Beta.
+http://advision.webevents.yahoo.com/mailbeta/newmail_tools.html 
+
+
+From jonas.wolz at freenet.de  Wed May 16 23:52:55 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 16 May 2007 23:52:55 +0200
+Subject: [Yajhfc-user] table elements
+In-Reply-To: <858107.22160.qm@web32606.mail.mud.yahoo.com>
+References: <858107.22160.qm@web32606.mail.mud.yahoo.com>
+Message-ID: <200705162352.55883.jonas.wolz@freenet.de>
+
+Am Dienstag, 15. Mai 2007 12:50 schrieb Vieri:
+> Could it be possible to limit the number of rows
+> displayed in each table (mostly doneq). For instance,
+> "display the most recent 50 rows".
+
+Would be possible, but I don't know if it would improve on your problem (see 
+below).
+
+> We currently have 1060 lines in our "doneq" table and
+> it's starting to be heavy on the refresh routine.
+
+How did you notice that?
+
+> I 
+> don't know if the hylafax protocol has a way of doing
+> this (which would be best as to limit bandwidth
+> consumption as much as possible) but otherwise, yajhfc
+> can just filter out the rows itself (at least it saves
+> on graphic display and mem usage).
+
+The HylaFAX protocol is just an extended FTP protocol. 
+
+The lists of faxes are retrieved by a "normal" LIST command. I don't know if 
+there is a way to limit the number of retrieved rows (and then the sorting 
+probably would be still undefined).
+
+Graphic display shouldn't be the big problem because the table paints only  
+the visible rows (if I understand the documentation correctly). If you have 
+had a different experience please tell me.
+
+So the only problem such a limit could improve on would be memory usage (but 
+on the other hand every entry should use at most a few hundred bytes so I 
+don't know if this is really relevant).
+
+Nevertheless I am very interested in eliminating performance problems, so I 
+would like to get more information about the symptoms you noticed.
+
+Regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Wed May 16 23:53:09 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 16 May 2007 23:53:09 +0200
+Subject: [Yajhfc-user] destination fax from agenda
+In-Reply-To: <522708.15734.qm@web32613.mail.mud.yahoo.com>
+References: <522708.15734.qm@web32613.mail.mud.yahoo.com>
+Message-ID: <200705162353.09536.jonas.wolz@freenet.de>
+
+Am Dienstag, 15. Mai 2007 12:34 schrieb Vieri:
+> Hi again Jonas et al.!
+>
+> Is it possible to include not just the destination fax
+> number in the hylafax report but also the destination
+> name/company name?
+
+I have no idea...
+
+> As far as YAJHFC is concerned, it seems that each time
+> it sends a fax it only grabs the faxnumber field from
+> the agenda (we use the JDBC MySQL agenda).
+
+YajHFC should set the fax job's company, location, ... fields if a phone book 
+entry is used (or if the user enters the information into the corresponding 
+fields). 
+If it does not, this is probably a bug.
+
+> Could it be 
+> configured so that it sends ''Company name at faxnumber''
+> (by automatically combining database fields)?
+
+Where should YajHFC send ''Company name at faxnumber'' in your opinion?
+I doubt sending that as the phone number would work... (or probably I 
+understood you wrong).
+
+Regards,
+Jonas
+
+
+From rentorbuy at yahoo.com  Thu May 17 16:31:29 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 17 May 2007 07:31:29 -0700 (PDT)
+Subject: [Yajhfc-user] table elements
+In-Reply-To: <200705162352.55883.jonas.wolz@freenet.de>
+Message-ID: <619867.64595.qm@web32602.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> > We currently have 1060 lines in our "doneq" table
+> and
+> > it's starting to be heavy on the refresh routine.
+> 
+> How did you notice that?
+
+It seems that there's a slightly longer delay before
+displaying the initial screen (the done table). But
+maybe it was just a temp network bottleneck (I didn't
+thoroughly test this).
+
+We are not experiencing significant performance
+problems (yet). I just wanted to post this issue on
+the list to see if someone had exprience with 1000+
+faxes and thus prevent future issues.
+
+> Nevertheless I am very interested in eliminating
+> performance problems, so I 
+> would like to get more information about the
+> symptoms you noticed.
+
+I'll make more thorough tests during the next few
+weeks and will try to record speed and mem usage.
+
+Thanks
+
+
+
+       
+____________________________________________________________________________________Sick sense of humor? Visit Yahoo! TV's 
+Comedy with an Edge to see what's on, when. 
+http://tv.yahoo.com/collections/222
+
+
+From rentorbuy at yahoo.com  Thu May 17 17:14:59 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 17 May 2007 08:14:59 -0700 (PDT)
+Subject: [Yajhfc-user] destination fax from agenda
+In-Reply-To: <200705162353.09536.jonas.wolz@freenet.de>
+Message-ID: <714762.40208.qm@web32605.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> Where should YajHFC send ''Company name at faxnumber''
+> in your opinion?
+
+I used to use sendfax as a mail to fax gateway and
+from its man page one can specify that format.
+However , I now realize that even with the following
+command:
+ # /usr/bin/sendfax -n -R -o vieri -f vieri at domain.org
+-d COMPANY at 971555555 faxtest.ps
+hylafax's notify script does not include COMPANY but
+just 971555555.
+
+I'm sure yajhfc passes all the information via TCP/IP
+so I just need to dig into Hylafax?s notify script.
+ie. this is not a yajhfc issue, sorry.
+
+
+
+
+       
+____________________________________________________________________________________Give spam the boot. Take control with tough spam protection in the all-new Yahoo! Mail Beta.
+http://advision.webevents.yahoo.com/mailbeta/newmail_html.html 
+
+
+From rentorbuy at yahoo.com  Thu May 17 17:16:34 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 17 May 2007 08:16:34 -0700 (PDT)
+Subject: [Yajhfc-user] hylafax+
+Message-ID: <187383.41076.qm@web32605.mail.mud.yahoo.com>
+
+Has someone tested YAJHFC with HYLAFAX+ (http://hylafax.sourceforge.net)?
+
+
+       
+____________________________________________________________________________________Take the Internet to Go: Yahoo!Go puts the Internet in your pocket: mail, news, photos & more. 
+http://mobile.yahoo.com/go?refer=1GNXIC
+
+
+From rentorbuy at yahoo.com  Thu May 17 17:24:29 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 17 May 2007 08:24:29 -0700 (PDT)
+Subject: [Yajhfc-user] destination fax from agenda
+In-Reply-To: <714762.40208.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <209896.97040.qm@web32602.mail.mud.yahoo.com>
+
+
+--- Vieri <rentorbuy at yahoo.com> wrote:
+
+> I'm sure yajhfc passes all the information via
+> TCP/IP
+> so I just need to dig into Hylafax?s notify script.
+> ie. this is not a yajhfc issue, sorry.
+
+I just checked the doneq jobs and the notify script
+and it's clear enough that the $receiver variable
+holds the data I need. I thought that variable held
+the string ID of the remote fax machine because I got
+confusing information from my users.
+Anyway I seem to be getting a clearer picture of what
+I need.
+
+Definitely not a yajhfc issue.
+Sorry.
+
+
+
+       
+____________________________________________________________________________________Sick sense of humor? Visit Yahoo! TV's 
+Comedy with an Edge to see what's on, when. 
+http://tv.yahoo.com/collections/222
+
+
+From jonas.wolz at freenet.de  Thu May 17 17:51:20 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 17 May 2007 17:51:20 +0200
+Subject: [Yajhfc-user] destination fax from agenda
+In-Reply-To: <209896.97040.qm@web32602.mail.mud.yahoo.com>
+References: <209896.97040.qm@web32602.mail.mud.yahoo.com>
+Message-ID: <200705171751.20716.jonas.wolz@freenet.de>
+
+Am Donnerstag, 17. Mai 2007 17:24 schrieb Vieri:
+> Definitely not a yajhfc issue.
+> Sorry.
+
+Never mind. :-)
+
+Regards,
+Jonas
+
+
+From jonas.wolz at freenet.de  Thu May 17 17:57:09 2007
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 17 May 2007 17:57:09 +0200
+Subject: [Yajhfc-user] hylafax+
+In-Reply-To: <187383.41076.qm@web32605.mail.mud.yahoo.com>
+References: <187383.41076.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <200705171757.09684.jonas.wolz@freenet.de>
+
+Am Donnerstag, 17. Mai 2007 17:16 schrieb Vieri:
+> Has someone tested YAJHFC with HYLAFAX+ (http://hylafax.sourceforge.net)?
+
+I haven't tested it, but after taking a quick look at the homepage it seems 
+that the protocol is the same (they also mention other popular HylaFAX 
+clients in the HOWTO).
+
+So YajHFC should probably work with it (although I'd also like to hear 
+some "test result" if someone did actually test it with YajHFC).
+
+Regards,
+Jonas
+
+

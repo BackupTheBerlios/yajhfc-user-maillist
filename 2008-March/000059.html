@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] redirect script to yajhfc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20redirect%20script%20to%20yajhfc&In-Reply-To=%3C200803311153.01459.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000058.html">
+   <LINK REL="Next"  HREF="000060.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] redirect script to yajhfc</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20redirect%20script%20to%20yajhfc&In-Reply-To=%3C200803311153.01459.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] redirect script to yajhfc">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Mar 31 11:53:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000058.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+        <LI>Next message: <A HREF="000060.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 31. M&#228;rz 2008 09:09 schrieb Vieri:
+&gt;<i> --- Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt; wrote:
+</I>&gt;<i> I noticed that the first differences between the two
+</I>&gt;<i> versions are the following two lines found only in
+</I>&gt;<i> 0.3.6 + redmon:
+</I>&gt;<i>
+</I>&gt;<i> REDMON check_process: process isn't running.
+</I>&gt;<i> REDMON check_process: flushing child stdin to unblock
+</I>&gt;<i> WriteThread.
+</I>&gt;<i>
+</I>&gt;<i> I guess that's where stdin is getting dumped.
+</I>
+Yes, later (after all the PostScript) it says:
+C:\FHM_FAX\CLIENTS\yajhfc-redmon.vbs(48, 2) (null): Se est&#160; cerrando la 
+canalizaci&#162;n.
+I identified this as &quot;Se est&#225; cerrando la canalizaci&#243;n.&quot; which seems to 
+mean &quot;The pipe is being closed.&quot; according to some Googling. 
+From the YajHFC logs I also found that showing the Send dialog seems to fail 
+somehow (probably an uncaught Exception happens somewhere...).
+
+So:
+Can you open the send dialog manually by clicking the toolbar button or does 
+this not work either?
+
+If this does not work, please run YajHFC from a command line window to see if 
+there is a stack trace printed when you try to open the window.
+If it is, please send me that output.
+
+Thanks,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000058.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+	<LI>Next message: <A HREF="000060.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

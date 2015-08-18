@@ -1,0 +1,425 @@
+From ramses.sevilla at gmail.com  Sat Jun 12 21:52:45 2010
+From: ramses.sevilla at gmail.com (Ramses II)
+Date: Sat, 12 Jun 2010 21:52:45 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+
+Hi everybody,
+
+I am testing this software to implement it to multiple users in several
+departments and I have found some doubts:
+
+- Can I block the client software to only see the faxes sent by a specific
+user?. I have marked the "only own faxes" option in the View menu, but the
+user can change it to the "All faxes" and view all faxes.
+
+- There are any way to block the access to "options" in the Extra menu to
+the users?
+
+- When I delete the ".../.yajhfc/settings" file and run yajhfc again, it
+creates the setting file again. Where is this information to delete it?
+
+
+Best regards,
+
+Ramses
+
+
+
+From Stefano.Lusuardi at snapon.com  Sun Jun 13 01:21:13 2010
+From: Stefano.Lusuardi at snapon.com (Lusuardi, Stefano)
+Date: Sun, 13 Jun 2010 00:21:13 +0100
+Subject: [Yajhfc-user] R:  Restrict the use of menu to the users.
+In-Reply-To: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+Message-ID: <5631E6FD74A91B40B21C57842192604066AFD0@kett-xbck-01-pp.snaponglobal.com>
+
+Hi Ramses,
+
+I think you can use settings.override to force "allowChangeFilter=false"
+
+You can see also Documentation: How can I specify some default settings?
+
+
+ 
+
+Best regards
+
+Stefano Lusuaardi
+
+ 
+
+ 
+
+-----Messaggio originale-----
+Da: yajhfc-user-bounces at lists.berlios.de
+[mailto:yajhfc-user-bounces at lists.berlios.de] Per conto di Ramses II
+Inviato: sabato 12 giugno 2010 21:53
+A: yajhfc-user at lists.berlios.de
+Oggetto: [Yajhfc-user] Restrict the use of menu to the users.
+
+ 
+
+Hi everybody,
+
+ 
+
+I am testing this software to implement it to multiple users in several
+
+departments and I have found some doubts:
+
+ 
+
+- Can I block the client software to only see the faxes sent by a
+specific
+
+user?. I have marked the "only own faxes" option in the View menu, but
+the
+
+user can change it to the "All faxes" and view all faxes.
+
+ 
+
+- There are any way to block the access to "options" in the Extra menu
+to
+
+the users?
+
+ 
+
+- When I delete the ".../.yajhfc/settings" file and run yajhfc again, it
+
+creates the setting file again. Where is this information to delete it?
+
+ 
+
+ 
+
+Best regards,
+
+ 
+
+Ramses
+
+ 
+
+_______________________________________________
+
+Yajhfc-user mailing list
+
+Yajhfc-user at lists.berlios.de
+
+https://lists.berlios.de/mailman/listinfo/yajhfc-user
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100613/948dcc44/attachment.html>
+
+From jonas.wolz at freenet.de  Sun Jun 13 09:51:37 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 13 Jun 2010 09:51:37 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+Message-ID: <201006130951.38404.jonas.wolz@freenet.de>
+
+Am Samstag, 12. Juni 2010 schrieb Ramses II:
+> - Can I block the client software to only see the faxes sent by a specific
+> user?. I have marked the "only own faxes" option in the View menu, but the
+> user can change it to the "All faxes" and view all faxes.
+
+As Stefano Lusuaardi already has said: You can 
+specify "allowChangeFilter=false" in the settings file (or better 
+settings.override).
+
+> - There are any way to block the access to "options" in the Extra menu to
+> the users?
+
+No. But you can use the settings.override file to override some settings. 
+The user will be able to change them anyway, but they will be reset to the 
+values specified there the next time YajHFC starts.
+
+> - When I delete the ".../.yajhfc/settings" file and run yajhfc again, it
+> creates the setting file again. Where is this information to delete it?
+
+Currently this file is always created because YajHFC saves its settings there.
+Why do you want to delete it? (Serious question, I am wondering what you are 
+trying to do...)
+
+
+Jonas.
+
+
+From ramses.sevilla at gmail.com  Sun Jun 13 11:43:52 2010
+From: ramses.sevilla at gmail.com (Ramses II)
+Date: Sun, 13 Jun 2010 11:43:52 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <201006130951.38404.jonas.wolz@freenet.de>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+	<201006130951.38404.jonas.wolz@freenet.de>
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAALxKOF7VvNpHqLbyClsxkMgBAAAAAA==@gmail.com>
+
+Hi, thank you very much to both,
+
+> -----Mensaje original-----
+> De: Jonas Wolz [mailto:jonas.wolz at freenet.de]
+> Enviado el: domingo, 13 de junio de 2010 09:52
+> Para: yajhfc-user at lists.berlios.de
+> CC: Ramses II
+> Asunto: Re: [Yajhfc-user] Restrict the use of menu to the users.
+> 
+> Am Samstag, 12. Juni 2010 schrieb Ramses II:
+> > - Can I block the client software to only see the faxes sent by a
+> specific
+> > user?. I have marked the "only own faxes" option in the View menu, but
+> the
+> > user can change it to the "All faxes" and view all faxes.
+> 
+> As Stefano Lusuaardi already has said: You can
+> specify "allowChangeFilter=false" in the settings file (or better
+> settings.override).
+> 
+
+I change this param and it works well. So I tried find information about
+this parameter and other, but I am not found nothing. There are some
+information about this?
+
+> > - There are any way to block the access to "options" in the Extra menu
+> to
+> > the users?
+> 
+> No. But you can use the settings.override file to override some settings.
+> The user will be able to change them anyway, but they will be reset to the
+> values specified there the next time YajHFC starts.
+> 
+
+I have also created the setting.override file and works fine. Thanks.
+
+
+> > - When I delete the ".../.yajhfc/settings" file and run yajhfc again, it
+> > creates the setting file again. Where is this information to delete it?
+> 
+> Currently this file is always created because YajHFC saves its settings
+> there.
+> Why do you want to delete it? (Serious question, I am wondering what you
+> are
+> trying to do...)
+
+As I said, I am testing the yajhfc and once I deleted the setting file. So,
+when I started the yajhfc client, I was surprised that it created the
+setting file again.
+
+
+Best regards,
+
+Ramses
+
+> 
+> 
+> Jonas.
+
+
+
+From ramses.sevilla at gmail.com  Sun Jun 13 13:32:50 2010
+From: ramses.sevilla at gmail.com (Ramses II)
+Date: Sun, 13 Jun 2010 13:32:50 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <201006130951.38404.jonas.wolz@freenet.de>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+	<201006130951.38404.jonas.wolz@freenet.de>
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAKbKx0yosw9PndUpAbiFWycBAAAAAA==@gmail.com>
+
+Jonas, good morning,
+
+Other question about to block "Options" to the user:
+
+> -----Mensaje original-----
+> De: Jonas Wolz [mailto:jonas.wolz at freenet.de]
+> Enviado el: domingo, 13 de junio de 2010 09:52
+> Para: yajhfc-user at lists.berlios.de
+> CC: Ramses II
+> Asunto: Re: [Yajhfc-user] Restrict the use of menu to the users.
+> 
+> Am Samstag, 12. Juni 2010 schrieb Ramses II:
+> > - Can I block the client software to only see the faxes sent by a
+> specific
+> > user?. I have marked the "only own faxes" option in the View menu, but
+> the
+> > user can change it to the "All faxes" and view all faxes.
+> 
+> As Stefano Lusuaardi already has said: You can
+> specify "allowChangeFilter=false" in the settings file (or better
+> settings.override).
+> 
+> > - There are any way to block the access to "options" in the Extra menu
+> to
+> > the users?
+> 
+> No. But you can use the settings.override file to override some settings.
+> The user will be able to change them anyway, but they will be reset to the
+> values specified there the next time YajHFC starts.
+> 
+
+If I have the config in the settings.default file or settings.overrride
+file, the user can't save the config but it can to change, by example, the
+modem and send faxes with the new config, isn't it?
+
+
+Regards,
+
+Ramses
+
+> > - When I delete the ".../.yajhfc/settings" file and run yajhfc again, it
+> > creates the setting file again. Where is this information to delete it?
+> 
+> Currently this file is always created because YajHFC saves its settings
+> there.
+> Why do you want to delete it? (Serious question, I am wondering what you
+> are
+> trying to do...)
+> 
+> 
+> Jonas.
+
+
+
+From jonas.wolz at freenet.de  Mon Jun 14 18:05:30 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 14 Jun 2010 18:05:30 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAKbKx0yosw9PndUpAbiFWycBAAAAAA==@gmail.com>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+	<201006130951.38404.jonas.wolz@freenet.de>
+	<!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAKbKx0yosw9PndUpAbiFWycBAAAAAA==@gmail.com>
+Message-ID: <201006141805.31092.jonas.wolz@freenet.de>
+
+Am Sonntag, 13. Juni 2010 schrieb Ramses II:
+> If I have the config in the settings.default file or settings.overrride
+> file, the user can't save the config but it can to change, by example, the
+> modem and send faxes with the new config, isn't it?
+
+Yes, this is possible.
+But if you are afraid of such behaviour, in my opinion, it is not a good idea 
+to try to prevent this on the client anyway. The better approach is to 
+configure the server to prevent that instead (else the user can use a 
+different client to circumvent the restrictions, for example).
+
+Best regards
+Jonas
+
+
+From ramses.sevilla at gmail.com  Mon Jun 14 18:35:31 2010
+From: ramses.sevilla at gmail.com (Ramses II)
+Date: Mon, 14 Jun 2010 18:35:31 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <201006141805.31092.jonas.wolz@freenet.de>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+	<201006130951.38404.jonas.wolz@freenet.de>
+	<!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAKbKx0yosw9PndUpAbiFWycBAAAAAA==@gmail.com>
+	<201006141805.31092.jonas.wolz@freenet.de>
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAj4jaO87NhJqEyf/wEXwdsBAAAAAA==@gmail.com>
+
+Jonas, very thanks by the answer,
+
+> Am Sonntag, 13. Juni 2010 schrieb Ramses II:
+> > If I have the config in the settings.default file or settings.overrride
+> > file, the user can't save the config but it can to change, by example,
+> the
+> > modem and send faxes with the new config, isn't it?
+> 
+> Yes, this is possible.
+> But if you are afraid of such behaviour, in my opinion, it is not a good
+> idea
+> to try to prevent this on the client anyway. The better approach is to
+> configure the server to prevent that instead (else the user can use a
+> different client to circumvent the restrictions, for example).
+> 
+
+Sorry me by my ignorant, can you tell me how to config the server to do
+that?
+
+Another thing, if the user isn't administrator, he can't delete a FAX of
+other user, but it can see it. This is a bug or I have a bad configuration?
+
+
+Best regards and thaks by everything,
+
+Ramses
+
+> Best regards
+> Jonas
+
+
+
+From giuseppe at eppesuigoccas.homedns.org  Tue Jun 15 09:49:25 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Tue, 15 Jun 2010 09:49:25 +0200
+Subject: [Yajhfc-user] Restrict the use of menu to the users.
+In-Reply-To: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAj4jaO87NhJqEyf/wEXwdsBAAAAAA==@gmail.com>
+References: <!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAFxMqcREd9Nhmg7Voo1U/sBAAAAAA==@gmail.com>
+	<201006130951.38404.jonas.wolz@freenet.de>
+	<!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAKbKx0yosw9PndUpAbiFWycBAAAAAA==@gmail.com>
+	<201006141805.31092.jonas.wolz@freenet.de>
+	<!&!AAAAAAAAAAAYAAAAAAAAAJEWdbNAv25Pnvwrik6JRw+COQIAEAAAAAj4jaO87NhJqEyf/wEXwdsBAAAAAA==@gmail.com>
+Message-ID: <1276588165.4586.3.camel@scarafaggio>
+
+Hi Ramses,
+
+Il giorno lun, 14/06/2010 alle 18.35 +0200, Ramses II ha scritto:
+[...]
+> Sorry me by my ignorant, can you tell me how to config the server to do
+> that?
+
+you may use jobcontrol. See jobcontrol(8) for details.
+
+
+
+From Andreas.Ruf at architektenservice.com  Mon Jun 28 14:12:18 2010
+From: Andreas.Ruf at architektenservice.com (Andreas Ruf)
+Date: Mon, 28 Jun 2010 14:12:18 +0200
+Subject: [Yajhfc-user] Possibilities to identify a job sent with YajHFC
+Message-ID: <B4A8D1791A1B1E4A8A0D6030C26E377E023083C1@asserver1.architektenservice.com>
+
+Hello All,
+
+is there a possibility to get the HylaFAX job ID for a document sent with
+YajHFC?
+
+Or can someone imagine/suggest another possibitlity how to identify a
+document/fax sent with YajHFC uniquely for further processing?
+
+(We have YajHFC 0.4.2a and Hylafax 4.4.4.)
+
+
+Thanks in advance
+Andreas Ruf
+
+
+
+AS Architekten-Service GmbH 
+Rostocker Str. 13 
+65191 Wiesbaden 
+Germany 
+
+Phone: +49 (611) 9 50 32 - 0 
+FAX:  +49 (611) 50 71 26 
+
+info at architektenservice.com 
+www.architektenservice.com 
+
+Handelsregister B5210 Wiesbaden 
+Geschaeftsfuehrer Evelyn Thielmann 
+
+Diese E-Mail enthaelt vertrauliche Informationen. Wenn Sie wissen oder
+erkennen koennen, dass Sie diese vertraulichen Informationen nicht erhalten
+sollten, informieren Sie uns und loeschen Sie diese E-Mail von Ihrem System
+und verwenden oder verteilen Sie bitte diese vertraulichen Informationen
+nicht weiter.
+
+This e-mail contains confidential information. If you know or if you can
+perceive that you are not intended to receive this confidential information
+please inform us and delete this e-mail from your system and please do not
+use or distribute the confidential information.
+
+
+

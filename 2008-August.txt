@@ -1,0 +1,44 @@
+From jonas.wolz at freenet.de  Mon Aug 18 18:49:00 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 18 Aug 2008 18:49:00 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.7 released
+Message-ID: <200808181849.00743.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.7 of YajHFC has been released today.
+
+Download: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_7.jar
+Source code: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_7-src.zip
+Windows setup.exe: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_7-setup.exe
+
+New features/changes:
+- New simplified send dialog
+- Support for cover pages in HTML format
+- Support for cover pages in XSL:FO and ODT format using a plugin
+- Better plugin support
+- Logging changed to use the Java logging APIs
+- Now uses gnu.hylafax 1.0.1
+- Some bug fixes
+
+As mentioned above, YajHFC now supports cover pages in XSL:FO and OpenDocument 
+Text format. Because the required libraries are rather large (11MB), a 
+separate distribution/plugin including this support has been created.
+
+You can download this plugin from the following locations:
+General distribution (cross-platform, already includes YajHFC):
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_7-FOPPlugin-0_1.zip
+Source code:
+http://prdownload.berlios.de/yajhfc/FOPPlugin-0_1-src.zip
+Windows setup.exe (already includes YajHFC):
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_7-FOPPlugin-0_1-setup.exe
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+

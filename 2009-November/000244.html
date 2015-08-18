@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Error Column
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20Column&In-Reply-To=%3C200911291449.45202.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000245.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Error Column</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20Column&In-Reply-To=%3C200911291449.45202.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Error Column">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sun Nov 29 14:49:44 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000240.html">[Yajhfc-user] Error Column
+</A></li>
+        <LI>Next message: <A HREF="000245.html">[Yajhfc-user] Error Column
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Mittwoch, 25. November 2009 schrieb Andy Rogers:
+&gt;<i> Jonas
+</I>&gt;<i>
+</I>&gt;<i> I am currently using yajhfc 0.4.2.a with Hylafax 6.0.3 on Cent 0s 5.4 .
+</I>&gt;<i>
+</I>&gt;<i> In the default view in yajhfc the error column is always showen but no
+</I>&gt;<i> information ever get reported in yajhfc even through we do get faxes with
+</I>&gt;<i> error's in like partial faxes etc.
+</I>&gt;<i>
+</I>&gt;<i> Do I need to set up something for this to work, or this something that
+</I>&gt;<i> needs fixing in yajhfc?
+</I>&gt;<i>
+</I>&gt;<i> This information is being stored by hylafax in the xferfaxlog log files on
+</I>&gt;<i> the server.
+</I>
+I tested this today and this seems to be a HylaFAX problem.
+
+When I set the RcvFmt to &quot;%-7m %4p%1z %-8.8o %14.14s %7t %f %e&quot; for faxstat 
+and did a &quot;faxstat -r&quot; the error information was not shown either.
+
+A look at the HylaFAX source code (V 4.4.4) seems to confirm this: 
+All information from the received queue is read from the TIFF header of the 
+individual TIFF files in the recvq. For me it looks like the error field is 
+never filled there (tiffinfo also does not show such information).
+
+
+So there is probably not much I can do about that (except hiding the error 
+column in the default view...).
+
+
+Jonas.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000240.html">[Yajhfc-user] Error Column
+</A></li>
+	<LI>Next message: <A HREF="000245.html">[Yajhfc-user] Error Column
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

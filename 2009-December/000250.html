@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] 503 Permission denied: no read access to job	parameter DIALSTRING
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20503%20Permission%20denied%3A%20no%20read%20access%20to%20job%0A%09parameter%20DIALSTRING&In-Reply-To=%3C200912091851.36227.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000246.html">
+   <LINK REL="Next"  HREF="000247.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] 503 Permission denied: no read access to job	parameter DIALSTRING</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20503%20Permission%20denied%3A%20no%20read%20access%20to%20job%0A%09parameter%20DIALSTRING&In-Reply-To=%3C200912091851.36227.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] 503 Permission denied: no read access to job	parameter DIALSTRING">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Dec  9 18:51:36 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000246.html">[Yajhfc-user] 503 Permission denied: no read access to job	parameter DIALSTRING
+</A></li>
+        <LI>Next message: <A HREF="000247.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Sonntag, 6. Dezember 2009 schrieb Cristian Nuzzo:
+&gt;<i> Hi everybody, I'm new to Hylafax and YajHFC client,
+</I>&gt;<i> I have a problem when trying to resend a fax in the sent table (a fax
+</I>&gt;<i> that belong to me or someother) I get the error in object.
+</I>&gt;<i> I think it's a server side problem (maybe I have to change some
+</I>&gt;<i> permission) but I don't know where to start.
+</I>
+Can you view the fax in question?
+
+AFAIK, permissions for HylaFAX users are determined by the Unix group 
+permissions for the files corresponding to the fax job.
+A job usually consists of one control file in the doneq (or sendq) directory 
+and the documents attached to it in the docq directory.
+
+In order to be able to read a job parameter or view an attached document, the 
+group id of the files for the job must be the same as the HylaFAX (!) user id 
+of the user or the &quot;other&quot; Unix permission must allow reading of the file (I 
+think).
+
+Hope that helps,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000246.html">[Yajhfc-user] 503 Permission denied: no read access to job	parameter DIALSTRING
+</A></li>
+	<LI>Next message: <A HREF="000247.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

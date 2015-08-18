@@ -1,0 +1,931 @@
+From aliosha at smtech.it  Wed Oct  1 11:57:50 2008
+From: aliosha at smtech.it (Aliosha Lazzarotto SMTECH)
+Date: Wed, 01 Oct 2008 11:57:50 +0200
+Subject: [Yajhfc-user] yajhfc client logging loading without end / jar file
+ doesn't start at all
+Message-ID: <48E3499E.7050803@smtech.it>
+
+Hi, I hope you can help me. I've got a lan network with some mac 
+computers running yajhfc fax client. Yesterday i've installed in a new 
+client the yajhfc, i put the settings and everything worked fine. But 
+today nothing work, when you start the jar file it remains in logging, 
+and you have to force the closing.
+
+In another mac running osx 10.3.9 the JAR file doesn't start at all. 
+I've updated java and everything that yajhfc needs but nothing.
+
+Thanks
+
+-- 
+Lazzarotto Aliosha
+tel. 393.9100657
+aliosha at smtech.it
+
+SMTech s.r.l. unipersonale
+Via Bgt Granatieri di Sardegna 28
+36061 Bassano del Grappa (VI)
+telefono 0424.227428
+
+
+Questo messaggio di posta elettronica contiene informazioni di carattere confidenziale rivolte esclusivamente al destinatario sopra indicato. E' vietato l'uso, la diffusione, distribuzione o riproduzione da parte di ogni altra persona. Nel caso aveste ricevuto questo messaggio di posta elettronica per errore, siete pregati di segnalarlo immediatamente al mittente e distruggere quanto ricevuto (compresi i file allegati) senza farne copia. Qualsivoglia utilizzo non autorizzato del contenuto di questo messaggio costituisce violazione dell'obbligo di non prendere cognizione della corrispondenza tra altri soggetti, salvo pi? grave illecito, ed espone il responsabile alle relative conseguenze.
+
+
+
+
+From aliosha at smtech.it  Wed Oct  1 11:51:10 2008
+From: aliosha at smtech.it (Aliosha Lazzarotto SMTECH)
+Date: Wed, 01 Oct 2008 11:51:10 +0200
+Subject: [Yajhfc-user] yajhfc client logging loading without end / jar file
+ doesn't start at all
+Message-ID: <48E3480E.5030401@smtech.it>
+
+Hi, I hope you can help me. I've got a lan network with some mac 
+computers running yajhfc fax client. Yesterday i've installed in a new 
+client the yajhfc, i put the settings and everything worked fine. But 
+today nothing work, when you start the jar file it remains in logging, 
+and you have to force the closing.
+
+In another mac running osx 10.3.9 the JAR file doesn't start at all. 
+I've updated java and everything that yajhfc needs but nothing.
+
+Thanks
+
+-- 
+Lazzarotto Aliosha
+tel. 393.9100657
+aliosha at smtech.it
+
+SMTech s.r.l. unipersonale
+Via Bgt Granatieri di Sardegna 28
+36061 Bassano del Grappa (VI)
+telefono 0424.227428
+
+
+Questo messaggio di posta elettronica contiene informazioni di carattere confidenziale rivolte esclusivamente al destinatario sopra indicato. E' vietato l'uso, la diffusione, distribuzione o riproduzione da parte di ogni altra persona. Nel caso aveste ricevuto questo messaggio di posta elettronica per errore, siete pregati di segnalarlo immediatamente al mittente e distruggere quanto ricevuto (compresi i file allegati) senza farne copia. Qualsivoglia utilizzo non autorizzato del contenuto di questo messaggio costituisce violazione dell'obbligo di non prendere cognizione della corrispondenza tra altri soggetti, salvo pi? grave illecito, ed espone il responsabile alle relative conseguenze.
+
+
+
+
+From jonas.wolz at freenet.de  Wed Oct  1 13:22:26 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 1 Oct 2008 13:22:26 +0200
+Subject: [Yajhfc-user] yajhfc client logging loading without end / jar
+	file doesn't start at all
+In-Reply-To: <48E3480E.5030401@smtech.it>
+References: <48E3480E.5030401@smtech.it>
+Message-ID: <200810011322.27095.jonas.wolz@freenet.de>
+
+Am Mittwoch, 1. Oktober 2008 schrieb Aliosha Lazzarotto SMTECH:
+> Hi, I hope you can help me. I've got a lan network with some mac
+> computers running yajhfc fax client. Yesterday i've installed in a new
+> client the yajhfc, i put the settings and everything worked fine. But
+> today nothing work, when you start the jar file it remains in logging,
+> and you have to force the closing.
+>
+> In another mac running osx 10.3.9 the JAR file doesn't start at all.
+> I've updated java and everything that yajhfc needs but nothing.
+
+Is this the same version that already works on the other clients?
+
+And, can you send me some debug log files for the clients that don't work?
+
+To create such a log file, you'll have to run YajHFC with the additional 
+command line parameters "--debug --logfile=:prompt:".
+To do so, you can open a terminal, change to the directory where yajhfc.jar is 
+located and run "java -jar yajhfc.jar --debug --logfile=:prompt:".
+(Unfortunately, because I don't own a Mac myself, I cannot give more specific 
+instructions...)
+
+Without the log file I can only guess that the problem is probably some  
+uncaught Exception, but as I don't know where it exactly happens, it is very 
+hard to fix it for me.
+
+
+Thanks,
+Jonas
+
+
+From jonas.wolz at freenet.de  Wed Oct  1 13:38:18 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 1 Oct 2008 13:38:18 +0200
+Subject: [Yajhfc-user] YajHFC 0.3.8 released
+In-Reply-To: <83289.53751.qm@web32607.mail.mud.yahoo.com>
+References: <83289.53751.qm@web32607.mail.mud.yahoo.com>
+Message-ID: <200810011338.18764.jonas.wolz@freenet.de>
+
+Am Donnerstag, 11. September 2008 schrieb Vieri:
+> > Could you send me a debug log file for this error, so I can
+> > look at the exact
+> > server response which triggered it?
+> > (Run YajHFC with additional command line arguments
+> > of "--debug --logfile=:prompt:" to get such a log
+> > file)
+>
+> I'll try to (it may take me a while).
+
+Now that I have the log file, I identified the cause of the problem:
+The "location" of the recipient contains a new line character.
+This confuses the gnu-hylafax library (but not HylaFAX itself) and causes the 
+erroneous behaviour you experienced.
+
+I included a workaround for that problem in YajHFC (new line characters are 
+replaced with spaces before submitting data to the HylaFAX server).
+
+You can get an updated "developer build" including this fix from:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar
+
+(Or wait for the next release, of course.)
+
+
+Regards,
+Jonas
+
+
+From aliosha at smtech.it  Wed Oct  1 17:09:33 2008
+From: aliosha at smtech.it (Aliosha Lazzarotto SMTECH)
+Date: Wed, 01 Oct 2008 17:09:33 +0200
+Subject: [Yajhfc-user] yajhfc client logging loading without end / jar file
+ doesn't start at all
+Message-ID: <48E392AD.2040206@smtech.it>
+
+Hi, and thanks for the answer. The version we're using on the other mac 
+client is this: yajhfc-0_3_6.jar
+For the first case I wrote, i will try to make a log file with this syntax
+
+"java -jar yajhfc.jar --debug --logfile=:prompt:" 
+
+We tried more newer version but nothing change.
+For the other mac with osx 10.3.9 it seems to be a problem with Java, 
+i'll paste the console log
+Thanks again.
+Aliosha
+
+-- 
+Lazzarotto Aliosha
+tel. 393.9100657
+aliosha at smtech.it
+
+SMTech s.r.l. unipersonale
+Via Bgt Granatieri di Sardegna 28
+36061 Bassano del Grappa (VI)
+telefono 0424.227428
+
+
+Questo messaggio di posta elettronica contiene informazioni di carattere confidenziale rivolte esclusivamente al destinatario sopra indicato. E' vietato l'uso, la diffusione, distribuzione o riproduzione da parte di ogni altra persona. Nel caso aveste ricevuto questo messaggio di posta elettronica per errore, siete pregati di segnalarlo immediatamente al mittente e distruggere quanto ricevuto (compresi i file allegati) senza farne copia. Qualsivoglia utilizzo non autorizzato del contenuto di questo messaggio costituisce violazione dell'obbligo di non prendere cognizione della corrispondenza tra altri soggetti, salvo pi? grave illecito, ed espone il responsabile alle relative conseguenze.
+
+
+
+
+From rentorbuy at yahoo.com  Thu Oct  2 15:46:56 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 2 Oct 2008 06:46:56 -0700 (PDT)
+Subject: [Yajhfc-user] YajHFC 0.3.8 released
+In-Reply-To: <200810011338.18764.jonas.wolz@freenet.de>
+Message-ID: <717936.32524.qm@web32602.mail.mud.yahoo.com>
+
+
+--- On Wed, 10/1/08, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> You can get an updated "developer build"
+> including this fix from:
+> ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar
+> 
+> (Or wait for the next release, of course.)
+
+
+Thanks!
+
+
+
+      
+
+
+From jonas.wolz at freenet.de  Tue Oct  7 18:51:44 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 7 Oct 2008 18:51:44 +0200
+Subject: [Yajhfc-user] log console
+In-Reply-To: <48EB8818.3020304@smtech.it>
+References: <48EB8818.3020304@smtech.it>
+Message-ID: <200810071851.44601.jonas.wolz@freenet.de>
+
+Am Dienstag, 7. Oktober 2008 schrieben Sie:
+> Hello, that's what I get when I try to execute yajhfc on the panther
+> 10.3.9 mac.
+>
+> Exception in thread "main" java.lang.UnsupportedClassVersionError:
+> (Unsupported major.minor version 49.0)
+> [...]
+>
+> Any ideas? :(
+
+Yes, that means that the version of Java is too old (below 1.5); to find out 
+which version is actually used, you can type "java -version" in the Terminal.
+
+The obvious fix is to install Java 1.5 or greater. ;-)
+
+If you have already installed such a version of Java, there is probably some 
+issue with your path or configuration which leads to the older version of 
+Java to be used in preference.
+
+If you know the location where that version has been installed, you can also 
+try using the full path instead (e.g. "/opt/java1.5/bin/java -jar yajhfc.jar" 
+instead of "java -jar yajhfc.jar" if Java has been installed 
+to /opt/java1.5).
+
+
+Hope that helps,
+Jonas
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 01:47:11 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 02:47:11 +0300
+Subject: [Yajhfc-user] cannot print
+Message-ID: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+
+Hello,
+
+I am using 0.3.8b (tried with ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar too).
+Pressing Send toolbar button works, but printing test page of a Fax printer
+does not (nothing appears). Here is a log file:
+
+Environment:
+  ALLUSERSPROFILE=C:\Documents and Settings\All Users
+  CommonProgramFiles=C:\Program Files\Common Files
+  COMPUTERNAME=EXAMPLE
+  ComSpec=C:\WINDOWS\system32\cmd.exe
+  FP_NO_HOST_CHECK=NO
+  NUMBER_OF_PROCESSORS=2
+  OS=Windows_NT
+  Path=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Common Files\Lenovo;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static
+  PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH
+  PROCESSOR_ARCHITECTURE=x86
+  PROCESSOR_IDENTIFIER=x86 Family 15 Model 107 Stepping 1, AuthenticAMD
+  PROCESSOR_LEVEL=15
+  PROCESSOR_REVISION=6b01
+  ProgramFiles=C:\Program Files
+  RR=C:\Program Files\Lenovo\Rescue and Recovery
+  SMA=C:\Program Files\ThinkVantage\SMA\
+  SonicCentral=C:\Program Files\Common Files\Sonic Shared\Sonic Central\
+  SWSHARE=C:\SWSHARE
+  SystemDrive=C:
+  SystemRoot=C:\WINDOWS
+  TEMP=C:\WINDOWS\TEMP
+  TMP=C:\WINDOWS\TEMP
+  TPCCommon=C:\PROGRA~1\THINKV~2\PrdCtr
+  TVT=C:\Program Files\Lenovo
+  TVTCOMMON=C:\Program Files\Common Files\Lenovo
+  TVTPYDIR=C:\Program Files\Common Files\Lenovo\Python24
+  USERPROFILE=C:\Documents and Settings\LocalService
+  windir=C:\WINDOWS
+  REDMON_PORT=YAJHFC:
+  REDMON_JOB=83
+  REDMON_PRINTER=Fax
+  REDMON_MACHINE=\\EXAMPLE
+  REDMON_USER=Example
+  REDMON_DOCNAME=Test Page
+  REDMON_FILENAME=
+  REDMON_SESSIONID=0
+  
+Microsoft (R) Windows Script Host Version 5.7
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Error #-2147024664: 
+Error #-2147024664: 
+java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --background
+Caused by: java.lang.ClassNotFoundException: Files\YajHFC\yajhfc.jar --stdin --background
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+Exception in thread "main" 
+
+Z:\>java -version
+java version "1.6.0_07"
+Java(TM) SE Runtime Environment (build 1.6.0_07-b06)
+Java HotSpot(TM) Client VM (build 10.0-b23, mixed mode, sharing)
+
+XP SP3.
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 02:47:05 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 03:47:05 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt>
+
+On Tue, 21 Oct 2008 02:47:11 +0300 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --background
+> Caused by: java.lang.ClassNotFoundException: Files\YajHFC\yajhfc.jar --stdin --background
+
+Ah, I see there is some confusion with paths. OK, let's trace:
+javaexe = C:\Program Files\Java\jre1.6.0_07\bin/java.exe
+homedrv = Z:
+homedir = \
+userprofile = Z:\
+env("USERPROFILE") = userprofile = Z:\
+
+BTW, the following gets variables wrong:
+' Fix temp dir
+env("TMP") = WshShell.ExpandEnvironmentStrings(wshshell.regread("HKEY_CURRENT_USER\Environment\TMP"))
+env("TEMP") = WshShell.ExpandEnvironmentStrings(wshshell.regread("HKEY_CURRENT_USER\Environment\TEMP"))
+
+HKEY_CURRENT_USER\Environment\TEMP=%USERPROFILE%\Local Settings\Temp=Z:\Local Settings\Temp
+which is wrong, as there is no such directory and actual TEMP in good (not changed)
+environment is TEMP=C:\DOCUME~1\USERNA~1\LOCALS~1\Temp, while
+USERPROFILE=C:\Documents and Settings\username
+
+So it seems there was no need to set TEMP and USERPROFILE, the values in environment were ok.
+
+OK, so I just replace line
+' Launch java:
+Set java = WshShell.Exec(javaexe & " -Duser.home=""" & userprofile & """ " & yjargs)
+
+with
+
+Set java = WshShell.Exec(javaexe & " " & yjargs)
+
+and it starts to work. But, if YajHFC is not running, it starts and hangs on Fetching fax list
+(it's a different problem, I saw it before on another PC) with empty log file
+(only env variables in it), or the YajHFC main window is opened and freezes,
+then log file is:
+
+Error #-2147024664: 
+2008.10.21 03.36.27 yajhfc.Launcher main
+WARNING: An error occured communicating with the old instance: 
+java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+	at java.net.SocketOutputStream.write(Unknown Source)
+	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+	at java.io.BufferedOutputStream.write(Unknown Source)
+	at yajhfc.utils.copyStream(utils.java:634)
+	at yajhfc.Launcher.main(Launcher.java:496)
+
+Send fax dialog is opened correctly if YajHFC is running before I try to print a fax test page.
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Tue Oct 21 11:24:35 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 21 Oct 2008 11:24:35 +0200
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt>
+Message-ID: <200810211124.36271.jonas.wolz@freenet.de>
+
+Am Dienstag, 21. Oktober 2008 schrieb Nerijus Baliunas:
+> On Tue, 21 Oct 2008 02:47:11 +0300 Nerijus Baliunas 
+<nerijus at users.sourceforge.net> wrote:
+> > java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin
+> > --background Caused by: java.lang.ClassNotFoundException:
+> > Files\YajHFC\yajhfc.jar --stdin --background
+>
+> Ah, I see there is some confusion with paths. OK, let's trace:
+> javaexe = C:\Program Files\Java\jre1.6.0_07\bin/java.exe
+> homedrv = Z:
+> homedir = \
+> userprofile = Z:\
+> env("USERPROFILE") = userprofile = Z:\
+>
+> BTW, the following gets variables wrong:
+> [...]
+>
+> HKEY_CURRENT_USER\Environment\TEMP=%USERPROFILE%\Local
+> Settings\Temp=Z:\Local Settings\Temp which is wrong, as there is no such
+> directory and actual TEMP in good (not changed) environment is
+> TEMP=C:\DOCUME~1\USERNA~1\LOCALS~1\Temp, while
+> USERPROFILE=C:\Documents and Settings\username
+>
+> So it seems there was no need to set TEMP and USERPROFILE, the values in
+> environment were ok.
+
+Did you take the values of the environment variables from the printlaunch.vbs 
+environment when it is invoked by Redmon?
+
+The problem and the reason for all that "environment fixup" is, that when a 
+program is invoked by Redmon as user, it often (but not always!) still 
+inherits the environment from Redmon, i.e. USERPROFILE="C:\Documents and 
+Settings\LocalService" and TEMP=TMP=C:\WINDOWS\TEMP.
+I am asking this because the Redmon log in your last mail also showed those 
+symptoms when looking at the environment dump.
+
+It would be nice if you could try if printlaunch.vbs from 
+ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs still has the same 
+problems with the incorrect enviroment fixup (it incorporates a workaround 
+suggested by another user to detect if the path specified by HOMEDRIVE and 
+HOMEPATH is valid).
+
+> and it starts to work. But, if YajHFC is not running, it starts and hangs
+> on Fetching fax list (it's a different problem, I saw it before on another
+> PC) with empty log file (only env variables in it), or the YajHFC main
+> window is opened and freezes, then log file is:
+>
+> Error #-2147024664:
+> 2008.10.21 03.36.27 yajhfc.Launcher main
+> WARNING: An error occured communicating with the old instance:
+> java.net.SocketException: Connection reset by peer: socket write error
+> 	at java.net.SocketOutputStream.socketWrite0(Native Method)
+> 	at java.net.SocketOutputStream.socketWrite(Unknown Source)
+> 	at java.net.SocketOutputStream.write(Unknown Source)
+> 	at java.io.BufferedOutputStream.flushBuffer(Unknown Source)
+> 	at java.io.BufferedOutputStream.write(Unknown Source)
+> 	at yajhfc.utils.copyStream(utils.java:634)
+> 	at yajhfc.Launcher.main(Launcher.java:496)
+>
+
+Could you create a YajHFC debug log file for that case?
+
+To do so, please modify the registry value 
+at "HKEY_LOCAL_MACHINE\Software\yajhfc\printlaunchparams" to something like 
+'-jar "c:\program files\yajhfc\yajhfc.jar" --stdin --debug 
+--logfile=c:\yajhfc.log' 
+(i.e. add the command line parameters --debug and --logfile and 
+remove --background; of course you can use a different log file location).
+Then, please try printing again and send me both the YajHFC and the Redmon 
+log.
+
+Thanks,
+Jonas
+
+
+From hylafax at andyscomp.force9.co.uk  Tue Oct 21 10:58:06 2008
+From: hylafax at andyscomp.force9.co.uk (Andy Rogers)
+Date: Tue, 21 Oct 2008 09:58:06 +0100 (BST)
+Subject: [Yajhfc-user] YAJHFC With Hylafax 4.5 CVS
+Message-ID: <4609.62.49.140.10.1224579486.squirrel@webmail.plus.net>
+
+Hi All
+
+I currently have installed the latest CVS version of Hylafax 4.5 from
+http://code.highrise.ca/apt/pool/hardy/hf-cvs/ , however when I now use
+YAJHFC client to view my received fax list soem of the data that was
+listed when I used Hylafax 4.4.4 is now omitted from the list, which is
+the Time/Date information column.
+
+Is this something that should be looked at the a future release of YAJHFC
+for when v4.5 is finally released or is thsi possibly a bug in the CVS
+build of hylafax.
+
+Thanks
+
+Andy
+
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Oct 21 12:19:30 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 21 Oct 2008 11:19:30 +0100 (BST)
+Subject: [Yajhfc-user] YAJHFC With Hylafax 4.5 CVS
+Message-ID: <11757.62.49.140.10.1224584370.squirrel@webmail.plus.net>
+
+Hi All
+
+I currently have installed the latest CVS version of Hylafax 4.5 from
+http://code.highrise.ca/apt/pool/hardy/hf-cvs/ , however when I now use
+YAJHFC client to view my received fax list soem of the data that was
+listed when I used Hylafax 4.4.4 is now omitted from the list, which is
+the Time/Date information column.
+
+Is this something that should be looked at the a future release of YAJHFC
+for when v4.5 is finally released or is thsi possibly a bug in the CVS
+build of hylafax.
+
+Thanks
+
+Andy
+
+
+
+
+
+From jonas.wolz at freenet.de  Tue Oct 21 14:00:50 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 21 Oct 2008 14:00:50 +0200
+Subject: [Yajhfc-user] YAJHFC With Hylafax 4.5 CVS
+In-Reply-To: <11757.62.49.140.10.1224584370.squirrel@webmail.plus.net>
+References: <11757.62.49.140.10.1224584370.squirrel@webmail.plus.net>
+Message-ID: <200810211400.50974.jonas.wolz@freenet.de>
+
+Am Dienstag, 21. Oktober 2008 schrieb Andy Rogers:
+> Hi All
+>
+> I currently have installed the latest CVS version of Hylafax 4.5 from
+> http://code.highrise.ca/apt/pool/hardy/hf-cvs/ , however when I now use
+> YAJHFC client to view my received fax list soem of the data that was
+> listed when I used Hylafax 4.4.4 is now omitted from the list, which is
+> the Time/Date information column.
+>
+> Is this something that should be looked at the a future release of YAJHFC
+> for when v4.5 is finally released or is thsi possibly a bug in the CVS
+> build of hylafax.
+
+Frankly: I don't know (as I don't use the CVS versions myself).
+
+The reason for the problem probably is that the date/time representation of 
+HylaFAX changed, so YajHFC can not parse it any more. 
+But I do not know if this is just a temporary change/bug or permanent.
+
+If it is permanent, I will add some special handling for the new format, but 
+before I do that I would like to wait until HylaFAX 4.5 has at least reached 
+official beta or release candidate state (to be sure the change really is 
+permanent).
+
+Nevertheless, thank you very much for the hint!
+
+Regards,
+Jonas
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Oct 21 15:29:55 2008
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 21 Oct 2008 14:29:55 +0100 (BST)
+Subject: [Yajhfc-user] YAJHFC With Hylafax 4.5 CVS
+In-Reply-To: <200810211400.50974.jonas.wolz@freenet.de>
+References: <11757.62.49.140.10.1224584370.squirrel@webmail.plus.net>
+	<200810211400.50974.jonas.wolz@freenet.de>
+Message-ID: <15899.62.49.140.10.1224595795.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+Thanks for the reply, It was not really a hint (Honestly) but an
+observation that I spotted with this new CVS version which I have been
+seeing this ovservation since around July.
+
+Thanks
+
+Andy
+
+On Tue, October 21, 2008 1:00 pm, Jonas Wolz wrote:
+> Am Dienstag, 21. Oktober 2008 schrieb Andy Rogers:
+>> Hi All
+>>
+>> I currently have installed the latest CVS version of Hylafax 4.5 from
+>> http://code.highrise.ca/apt/pool/hardy/hf-cvs/ , however when I now use
+>> YAJHFC client to view my received fax list soem of the data that was
+>> listed when I used Hylafax 4.4.4 is now omitted from the list, which is
+>> the Time/Date information column.
+>>
+>> Is this something that should be looked at the a future release of
+>> YAJHFC
+>> for when v4.5 is finally released or is thsi possibly a bug in the CVS
+>> build of hylafax.
+>
+> Frankly: I don't know (as I don't use the CVS versions myself).
+>
+> The reason for the problem probably is that the date/time representation
+> of
+> HylaFAX changed, so YajHFC can not parse it any more.
+> But I do not know if this is just a temporary change/bug or permanent.
+>
+> If it is permanent, I will add some special handling for the new format,
+> but
+> before I do that I would like to wait until HylaFAX 4.5 has at least
+> reached
+> official beta or release candidate state (to be sure the change really is
+> permanent).
+>
+> Nevertheless, thank you very much for the hint!
+>
+> Regards,
+> Jonas
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+
+
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 17:24:46 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 18:24:46 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <200810211124.36271.jonas.wolz@freenet.de>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt><Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt>
+	<200810211124.36271.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-8491-20081021-182446.00@nerijus.sat.lt>
+
+On Tue, 21 Oct 2008 11:24:35 +0200 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Did you take the values of the environment variables from the printlaunch.vbs 
+> environment when it is invoked by Redmon?
+
+No, from a user environment.
+
+> The problem and the reason for all that "environment fixup" is, that when a 
+> program is invoked by Redmon as user, it often (but not always!) still 
+> inherits the environment from Redmon, i.e. USERPROFILE="C:\Documents and 
+> Settings\LocalService" and TEMP=TMP=C:\WINDOWS\TEMP.
+
+It is the case here, as you can see from redmon log in my first post.
+
+> I am asking this because the Redmon log in your last mail also showed those 
+> symptoms when looking at the environment dump.
+
+But why passing -Duser.home to java.exe is needed? For local address book
+(which I don't use btw, i use a jdbc one) only?
+
+> It would be nice if you could try if printlaunch.vbs from 
+> ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs still has the same 
+> problems with the incorrect enviroment fixup (it incorporates a workaround 
+> suggested by another user to detect if the path specified by HOMEDRIVE and 
+> HOMEPATH is valid).
+
+I get an Error - Could not determine User Profile Path. Cancelling YajHFC launch.
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 19:03:11 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 20:03:11 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <200810211124.36271.jonas.wolz@freenet.de>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt><Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt>
+	<200810211124.36271.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-8491-20081021-200311.00@nerijus.sat.lt>
+
+Hello,
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 19:55:32 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 20:55:32 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-8491-20081021-200311.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt><Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt><200810211124.36271.jonas.wolz@freenet.de>
+	<Mahogany-0.67.2-8491-20081021-200311.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-14894-20081021-205532.00@nerijus.sat.lt>
+
+On Tue, 21 Oct 2008 20:03:11 +0300 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> I added Wscript.echo javaexe & " -Duser.home=""" & userprofile & """ " & yjargs
+> before Set java = WshShell.Exec(javaexe & " -Duser.home=""" & userprofile & """ " & yjargs)
+
+I changed to Set java = WshShell.Exec(javaexe & " -Duser.home=" & userprofile & " " & yjargs)
+and now yajhfc launches, but it hangs. C:\yajhfc.log is empty, redmon log:
+
+Microsoft (R) Windows Script Host Version 5.7
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\Java\jre1.6.0_07\bin\java.exe -Duser.home=Z:\ -jar "C:\Program Files\YajHFC\yajhfc.jar" --stdin --debug --logfile=c:\yajhfc.log
+Error #-2147024664: 
+Error #-2147024664: 
+Error #-2147024664: 
+Error #-2147024664: 
+Error #-2147024664: 
+Error #-2147024664: 
+2008.10.21 20.46.13 yajhfc.Launcher main
+INFO: No old instance found, creating lock...
+2008.10.21 20.46.13 yajhfc.Launcher main
+INFO: Lock and listener created.
+2008.10.21 20.46.13 yajhfc.FaxOptions loadFromFile
+INFO: Loading prefs from Z:\.yajhfc\settings
+2008.10.21 20.46.13 yajhfc.readstate.PersistentReadState getCurrent
+INFO: Using persistence method local with Config "null".
+2008.10.21 20.46.14 yajhfc.util.SafeJFileChooser setup
+WARNING: Original setup method failed:
+java.lang.RuntimeException: java.io.IOException: Could not get shell folder ID list
+	at sun.awt.shell.Win32ShellFolderManager2$ComInvoker.invoke(Unknown Source)
+	at sun.awt.shell.Win32ShellFolder2.getFileSystemPath(Unknown Source)
+	at sun.awt.shell.Win32ShellFolderManager2.getRecent(Unknown Source)
+	at sun.awt.shell.Win32ShellFolderManager2.get(Unknown Source)
+	at sun.awt.shell.ShellFolder.get(Unknown Source)
+	at sun.swing.WindowsPlacesBar.<init>(Unknown Source)
+	at com.sun.java.swing.plaf.windows.WindowsFileChooserUI.updateUseShellFolder(Unknown Source)
+	at com.sun.java.swing.plaf.windows.WindowsFileChooserUI.installComponents(Unknown Source)
+	at javax.swing.plaf.basic.BasicFileChooserUI.installUI(Unknown Source)
+	at com.sun.java.swing.plaf.windows.WindowsFileChooserUI.installUI(Unknown Source)
+	at javax.swing.JComponent.setUI(Unknown Source)
+	at javax.swing.JFileChooser.updateUI(Unknown Source)
+	at javax.swing.JFileChooser.setup(Unknown Source)
+	at yajhfc.util.SafeJFileChooser.setup(SafeJFileChooser.java:60)
+	at javax.swing.JFileChooser.<init>(Unknown Source)
+	at javax.swing.JFileChooser.<init>(Unknown Source)
+	at yajhfc.util.SafeJFileChooser.<init>(SafeJFileChooser.java:39)
+	at yajhfc.FileTextField.<init>(FileTextField.java:123)
+	at yajhfc.OptionsWin$ExeFileTextField.<init>(OptionsWin.java:689)
+	at yajhfc.OptionsWin.getPanelPaths(OptionsWin.java:627)
+	at yajhfc.OptionsWin.getPanelCommon(OptionsWin.java:323)
+	at yajhfc.OptionsWin.getTabMain(OptionsWin.java:301)
+	at yajhfc.OptionsWin.getJContentPane(OptionsWin.java:250)
+	at yajhfc.OptionsWin.initialize(OptionsWin.java:142)
+	at yajhfc.OptionsWin.<init>(OptionsWin.java:686)
+	at yajhfc.mainwin$1.actualActionPerformed(mainwin.java:475)
+	at yajhfc.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAction.java:67)
+	at yajhfc.mainwin.reconnectToServer(mainwin.java:1242)
+	at yajhfc.Launcher$NewInstRunner.run(Launcher.java:588)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: java.io.IOException: Could not get shell folder ID list
+	at sun.awt.shell.Win32ShellFolder2.getFileSystemPath0(Native Method)
+	at sun.awt.shell.Win32ShellFolder2.access$900(Unknown Source)
+	at sun.awt.shell.Win32ShellFolder2$8.call(Unknown Source)
+	at sun.awt.shell.Win32ShellFolder2$8.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at sun.awt.shell.Win32ShellFolderManager2$ComInvoker$3.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+It tries to get settings from Z:\.yajhfc\settings, but they are in
+C:\Documents and Settings\username\.yajhfc, so using -Duser.home=homedrv & homedir (Z:\)
+is probably not a good idea.
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 21:45:18 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 22:45:18 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-8491-20081021-182446.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt><Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt><200810211124.36271.jonas.wolz@freenet.de>
+	<Mahogany-0.67.2-8491-20081021-182446.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-14894-20081021-224518.00@nerijus.sat.lt>
+
+On Tue, 21 Oct 2008 18:24:46 +0300 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> But why passing -Duser.home to java.exe is needed? For local address book
+> (which I don't use btw, i use a jdbc one) only?
+
+To answer myself - for settings. When a good -Duser.home is passed, there are
+no hangs and I get send fax dialog even if yajhfc is not started before printing.
+
+> > It would be nice if you could try if printlaunch.vbs from 
+> > ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs still has the same 
+> > problems with the incorrect enviroment fixup (it incorporates a workaround 
+> > suggested by another user to detect if the path specified by HOMEDRIVE and 
+> > HOMEPATH is valid).
+> 
+> I get an Error - Could not determine User Profile Path. Cancelling YajHFC launch.
+
+Some good news. wshNet.UserDomain is empty (probably because the script is run
+as local service), and because of this the "hard way" of getting the user profile fails.
+If I run printlaunch.vbs manually, I can see wshNet.UserDomain is correct, but if I
+run from redmon it is empty. Everything works if I hardcode domain in the line
+Set Account = WMIService.Get("Win32_UserAccount.Name='" & WshNet.UserName & "',Domain='" & 
+wshNet.UserDomain & "'")
+Now I need to find out how to get the domain name when the script is run from redmon...
+
+Regards,
+Nerijus
+
+
+From nerijus at users.sourceforge.net  Tue Oct 21 22:30:33 2008
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Tue, 21 Oct 2008 23:30:33 +0300
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-14894-20081021-224518.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt><Mahogany-0.67.2-8491-20081021-034705.00@nerijus.sat.lt><200810211124.36271.jonas.wolz@freenet.de><Mahogany-0.67.2-8491-20081021-182446.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-14894-20081021-224518.00@nerijus.sat.lt>
+Message-ID: <Mahogany-0.67.2-14894-20081021-233033.00@nerijus.sat.lt>
+
+On Tue, 21 Oct 2008 22:45:18 +0300 Nerijus Baliunas <nerijus at users.sourceforge.net> wrote:
+
+> Some good news. wshNet.UserDomain is empty (probably because the script is run
+> as local service), and because of this the "hard way" of getting the user profile fails.
+> If I run printlaunch.vbs manually, I can see wshNet.UserDomain is correct, but if I
+> run from redmon it is empty. Everything works if I hardcode domain in the line
+> Set Account = WMIService.Get("Win32_UserAccount.Name='" & WshNet.UserName & "',Domain='" & 
+> wshNet.UserDomain & "'")
+> Now I need to find out how to get the domain name when the script is run from redmon...
+
+I added between lines "userprofile = WshShell.ExpandEnvironmentStrings..." and "else"
+the following code, and now everything works:
+
+	if (IsEmpty(userprofile)) then
+	    ' Probably domain name was empty, try to find it in registry
+	    Set Account = WMIService.Get("Win32_UserAccount.Name='" & WshNet.UserName & "',Domain='" & 
+wshshell.regread("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachePrimaryDomain") & 
+"'")
+
+	    userprofile = 
+WshShell.ExpandEnvironmentStrings(WshShell.RegRead("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows 
+NT\CurrentVersion\ProfileList\" + Account.SID + "\ProfileImagePath"))
+	end if
+
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Wed Oct 22 10:24:13 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 22 Oct 2008 10:24:13 +0200
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <Mahogany-0.67.2-14894-20081021-233033.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-14894-20081021-224518.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-14894-20081021-233033.00@nerijus.sat.lt>
+Message-ID: <200810221024.13705.jonas.wolz@freenet.de>
+
+Am Dienstag, 21. Oktober 2008 schrieb Nerijus Baliunas:
+> On Tue, 21 Oct 2008 22:45:18 +0300 Nerijus Baliunas 
+<nerijus at users.sourceforge.net> wrote:
+> > Some good news. wshNet.UserDomain is empty (probably because the script
+> > is run as local service), and because of this the "hard way" of getting
+> > the user profile fails. If I run printlaunch.vbs manually, I can see
+> > wshNet.UserDomain is correct, but if I run from redmon it is empty.
+> > Everything works if I hardcode domain in the line Set Account =
+> > WMIService.Get("Win32_UserAccount.Name='" & WshNet.UserName &
+> > "',Domain='" & wshNet.UserDomain & "'")
+> > Now I need to find out how to get the domain name when the script is run
+> > from redmon...
+>
+> I added between lines "userprofile = WshShell.ExpandEnvironmentStrings..."
+> and "else" the following code, and now everything works:
+>
+> [...]
+
+Nice, thank you very much for your efforts to find a fix for this problem! 
+I will integrate this fix into the next version of YajHFC.
+
+BTW, now I found the missing quotes from the launch command line:
+> C:\Program Files\Java\jre1.6.0_07\bin\java.exe -Duser.home="Z:\" -jar
+> "C:\Program Files\YajHFC\yajhfc.jar" --stdin --debug
+> [...]
+>
+> The java launch command seems ok and I still don't understand where
+> java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --debug
+> --logfile=c:\yajhfc/log is from. Some missing quotes somewhere? And why
+> yajhfc.jar and yajhfc.log are replaced with yajhfc/jar and yajhfc/log?
+
+The quotes around "C:\Program Files\Java\jre1.6.0_07\bin\java.exe" are missing 
+here (sorry for that; unfortunately I did not find these forgotten quotes by 
+testing because I only have German language versions of Windows XP available 
+here, where "C:\Program Files" is called "C:\Programme" (without any space)).
+
+Regards and thanks again,
+Jonas
+
+
+From jonas.wolz at freenet.de  Wed Oct 22 11:33:07 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 22 Oct 2008 11:33:07 +0200
+Subject: [Yajhfc-user] cannot print
+In-Reply-To: <200810221024.13705.jonas.wolz@freenet.de>
+References: <Mahogany-0.67.2-8491-20081021-024711.00@nerijus.sat.lt>
+	<Mahogany-0.67.2-14894-20081021-233033.00@nerijus.sat.lt>
+	<200810221024.13705.jonas.wolz@freenet.de>
+Message-ID: <200810221133.07596.jonas.wolz@freenet.de>
+
+Am Mittwoch, 22. Oktober 2008 schrieb Jonas Wolz:
+> Am Dienstag, 21. Oktober 2008 schrieb Nerijus Baliunas:
+> > On Tue, 21 Oct 2008 22:45:18 +0300 Nerijus Baliunas
+>
+> <nerijus at users.sourceforge.net> wrote:
+> > > Some good news. wshNet.UserDomain is empty (probably because the script
+> > > is run as local service), and because of this the "hard way" of getting
+> > > the user profile fails. If I run printlaunch.vbs manually, I can see
+> > > wshNet.UserDomain is correct, but if I run from redmon it is empty.
+> > > Everything works if I hardcode domain in the line Set Account =
+> > > WMIService.Get("Win32_UserAccount.Name='" & WshNet.UserName &
+> > > "',Domain='" & wshNet.UserDomain & "'")
+> > > Now I need to find out how to get the domain name when the script is
+> > > run from redmon...
+> >
+> > I added between lines "userprofile =
+> > WshShell.ExpandEnvironmentStrings..." and "else" the following code, and
+> > now everything works:
+> >
+> > [...]
+>
+> Nice, thank you very much for your efforts to find a fix for this problem!
+> I will integrate this fix into the next version of YajHFC.
+
+Also answering myself here ;-)
+If somebody has the same problems before the next version is released, an 
+updated version of printlaunch.vbs can be found at:
+
+ftp://ftp.berlios.de/pub/yajhfc/temp/printlaunch.vbs
+
+
+Regards,
+Jonas
+
+
+

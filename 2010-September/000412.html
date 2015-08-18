@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Print only client
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Print%20only%20client&In-Reply-To=%3C8220BA48EF3C9A438124F20C9C76571517D22B43%40srv01.khdev.corp%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000411.html">
+   <LINK REL="Next"  HREF="000413.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Print only client</H1>
+    <B>Klaus Hochlehnert</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Print%20only%20client&In-Reply-To=%3C8220BA48EF3C9A438124F20C9C76571517D22B43%40srv01.khdev.corp%3E"
+       TITLE="[Yajhfc-user] Print only client">Mailings at kh-dev.de
+       </A><BR>
+    <I>Mon Sep 27 22:39:49 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000411.html">[Yajhfc-user] Print only client
+</A></li>
+        <LI>Next message: <A HREF="000413.html">[Yajhfc-user] Print only client
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#412">[ date ]</a>
+              <a href="thread.html#412">[ thread ]</a>
+              <a href="subject.html#412">[ subject ]</a>
+              <a href="author.html#412">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+the thing with security is actually pretty bad.
+If you only have one fax extension you just have the possibility to secure all or no faxes.
+
+The thing with RecvFileMode: 0600 has some drawbacks:
+- Nobody will be able to display the faxes (so there's no need for a fully featured fax client at all)
+- You're not able to watch the content, but the faxes still appear in the received/sent fax list
+
+Just consider the following scenario:
+- Small company with 10 employees, no Exchange Server (only POP3)
+- Incoming faxes go to the secretaries mailbox and will be distributed from there
+- The boss doesn't want the faxes in the mailbox, but wants to be able to display them anytime (without having access to the secretaries mailbox)
+- All other users should only be able to send faxes
+
+RecvFileMode: 0600 will prevent also the boss from displaying faxes.
+
+In my opinion the only chance to implement that scenario is on the client side.
+- Fully featured client for the boss and the secretary
+- Send only client for all others
+
+And you still have the HylaFAX logon table with user and password (even if it's not the safest method).
+
+The only thing that needs to be implemented:
+- If you &quot;upgrade&quot; from the send-only to the fully featured version you need to enter the password again (which the end user doesn't know).
+
+If anyone has another solution for that scenario, please tell me.
+
+Thanks, Klaus
+
+
+BTW: Another cool thing would be a centralized management option split up in a global and an user specific part (two files).
+
+
+
+-----Urspr&#252;ngliche Nachricht-----
+Von: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A> [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>] Im Auftrag von James Smith
+Gesendet: Montag, 27. September 2010 21:34
+An: 'General discussion about YajHFC'
+Betreff: Re: [Yajhfc-user] Print only client
+
+I've never been able to get that to work out &quot;of the box&quot;
+
+I've been trying all day to get pam to authenticate, I've tried ldap, winbind and radius, none of which have worked.
+the radius one is even seeing the username, but not authenticating. I love linux, but when it comes to authenticating outside of the local box, it's a pain in the bits
+
+
+
+--
+James Smith
+Network Administrator
+812.481.7215 direct
+812.309.9708 cell
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">james.smith at jofco.com</A>
+
+Jofco
+Design at Work
+
+The content of this message is strictly confidential and is intended for the exclusive use of the addressee.
+Any unauthorized distribution or copying of this communication is forbidden.
+If you have received this communication by error, contact sender and delete it immediately.
+
+-----Original Message-----
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A> [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">yajhfc-user-bounces at lists.berlios.de</A>] On Behalf Of Giuseppe Sacco
+Sent: Monday, September 27, 2010 3:14 PM
+To: General discussion about YajHFC
+Subject: Re: [Yajhfc-user] Print only client
+
+Il giorno lun, 27/09/2010 alle 09.15 -0400, James Smith ha scritto:
+&gt;<i> In an ideal world, yes
+</I>&gt;<i>
+</I>&gt;<i> But I don't have the time to create usernames/passwords for every user 
+</I>&gt;<i> I have, make sure they have hylafax rights and then make sure the 
+</I>&gt;<i> passwords sync with AD. Maybe when there is a far simpler and robust
+</I>[...]
+
+why don't you get hylafax use your AD via PAM (winbind) for checking credentials? It should work ouf of the box, did you try it?
+
+Bye,
+Giuseppe
+
+_______________________________________________
+Yajhfc-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+_______________________________________________
+Yajhfc-user mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000411.html">[Yajhfc-user] Print only client
+</A></li>
+	<LI>Next message: <A HREF="000413.html">[Yajhfc-user] Print only client
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#412">[ date ]</a>
+              <a href="thread.html#412">[ thread ]</a>
+              <a href="subject.html#412">[ subject ]</a>
+              <a href="author.html#412">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

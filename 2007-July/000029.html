@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] feature requests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C200707201530.03601.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000025.html">
+   <LINK REL="Next"  HREF="000030.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] feature requests</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20feature%20requests&In-Reply-To=%3C200707201530.03601.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] feature requests">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Fri Jul 20 15:30:03 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000025.html">[Yajhfc-user] feature requests
+</A></li>
+        <LI>Next message: <A HREF="000030.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 17. Juli 2007 17:19 schrieb Jonas Wolz:
+&gt;<i> &gt; Also, I noticed that when a user has a lot of jobs in
+</I>&gt;<i> &gt; the &quot;sent&quot; table and is about to send another fax via
+</I>&gt;<i> &gt; printing redirection, there is a significant delay
+</I>&gt;<i> &gt; before the send dialog actually appears. It's probably
+</I>&gt;<i> &gt; because it has to wait for the hylafax server to
+</I>&gt;<i> &gt; transfer the whole job list so that yajhfc can display
+</I>&gt;<i> &gt; it in its grid and THEN the &quot;send&quot; dialog box appears.
+</I>&gt;<i> &gt; Can we find a way to reduce or elinminate this delay?
+</I>&gt;<i>
+</I>&gt;<i> I see the problem you mean.
+</I>&gt;<i> Actually the table refresh is already multi-threaded, but for the first
+</I>&gt;<i> time after connecting it is currently still done in the UI thread.
+</I>&gt;<i> Before changing that I have to look if there is (still) a reason for
+</I>&gt;<i> that or if it can be safely removed.
+</I>&gt;<i> Anyway, I will try to find some solution for that.
+</I>
+In 0.3.4 the initial display is now also done in the refresh thread. I don't 
+know if this how much that helps, however, as the login is still done in the 
+UI thread.
+
+Related to that I set up a test server with 2000 faxes in the receive and done 
+queue and made some measurements why the initial display takes a while:
+On my test box here (AMD Athlon 850MHz/512 MB RAM with the test server running 
+in a VMWare instance) it took about 2 seconds to retrieve a queue's job list 
+from the server and below 0.2 seconds to process the retrieved data in 
+YajHFC.
+As the HylaFAX protocol seemingly doesn't support limiting the retrieved list 
+in a reasonable way this means that there is probably not much potential to 
+optimize...
+
+However:
+If anybody reading this knows a (preferably Open Source) client that refreshes 
+noticeably faster than YajHFC, it would be nice if he or she could tell me 
+its name. Then I could take a look at it trying to find out how the faster 
+refresh is achieved.
+
+Greetings,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000025.html">[Yajhfc-user] feature requests
+</A></li>
+	<LI>Next message: <A HREF="000030.html">[Yajhfc-user] feature requests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

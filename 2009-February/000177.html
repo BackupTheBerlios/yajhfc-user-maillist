@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] restrict fax modems to specific fax users
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20restrict%20fax%20modems%20to%20specific%20fax%20users&In-Reply-To=%3C156527.44377.qm%40web32606.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000176.html">
+   <LINK REL="Next"  HREF="000178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] restrict fax modems to specific fax users</H1>
+    <B>Vieri</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20restrict%20fax%20modems%20to%20specific%20fax%20users&In-Reply-To=%3C156527.44377.qm%40web32606.mail.mud.yahoo.com%3E"
+       TITLE="[Yajhfc-user] restrict fax modems to specific fax users">rentorbuy at yahoo.com
+       </A><BR>
+    <I>Fri Feb 20 09:08:11 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000176.html">[Yajhfc-user] restrict fax modems to specific fax users
+</A></li>
+        <LI>Next message: <A HREF="000178.html">[Yajhfc-user] ModemGroup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#177">[ date ]</a>
+              <a href="thread.html#177">[ thread ]</a>
+              <a href="subject.html#177">[ subject ]</a>
+              <a href="author.html#177">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+--- On Fri, 2/20/09, member horvath &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">member at horvath.co.za</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> There is an option within yajhfc to choose a modem, but for
+</I>&gt;<i> large
+</I>&gt;<i> deployments this can be an administritive burden, i'm
+</I>&gt;<i> not sure if you
+</I>&gt;<i> can restrict a user to ONLY use that modem however.
+</I>&gt;<i> To assign users to a secific modem in hylafax itself is
+</I>&gt;<i> very easy, but
+</I>&gt;<i> again to explicitly restrict them from using another
+</I>&gt;<i> I'm not sure,
+</I>&gt;<i> although I'm sure it can be done.
+</I>&gt;<i> 
+</I>&gt;<i> To assign a modem to a user do the following:
+</I>&gt;<i> (Adjust paths to suite your installation)
+</I>&gt;<i> 
+</I>&gt;<i> On the hylafax server edit:
+</I>&gt;<i> /var/spool/hylafax/etc/config
+</I>&gt;<i> ADD
+</I>&gt;<i> JobControlCmd:          etc/jobcontrol
+</I>&gt;<i> 
+</I>&gt;<i> Then create the file:
+</I>&gt;<i> /var/spool/hylafax/etc/jobcontrol
+</I>&gt;<i> ADD
+</I>&gt;<i> #!/bin/sh
+</I>&gt;<i> . etc/setup.cache
+</I>&gt;<i> . bin/common-functions
+</I>&gt;<i> QFILE=sendq/q$1
+</I>&gt;<i> parseQfile
+</I>&gt;<i> case &quot;$owner&quot; in
+</I>&gt;<i> root) echo &quot;Modem: any&quot;;;
+</I>&gt;<i> user1) echo &quot;Modem: ttyS0&quot;;;
+</I>&gt;<i> user2) echo &quot;Modem: ttyS1&quot;;;
+</I>&gt;<i> *) echo &quot;Modem: ttyS2&quot;;;
+</I>&gt;<i> esac
+</I>&gt;<i> exit 0
+</I>&gt;<i> Make sure you then configure the clients to log into the
+</I>&gt;<i> hylafax
+</I>&gt;<i> server with the relevant user from above script (Perhaps
+</I>&gt;<i> you split
+</I>&gt;<i> your users into relevant groups and name them accordingly)
+</I>&gt;<i> Also make sure your /var/spool/hylafax/etc/hosts.hfaxd has
+</I>&gt;<i> the allowed users in.
+</I>&gt;<i> 
+</I>&gt;<i> Hope this helps
+</I>
+It definitely helps a lot! Especially the sample script.
+Thanks for pointing out the JobControlCmd keyword that made me find this page: <A HREF="http://hylafax.sourceforge.net/man/jobcontrol.php">http://hylafax.sourceforge.net/man/jobcontrol.php</A>
+
+Have a nice weekend.
+
+Vieri
+
+
+
+
+      
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000176.html">[Yajhfc-user] restrict fax modems to specific fax users
+</A></li>
+	<LI>Next message: <A HREF="000178.html">[Yajhfc-user] ModemGroup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#177">[ date ]</a>
+              <a href="thread.html#177">[ thread ]</a>
+              <a href="subject.html#177">[ subject ]</a>
+              <a href="author.html#177">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

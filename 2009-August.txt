@@ -1,0 +1,388 @@
+From sorin at lauserco.com  Thu Aug 13 16:37:14 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Thu, 13 Aug 2009 10:37:14 -0400
+Subject: [Yajhfc-user] Feature Request - Server-Side solution
+In-Reply-To: <200907222028.32132.jonas.wolz@freenet.de>
+References: <4A647C4E.8020901@lauserco.com>	<200907221923.12148.jonas.wolz@freenet.de>	<4A674E91.9000700@lauserco.com>
+	<200907222028.32132.jonas.wolz@freenet.de>
+Message-ID: <4A84251A.6070708@lauserco.com>
+
+Jonas Wolz wrote:
+> Am Mittwoch, 22. Juli 2009 schrieb Sorin Toma:
+>   
+>>> If it is required to see the watermark, I think this must be done on the
+>>> client before the PDF or PS is sent to the server.
+>>> Unfortunately this is currently not possible with YajHFC (it would be
+>>> necessary to call a "filter script" before sending a document which is
+>>> currently not possible).
+>>>       
+>> [...]
+
+Hello,
+So, the hylafax+ ps2fax/pdf2fax/tiff2fax converting scripts calls a 
+certain etc/FaxModify where you can implement your own filtering if you 
+want.
+Basically, I'm using Jonas's sugestion and use pdftk in order to apply 
+the watermark on my outgoing faxes on the server.
+On the other hand I still investigate the client-side processing, I'm 
+going to keep you informed about my progress.
+
+
+Hoping that somebody else can use this, let's cat 
+/var/spool/hylafax/etc/FaxModify:
+
+##############CUT HERE##################
+#!/bin/sh
+workdir=/tmp/watermark$$
+log=$workdir/templog
+work=$workdir/tmpwrk
+result=$workdir/result
+backg=/etc/initsetup/watermark.pdf
+
+mkdir -p $workdir
+
+date > $log
+echo "Starting faxmodify on $fil" >> $log
+
+cat $fil >> $work
+if /usr/bin/file $work | grep "PostScript" >>$log; then
+echo "it's PS" >> $log 2>&1
+/usr/bin/ps2pdf $work $work.pdf >>$log 2>&1
+/usr/bin/pdftk $work.pdf background $backg output $result.pdf >>$log 2>&1
+rm -f $fil >>$log 2>&1
+/usr/bin/pdf2ps $result.pdf $fil >>$log 2>&1
+fi
+
+if /usr/bin/file $work | grep "PDF" >>/dev/null; then
+echo "it's PDF" >> $log 2>&1
+rm -f $fil >>$log 2>&1
+/usr/bin/pdftk $work background $backg output $fil >>$log 2>&1
+fi
+
+if /usr/bin/file $work | grep "TIFF" >>/dev/null; then
+echo "it's PDF" >> $log 2>&1
+/usr/bin/tiff2pdf $work $work.pdf >>$log 2>&1
+/usr/bin/pdftk $work.pdf background $backg output $result.pdf >>$log 2>&1
+rm -f $fil >>$log 2>&1
+/usr/bin/gs -q -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -sOutputFile=$fil 
+$result.pdf $fil >>$log 2>&1
+fi
+
+rm -rf $workdir
+
+#EOF
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+
+From sorin at lauserco.com  Thu Aug 13 17:18:52 2009
+From: sorin at lauserco.com (Sorin Toma)
+Date: Thu, 13 Aug 2009 11:18:52 -0400
+Subject: [Yajhfc-user] Feature Request - Client-Side solution
+In-Reply-To: <4A84251A.6070708@lauserco.com>
+References: <4A647C4E.8020901@lauserco.com>	<200907221923.12148.jonas.wolz@freenet.de>	<4A674E91.9000700@lauserco.com>	<200907222028.32132.jonas.wolz@freenet.de>
+	<4A84251A.6070708@lauserco.com>
+Message-ID: <4A842EDC.4080303@lauserco.com>
+
+For the Client-Side script to work, we have to replace in the YAJHFC 
+printer port settings the "redirect this port to program": C:\Program 
+Files\yajhfc\redmon\redrun.exe and "the arguments for the program" has 
+to be the following script (C:\Progra~1\Yajhfc\watermark.bat):
+
+###################CUT HERE###################
+@echo off
+set SCRIPT=watermark
+set VERSION=1
+:: ------------------------------------------------------------------
+::  based on a script by Thomas Koch - http://www.thomaskoch.it
+:: to use: create new printer with reddir port RPT1:
+:: configure port redirect to C:\Program Files\Yajhfc\redmon\redrun.exe
+:: port arguments C:\Progra~1\Yajhfc\watermark.bat  %%1
+::
+:: ------------------------------------------------------------------
+:: Ghostscript configuraton
+set GS_INSTALL=C:\Progra~1\Yajhfc\gs
+set GS_VERSION=8.63
+:: LibTIFF configuraton
+set LIBTIFF_INSTALL=C:\Progra~1\Yajhfc\GnuWin32
+:: PDF viewer configuraton (no need to set, if PDF is a registered file 
+type)
+set PDF_READER=
+:: Watermark background config
+set BACKGROUND=C:\Progra~1\Yajhfc\WATERMARK.PDF
+:: PDFTK location
+set PDFTK=C:\Progra~1\Yajhfc
+:: ------------------------------------------------------------------
+:: temporary PDF directory
+set PDF_DIR=%TEMP%\1
+:: delete old temporary PDF directories if required
+for /d %%D in ("%TEMP%\1\") do if not "%%D"=="%TEMP%\1\" rd /s /q "%%D"
+:: create if required
+if not exist "%PDF_DIR%" md "%PDF_DIR%"
+:: check if file is given
+if not "%~1" == "" goto CHECK_FOUND
+echo ERROR: No file name given!
+goto END
+::----------
+:CHECK_FOUND
+:: check for file existance
+echo Input file is %*
+copy %* %PDF_DIR%
+if exist "%*" goto SET_FNE
+echo ERROR: File "%*" not found!
+goto END
+::------
+:SET_FNE
+:: set input file, name and extension
+call :set_input_file_name_ext "%*"
+:: check file type
+if "%INPUT_EXT%" == "" set INPUT_NAME=%~n1.ps
+if "%INPUT_EXT%" == "" set INPUT_EXT=.ps
+if "%INPUT_EXT%" == ".ps" goto PROCESS_PS
+if "%INPUT_EXT%" == ".tiff" goto PROCESS_TIFF
+if "%INPUT_EXT%" == ".tif" goto PROCESS_TIFF
+if "%INPUT_EXT%" == ".pdf" goto PROCESS_PDF
+echo ERROR: File type "%INPUT_EXT%" not supported!
+goto END
+:: --------
+:PROCESS_PS
+:: set file names
+echo Is PS
+set PS_FILE=%INPUT_FILE%
+set PDF_FILE=%PDF_DIR%\%INPUT_NAME%.pdf
+:: convert to PDF
+"%GS_INSTALL%\gs%GS_VERSION%\bin\gswin32c.exe" -dSAFER 
+-dNumRenderingThreads#%NUMBER_OF_PROCESSORS% -sDEVICE#pdfwrite -o 
+"%PDF_FILE%" -f "%PS_FILE%"
+goto DISPLAY
+:: ----------
+:PROCESS_TIFF
+:: set file names
+echo Is TIFF
+set TIFF_FILE=%INPUT_FILE%
+set PDF_FILE=%PDF_DIR%\%INPUT_NAME%.pdf
+:: convert to PDF
+"%LIBTIFF_INSTALL%\bin\tiff2pdf.exe" -o "%PDF_FILE%" -f "%TIFF_FILE%"
+goto DISPLAY
+:: ---------
+:PROCESS_PDF
+:: set file name
+echo Is PDF
+set PDF_FILE=%INPUT_FILE%
+::
+:: ------------------------------------------------------------------
+:DISPLAY
+:: open PDF file in reader
+::start /b "%PDF_READER%" "%PDF_FILE%"
+::
+:: apply watermark background
+echo Apply Background
+%PDFTK%\pdftk.exe "%PDF_FILE%" background "%BACKGROUND%" output 
+"%PDF_DIR%\output.pdf"
+echo Transform back to PS
+"%GS_INSTALL%\gs%GS_VERSION%\bin\gswin32c.exe" -dSAFER 
+-dNumRenderingThreads#%NUMBER_OF_PROCESSORS% -sDEVICE#pswrite -o 
+"%PDF_DIR%\output.ps" -f "%PDF_DIR%\output.pdf"
+::
+:: and send to YAJHFC
+echo Calling VBS
+"%PDFTK%\execyajhfc.vbs" "%PDF_DIR%\output.ps"
+::
+:: or call OUTLOOK to send the file by email - ugly for the moment - 
+must be modified to use mapi calls
+:: "C:\Program Files\Microsoft Office\OFFICE12\OUTLOOK.EXE" /a 
+"%PDF_DIR%\output.pdf"
+:: "C:\Program Files\Microsoft Office\OFFICE11\OUTLOOK.EXE" /a 
+"%PDF_DIR%\output.pdf"
+:: "C:\Program Files\Microsoft Office\OFFICE10\OUTLOOK.EXE" /a 
+"%PDF_DIR%\output.pdf"
+:: "C:\Program Files\Microsoft Office\OFFICE\OUTLOOK.EXE" /a 
+"%PDF_DIR%\output.pdf"
+::
+:: ------------------------------------------------------------------
+:END
+exit
+::
+:: ------------------------------------------------------------------
+:: Subroutine: set_input_file_name_ext
+:: Arguments:  %1 = "path/name.ext"
+:: Purpose:    set environment vars to input file, name and extension
+:: ------------------------------------------------------------------
+:set_input_file_name_ext
+set INPUT_FILE=%~1
+set INPUT_NAME=%~n1
+set INPUT_EXT=%~x1
+goto :eof
+:: ------------------------------------------------------------------
+
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+
+From jwinius at umrk.nl  Tue Aug 18 22:48:05 2009
+From: jwinius at umrk.nl (Jaap Winius)
+Date: Tue, 18 Aug 2009 22:48:05 +0200
+Subject: [Yajhfc-user] "Disconnected" state
+Message-ID: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+
+Hi all,
+
+My setup includes three Debian machines: one sid workstation and two  
+lenny servers: one local and one remote, both running hylafax 4.4.4,  
+iaxmodem 1.1.1 and asterisk 1.4.21. I've also opened up port 4559 on  
+the remote server and tested that it's available from my workstation  
+with telnet.
+
+On the workstation I'm using yajhfc 0.4.1. When I use it to connect to  
+and send faxes via the local hylafax server to the remote one I have  
+no problems. However, when I use yajhfc to connect to the remote  
+server, the status window displays "Disconnected" and the send fax  
+dialogue box is grayed out.
+
+What are the most likely causes for this behavior?
+
+Thanks,
+
+Jaap
+
+
+From jonas.wolz at freenet.de  Wed Aug 19 09:13:37 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 19 Aug 2009 09:13:37 +0200
+Subject: [Yajhfc-user] "Disconnected" state
+In-Reply-To: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+References: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+Message-ID: <200908190913.37416.jonas.wolz@freenet.de>
+
+Am Dienstag, 18. August 2009 schrieb Jaap Winius:
+> Hi all,
+>
+> My setup includes three Debian machines: one sid workstation and two
+> lenny servers: one local and one remote, both running hylafax 4.4.4,
+> iaxmodem 1.1.1 and asterisk 1.4.21. I've also opened up port 4559 on
+> the remote server and tested that it's available from my workstation
+> with telnet.
+>
+> On the workstation I'm using yajhfc 0.4.1. When I use it to connect to
+> and send faxes via the local hylafax server to the remote one I have
+> no problems. However, when I use yajhfc to connect to the remote
+> server, the status window displays "Disconnected" and the send fax
+> dialogue box is grayed out.
+>
+> What are the most likely causes for this behavior?
+
+As it seems you have a firewall in between: 
+The HylaFAX protocol is basically just extended FTP.
+
+Unfortunately this means that it is as "firewall unfriendly" as FTP (it opens 
+a separate, randomly chosen data port either on the server (passive mode) or 
+on the client (active mode)).
+So I would guess your firewall blocks access to that data port.
+
+
+Hope that helps
+Jonas
+
+
+From nerijus at users.sourceforge.net  Wed Aug 19 12:14:29 2009
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Wed, 19 Aug 2009 13:14:29 +0300
+Subject: [Yajhfc-user] "Disconnected" state
+In-Reply-To: <200908190913.37416.jonas.wolz@freenet.de>
+References: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+	<200908190913.37416.jonas.wolz@freenet.de>
+Message-ID: <Mahogany-0.67.2-13505-20090819-131429.00@nerijus.sat.lt>
+
+On Wed, 19 Aug 2009 09:13:37 +0200 Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> As it seems you have a firewall in between: 
+> The HylaFAX protocol is basically just extended FTP.
+> 
+> Unfortunately this means that it is as "firewall unfriendly" as FTP (it opens 
+> a separate, randomly chosen data port either on the server (passive mode) or 
+> on the client (active mode)).
+> So I would guess your firewall blocks access to that data port.
+
+If you use Linux, you should pass an option "ports=21,4559" when loading
+nf_conntrack_ftp kernel module. For example, I use shorewall, so I have
+loadmodule nf_conntrack_ftp ports=21,4559
+in /etc/shorewall/modules file.
+
+Regards,
+Nerijus
+
+
+From jwinius at umrk.nl  Wed Aug 26 16:44:21 2009
+From: jwinius at umrk.nl (Jaap Winius)
+Date: Wed, 26 Aug 2009 16:44:21 +0200
+Subject: [Yajhfc-user] "Disconnected" state
+In-Reply-To: <200908190913.37416.jonas.wolz@freenet.de>
+References: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+	<200908190913.37416.jonas.wolz@freenet.de>
+Message-ID: <20090826164421.8zmxj30nbzks0g4c@www.umrk.nl>
+
+Quoting Jonas Wolz <jonas.wolz at freenet.de>:
+
+>> ... when I use yajhfc to connect to the remote
+>> server, the status window displays "Disconnected"
+>> and the send fax dialogue box is grayed out.
+>
+> The HylaFAX protocol is basically just extended
+> FTP. ... So I would guess your firewall blocks
+> access to that data port [4559].
+
+Indeed, that was exactly the case. What a pity that the hylafax  
+protocol is so outdated. Using this new information I got yajhfc to  
+work with the remote system anyway after setting up an SSH VPN (the -w  
+option), but at the moment that's no good for anything other than  
+testing purposes. So, for the remote users I've now set up an AvantFax  
+system instead; it may not be as flexible as yajhfc and is certainly  
+more complex, but for now at least it will do a reasonable job.
+
+Thanks,
+
+Jaap
+
+
+From jwinius at umrk.nl  Wed Aug 26 17:15:41 2009
+From: jwinius at umrk.nl (Jaap Winius)
+Date: Wed, 26 Aug 2009 17:15:41 +0200
+Subject: [Yajhfc-user] "Disconnected" state
+In-Reply-To: <Mahogany-0.67.2-13505-20090819-131429.00@nerijus.sat.lt>
+References: <20090818224805.fioauqck67swkcgo@www.umrk.nl>
+	<200908190913.37416.jonas.wolz@freenet.de>
+	<Mahogany-0.67.2-13505-20090819-131429.00@nerijus.sat.lt>
+Message-ID: <20090826171541.iurn9rrs52go8koc@www.umrk.nl>
+
+Quoting Nerijus Baliunas <nerijus at users.sourceforge.net>:
+
+>> As it seems you have a firewall in between: The
+>> HylaFAX protocol is basically just extended FTP. ...
+>> So I would guess your firewall blocks access to that
+>> data port.
+>
+> If you use Linux, you should pass an option
+> "ports=21,4559" when loading nf_conntrack_ftp
+> kernel module.
+
+Once I have a Linux firewall running at the client site I would be  
+able to do this, but then there's the question of security. If the  
+hylafax protocol is basically just extended FTP, it will also send  
+usernames and passwords as plain text. I work rather hard to keep such  
+things encrypted, so why should I make an exception in this case? It  
+would be so much nicer if there was a more modern version of the  
+hylalafax protocol that worked with SSL.
+
+Cheers,
+
+Jaap
+
+

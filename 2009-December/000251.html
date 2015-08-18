@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Unsupported file format: PlainText
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Unsupported%20file%20format%3A%20PlainText&In-Reply-To=%3C200912091909.37301.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Unsupported file format: PlainText</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Unsupported%20file%20format%3A%20PlainText&In-Reply-To=%3C200912091909.37301.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Unsupported file format: PlainText">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Dec  9 19:09:37 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000249.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+        <LI>Next message: <A HREF="000252.html">[Yajhfc-user] error: 500 ':Syntax error, expecting password.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 8. Dezember 2009 schrieb Cristian Nuzzo:
+&gt;<i> Giuseppe Sacco ha scritto:
+</I>&gt;<i> &gt; Il giorno mar, 08/12/2009 alle 12.15 +0100, Cristian Nuzzo ha scritto:
+</I>&gt;<i> &gt;&gt; Hi everybody,
+</I>&gt;<i> &gt;&gt; I have installed yajhfc on many XP client and everything went fine,
+</I>&gt;<i> &gt;&gt; now I'm trying to make it working on a server win 2000, it seems that
+</I>&gt;<i> &gt;&gt; ghostscript and tiff-3.8.2.1 are installed correctly but when I try to
+</I>&gt;<i> &gt;&gt; send the fax or make a preview an error occurs:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; yajhfc.file.UnknownFormatException: Unsupported file format: PlainText
+</I>&gt;<i> &gt;&gt;  at
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [...]
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> I forgot  to say that I'm trying to send via the fax printer. Maybe
+</I>&gt;<i> there is something wrong with the driver.
+</I>&gt;<i> The other machines (Win XPw) here I installed the client are not
+</I>&gt;<i> affected by this problem.
+</I>
+Probably YajHFC does not recognize the PostScript produced by the printer 
+driver as PostScript.
+
+To debug this problem, please create a debug log from Redmon:
+To turn it on, go to the properties of the YajHFC printer, go to the &quot;Ports&quot; 
+tab, select the &quot;YAJHFC:&quot; port, click &quot;Configure...&quot;, click &quot;Log file&quot; and 
+check both the &quot;Use log file&quot; and &quot;Debug&quot; boxes (and enter a different log 
+file name if you wish). Then close all dialogs with &quot;OK&quot;.
+(also see the screenshot at <A HREF="http://yajhfc.berlios.de/temp/redmon-debug.png">http://yajhfc.berlios.de/temp/redmon-debug.png</A> )
+
+Then, print a document on the YajHFC printer and send the produced log to me.
+
+
+Thanks
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000249.html">[Yajhfc-user] Unsupported file format: PlainText
+</A></li>
+	<LI>Next message: <A HREF="000252.html">[Yajhfc-user] error: 500 ':Syntax error, expecting password.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] owner must be of type Dialog or Frame!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20owner%20must%20be%20of%20type%20Dialog%20or%20Frame%21&In-Reply-To=%3C393331.46846.qm%40web113312.mail.gq1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000448.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] owner must be of type Dialog or Frame!</H1>
+    <B>Vieri</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20owner%20must%20be%20of%20type%20Dialog%20or%20Frame%21&In-Reply-To=%3C393331.46846.qm%40web113312.mail.gq1.yahoo.com%3E"
+       TITLE="[Yajhfc-user] owner must be of type Dialog or Frame!">rentorbuy at yahoo.com
+       </A><BR>
+    <I>Wed Apr 27 15:01:53 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000448.html">[Yajhfc-user] Making new windows appear on top
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've just upgraded my YAJHFC client installation in a test environment and all's fine when running the app in my Windows desktop environment but it seems to be failing within redmon (I used the installation wizard).
+
+So when I print to the &quot;YAJHFC Fax&quot; printer I get an error and no USERNAME/PASSWORD dialog box opens. The error I'm getting is:
+
+owner must be of type Dialog or Frame!
+
+java.lang.IllegalArgumentException: owner must be of type Dialog or Frame!
+	at yajhfc.util.PasswordDialog$DisplayRunnable.&lt;init&gt;(PasswordDialog.java:284)
+	at yajhfc.util.PasswordDialog.showPasswordDialogThreaded(PasswordDialog.java:247)
+	at yajhfc.util.PasswordDialog.showPasswordDialog(PasswordDialog.java:206)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:140)
+	at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:92)
+	at yajhfc.HylaClientManager.getRealModems(HylaClientManager.java:266)
+	at yajhfc.HylaClientManager.getModems(HylaClientManager.java:258)
+	at yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:650)
+	at yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:648)
+	at yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:59)
+	at yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:57)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+YajHFC 0.5.0
+Java 1.5.0_12 (Sun Microsystems Inc.)
+Java(TM) 2 Runtime Environment, Standard Edition 1.5.0_12-b04
+Java HotSpot(TM) Client VM
+Windows Vista 6.1 (x86)
+
+How can I fix this issue?
+
+Thanks,
+
+Vieri
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000448.html">[Yajhfc-user] Making new windows appear on top
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

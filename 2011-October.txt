@@ -1,0 +1,80 @@
+From phil-yajhfc at tinsleyviaduct.com  Mon Oct 10 17:51:31 2011
+From: phil-yajhfc at tinsleyviaduct.com (Phil Reynolds)
+Date: Mon, 10 Oct 2011 16:51:31 +0100
+Subject: [Yajhfc-user] Line break allowed in "Street" field?
+Message-ID: <20111010165131.17443smxq05f5g8z@topdeck.tinsleyviaduct.com>
+
+I have installed yajhfc on two Debian machines (my hylafax server  
+resides on a third) and been very impressed with the tests I have  
+done. After some struggle, I modified the cover page to a layout that  
+suits me slightly better. One of the fields used on it is "Street", as  
+entered into identities and phone book entries.
+
+I have an address "line" that is actually best broken up into two  
+lines. Is it possible to enter a line break in the middle? This would  
+make the result even neater, but I can cope with it if not.
+
+-- 
+Phil Reynolds
+email: phil-yajhfc at tinsleyviaduct.com
+
+----------------------------------------------------------------
+This message was sent using IMP, the Internet Messaging Program.
+
+
+
+From jonas.wolz at freenet.de  Tue Oct 11 17:30:56 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 11 Oct 2011 17:30:56 +0200
+Subject: [Yajhfc-user] Line break allowed in "Street" field?
+In-Reply-To: <20111010165131.17443smxq05f5g8z@topdeck.tinsleyviaduct.com>
+References: <20111010165131.17443smxq05f5g8z@topdeck.tinsleyviaduct.com>
+Message-ID: <201110111730.56934.jonas.wolz@freenet.de>
+
+Am Montag, 10. Oktober 2011 schrieb Phil Reynolds:
+> I have an address "line" that is actually best broken up into two
+> lines. Is it possible to enter a line break in the middle? This would
+> make the result even neater, but I can cope with it if not.
+
+It is currently not possible to add a line break in any other field than the 
+Comments field.
+I hope this does not cause too much inconvenience for you...
+
+Jonas
+
+
+
+From jonas.wolz at freenet.de  Sat Oct 15 18:11:00 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 15 Oct 2011 18:11:00 +0200
+Subject: [Yajhfc-user] YajHFC moves to www.yajhfc.de
+Message-ID: <201110151811.00107.jonas.wolz@freenet.de>
+
+Because berlios.de will close down on 2011-12-31 YajHFC moves to a new 
+location at http://www.yajhfc.de 
+Please update your bookmarks accordingly.
+
+
+The source code repository and issue tracker will now be hosted on Google Code 
+at http://code.google.com/p/yajhfc.
+
+The mailing lists will move to Google Groups accordingly.
+Current Members of the mailing lists will receive an invitation to join the 
+new Groups (but of course it is up to you to join them or not).
+
+You will need a Google account to join the new Groups; if that is an issue for 
+you, please let me know.
+
+I will not remove the old content from berlios.de or close the old mailing 
+lists before the end of the year; new releases/updates etc. will only be made 
+on yajhfc.de, however.
+
+Since the new home page contains a lot of stuff ported from the old one, 
+please let me know if you find any dead links or have any questions/feedback 
+about this change.
+
+
+Have fun
+Jonas Wolz
+
+

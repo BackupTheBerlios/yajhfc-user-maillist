@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] owner must be of type Dialog or Frame!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20owner%20must%20be%20of%20type%20Dialog%20or%20Frame%21&In-Reply-To=%3C201105011101.58355.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000451.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] owner must be of type Dialog or Frame!</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20owner%20must%20be%20of%20type%20Dialog%20or%20Frame%21&In-Reply-To=%3C201105011101.58355.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] owner must be of type Dialog or Frame!">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sun May  1 11:01:58 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000451.html">[Yajhfc-user] owner must be of type Dialog or Frame!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+this is a bug in 0.5.0.
+
+Please try if version 0.5.1beta1 from
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/beta/">ftp://ftp.berlios.de/pub/yajhfc/temp/beta/</A> 
+fixes this problem (except for the bugfix it is identical to 0.5.0).
+
+
+Hope that helps
+Jonas
+
+
+Am Mittwoch, 27. April 2011 schrieb Vieri:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I've just upgraded my YAJHFC client installation in a test environment and
+</I>&gt;<i> all's fine when running the app in my Windows desktop environment but it
+</I>&gt;<i> seems to be failing within redmon (I used the installation wizard).
+</I>&gt;<i> 
+</I>&gt;<i> So when I print to the &quot;YAJHFC Fax&quot; printer I get an error and no
+</I>&gt;<i> USERNAME/PASSWORD dialog box opens. The error I'm getting is:
+</I>&gt;<i> 
+</I>&gt;<i> owner must be of type Dialog or Frame!
+</I>&gt;<i> 
+</I>&gt;<i> java.lang.IllegalArgumentException: owner must be of type Dialog or Frame!
+</I>&gt;<i> 	at
+</I>&gt;<i> yajhfc.util.PasswordDialog$DisplayRunnable.&lt;init&gt;(PasswordDialog.java:284)
+</I>&gt;<i> at
+</I>&gt;<i> yajhfc.util.PasswordDialog.showPasswordDialogThreaded(PasswordDialog.java:
+</I>&gt;<i> 247) at
+</I>&gt;<i> yajhfc.util.PasswordDialog.showPasswordDialog(PasswordDialog.java:206) at
+</I>&gt;<i> yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:140) at
+</I>&gt;<i> yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:92)
+</I>&gt;<i> at yajhfc.HylaClientManager.getRealModems(HylaClientManager.java:266) at
+</I>&gt;<i> yajhfc.HylaClientManager.getModems(HylaClientManager.java:258) at
+</I>&gt;<i> yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:650) at
+</I>&gt;<i> yajhfc.send.SimplifiedSendDialog$18.call(SimplifiedSendDialog.java:648) at
+</I>&gt;<i> yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:
+</I>&gt;<i> 59) at
+</I>&gt;<i> yajhfc.util.AsyncComboBoxOrListModel$1.call(AsyncComboBoxOrListModel.java:
+</I>&gt;<i> 57) at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+</I>&gt;<i> 	at java.util.concurrent.FutureTask.run(Unknown Source)
+</I>&gt;<i> 	at
+</I>&gt;<i> java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.acces
+</I>&gt;<i> s$301(Unknown Source) at
+</I>&gt;<i> java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(U
+</I>&gt;<i> nknown Source) at
+</I>&gt;<i> java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source) at
+</I>&gt;<i> java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) at
+</I>&gt;<i> java.lang.Thread.run(Unknown Source)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> YajHFC 0.5.0
+</I>&gt;<i> Java 1.5.0_12 (Sun Microsystems Inc.)
+</I>&gt;<i> Java(TM) 2 Runtime Environment, Standard Edition 1.5.0_12-b04
+</I>&gt;<i> Java HotSpot(TM) Client VM
+</I>&gt;<i> Windows Vista 6.1 (x86)
+</I>&gt;<i> 
+</I>&gt;<i> How can I fix this issue?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> 
+</I>&gt;<i> Vieri
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yajhfc-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">Yajhfc-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">https://lists.berlios.de/mailman/listinfo/yajhfc-user</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000451.html">[Yajhfc-user] owner must be of type Dialog or Frame!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

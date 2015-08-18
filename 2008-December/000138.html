@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812151633.44811.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000137.html">
+   <LINK REL="Next"  HREF="000140.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Feature request</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812151633.44811.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Feature request">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Dec 15 16:33:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000137.html">[Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+</A></li>
+        <LI>Next message: <A HREF="000140.html">[Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 15. Dezember 2008 schrieb Jonas Wolz:
+&gt;<i> To be honest the whole printlaunch script is kind of a hack, but a
+</I>&gt;<i> necessary one, because Redmon often does not setup the enviroment correctly
+</I>&gt;<i> *and* windows does not seem to offer a reliable way to get a user's home
+</I>&gt;<i> directory from the registry (or from somewhere else than the environment).
+</I>
+While writing the last mail I have got an idea for a workaround which should 
+solve this problem in the majority of cases and will be in the next version 
+(0.4.0) of YajHFC (technical explanation follows):
+
+Starting with 0.3.9 the &quot;normal&quot; YajHFC launch is also done by a VB-Script 
+(execyajhfc.vbs; this is because java.exe is not in the PATH on Vista 64bit).
+
+The workaround I implemented is to add code to this script which saves the 
+correct values for USERPROFILE, TMP and TEMP to the registry 
+(HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+printlaunch.vbs now checks if these values are present and uses them if they 
+are present. If not, the old logic is applied.
+As long as the user profile location has not been moved after the 
+last &quot;normal&quot; start of YajHFC (which should be really seldom) and YajHFC has  
+been started &quot;normally&quot; at some point of time, this should fix the path 
+problems.
+
+Regards,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000137.html">[Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+</A></li>
+	<LI>Next message: <A HREF="000140.html">[Yajhfc-user] ***PossibleSPAM*** Re:  Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

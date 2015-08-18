@@ -1,0 +1,483 @@
+From jonas.wolz at freenet.de  Thu Jul  1 18:39:33 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 1 Jul 2010 18:39:33 +0200
+Subject: [Yajhfc-user] Possibilities to identify a job sent with YajHFC
+In-Reply-To: <B4A8D1791A1B1E4A8A0D6030C26E377E023083C1@asserver1.architektenservice.com>
+References: <B4A8D1791A1B1E4A8A0D6030C26E377E023083C1@asserver1.architektenservice.com>
+Message-ID: <201007011839.34020.jonas.wolz@freenet.de>
+
+Am Montag, 28. Juni 2010 schrieb Andreas Ruf:
+> is there a possibility to get the HylaFAX job ID for a document sent with
+> YajHFC?
+
+Currently this is not possible directly. 
+One reason for that is that I currently do not have a good idea on how to pass 
+this information on to another program. 
+If you have a good suggestion for that, any input is welcome...
+
+
+Jonas.
+
+
+From sorin at lauserco.com  Thu Jul  1 19:18:54 2010
+From: sorin at lauserco.com (Sorin Toma)
+Date: Thu, 1 Jul 2010 13:18:54 -0400
+Subject: [Yajhfc-user] Possibilities to identify a job	sent with YajHFC
+In-Reply-To: <201007011839.34020.jonas.wolz@freenet.de>
+References: <B4A8D1791A1B1E4A8A0D6030C26E377E023083C1@asserver1.architektenservice.com>
+	<201007011839.34020.jonas.wolz@freenet.de>
+Message-ID: <4C2CCDFE.2080205@lauserco.com>
+
+  On 07/01/2010 12:39 PM, Jonas Wolz wrote:
+> Am Montag, 28. Juni 2010 schrieb Andreas Ruf:
+>> is there a possibility to get the HylaFAX job ID for a document sent with
+>> YajHFC?
+> Currently this is not possible directly.
+> One reason for that is that I currently do not have a good idea on how to pass
+> this information on to another program.
+> If you have a good suggestion for that, any input is welcome...
+>
+>
+> Jonas.
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+Hello,
+I'm doing this with the sendfax parameter "-i" in a script that does 
+mail2fax and print to smb-printer. This parameter plus some others are 
+then saved by FaxAccounting in a mysql table and it is used also in the 
+confirmation email ("The fax with subject blah, ID blah-blah has been 
+sent to recipient blah at 555-555-5555")
+
+ From man sendfax:
+
+*-i* /identifier/
+
+    Use the /identifier/ string in any notification messages instead of
+    the usual job identifier number. This option is useful for
+    applications that cross reference notification messages against job
+    submissions. 
+
+
+
+-- 
+Best Regards,
+Sorin Toma
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100701/6b92b483/attachment.html>
+
+From Andreas.Ruf at architektenservice.com  Mon Jul  5 12:49:40 2010
+From: Andreas.Ruf at architektenservice.com (Andreas Ruf)
+Date: Mon, 5 Jul 2010 12:49:40 +0200 
+Subject: [Yajhfc-user] Possibilities to identify a job sent with YajHF	C
+Message-ID: <B4A8D1791A1B1E4A8A0D6030C26E377E023085F4@asserver1.architektenservice.com>
+
+> Von: Jonas Wolz
+> Gesendet: Donnerstag, 1. Juli 2010 18:40
+
+> > is there a possibility to get the HylaFAX job ID for a 
+> document sent 
+> > with YajHFC?
+> 
+> Currently this is not possible directly. 
+> One reason for that is that I currently do not have a good 
+> idea on how to pass this information on to another program. 
+> If you have a good suggestion for that, any input is welcome...
+
+One possibility for example could be to write the Job Id to stdout, if
+YajHFC is called from CLI.
+
+Another could be for example to write/log the job Ids (with time and date)
+to a separate file, governed by a flag like
+"--job-id-file="filename-to-log-to""
+
+
+What is your opinion?
+
+Andreas
+
+
+
+AS Architekten-Service GmbH 
+Rostocker Str. 13 
+65191 Wiesbaden 
+Germany 
+
+Phone: +49 (611) 9 50 32 - 0 
+FAX:  +49 (611) 50 71 26 
+
+info at architektenservice.com 
+www.architektenservice.com 
+
+Handelsregister B5210 Wiesbaden 
+Geschaeftsfuehrer Evelyn Thielmann 
+
+Diese E-Mail enthaelt vertrauliche Informationen. Wenn Sie wissen oder
+erkennen koennen, dass Sie diese vertraulichen Informationen nicht erhalten
+sollten, informieren Sie uns und loeschen Sie diese E-Mail von Ihrem System
+und verwenden oder verteilen Sie bitte diese vertraulichen Informationen
+nicht weiter.
+
+This e-mail contains confidential information. If you know or if you can
+perceive that you are not intended to receive this confidential information
+please inform us and delete this e-mail from your system and please do not
+use or distribute the confidential information.
+
+
+
+From juergen.hagl at onlinehome.de  Mon Jul  5 10:51:29 2010
+From: juergen.hagl at onlinehome.de (J. Hagl)
+Date: Mon, 05 Jul 2010 10:51:29 +0200
+Subject: [Yajhfc-user] Font Size different
+Message-ID: <4C319D11.4010204@onlinehome.de>
+
+  Hello!
+
+If i send a fax from ms office word i have problems with different font 
+size.
+After sending the fax i get a send-report (pdf) via email.
+This pdf uses doesn't look like the printing of the document. The font 
+size is bigger.
+So i happens, that some information is cut off.
+
+Any idea how to fix it?
+
+Win 7 x64 | YajHFC 0.4.3
+
+
+From jonas.wolz at freenet.de  Mon Jul  5 18:13:15 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 5 Jul 2010 18:13:15 +0200
+Subject: [Yajhfc-user] Font Size different
+In-Reply-To: <4C319D11.4010204@onlinehome.de>
+References: <4C319D11.4010204@onlinehome.de>
+Message-ID: <201007051813.15721.jonas.wolz@freenet.de>
+
+Am Montag, 5. Juli 2010 schrieb J. Hagl:
+>   Hello!
+>
+> If i send a fax from ms office word i have problems with different font
+> size.
+> After sending the fax i get a send-report (pdf) via email.
+> This pdf uses doesn't look like the printing of the document. The font
+> size is bigger.
+> So i happens, that some information is cut off.
+>
+> Any idea how to fix it?
+
+Could you send me an example for that problem (original document and send 
+report)?
+
+Thanks
+Jonas
+
+
+From jonas.wolz at freenet.de  Mon Jul  5 18:15:06 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 5 Jul 2010 18:15:06 +0200
+Subject: [Yajhfc-user]
+	=?iso-8859-1?q?Possibilities_to_identify_a_job_sent?=
+	=?iso-8859-1?q?_with_YajHF=09C?=
+In-Reply-To: <B4A8D1791A1B1E4A8A0D6030C26E377E023085F4@asserver1.architektenservice.com>
+References: <B4A8D1791A1B1E4A8A0D6030C26E377E023085F4@asserver1.architektenservice.com>
+Message-ID: <201007051815.06833.jonas.wolz@freenet.de>
+
+Am Montag, 5. Juli 2010 schrieb Andreas Ruf:
+> One possibility for example could be to write the Job Id to stdout, if
+> YajHFC is called from CLI.
+>
+> Another could be for example to write/log the job Ids (with time and date)
+> to a separate file, governed by a flag like
+> "--job-id-file="filename-to-log-to""
+>
+>
+> What is your opinion?
+
+Both should be possible, although the secons method seems more appealing to 
+me.
+I will put this feature on the "wish list" for future releases.
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sun Jul 25 13:26:04 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 25 Jul 2010 13:26:04 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.4 release candiate
+Message-ID: <201007251326.04459.jonas.wolz@freenet.de>
+
+In the coming weeks YajHFC 0.4.4 will be released.
+
+Because this release contains several changes (especially regarding the 
+printing of the fax tables and phone books), a release candidate/beta version 
+has been published to get some feedback/testing before the actual release.
+
+You can download the jar file / Windows setup / Linux packages / MAC app 
+(new!) from
+
+ftp://ftp.berlios.de/pub/yajhfc/temp/0.4.4rc
+
+You are encouraged to test this version and give feedback if you find any 
+problems with it.
+
+The translations (except German) are still incomplete, but they will be 
+updated as soon as they are ready.
+
+Changes in YajHFC 0.4.4:
+- Improved MAC OS support (mostly cosmetic changes)
+- Support to enter custom file converters
+- Access to advanced settings over UI
+- Support to print phone books
+- Improved printing of faxes
+- Support for @@CCNameAndFax@@ Tag in HTML cover pages
+- Resend fax for multiple recipients
+- Log console to view the log live
+- Separation of view and send format for faxes
+- User-editable list of modems
+- new "override-setting" command line parameter
+- Several bug fixes
+
+
+Have fun and thanks in advance for your feedback!
+
+Jonas Wolz.
+
+
+From Stefano.Lusuardi at snapon.com  Mon Jul 26 08:47:50 2010
+From: Stefano.Lusuardi at snapon.com (Lusuardi, Stefano)
+Date: Mon, 26 Jul 2010 07:47:50 +0100
+Subject: [Yajhfc-user] tif2pdf - conversion error
+Message-ID: <5631E6FD74A91B40B21C5784219260407472C8@kett-xbck-01-pp.snaponglobal.com>
+
+Hello,
+
+I'm using yajhfc client since one year but after client installation on
+Windows 7 64bit I get following errors if I want to view fax in a pdf
+format.
+
+------------------------------------------------------------------------
+----------------------------------------------------------
+
+java.io.IOException: Premature end of stream reading stdout from
+tiff2pdf (readLen=-1, buflen=-1).
+
+                at
+yajhfc.file.TIFFLibConverter.convertToHylaFormat(TIFFLibConverter.java:8
+0)
+
+                at
+yajhfc.file.MultiFileConverter.convertMultipleFiles(MultiFileConverter.j
+ava:84)
+
+                at
+yajhfc.file.MultiFileConverter.convertMultipleFilesToSingleFile(MultiFil
+eConverter.java:169)
+
+                at
+yajhfc.file.MultiFileConverter.viewMultipleFiles(MultiFileConverter.java
+:144)
+
+                at yajhfc.MainWin$ShowWorker.doWork(MainWin.java:452)
+
+                at
+yajhfc.util.ProgressWorker.run(ProgressWorker.java:181)
+
+------------------------------------------------------------------------
+----------------------------------------------------------
+
+ 
+
+Someone can help ?
+
+Thanks in advance
+
+ 
+
+Stefano Lusuardi
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100726/e1d6ddd9/attachment.html>
+
+From giulioo at gmail.com  Tue Jul 27 10:54:12 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Tue, 27 Jul 2010 10:54:12 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.4 release candiate
+In-Reply-To: <201007251326.04459.jonas.wolz@freenet.de>
+References: <201007251326.04459.jonas.wolz@freenet.de>
+Message-ID: <AANLkTi=ZHHWtEPuAf+D2Y3JmkD1ix2jOLmKe3KDEwTSz@mail.gmail.com>
+
+On Sun, Jul 25, 2010 at 13:26, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> In the coming weeks YajHFC 0.4.4 will be released.
+>
+
+1) The README.TXT in the rc still reads 0.4.3 (1st line)
+
+2) How does the modem list feature work?
+If you input a modem list manually, which one will be used when
+sending? All of them? Meaning the client will tell the server "use one
+of these"?
+
+Thanks
+
+-- 
+giulioo at pobox.com
+
+
+From jonas.wolz at freenet.de  Tue Jul 27 18:08:37 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 27 Jul 2010 18:08:37 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.4 release candiate
+In-Reply-To: <AANLkTi=ZHHWtEPuAf+D2Y3JmkD1ix2jOLmKe3KDEwTSz@mail.gmail.com>
+References: <201007251326.04459.jonas.wolz@freenet.de>
+	<AANLkTi=ZHHWtEPuAf+D2Y3JmkD1ix2jOLmKe3KDEwTSz@mail.gmail.com>
+Message-ID: <201007271808.37830.jonas.wolz@freenet.de>
+
+Am Dienstag, 27. Juli 2010 schrieb Giulio Orsero:
+> 1) The README.TXT in the rc still reads 0.4.3 (1st line)
+
+Thanks! I changed this in the README now...
+
+> 2) How does the modem list feature work?
+> If you input a modem list manually, which one will be used when
+> sending? All of them? Meaning the client will tell the server "use one
+> of these"?
+
+The client will send the modem name entered as "HylaFAX name" for the modem 
+selected by the user in the send dialog.
+
+The reason for this feature is that when you have defined modem groups in the 
+HylaFAX config, YajHFC has no way to automatically determine these (YajHFC 
+only sees the physical modems).
+
+So, when you use modem groups, so far the user had to enter the group's name 
+manually to send modems using that group.
+With the modem list feature you can add the modem groups to the YajHFC modem 
+list to allow a more user-friendly selection.
+
+
+I hope this clarifies it a bit...
+
+
+Jonas.
+
+
+From pasqualone at inwind.it  Fri Jul 30 05:27:58 2010
+From: pasqualone at inwind.it (pasqualone at inwind.it)
+Date: Fri, 30 Jul 2010 05:27:58 +0200 (CEST)
+Subject: [Yajhfc-user] setting modem device from options?
+Message-ID: <1165302.781280460478878.JavaMail.defaultUser@defaultHost>
+
+Hi,
+I would like to know how to tell Hylafax which modem to use.
+I have twelve modem installed (DIVA analog) but when I choose
+a modem from drop-down menu, hylafax sends faxes always with the first modem 
+(first free, I suppose).
+I tried to submit a fax from command line (senfax with -h option) and it works 
+with selected modem.
+I'm sure this is for my ignorance... but I need a help.
+Sorry for my English, I'm italian.
+
+Thanks a lot and compliments
+Pasquale Buccarelli
+Naples, Italy
+
+
+From jonas.wolz at freenet.de  Sat Jul 31 19:25:40 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 31 Jul 2010 19:25:40 +0200
+Subject: [Yajhfc-user] setting modem device from options?
+In-Reply-To: <1165302.781280460478878.JavaMail.defaultUser@defaultHost>
+References: <1165302.781280460478878.JavaMail.defaultUser@defaultHost>
+Message-ID: <201007311925.40325.jonas.wolz@freenet.de>
+
+Am Freitag, 30. Juli 2010 schrieb pasqualone at inwind.it:
+> I would like to know how to tell Hylafax which modem to use.
+> I have twelve modem installed (DIVA analog) but when I choose
+> a modem from drop-down menu, hylafax sends faxes always with the first
+> modem (first free, I suppose).
+> I tried to submit a fax from command line (senfax with -h option) and it
+> works with selected modem.
+
+Actually it should work like you described it: When you select a modem from 
+the drop down box in the send dialog, the fax should be sent with the 
+selected modem.
+
+Could you send me (by private mail) a debug log for YajHFC?
+
+To create such a log, please start YajHFC using the "YajHFC (debug mode)" link 
+in the start menu (if you use Windows, else please use 
+the "--debug --logfile=<logfile>" command line parameters) and then try 
+sending a fax while selecting a modem different from the first.
+Then, quit YajHFC and send me the log file it produced.
+
+Thanks
+Jonas Wolz
+
+
+From jonas.wolz at freenet.de  Sat Jul 31 19:48:27 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 31 Jul 2010 19:48:27 +0200
+Subject: [Yajhfc-user] tif2pdf - conversion error
+In-Reply-To: <5631E6FD74A91B40B21C5784219260407472C8@kett-xbck-01-pp.snaponglobal.com>
+References: <5631E6FD74A91B40B21C5784219260407472C8@kett-xbck-01-pp.snaponglobal.com>
+Message-ID: <201007311948.27820.jonas.wolz@freenet.de>
+
+Am Montag, 26. Juli 2010 schrieb Lusuardi, Stefano:
+> I'm using yajhfc client since one year but after client installation on
+> Windows 7 64bit I get following errors if I want to view fax in a pdf
+> format.
+
+In my test installation of Windows 7, 64bit this works...
+
+Could you send me (by private mail) a debug log for YajHFC?
+
+To create such a log, please start YajHFC using the "YajHFC (debug mode)" link 
+in the start menu (if you use Windows, else please use 
+the "--debug --logfile=<logfile>" command line parameters) and then try 
+sending a fax while selecting a modem different from the first.
+Then, quit YajHFC and send me the log file it produced.
+
+Thanks
+Jonas
+
+
+From jonas.wolz at freenet.de  Sat Jul 31 20:14:16 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 31 Jul 2010 20:14:16 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.4 release candiate
+In-Reply-To: <201007251326.04459.jonas.wolz@freenet.de>
+References: <201007251326.04459.jonas.wolz@freenet.de>
+Message-ID: <201007312014.16495.jonas.wolz@freenet.de>
+
+Am Sonntag, 25. Juli 2010 schrieb Jonas Wolz:
+> In the coming weeks YajHFC 0.4.4 will be released.
+>
+> Because this release contains several changes (especially regarding the
+> printing of the fax tables and phone books), a release candidate/beta
+> version has been published to get some feedback/testing before the actual
+> release.
+>
+> You can download the jar file / Windows setup / Linux packages / MAC app
+> (new!) from
+>
+> ftp://ftp.berlios.de/pub/yajhfc/temp/0.4.4rc
+>
+> You are encouraged to test this version and give feedback if you find any
+> problems with it.
+>
+> The translations (except German) are still incomplete, but they will be
+> updated as soon as they are ready.
+
+The builds at the above URL have been updated with the Chinese, Italian, 
+Russian and Spanish translations (thanks to all translators for their fast 
+response!).
+
+
+Jonas.
+
+

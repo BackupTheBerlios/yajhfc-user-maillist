@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Yajhfc and Windows 2003 Server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20and%20Windows%202003%20Server&In-Reply-To=%3C49CCEE01.5000701%40shd.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000193.html">
+   <LINK REL="Next"  HREF="000197.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Yajhfc and Windows 2003 Server</H1>
+    <B>Christian Metzen</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Yajhfc%20and%20Windows%202003%20Server&In-Reply-To=%3C49CCEE01.5000701%40shd.de%3E"
+       TITLE="[Yajhfc-user] Yajhfc and Windows 2003 Server">met at shd.de
+       </A><BR>
+    <I>Fri Mar 27 16:17:21 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000193.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+        <LI>Next message: <A HREF="000197.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#196">[ date ]</a>
+              <a href="thread.html#196">[ thread ]</a>
+              <a href="subject.html#196">[ subject ]</a>
+              <a href="author.html#196">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+i think i figured out the problem. Redmon doesn't work under W2K3 
+Terminalserver because the security restriction are in charge.
+
+You get a error &quot;createprocessasuser failed error code 87&quot;
+
+A solution would be using RedmonEE instead, but i can't get it to run 
+with yajhfc. Any ideas, or could you perhaps integrate RedmonEE in your 
+setup?
+
+Regards,
+Christian
+
+Am 24.03.2009 19:41, schrieb Jonas Wolz:
+&gt;<i>
+</I>&gt;<i> Does the printlaunch.vbs script start when you print to the YajHFC printer?
+</I>&gt;<i> (i.e. can you see a console window in the taskbar for a short time?)
+</I>&gt;<i>
+</I>&gt;<i> In any case, please enable the Redmon log file in order to capture any error
+</I>&gt;<i> messages that may be printed by the script and then send that log file to me
+</I>&gt;<i> (I do not have Win2k3 here, so I cannot test YajHFC with it myself).
+</I>&gt;<i>
+</I>&gt;<i> To enable that log file, go to the properties of the YajHFC printer, select
+</I>&gt;<i> the &quot;Ports&quot; tab, select the &quot;YAJHFC:&quot; port, click &quot;Configure&quot;, click the &quot;Log
+</I>&gt;<i> file&quot; button and check the &quot;Use Log File&quot; check box.
+</I>&gt;<i>
+</I>&gt;<i> After enabling the log file, I would suggest to also uncomment the last two
+</I>&gt;<i> lines in printlaunch.vbs to capture error messages printed by Java or YajHFC.
+</I>&gt;<i> I.e., change these last two lines to:
+</I>&gt;<i> wscript.stdout.write java.stdout.readAll()
+</I>&gt;<i> wscript.stderr.write java.stderr.readAll()
+</I>&gt;<i>
+</I>&gt;<i>    
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000193.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+	<LI>Next message: <A HREF="000197.html">[Yajhfc-user] Yajhfc and Windows 2003 Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#196">[ date ]</a>
+              <a href="thread.html#196">[ thread ]</a>
+              <a href="subject.html#196">[ subject ]</a>
+              <a href="author.html#196">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

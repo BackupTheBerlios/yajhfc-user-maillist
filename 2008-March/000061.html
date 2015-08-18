@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] redirect script to yajhfc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20redirect%20script%20to%20yajhfc&In-Reply-To=%3C200803311718.45962.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000060.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] redirect script to yajhfc</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20redirect%20script%20to%20yajhfc&In-Reply-To=%3C200803311718.45962.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] redirect script to yajhfc">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Mar 31 17:18:45 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000060.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 31. M&#228;rz 2008 12:55 schrieb Vieri:
+&gt;<i> Could it be a newly-introduced permissions/java
+</I>&gt;<i> security problem with redmon/yajhfc?
+</I>
+I consider this quite unlikely. I did no security related changes between 
+0.3.4 and 0.3.6 (the code used for --stdin did change however, so I might 
+have introduced a bug there...).
+
+I noticed, however, that with the current print launch scripts any output from 
+yajhfc will be discarded and not show up in the redmon logs (which is no 
+problem unless you are debugging ;-) ).
+
+Please replace the loop at the end of your script with the following code to 
+capture the yajhfc output and ignore the &quot;pipe closed&quot; error. Then send me a 
+new redmon log:
+
+Do While (java.status = 0 and not wscript.stdin.atendofstream)
+	on error resume next
+        java.stdin.write wscript.stdin.read(4000)
+	if (err &lt;&gt; 0) then
+	   Wscript.echo &quot;Error #&quot; &amp; CStr(Err.Number) &amp; &quot;: &quot; &amp; Err.Description
+           Err.Clear
+        end if
+loop
+java.stdin.close
+wscript.stdout.write java.stdout.readAll()
+wscript.stderr.write java.stderr.readAll()
+
+
+Thanks,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000060.html">[Yajhfc-user] redirect script to yajhfc
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,816 @@
+From syscon780 at gmail.com  Tue Mar  2 21:39:30 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Tue, 2 Mar 2010 13:39:30 -0700
+Subject: [Yajhfc-user] admin mode
+Message-ID: <20100302203930.GB30840@syscon4.inet>
+
+What to specify in "server" setting to log-in with admin - mode and be able to delete faxes.
+I've tried root + password or user + password; it is not working.
+
+-- 
+Joseph
+
+
+From anne.yajhfc at free.fr  Thu Mar  4 22:10:33 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Thu, 04 Mar 2010 22:10:33 +0100
+Subject: [Yajhfc-user] problem with coverpage
+Message-ID: <4B9021C9.7010102@free.fr>
+
+hi,
+
+I installed 'YajHFC' on my ubuntu 9.04.
+
+I tested with the interface in French to send a fax.
+I select a file to fax, I put a fax number and send.
+It's good.
+
+I tested with openoffice and YajFHC vitual fax printer.
+It's good.
+
+But with a cover page, I get an error :
+
+------------------
+Votre t?l?copie ? 09xxxxxxxx n'a pas ?t? envoy?e parce que la conversion 
+de document a ?chou?e. Le programme de conversion a retourn? le message 
+suivant :
+
+Error: /configurationerror in --setpagedevice--
+Additional information: [/ManualFeed false]
+Operand stack:
+    --dict:4/4(L)--
+Execution stack:
+    %interp_exit   .runexec2   --nostringval--   --nostringval-- 
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval-- 
+   --nostringval--   false   1   %stopped_push   1   3   %oparray_pop 
+1   3   %oparray_pop   1   3   %oparray_pop   1   3   %oparray_pop 
+.runexec2   --nostringval--   --nostringval--   --nostringval--   2 
+%stopped_push   --nostringval--   1   3   %oparray_pop   --nostringval-- 
+   --nostringval--   --nostringval--   --dict:1/2(L)--   --nostringval-- 
+   1   %dict_continue
+Dictionary stack:
+    --dict:1123/1686(ro)(G)--   --dict:0/20(G)--   --dict:102/200(L)--
+Current allocation mode is local
+Last OS error: 2
+ESP Ghostscript 815.01: Unrecoverable error, exit code 1
+/bin/cat: Erreur d'?criture.: Relais bris? (pipe)
+
+
+Assurez-vous que les fichiers PostScript ne contiennent pas de
+polices non-standard ni de structures invalide
+
+------- ?tat de la t?che -------
+         Destination: 09xxxxxxxx
+         N? de t?che: 44
+        N? de groupe: 44
+          Exp?diteur: faxmaster
+    Adresse Courriel: anne at xxxxxxxxx.com
+N? de communication: c
+               Modem: any
+          Provenance: pc-mama.xxxxxxxxx.com
+     Largeur de page: 210  (mm)
+     Hauteur de page: 297 (mm)
+             Qualit?: 196 (lpi)
+                ?tat: Error: /configurationerror in --setpagedevice--
+Additional information: [/ManualFeed false]
+Operand stack:
+    --dict:4/4(L)--
+Execution stack:
+    %interp_exit   .runexec2   --nostringval--   --nostringval-- 
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval-- 
+   --nostringval--   false   1   %stopped_push   1   3   %oparray_pop 
+1   3   %oparray_pop   1   3   %oparray_pop   1   3   %oparray_pop 
+.runexec2   --nostringval--   --nostringval--   --nostringval--   2 
+%stopped_push   --nostringval--   1   3   %oparray_pop   --nostringval-- 
+   --nostringval--   --nostringval--   --dict:1/2(L)--   --nostringval-- 
+   1   %dict_continue
+Dictionary stack:
+    --dict:1123/1686(ro)(G)--   --dict:0/20(G)--   --dict:102/200(L)--
+Current allocation mode is local
+Last OS error: 2
+ESP Ghostscript 815.01: Unrecoverable error, exit code 1
+/bin/cat: Erreur d'?criture.: Relais bris? (pipe)
+
+           Dialogues: 0
+        Compositions: 0
+              Appels: 0
+               Pages: 0
+  Nombre total pages: 0
+          Tentatives: 0
+
+------------------
+
+Have you an idea of the problem?
+
+Thank you
+Anne
+
+
+From jonas.wolz at freenet.de  Sun Mar  7 16:27:09 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Mar 2010 16:27:09 +0100
+Subject: [Yajhfc-user] problem with coverpage
+In-Reply-To: <4B9021C9.7010102@free.fr>
+References: <4B9021C9.7010102@free.fr>
+Message-ID: <201003071627.09186.jonas.wolz@freenet.de>
+
+Am Donnerstag, 4. M?rz 2010 schrieb anne.yajhfc at free.fr:
+> I tested with the interface in French to send a fax.
+> I select a file to fax, I put a fax number and send.
+> It's good.
+>
+> I tested with openoffice and YajFHC vitual fax printer.
+> It's good.
+>
+> But with a cover page, I get an error :
+>
+> [...]
+>
+> Have you an idea of the problem?
+
+It looks like the PostScript produced for the cover page is not correct. To 
+find out why I would like to have some more information:
+
+Do you use the default cover page of YajHFC or do you use a custom one?
+
+Which version of Java do you use? 
+To find that out, please open YajHFC, go to "Help"->"About"->"System 
+properties" and look at the entry "java.runtime.version" and the entries 
+beginning with "java.vm".
+
+Thanks,
+Jonas
+
+
+From anne.yajhfc at free.fr  Sun Mar  7 16:53:52 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sun, 07 Mar 2010 16:53:52 +0100
+Subject: [Yajhfc-user] problem with coverpage
+In-Reply-To: <201003071627.09186.jonas.wolz@freenet.de>
+References: <4B9021C9.7010102@free.fr>
+	<201003071627.09186.jonas.wolz@freenet.de>
+Message-ID: <4B93CC10.1040606@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Donnerstag, 4. M?rz 2010 schrieb anne.yajhfc at free.fr:
+>> I tested with the interface in French to send a fax.
+>> I select a file to fax, I put a fax number and send.
+>> It's good.
+>>
+>> I tested with openoffice and YajFHC vitual fax printer.
+>> It's good.
+>>
+>> But with a cover page, I get an error :
+>>
+>> [...]
+>>
+>> Have you an idea of the problem?
+> 
+> It looks like the PostScript produced for the cover page is not correct. To 
+> find out why I would like to have some more information:
+> 
+> Do you use the default cover page of YajHFC or do you use a custom one?
+
+default cover page
+
+> 
+> Which version of Java do you use? 
+> To find that out, please open YajHFC, go to "Help"->"About"->"System 
+> properties" and look at the entry "java.runtime.version" and the entries 
+> beginning with "java.vm".
+
+java.runtime.name=Java(TM) SE Runtime Environment
+java.runtime.version=1.6.0_16-b01
+
+java.version=1.6.0_16
+java.vm.info=mixed mode, sharing
+java.vm.name=Java HotSpot(TM) Client VM
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.specification.vendor=Sun Microsystems Inc.
+java.vm.specification.version=1.0
+java.vm.vendor=Sun Microsystems Inc.
+java.vm.version=14.2-b01
+
+Thanks,
+Anne
+
+
+From jonas.wolz at freenet.de  Sun Mar  7 16:17:57 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Mar 2010 16:17:57 +0100
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <20100302203930.GB30840@syscon4.inet>
+References: <20100302203930.GB30840@syscon4.inet>
+Message-ID: <201003071617.57916.jonas.wolz@freenet.de>
+
+Am Dienstag, 2. M?rz 2010 schrieb Joseph:
+> What to specify in "server" setting to log-in with admin - mode and be able
+> to delete faxes. I've tried root + password or user + password; it is not
+> working.
+
+The HylaFAX admin password is not any system user's password; HylaFAX uses its 
+own authentication system here (i.e. you have to create your own HylaFAX 
+users and set passwords for them).
+
+To use admin mode, you will have to use the faxadduser command (or edit the 
+file hosts.hfaxd) to add an user with an admin password and then log in to 
+HylaFAX as that user.
+
+(For an example on editing hosts.hfaxd please see 
+http://lists.berlios.de/pipermail/yajhfc-user/2008-December/000148.html ).
+
+
+Hope that helps
+Jonas
+
+
+From anne.yajhfc at free.fr  Sun Mar  7 22:37:06 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sun, 07 Mar 2010 22:37:06 +0100
+Subject: [Yajhfc-user] problem with coverpage
+In-Reply-To: <4B93CC10.1040606@free.fr>
+References: <4B9021C9.7010102@free.fr>	<201003071627.09186.jonas.wolz@freenet.de>
+	<4B93CC10.1040606@free.fr>
+Message-ID: <4B941C82.1060005@free.fr>
+
+anne.yajhfc at free.fr a ?crit :
+> Jonas Wolz a ?crit :
+>> Am Donnerstag, 4. M?rz 2010 schrieb anne.yajhfc at free.fr:
+>>> I tested with the interface in French to send a fax.
+>>> I select a file to fax, I put a fax number and send.
+>>> It's good.
+>>>
+>>> I tested with openoffice and YajFHC vitual fax printer.
+>>> It's good.
+>>>
+>>> But with a cover page, I get an error :
+>>>
+>>> [...]
+>>>
+>>> Have you an idea of the problem?
+>>
+>> It looks like the PostScript produced for the cover page is not 
+>> correct. To find out why I would like to have some more information:
+>>
+>> Do you use the default cover page of YajHFC or do you use a custom one?
+> 
+> default cover page
+> 
+>>
+>> Which version of Java do you use? To find that out, please open 
+>> YajHFC, go to "Help"->"About"->"System properties" and look at the 
+>> entry "java.runtime.version" and the entries beginning with "java.vm".
+> 
+> java.runtime.name=Java(TM) SE Runtime Environment
+> java.runtime.version=1.6.0_16-b01
+> 
+> java.version=1.6.0_16
+> java.vm.info=mixed mode, sharing
+> java.vm.name=Java HotSpot(TM) Client VM
+> java.vm.specification.name=Java Virtual Machine Specification
+> java.vm.specification.vendor=Sun Microsystems Inc.
+> java.vm.specification.version=1.0
+> java.vm.vendor=Sun Microsystems Inc.
+> java.vm.version=14.2-b01
+> 
+
+I use ghostscript-8.15.1
+=>
+It's a bug
+https://bugs.launchpad.net/ubuntu/+source/gs-esp/+bug/31337
+
+
+grrrrrrrrrrr
+Anne
+
+
+
+From anne.yajhfc at free.fr  Mon Mar  8 13:01:50 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Mon, 08 Mar 2010 13:01:50 +0100
+Subject: [Yajhfc-user] problem with coverpage
+In-Reply-To: <4B941C82.1060005@free.fr>
+References: <4B9021C9.7010102@free.fr>	<201003071627.09186.jonas.wolz@freenet.de>	<4B93CC10.1040606@free.fr>
+	<4B941C82.1060005@free.fr>
+Message-ID: <4B94E72E.70006@free.fr>
+
+anne.yajhfc at free.fr a ?crit :
+> anne.yajhfc at free.fr a ?crit :
+>> Jonas Wolz a ?crit :
+>>> Am Donnerstag, 4. M?rz 2010 schrieb anne.yajhfc at free.fr:
+>>>> I tested with the interface in French to send a fax.
+>>>> I select a file to fax, I put a fax number and send.
+>>>> It's good.
+>>>>
+>>>> I tested with openoffice and YajFHC vitual fax printer.
+>>>> It's good.
+>>>>
+>>>> But with a cover page, I get an error :
+>>>>
+>>>> [...]
+>>>>
+>>>> Have you an idea of the problem?
+>>>
+>>> It looks like the PostScript produced for the cover page is not 
+>>> correct. To find out why I would like to have some more information:
+>>>
+>>> Do you use the default cover page of YajHFC or do you use a custom one?
+>>
+>> default cover page
+>>
+>>>
+>>> Which version of Java do you use? To find that out, please open 
+>>> YajHFC, go to "Help"->"About"->"System properties" and look at the 
+>>> entry "java.runtime.version" and the entries beginning with "java.vm".
+>>
+>> java.runtime.name=Java(TM) SE Runtime Environment
+>> java.runtime.version=1.6.0_16-b01
+>>
+>> java.version=1.6.0_16
+>> java.vm.info=mixed mode, sharing
+>> java.vm.name=Java HotSpot(TM) Client VM
+>> java.vm.specification.name=Java Virtual Machine Specification
+>> java.vm.specification.vendor=Sun Microsystems Inc.
+>> java.vm.specification.version=1.0
+>> java.vm.vendor=Sun Microsystems Inc.
+>> java.vm.version=14.2-b01
+>>
+> 
+> I use ghostscript-8.15.1
+> =>
+> It's a bug
+> https://bugs.launchpad.net/ubuntu/+source/gs-esp/+bug/31337
+> 
+
+My server is smeserver 7.4, based on centos 4.
+My computer is with ubuntu 9.04
+
+I removed ghostscript-8.15.1 on my server
+I installed ghostscript-7.07-33.11.el4 on my server
+
+Now, it's good
+no error with coverpage
+
+Now I must look at the problem of archives
+But I do not know java  :(
+
+Anne
+
+
+
+
+From jonas.wolz at freenet.de  Mon Mar  8 18:20:18 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 8 Mar 2010 18:20:18 +0100
+Subject: [Yajhfc-user] problem with coverpage
+In-Reply-To: <4B94E72E.70006@free.fr>
+References: <4B9021C9.7010102@free.fr> <4B941C82.1060005@free.fr>
+	<4B94E72E.70006@free.fr>
+Message-ID: <201003081820.18628.jonas.wolz@freenet.de>
+
+Am Montag, 8. M?rz 2010 schrieb anne.yajhfc at free.fr:
+> anne.yajhfc at free.fr a ?crit :
+> [...]
+> > I use ghostscript-8.15.1
+> > =>
+> > It's a bug
+> > https://bugs.launchpad.net/ubuntu/+source/gs-esp/+bug/31337
+>
+> My server is smeserver 7.4, based on centos 4.
+> My computer is with ubuntu 9.04
+>
+> I removed ghostscript-8.15.1 on my server
+> I installed ghostscript-7.07-33.11.el4 on my server
+>
+> Now, it's good
+> no error with coverpage
+
+Good :) (Thanks for looking at that...)
+
+> Now I must look at the problem of archives
+> But I do not know java  :(
+
+What do you want to do with archives?
+
+
+Jonas.
+
+
+
+From giuseppe at eppesuigoccas.homedns.org  Sun Mar  7 23:56:14 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Sun, 07 Mar 2010 23:56:14 +0100
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <20100302203930.GB30840@syscon4.inet>
+References: <20100302203930.GB30840@syscon4.inet>
+Message-ID: <1268002574.6565.5.camel@scarafaggio>
+
+Il giorno mar, 02/03/2010 alle 13.39 -0700, Joseph ha scritto:
+> What to specify in "server" setting to log-in with admin - mode and be
+> able to delete faxes.
+> I've tried root + password or user + password; it is not working.
+> 
+If you use PAM for authentication, just create a unix group with all
+admin users and add the group name /var/spool/hylafax/etc/config file:
+AdminGroup: groupname
+
+Bye,
+Giuseppe
+
+
+
+From richardb at southam.clara.co.uk  Tue Mar  9 19:54:37 2010
+From: richardb at southam.clara.co.uk (Richard Weller)
+Date: Tue, 09 Mar 2010 18:54:37 +0000
+Subject: [Yajhfc-user] Poor quality sending of header & footer
+Message-ID: <4B96996D.10008@southam.clara.co.uk>
+
+hi,
+
+I'm currently using hylapex but have been testing the yajhfc client 
+which seems a whole lot better but when using it to send some types of 
+faxes, the header and footer come out very poor. Hylapex does not have a 
+problem.
+
+If I preview in pdf, it looks fine yet when faxed comes out poor, when 
+viewing in tiff it looks how it comes out (poor).
+
+An example:
+
+http://95.154.244.9/view1130382020861488215.png
+
+There is content in the in middle which I've had to remove which uses a 
+different font, the top part is text with the logo on the right. This is 
+a report generated by Visual Foxpro.
+
+Coverpage is in HTML and comes out fine.
+
+I'm a bit lost atm!!
+
+Richard
+
+
+
+From jonas.wolz at freenet.de  Wed Mar 10 18:36:15 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 10 Mar 2010 18:36:15 +0100
+Subject: [Yajhfc-user] Poor quality sending of header & footer
+In-Reply-To: <4B96996D.10008@southam.clara.co.uk>
+References: <4B96996D.10008@southam.clara.co.uk>
+Message-ID: <201003101836.15188.jonas.wolz@freenet.de>
+
+Am Dienstag, 9. M?rz 2010 schrieb Richard Weller:
+> hi,
+>
+> I'm currently using hylapex but have been testing the yajhfc client
+> which seems a whole lot better but when using it to send some types of
+> faxes, the header and footer come out very poor. Hylapex does not have a
+> problem.
+>
+> If I preview in pdf, it looks fine yet when faxed comes out poor, when
+> viewing in tiff it looks how it comes out (poor).
+>
+> An example:
+>
+> http://95.154.244.9/view1130382020861488215.png
+>
+> There is content in the in middle which I've had to remove which uses a
+> different font, the top part is text with the logo on the right. This is
+> a report generated by Visual Foxpro.
+>
+> Coverpage is in HTML and comes out fine.
+>
+> I'm a bit lost atm!!
+
+What YajHFC does is passing the PostScript/PDF generated from the document to 
+send to HylaFAX which then uses GhostScript to convert it to black&white TIFF 
+(which I considered the correct way of operation so far...).
+When the document contains gray or colored parts, GhostScript by default 
+dithers these parts which leads to the effect you encountered.
+So far, I have found no way to stop GhostScript from doing that.
+
+Hylapex obviously does something different here, which seems to result in a 
+better quality. 
+I will try to look at Hylapex in the next days/weeks to find out what it is...
+
+
+Jonas.
+
+
+From giuseppe at eppesuigoccas.homedns.org  Thu Mar 11 10:02:15 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Thu, 11 Mar 2010 10:02:15 +0100
+Subject: [Yajhfc-user] Poor quality sending of header & footer
+In-Reply-To: <4B96996D.10008@southam.clara.co.uk>
+References: <4B96996D.10008@southam.clara.co.uk>
+Message-ID: <1268298135.20141.44.camel@scarafaggio>
+
+Il giorno mar, 09/03/2010 alle 18.54 +0000, Richard Weller ha scritto:
+> hi,
+> 
+> I'm currently using hylapex but have been testing the yajhfc client 
+> which seems a whole lot better but when using it to send some types of 
+> faxes, the header and footer come out very poor. Hylapex does not have a 
+> problem.
+[...]
+
+I believe Hylapex does not provide PDF or PostScript to hylafax. It
+should probably provide TIFF files already dithered using a good
+algorithm.
+
+An option you have, is to use gs stochastic dithering option. A detail
+about this is available as ghostscript bug report:
+http://bugs.ghostscript.com/show_bug.cgi?id=689633
+On the same bug report, you'll see how to dither the an image using
+libtiff tools.
+
+Bye,
+Giuseppe
+
+
+
+From EDrory at phones-correct.co.uk  Fri Mar 12 13:25:01 2010
+From: EDrory at phones-correct.co.uk (Eva Drory)
+Date: Fri, 12 Mar 2010 12:25:01 +0000
+Subject: [Yajhfc-user] Scanned documents cause YajHFC to freeze
+Message-ID: <C6CA62A715F1F94F8B4404F16E716AAFF5E86ABB@mango.pcc.local>
+
+Hi,
+I scanned 2 documents and the scanner sent them to me as PDF.
+I tried faxing them via YajHFC (0.4.0) so I printed from one of them and then in the multiple files section I try to add the second file but when I press on the add button the whole fax client freezes.
+I tried the same thing with different pdf files and all is working fine.
+Did you encounter this? Any idea why it happens?
+
+Thanks and Regadrs
+Eva Drory
+
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100312/9221a21f/attachment.html>
+
+From jonas.wolz at freenet.de  Fri Mar 12 17:07:43 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 12 Mar 2010 17:07:43 +0100
+Subject: [Yajhfc-user] Scanned documents cause YajHFC to freeze
+In-Reply-To: <C6CA62A715F1F94F8B4404F16E716AAFF5E86ABB@mango.pcc.local>
+References: <C6CA62A715F1F94F8B4404F16E716AAFF5E86ABB@mango.pcc.local>
+Message-ID: <201003121707.43665.jonas.wolz@freenet.de>
+
+Am Freitag, 12. M?rz 2010 schrieb Eva Drory:
+> Hi,
+> I scanned 2 documents and the scanner sent them to me as PDF.
+> I tried faxing them via YajHFC (0.4.0) so I printed from one of them and
+> then in the multiple files section I try to add the second file but when I
+> press on the add button the whole fax client freezes. I tried the same
+> thing with different pdf files and all is working fine. Did you encounter
+> this? Any idea why it happens?
+
+I did not encounter this so far. Does this happen only with one file from your 
+scanner or with all of them?
+
+If it happens only with one: How large is the file?
+If it happens with all/more than one PDF from your scanner: Could you send me 
+(to jonas.wolz at freenet.de) an example file where this happens?
+
+Thanks!
+Jonas
+
+
+From anne.yajhfc at free.fr  Sun Mar 14 17:54:31 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sun, 14 Mar 2010 17:54:31 +0100
+Subject: [Yajhfc-user] source of yajhfc for .deb and .rpm
+Message-ID: <4B9D14C7.2010305@free.fr>
+
+hi,
+
+I can't find the file '.spec' to the build the  rpm.
+Idem for .deb
+
+Where to find sources for debian and suse?
+
+Thanks you.
+
+Anne
+
+
+From jonas.wolz at freenet.de  Sun Mar 14 18:20:00 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 14 Mar 2010 18:20:00 +0100
+Subject: [Yajhfc-user] source of yajhfc for .deb and .rpm
+In-Reply-To: <4B9D14C7.2010305@free.fr>
+References: <4B9D14C7.2010305@free.fr>
+Message-ID: <201003141820.00602.jonas.wolz@freenet.de>
+
+Am Sonntag, 14. M?rz 2010 schrieb anne.yajhfc at free.fr:
+> hi,
+>
+> I can't find the file '.spec' to the build the  rpm.
+> Idem for .deb
+>
+> Where to find sources for debian and suse?
+
+Please use the links found here:
+http://lists.berlios.de/pipermail/yajhfc-announce/2010/000026.html
+
+
+From syscon780 at gmail.com  Sun Mar 28 06:34:32 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Sat, 27 Mar 2010 22:34:32 -0600
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <1268002574.6565.5.camel@scarafaggio>
+References: <20100302203930.GB30840@syscon4.inet>
+	<1268002574.6565.5.camel@scarafaggio>
+Message-ID: <20100328043432.GF5637@syscon4.inet>
+
+On 03/07/10 23:56, Giuseppe Sacco wrote:
+>Il giorno mar, 02/03/2010 alle 13.39 -0700, Joseph ha scritto:
+>> What to specify in "server" setting to log-in with admin - mode and be
+>> able to delete faxes.
+>> I've tried root + password or user + password; it is not working.
+>>
+>If you use PAM for authentication, just create a unix group with all
+>admin users and add the group name /var/spool/hylafax/etc/config file:
+>AdminGroup: groupname
+>
+>Bye,
+>Giuseppe
+
+I've tried adding to /var/spool/fax/etc/config:
+AdminGroup: uucp
+
+since this is the group hylafax runs under but it doesn't work.
+
+-- 
+Joseph
+
+
+From syscon780 at gmail.com  Sun Mar 28 07:10:08 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Sat, 27 Mar 2010 23:10:08 -0600
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <201003071617.57916.jonas.wolz@freenet.de>
+References: <20100302203930.GB30840@syscon4.inet>
+	<201003071617.57916.jonas.wolz@freenet.de>
+Message-ID: <20100328051008.GG5637@syscon4.inet>
+
+On 03/07/10 16:17, Jonas Wolz wrote:
+>Am Dienstag, 2. M?rz 2010 schrieb Joseph:
+>> What to specify in "server" setting to log-in with admin - mode and be able
+>> to delete faxes. I've tried root + password or user + password; it is not
+>> working.
+>
+>The HylaFAX admin password is not any system user's password; HylaFAX uses its
+>own authentication system here (i.e. you have to create your own HylaFAX
+>users and set passwords for them).
+>
+>To use admin mode, you will have to use the faxadduser command (or edit the
+>file hosts.hfaxd) to add an user with an admin password and then log in to
+>HylaFAX as that user.
+>
+>(For an example on editing hosts.hfaxd please see
+>http://lists.berlios.de/pipermail/yajhfc-user/2008-December/000148.html ).
+>
+>
+>Hope that helps
+>Jonas
+
+I've added user fax with password, using command:
+faxadduser -a my_password fax
+
+the user fax was added to: hosts.hfaxd
+^fax@:::CL62lePLuiJNI
+
+but when I try to login as "admin" it keeps telling me password incorrect:
+
+An error occured in response to the password:
+530 Password incorrect.
+
+530 Password incorrect.
+          at gnu.hylafax.HylaFAXClientProtocol.admin(HylaFAXClientProtocol.java:111)
+          at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:164)
+          at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:86)
+          at yajhfc.MainWin$LoginThread.run(MainWin.java:2646)
+          at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+          at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+          at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+          at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:98)
+          at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:207)
+          at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+          at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+          at java.lang.Thread.run(Thread.java:619)
+
+
+-- 
+Joseph
+
+
+From giuseppe at eppesuigoccas.homedns.org  Sun Mar 28 23:36:31 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Sun, 28 Mar 2010 23:36:31 +0200
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <20100328043432.GF5637@syscon4.inet>
+References: <20100302203930.GB30840@syscon4.inet>
+	<1268002574.6565.5.camel@scarafaggio>
+	<20100328043432.GF5637@syscon4.inet>
+Message-ID: <1269812191.20147.31.camel@scarafaggio>
+
+Il giorno sab, 27/03/2010 alle 22.34 -0600, Joseph ha scritto:
+> On 03/07/10 23:56, Giuseppe Sacco wrote:
+[...]
+> >If you use PAM for authentication, just create a unix group with all
+> >admin users and add the group name /var/spool/hylafax/etc/config file:
+> >AdminGroup: groupname
+[...]
+> 
+> I've tried adding to /var/spool/fax/etc/config:
+> AdminGroup: uucp
+> 
+> since this is the group hylafax runs under but it doesn't work.
+
+are you using PAM autentication? As already written, this only works
+when hylafax use PAM.
+Moreover, what happens when you try to access in admin mode? Do you have
+a log to show us?
+
+Bye,
+Giuseppe
+
+
+
+
+From syscon780 at gmail.com  Mon Mar 29 03:46:11 2010
+From: syscon780 at gmail.com (Joseph)
+Date: Sun, 28 Mar 2010 19:46:11 -0600
+Subject: [Yajhfc-user] admin mode
+In-Reply-To: <1269812191.20147.31.camel@scarafaggio>
+References: <20100302203930.GB30840@syscon4.inet>
+	<1268002574.6565.5.camel@scarafaggio>
+	<20100328043432.GF5637@syscon4.inet>
+	<1269812191.20147.31.camel@scarafaggio>
+Message-ID: <20100329014611.GJ5637@syscon4.inet>
+
+On 03/28/10 23:36, Giuseppe Sacco wrote:
+>Il giorno sab, 27/03/2010 alle 22.34 -0600, Joseph ha scritto:
+>> On 03/07/10 23:56, Giuseppe Sacco wrote:
+>[...]
+>> >If you use PAM for authentication, just create a unix group with all
+>> >admin users and add the group name /var/spool/hylafax/etc/config file:
+>> >AdminGroup: groupname
+>[...]
+>>
+>> I've tried adding to /var/spool/fax/etc/config:
+>> AdminGroup: uucp
+>>
+>> since this is the group hylafax runs under but it doesn't work.
+>
+>are you using PAM autentication? As already written, this only works
+>when hylafax use PAM.
+>Moreover, what happens when you try to access in admin mode? Do you have
+>a log to show us?
+>
+>Bye,
+>Giuseppe
+
+SOLVED
+
+Creating admin user works: faxadduser -a password username
+eg.
+faxadduser -a 123 fax
+
+the information is stored in:  hosts.hfaxd
+^fax@:::CLAE8FA9374
+
+However, this line is appended to the end of file: hosts.hfaxd
+but it must be as a first line, and nobody mentioned this important information.
+
+The first match that is found it will be process, so if one has in hosts.hfaxd
+localhost
+127.0.0.1
+^fax@:::CLAE8FA9374
+
+and you will try to access it from local server it will not work as "fax" user matches "localhost" as well, so it processed first, it never gets to the 
+third line.
+
+-- 
+Joseph
+
+
+From giuseppe at eppesuigoccas.homedns.org  Wed Mar 31 15:31:50 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Wed, 31 Mar 2010 15:31:50 +0200
+Subject: [Yajhfc-user] send date
+Message-ID: <f7477b79e38b52b86b2fb4ca5087fd28@localhost>
+
+
+Hi all,
+it seems to me that job send date is always left empty (it is the last
+column on the sent table).
+Is it a known problem or am I missing something?
+
+Thanks,
+Giuseppe
+
+

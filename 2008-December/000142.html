@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812152135.27301.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000141.html">
+   <LINK REL="Next"  HREF="000144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Feature request</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20request&In-Reply-To=%3C200812152135.27301.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Feature request">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Dec 15 21:35:27 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000141.html">[Yajhfc-user] Feature request
+</A></li>
+        <LI>Next message: <A HREF="000144.html">[Yajhfc-user] Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag, 15. Dezember 2008 schrieb Sorin Toma:
+&gt;<i> &gt; The workaround I implemented is to add code to this script which saves
+</I>&gt;<i> &gt; the correct values for USERPROFILE, TMP and TEMP to the registry
+</I>&gt;<i> &gt; (HKEY_CURRENT_USER/SOFTWARE/YajHFC).
+</I>&gt;<i> &gt; printlaunch.vbs now checks if these values are present and uses them if
+</I>&gt;<i> &gt; they are present. If not, the old logic is applied.
+</I>&gt;<i> &gt; As long as the user profile location has not been moved after the
+</I>&gt;<i> &gt; last &quot;normal&quot; start of YajHFC (which should be really seldom) and YajHFC
+</I>&gt;<i> &gt; has been started &quot;normally&quot; at some point of time, this should fix the
+</I>&gt;<i> &gt; path problems.
+</I>&gt;<i>
+</I>&gt;<i> I was thinking to the same thing, but the installation is done as
+</I>&gt;<i> administrator, so the first start of the app it's going to save the
+</I>&gt;<i> informations about admin's profile. then, launching the application as
+</I>&gt;<i> normal user will read the information from the registry, will try to use
+</I>&gt;<i> admin's parameters and it will fail.we might also encounter cases when
+</I>&gt;<i> multiple users uses the same pc... a quick hack is to put in autostart a
+</I>&gt;<i> script that saves those parameters at every login (it's ugly, I know).
+</I>
+The information is/will be saved in HKEY_CURRENT_USER (not 
+HKEY_LOCAL_MACHINE), so every user should get his own copy of the registry 
+keys. 
+It's *not* the setup program writing the keys, but the &quot;non-print&quot; YajHFC 
+launch script which runs as the normal user. Of course this requires every 
+user to launch YajHFC at least once using the start menu/desktop icon, but 
+that typically should not be a problem.
+
+Or am I missing something here?
+
+Regards,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000141.html">[Yajhfc-user] Feature request
+</A></li>
+	<LI>Next message: <A HREF="000144.html">[Yajhfc-user] Feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

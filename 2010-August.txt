@@ -1,0 +1,292 @@
+From jonas.wolz at freenet.de  Sun Aug  1 10:31:39 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 1 Aug 2010 10:31:39 +0200
+Subject: [Yajhfc-user] tif2pdf - conversion error
+In-Reply-To: <201007311948.27820.jonas.wolz@freenet.de>
+References: <5631E6FD74A91B40B21C5784219260407472C8@kett-xbck-01-pp.snaponglobal.com>
+	<201007311948.27820.jonas.wolz@freenet.de>
+Message-ID: <201008011031.40181.jonas.wolz@freenet.de>
+
+Am Samstag, 31. Juli 2010 schrieb Jonas Wolz:
+> Am Montag, 26. Juli 2010 schrieb Lusuardi, Stefano:
+> > I'm using yajhfc client since one year but after client installation on
+> > Windows 7 64bit I get following errors if I want to view fax in a pdf
+> > format.
+>
+> In my test installation of Windows 7, 64bit this works...
+>
+> Could you send me (by private mail) a debug log for YajHFC?
+
+Thanks for the log!
+It seems that you use tiff2pdf.exe directly which often does not work 
+(tiff2pdf crashes) on Windows Vista and Windows 7, most probably due to a bug 
+in tiff2pdf.
+
+Please download the following batch file and place it in the directory where 
+tiff2pdf.exe is:
+ftp://ftp.berlios.de/pub/yajhfc/temp/tiff2pdf.cmd
+
+Then, configure YajHFC to use tiff2pdf.cmd instead of tiff2pdf.exe and try 
+again.
+
+
+Thanks
+Jonas
+
+
+From jos at muysers.nl  Fri Aug  6 15:07:10 2010
+From: jos at muysers.nl (Jos Muysers)
+Date: Fri, 6 Aug 2010 15:07:10 +0200
+Subject: [Yajhfc-user] Received list empty
+Message-ID: <F5F8ED5819EA44BBBD874DF572C44FCC@JosKantoor>
+
+Hi,
+
+ 
+
+I installed hylafax on a server, i can send and receive faxes.
+
+In YajHFC, the list 'received' is empty. I can send faxes with the
+faxprinter
+
+OS client = windows vista
+
+OS server = ubuntu server 10.04
+
+ 
+
+Where to look?
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100806/81238463/attachment.html>
+
+From jonas.wolz at freenet.de  Sun Aug  8 10:04:34 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 8 Aug 2010 10:04:34 +0200
+Subject: [Yajhfc-user] Received list empty
+In-Reply-To: <F5F8ED5819EA44BBBD874DF572C44FCC@JosKantoor>
+References: <F5F8ED5819EA44BBBD874DF572C44FCC@JosKantoor>
+Message-ID: <201008081004.34563.jonas.wolz@freenet.de>
+
+Am Freitag, 6. August 2010 schrieb Jos Muysers:
+> I installed hylafax on a server, i can send and receive faxes.
+>
+> In YajHFC, the list 'received' is empty. I can send faxes with the
+> faxprinter
+>
+> OS client = windows vista
+>
+> OS server = ubuntu server 10.04
+>
+>
+>
+> Where to look?
+
+I would first look on the server:
+
+Try if "faxstat -r" lists any faxes.
+If it does not, it is most likely some configuration issue with HylaFAX; if it 
+lists faxes, it can be a problem with YajHFC.
+
+If faxstat -r does not work, it might be helpful to take a look at any 
+additional software you use to access HylaFAX: 
+Often such software moves the faxes to their own storage (which usually is 
+more efficient than HylaFAX's) which makes them inaccessible by YajHFC.
+
+
+Hope that helps
+Jonas
+
+
+From giulioo at gmail.com  Sun Aug 15 13:19:36 2010
+From: giulioo at gmail.com (Giulio)
+Date: Sun, 15 Aug 2010 13:19:36 +0200
+Subject: [Yajhfc-user] Windows setup misdetects java on win7 64bit
+Message-ID: <20100815111937.B8656F825@i3.golden.dom>
+
+I have a new system with win7 64bit.
+Java is java 32 bit 6u21, java.com tells me I have java installed.
+Using yajhfc-0_4_4rc1-setup.exe
+
+1)
+When I launch YajHFC setup it tells me that YajHFC needs an installed java
+runtime environment, asks me if I want to download it or continue w/o being
+able to use the program.
+It seems it doesn't properly detect that java is installed in	
+c:\program files (x86)\java
+
+2)
+I select "no" (continue w/o downloading java), and select to download and
+install tiff2pdf.
+
+3)
+The install completes succesfully, but I'm asked to reboot.
+I don't remember being asked to reboot when using winxp 32bit, is this
+normal? What is causing the need for a reboot?
+
+4)
+I went on without rebooting. YajHFC started correctly and I could adjust the
+settings and then send a fax (I had to try 3 times before the "send fax"
+window appeared, the 1st 2 times I could just see the cscript dos box, and
+the "send fax"windows appeared only after I clicked on the icon in the
+notification area; after that it seems it stabilized and the window comes up
+ok).
+The fax completed succesfully.
+-- 
+giulioo at pobox.com
+
+
+From jos at muysers.nl  Tue Aug 17 11:33:41 2010
+From: jos at muysers.nl (Jos Muysers)
+Date: Tue, 17 Aug 2010 11:33:41 +0200
+Subject: [Yajhfc-user] Batch fax
+Message-ID: <A0E17F449AB1428882EC0E98C5B5D894@JosKantoor>
+
+Hi,
+ 
+When sending a batch of about 200 faxes, a lot of faxes fail with "kill time
+expired".
+I assume the 'kill time' setting in yajhc (send window) is 'cancel job after
+(minutes)'
+It won't allow a 'kill time' longer then 180 minutes. Sending 200 faxes with
+1 modem takes a lot longer.
+ 
+How can I set a longer 'kill-time' when sending a fax?
+ 
+Thanks,
+Jos
+.    
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100817/bde3c34b/attachment.html>
+
+From jonas.wolz at freenet.de  Tue Aug 17 17:57:12 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 17 Aug 2010 17:57:12 +0200
+Subject: [Yajhfc-user] Batch fax
+In-Reply-To: <A0E17F449AB1428882EC0E98C5B5D894@JosKantoor>
+References: <A0E17F449AB1428882EC0E98C5B5D894@JosKantoor>
+Message-ID: <201008171757.12178.jonas.wolz@freenet.de>
+
+Am Dienstag, 17. August 2010 schrieb Jos Muysers:
+> When sending a batch of about 200 faxes, a lot of faxes fail with "kill
+> time expired".
+> I assume the 'kill time' setting in yajhc (send window) is 'cancel job
+> after (minutes)'
+> It won't allow a 'kill time' longer then 180 minutes. Sending 200 faxes
+> with 1 modem takes a lot longer.
+>
+> How can I set a longer 'kill-time' when sending a fax?
+
+You should be able to set up to 2000 minutes in the current version.
+
+Or can you set that value and it does not work?
+
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Aug 22 10:19:22 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 22 Aug 2010 10:19:22 +0200
+Subject: [Yajhfc-user] Windows setup misdetects java on win7 64bit
+In-Reply-To: <20100815111937.B8656F825@i3.golden.dom>
+References: <20100815111937.B8656F825@i3.golden.dom>
+Message-ID: <201008221019.23047.jonas.wolz@freenet.de>
+
+Am Sonntag, 15. August 2010 schrieb Giulio:
+> I have a new system with win7 64bit.
+> Java is java 32 bit 6u21, java.com tells me I have java installed.
+> Using yajhfc-0_4_4rc1-setup.exe
+>
+> 1)
+> When I launch YajHFC setup it tells me that YajHFC needs an installed java
+> runtime environment, asks me if I want to download it or continue w/o being
+> able to use the program.
+> It seems it doesn't properly detect that java is installed in
+> c:\program files (x86)\java
+
+This should be fixed in the newest setup.exe from
+ftp://ftp.berlios.de/pub/yajhfc/temp/0.4.4rc
+
+
+> 3)
+> The install completes succesfully, but I'm asked to reboot.
+> I don't remember being asked to reboot when using winxp 32bit, is this
+> normal? What is causing the need for a reboot?
+
+Usually the setup requests a reboot only if it could not overwrite some files 
+because another program was using them.
+
+> 4)
+> I went on without rebooting. YajHFC started correctly and I could adjust
+> the settings and then send a fax (I had to try 3 times before the "send
+> fax" window appeared, the 1st 2 times I could just see the cscript dos box,
+> and the "send fax"windows appeared only after I clicked on the icon in the
+> notification area; after that it seems it stabilized and the window comes
+> up ok).
+> The fax completed succesfully.
+
+Strange... 
+Maybe it had something to do with the missing reboot... (?)
+
+
+Regards and thanks for your test
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Aug 29 09:31:25 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 29 Aug 2010 09:31:25 +0200
+Subject: [Yajhfc-user] YajHFC 0.4.4 released
+Message-ID: <201008290931.25387.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.4 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_4.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_4-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_4-setup.exe
+
+RPM packages:
+http://prdownload.berlios.de/yajhfc/yajhfc-0.4.4-1.noarch.rpm
+http://prdownload.berlios.de/yajhfc/yajhfc-faxprinter-0.4.4-1.noarch.rpm
+
+APT line to add to /etc/apt/sources.list for Debian/Ubuntu packages:
+deb ftp://ftp.berlios.de/pub/yajhfc/repository/apt stable/
+
+More information about the DEB packages:
+http://prdownload.berlios.de/yajhfc/deb-packages-info-0.4.4.txt
+
+Mac App (NEW):
+http://prdownload.berlios.de/yajhfc/yajhfc-macapp-0.4.4.zip
+
+
+New features/changes:
+- Improved MAC OS support (mostly cosmetic changes)
+- Support to enter custom file converters
+- Access to advanced settings over UI
+- Support to print phone books
+- Improved printing of faxes
+- Support for @@CCNameAndFax@@ Tag in HTML cover pages
+- Resend fax for multiple recipients
+- Log console to view the log live
+- Separation of view and send format for faxes
+- User-editable list of modems
+- new "override-setting" command line parameter
+- Several bug fixes
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas Wolz
+
+

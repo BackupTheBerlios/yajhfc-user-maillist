@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] 0.5.0beta5: connection refused
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%200.5.0beta5%3A%20connection%20refused&In-Reply-To=%3C201101281722.02708.lists%40egidy.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000426.html">
+   <LINK REL="Next"  HREF="000428.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] 0.5.0beta5: connection refused</H1>
+    <B>Gerd v. Egidy</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%200.5.0beta5%3A%20connection%20refused&In-Reply-To=%3C201101281722.02708.lists%40egidy.de%3E"
+       TITLE="[Yajhfc-user] 0.5.0beta5: connection refused">lists at egidy.de
+       </A><BR>
+    <I>Fri Jan 28 17:22:02 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000426.html">[Yajhfc-user] YajHFC 0.5.0beta2
+</A></li>
+        <LI>Next message: <A HREF="000428.html">[Yajhfc-user] 0.5.0beta5: connection refused
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#427">[ date ]</a>
+              <a href="thread.html#427">[ thread ]</a>
+              <a href="subject.html#427">[ subject ]</a>
+              <a href="author.html#427">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I tried 0.5.0beta5 on Windows XP and Windows 7 today. When I had a 0.4.4 
+installed and configured on the machine before, the 0.5.0beta5 works fine.
+
+But if 0.5.0beta5 is the first YajHFC you ever install on an account, I see 
+the following problem:
+
+- Configuring a fax server works fine.
+- The connection test button in the configure menu works fine and tells me 
+that the connection is working
+- As soon as the rest of the program tries to use this connection to e.g. 
+check the fax queues, I get a connection refused error:
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.&lt;init&gt;(Unknown Source)
+	at java.net.Socket.&lt;init&gt;(Unknown Source)
+	at gnu.inet.ftp.FtpClientProtocol.connect(FtpClientProtocol.java:1561)
+	at 
+gnu.hylafax.HylaFAXClientProtocol.open(HylaFAXClientProtocol.java:832)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:130)
+	at 
+yajhfc.model.servconn.hylafax.HylaFaxListConnection.connect(HylaFaxListConnection.java:162)
+	at yajhfc.MainWin$LoginThread.run(MainWin.java:2710)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at 
+java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown 
+Source)
+	at 
+java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown 
+Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown 
+Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+YajHFC 0.5.0beta5
+Java 1.6.0_21 (Sun Microsystems Inc.)
+Java(TM) SE Runtime Environment 1.6.0_21-b07
+Java HotSpot(TM) Client VM
+Windows XP 5.1 (x86)
+
+When looking at the server logs or a tcpdump on the server, I don't see the 
+client trying to connect.
+
+So to me it seems like the new connection dialogue is storing the connection 
+settings in a way the rest of the program does not accept. When there are 
+still connection settings available from an older version, they are used just 
+fine.
+
+I was looking for a program replacing the old WHFC on machines that are 
+upgraded to Win 7. Aside from this issue with the beta version, the 0.4.4 does 
+a very good job as fax client. Especially the windows installer which does all 
+the work and creates a fax printer etc. is good as our customers won't have 
+problems with installing anymore.
+
+Kind regards,
+
+Gerd
+
+-- 
+Address (better: trap) for people I really don't want to get mail from:
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas at cactusamerica.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000426.html">[Yajhfc-user] YajHFC 0.5.0beta2
+</A></li>
+	<LI>Next message: <A HREF="000428.html">[Yajhfc-user] 0.5.0beta5: connection refused
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#427">[ date ]</a>
+              <a href="thread.html#427">[ thread ]</a>
+              <a href="subject.html#427">[ subject ]</a>
+              <a href="author.html#427">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

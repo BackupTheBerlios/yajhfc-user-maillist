@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Fetching Fax List Problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Fetching%20Fax%20List%20Problem&In-Reply-To=%3C200811061844.22604.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000124.html">
+   <LINK REL="Next"  HREF="000113.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Fetching Fax List Problem</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Fetching%20Fax%20List%20Problem&In-Reply-To=%3C200811061844.22604.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Fetching Fax List Problem">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Thu Nov  6 18:44:22 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000124.html">[Yajhfc-user] Fetching Fax List Problem
+</A></li>
+        <LI>Next message: <A HREF="000113.html">[Yajhfc-user] Fetching Fax List Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Donnerstag, 6. November 2008 schrieb Andy Rogers:
+&gt;<i> Hi Jonas
+</I>&gt;<i>
+</I>&gt;<i> I have attached 4 log files as requested, 1 is from each time I needed to
+</I>&gt;<i> run yajhfc until it successfully displays the information.
+</I>&gt;<i>
+</I>&gt;<i> I shall try the latest beta to see if the same happens.
+</I>
+Thanks for the logs.
+After looking at them I think that the latest beta will probably fix your 
+problem.
+
+While working on another issue I noticed that gnu.hylafax uses a socket 
+timeout of 10 seconds by default. In the beta this timeout is disabled (i.e. 
+YajHFC will wait (almost) indefinitely).
+
+According to your logs the problem (connection reset) always occurs exactly 10 
+seconds after the transfer of the fax list has started, so it is quite likely 
+that the socket timeout is the reason for that.
+
+It works on the fourth try because the fax list is transferred there much 
+quicker (in 3 seconds), probably because that list is in the server's cache 
+at that time. 
+In the beta YajHFC should wait long enough for the server, so that the 
+transfer will probably succeed in the first try.
+
+
+If it still does not work, please let me know (it is not impossible that there 
+are other timeout values which need to be adjusted, too).
+
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000124.html">[Yajhfc-user] Fetching Fax List Problem
+</A></li>
+	<LI>Next message: <A HREF="000113.html">[Yajhfc-user] Fetching Fax List Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

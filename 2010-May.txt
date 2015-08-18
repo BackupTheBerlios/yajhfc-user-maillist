@@ -1,0 +1,887 @@
+From jonas.wolz at freenet.de  Sat May  1 21:04:02 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 1 May 2010 21:04:02 +0200
+Subject: [Yajhfc-user] Pootle server for YajHFC available
+Message-ID: <201005012104.03159.jonas.wolz@freenet.de>
+
+Since a few days a pootle server is available for YajHFC (which currently has 
+still to be considered experimental). 
+You can find it at
+
+http://pootle.jwolz.de/
+
+Pootle ( http://translate.sourceforge.net/wiki/pootle/index ) is a web portal 
+that allows online editing of po files.
+Alternatively, pootle allows to download the po file, edit them offline and 
+then upload them (merging them with the existing translation) again.
+
+This has the advantage that it makes working on the translation 
+collaboratively much easier, because multiple translators working on the same 
+language can see each other's changes.
+
+I also hope that it makes translating easier for new translators since 
+starting a new translation does no longer require installing new software 
+and/or creating a complete translation on the first try.
+
+The server is hosted on my private web space, which has been largely unused so 
+far (and for which I did not realize that it could host Python web 
+applications until recently...).
+
+Since this is my first try to use Pootle (and Python web applications in 
+general), you are encouraged to test this server and give me feedback if you 
+find any problem.
+
+So: If you have any questions, feedback, suggestions, etc., please just ask!
+
+Have fun
+Jonas
+
+
+P.S.: Thanks to the user who suggested to use Pootle for the translations!
+
+
+From anne.yajhfc at free.fr  Sat May  1 23:00:54 2010
+From: anne.yajhfc at free.fr (anne.yajhfc at free.fr)
+Date: Sat, 01 May 2010 23:00:54 +0200
+Subject: [Yajhfc-user] see the log files generated when sending and
+ receiving faxes
+In-Reply-To: <201004041101.19750.jonas.wolz@freenet.de>
+References: <4BB53B5C.6000708@free.fr>
+	<201004041101.19750.jonas.wolz@freenet.de>
+Message-ID: <4BDC9686.1020205@free.fr>
+
+Jonas Wolz a ?crit :
+> Am Freitag, 2. April 2010 schrieb anne.yajhfc at free.fr:
+>> Hi,
+>>
+>> How to see the log files generated when sending and receiving faxes with
+>> YajHFC?
+>> (those inside /var/spool/hylafax/log named c00000001 something)
+>>
+>> It's possible or not?
+>> =>
+>> Right click on a line:
+>> Show
+>> Save fax ...
+>> Save faxes as PDF ...
+>> Copy
+>> ...
+>>
+>> another option with log
+> 
+> This is currently not possible. 
+> It should be possible to implement this, though. I will put this on the "wish 
+> list".
+> 
+
+It's ok with the latest version of YajHFC: 0.4.3. Thank you
+
+To have the same goes for the archives? ;)
+
+thank you
+Anne
+
+
+From jonas.wolz at freenet.de  Wed May  5 18:37:48 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 5 May 2010 18:37:48 +0200
+Subject: [Yajhfc-user] see the log files generated when sending and
+	receiving faxes
+In-Reply-To: <4BDC9686.1020205@free.fr>
+References: <4BB53B5C.6000708@free.fr>
+	<201004041101.19750.jonas.wolz@freenet.de>
+	<4BDC9686.1020205@free.fr>
+Message-ID: <201005051837.48338.jonas.wolz@freenet.de>
+
+Am Samstag, 1. Mai 2010 schrieb anne.yajhfc at free.fr:
+> Jonas Wolz a ?crit :
+> > Am Freitag, 2. April 2010 schrieb anne.yajhfc at free.fr:
+> >> Hi,
+> >>
+> >> How to see the log files generated when sending and receiving faxes with
+> >> YajHFC?
+> >> (those inside /var/spool/hylafax/log named c00000001 something)
+> >>
+> >> It's possible or not?
+> >> =>
+> >> Right click on a line:
+> >> Show
+> >> Save fax ...
+> >> Save faxes as PDF ...
+> >> Copy
+> >> ...
+> >>
+> >> another option with log
+> >
+> > This is currently not possible.
+> > It should be possible to implement this, though. I will put this on the
+> > "wish list".
+>
+> It's ok with the latest version of YajHFC: 0.4.3. Thank you
+>
+> To have the same goes for the archives? ;)
+
+This is certainly possible. I will take a look at it when I have some time.
+
+Jonas.
+
+
+From dave at vrona.com  Sun May 16 18:21:39 2010
+From: dave at vrona.com (David Vrona)
+Date: Sun, 16 May 2010 12:21:39 -0400
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+Message-ID: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com>
+
+Hi All,
+
+I downloaded the 0.4.3 client but I am not able to connect to my
+hylafax server.
+
+The client is stuck with "Fetching fax list".
+
+I can connect okay via telnet to the server from this laptop.
+
+Any suggestions are greatly appreciated.
+
+-- 
+thanks,
+Dave
+
+
+From dave at vrona.com  Sun May 16 21:59:25 2010
+From: dave at vrona.com (David Vrona)
+Date: Sun, 16 May 2010 15:59:25 -0400
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+In-Reply-To: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com>
+References: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com>
+Message-ID: <AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com>
+
+Ok, I do believe I am actually getting connected to the server as I
+can see the established connection through firewall diagnostics and
+also on the server side.
+
+However, after a time "Fetching fax list..." goes away and the 0.4.3
+client state shows as being disconnected.
+
+I am not sure if there is a timeout here or what is going on ???
+
+On Sun, May 16, 2010 at 12:21 PM, David Vrona <dave at vrona.com> wrote:
+> Hi All,
+>
+> I downloaded the 0.4.3 client but I am not able to connect to my
+> hylafax server.
+>
+> The client is stuck with "Fetching fax list".
+>
+> I can connect okay via telnet to the server from this laptop.
+>
+> Any suggestions are greatly appreciated.
+>
+> --
+> thanks,
+> Dave
+>
+
+
+
+-- 
+thanks,
+Dave
+
+
+From dave at vrona.com  Sun May 16 22:29:13 2010
+From: dave at vrona.com (David Vrona)
+Date: Sun, 16 May 2010 16:29:13 -0400
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+In-Reply-To: <AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com>
+References: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com> 
+	<AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com>
+Message-ID: <AANLkTimxmUE8m4QIbw_7srWWuqzx8iCJ5gY0B9ZYlk-A@mail.gmail.com>
+
+Log file below.
+-- 
+thanks,
+Dave
+
+
+resolution=HIGH
+sendWinIsAdvanced=false
+sendWinStyle=TRADITIONAL
+sendingColState=0|o:89|e:89|s:89|t:89|j:88|a_desc:89|z:88|
+sendingFilter=A
+sendingfmt=o|e|s|t|j|a_desc|z|
+sentColState=0|o:89|e:89|s:89|t:89|j:88|a_desc:89|z:88|
+sentFilter=A
+sentfmt=o|e|s|t|j|a_desc|z|
+showArchive=false
+showRowNumbers=false
+showTrayIcon=true
+singleFileFormat=PDF
+socketTimeout=90000
+statusBarSize=36
+statusUpdateInterval=2000
+tableUpdateInterval=6000
+tiff2PDFLocation=tiff2pdf.exe
+timeStyle=HH:mm:ss
+toolbarConfig=Send|---|Show|Delete|---|Refresh|---|Phonebook|---|Resume|Suspend|
+Options|ViewLog|
+tzone=LOCAL
+useCover=false
+useCustomCover=false
+useCustomDefaultCover=false
+useDisconnectedMode=false
+useJDK16PSBugfix=true
+useWin32ShutdownManager=true
+user=fax
+viewPDFAsPS=true
+
+May 16, 2010 4:23:32 PM yajhfc.Utils getSettingsProperties
+CONFIG: ---- END preferences dump
+May 16, 2010 4:23:32 PM yajhfc.launch.Launcher2 normalStartup
+INFO: Lock and listener created.
+May 16, 2010 4:23:32 PM yajhfc.shutdown.MySignalHandler install
+INFO: Installing signal handler for signal TERM
+May 16, 2010 4:23:32 PM yajhfc.shutdown.MySignalHandler install
+FINE: Installed signal handler yajhfc.shutdown.MySignalHandler at 1621e42(prev: jav
+a.lang.Terminator$1 at b09e89)
+May 16, 2010 4:23:32 PM yajhfc.shutdown.MySignalHandler install
+INFO: Installing signal handler for signal INT
+May 16, 2010 4:23:32 PM yajhfc.shutdown.MySignalHandler install
+FINE: Installed signal handler yajhfc.shutdown.MySignalHandler at 1787038(prev: jav
+a.lang.Terminator$1 at b09e89)
+May 16, 2010 4:23:32 PM yajhfc.readstate.PersistentReadState getCurrent
+INFO: Using persistence method local with Config "null".
+May 16, 2010 4:23:32 PM yajhfc.util.TransactFileOMay 16, 2010 4:23:32 PM yajhfc.
+util.TransactFileOutputStream checkRecovery
+INFO: Backup does not exist or is empty.
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread run
+INFO: Begin login (wantAdmin=false)
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager forceLogin
+INFO: Greeting was: 220 fax.XXXXX.com server (HylaFAX (tm) Version 6.0.4) ready
+.
+
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread run
+INFO: Login succeeded. -- begin init work.
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread$1 run
+INFO: Finished init work!
+May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+WARNING: Error refreshing the status, logging out.
+java.net.ConnectException: Connection timed out: connect
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.PlainSocketImpl.doConnect(Unknown Source)
+        at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+        at java.net.PlainSocketImpl.connect(Unknown Source)
+        at java.net.SocksSocketImpl.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at gnu.inet.ftp.PassiveConnection.<init>(PassiveConnection.java:50)
+        at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+        at yajhfc.MainWin$StatusRefresher.run(MainWin.java:2447)
+        at java.util.TimerThread.mainLoop(Unknown Source)
+        at java.util.TimerThread.run(Unknown Source)
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread run
+INFO: Begin login (wantAdmin=false)
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager forceLogin
+INFO: Greeting was: 220 fax.XXXXX.com server (HylaFAX (tm) Version 6.0.4) ready
+.
+
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread run
+INFO: Login succeeded. -- begin init work.
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread$1 run
+INFO: Finished init work!
+May 16, 2010 4:24:15 PM yajhfc.MainWin$TableRefresher run
+WARNING: A socket error occured refreshing the tables, logging out.
+java.net.ConnectException: Connection timed out: connect
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.PlainSocketImpl.doConnect(Unknown Source)
+        at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+        at java.net.PlainSocketImpl.connect(Unknown Source)
+        at java.net.SocksSocketImpl.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at gnu.inet.ftp.PassiveConnection.<init>(PassiveConnection.java:50)
+        at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+        at yajhfc.MainWin$TableRefresher.run(MainWin.java:2508)
+        at java.util.TimerThread.mainLoop(Unknown Source)
+        at java.util.TimerThread.run(Unknown Source)
+May 16, 2010 4:24:15 PM yajhfc.HylaClientManager forceLogout
+WARNING: In forceLogout: transactionCounter = 2
+utputStream checkRecovery
+FINE: C:\Users\dave\.yajhfc\recvread file does not exist or is empty
+May 16, 2010 4:23:32 PM yajhfc.util.TransactFileOutputStream checkRecovery
+INFO: Backup does not exist or is empty.
+May 16, 2010 4:23:32 PM yajhfc.tray.TrayFactory trayIsAvailable
+FINE: Tray is available: true
+May 16, 2010 4:23:32 PM yajhfc.tray.TrayFactory trayIsAvailable
+FINE: Tray is available: true
+May 16, 2010 4:23:32 PM yajhfc.tray.TrayFactory trayIsAvailable
+FINE: Tray is available: true
+May 16, 2010 4:23:33 PM yajhfc.MainWin doLogout
+FINE: Logging out...
+May 16, 2010 4:23:33 PM yajhfc.MainWin doLogout
+FINE: Successfully logged out
+May 16, 2010 4:23:33 PM yajhfc.splashscreen.YJSplashScreen getSplashScreen
+FINE: No valid splash screen found (splashScreenImpl.haveSplashscreen() == false
+).
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread run
+INFO: Begin login (wantAdmin=false)
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager forceLogout
+FINE: HylaClientManager -> forceLogout
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager beginServerTransaction
+FINE: HylaClientManager -> beginServerTransaction: 1
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager forceLogin
+FINE: HylaClientManager -> forceLogin
+May 16, 2010 4:23:33 PM gnu.hylafax.HylaFAXClientProtocol open
+FINE: Connected to: HylaFAX (tm) Version 6.0.4
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager forceLogin
+INFO: Greeting was: 220 fax.XXXXX.com server (HylaFAX (tm) Version 6.0.4) ready
+.
+
+May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol user
+FINE: -> user fax
+May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol user
+FINE: 230 User fax logged in.
+
+May 16, 2010 4:23:33 PM gnu.hylafax.HylaFAXClientProtocol tzone
+FINE: -> tzone LOCAL
+May 16, 2010 4:23:33 PM gnu.hylafax.HylaFAXClientProtocol tzone
+FINE: 200 Using time values in CUT.
+May 16, 2010 4:23:33 PM gnu.hylafax.HylaFAXClientProtocol rcvfmt
+FINE: -> rcvfmt "%Y|%s|%e|%h|%p|%f|%o|%z"
+
+May 16, 2010 4:23:33 PM gnu.hylafax.HylaFAXClientProtocol rcvfmt
+FINE: 200 RCVFMT command successful.
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread run
+INFO: Login succeeded. -- begin init work.
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager beginServerTransaction
+FINE: HylaClientManager -> beginServerTransaction: 2
+May 16, 2010 4:23:33 PM yajhfc.MainWin$StatusRefresher run
+FINEST: In hyfc monitor
+May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+FINE: -> pasv
+May 16, 2010 4:23:33 PM yajhfc.MainWin$LoginThread$1 run
+INFO: Finished init work!
+May 16, 2010 4:23:33 PM yajhfc.HylaClientManager endServerTransaction
+FINE: HylaClientManager -> endServerTransaction: 2
+May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+FINE: 227 Entering passive mode (172,28,1,36,141,89)
+
+May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+WARNING: Error refreshing the status, logging out.
+java.net.ConnectException: Connection timed out: connect
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.PlainSocketImpl.doConnect(Unknown Source)
+        at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+        at java.net.PlainSocketImpl.connect(Unknown Source)
+        at java.net.SocksSocketImpl.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at gnu.inet.ftp.PassiveConnection.<init>(PassiveConnection.java:50)
+        at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+        at yajhfc.MainWin$StatusRefresher.run(MainWin.java:2447)
+        at java.util.TimerThread.mainLoop(Unknown Source)
+        at java.util.TimerThread.run(Unknown Source)
+May 16, 2010 4:23:54 PM yajhfc.MainWin$TableRefresher run
+FINE: Begin table refresh
+May 16, 2010 4:23:54 PM yajhfc.MainWin doLogout
+FINE: Logging out...
+May 16, 2010 4:23:54 PM yajhfc.HylaClientManager beginServerTransaction
+FINE: HylaClientManager -> beginServerTransaction: 2
+May 16, 2010 4:23:54 PM gnu.inet.ftp.FtpClientProtocol pasv
+FINE: -> pasv
+May 16, 2010 4:23:54 PM yajhfc.MainWin doLogout
+FINE: Successfully logged out
+May 16, 2010 4:23:54 PM gnu.inet.ftp.FtpClientProtocol pasv
+FINE: 227 Entering passive mode (172,28,1,36,141,89)
+
+May 16, 2010 4:24:03 PM yajhfc.MainWin doLogout
+FINE: Logging out...
+May 16, 2010 4:24:03 PM yajhfc.MainWin doLogout
+FINE: Successfully logged out
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread run
+INFO: Begin login (wantAdmin=false)
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager forceLogout
+FINE: HylaClientManager -> forceLogout
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager beginServerTransaction
+FINE: HylaClientManager -> beginServerTransaction: 1
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager forceLogin
+FINE: HylaClientManager -> forceLogin
+May 16, 2010 4:24:03 PM gnu.hylafax.HylaFAXClientProtocol open
+FINE: Connected to: HylaFAX (tm) Version 6.0.4
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager forceLogin
+INFO: Greeting was: 220 fax.XXXXXX.com server (HylaFAX (tm) Version 6.0.4) ready
+.
+
+May 16, 2010 4:24:03 PM gnu.inet.ftp.FtpClientProtocol user
+FINE: -> user fax
+May 16, 2010 4:24:03 PM gnu.inet.ftp.FtpClientProtocol user
+FINE: 230 User fax logged in.
+
+May 16, 2010 4:24:03 PM gnu.hylafax.HylaFAXClientProtocol tzone
+FINE: -> tzone LOCAL
+May 16, 2010 4:24:03 PM gnu.hylafax.HylaFAXClientProtocol tzone
+FINE: 200 Using time values in CUT.
+May 16, 2010 4:24:03 PM gnu.hylafax.HylaFAXClientProtocol rcvfmt
+FINE: -> rcvfmt "%Y|%s|%e|%h|%p|%f|%o|%z"
+
+May 16, 2010 4:24:03 PM gnu.hylafax.HylaFAXClientProtocol rcvfmt
+FINE: 200 RCVFMT command successful.
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread run
+INFO: Login succeeded. -- begin init work.
+May 16, 2010 4:24:03 PM yajhfc.MainWin$LoginThread$1 run
+INFO: Finished init work!
+May 16, 2010 4:24:03 PM yajhfc.HylaClientManager endServerTransaction
+FINE: HylaClientManager -> endServerTransaction: 1
+May 16, 2010 4:24:15 PM yajhfc.MainWin$TableRefresher run
+WARNING: A socket error occured refreshing the tables, logging out.
+java.net.ConnectException: Connection timed out: connect
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.PlainSocketImpl.doConnect(Unknown Source)
+        at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+        at java.net.PlainSocketImpl.connect(Unknown Source)
+        at java.net.SocksSocketImpl.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.connect(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at java.net.Socket.<init>(Unknown Source)
+        at gnu.inet.ftp.PassiveConnection.<init>(PassiveConnection.java:50)
+        at gnu.hylafax.HylaFAXClient.get(HylaFAXClient.java:213)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:315)
+        at gnu.hylafax.HylaFAXClient.getList(HylaFAXClient.java:308)
+        at yajhfc.MainWin$TableRefresher.run(MainWin.java:2508)
+        at java.util.TimerThread.mainLoop(Unknown Source)
+        at java.util.TimerThread.run(Unknown Source)
+May 16, 2010 4:24:15 PM yajhfc.MainWin doLogout
+FINE: Logging out...
+May 16, 2010 4:24:15 PM yajhfc.HylaClientManager forceLogout
+FINE: HylaClientManager -> forceLogout
+May 16, 2010 4:24:15 PM yajhfc.HylaClientManager forceLogout
+WARNING: In forceLogout: transactionCounter = 2
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: -> quit
+May 16, 2010 4:24:15 PM yajhfc.MainWin doLogout
+FINE: Successfully logged out
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: 221 Goodbye.
+
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: Setting socket to 0 lingering
+May 16, 2010 4:24:15 PM yajhfc.HylaClientManager forceLogout
+FINE: HylaClientManager -> forceLogout
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: -> quit
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: 221 Goodbye.
+
+May 16, 2010 4:24:15 PM gnu.inet.ftp.FtpClientProtocol quit
+FINE: Setting socket to 0 lingering
+May 16, 2010 4:24:21 PM yajhfc.MainWin doLogout
+FINE:Doing shutdown work...
+ Logging out...
+May 16, 2010 4:24:21 PM yajhfc.MainWin doLogout
+FINE: Successfully logged out
+Shutdown work finished.
+
+c:\Program Files\HylaFAX\yahfc\YajHFC>dir *.log
+ Volume in drive C has no label.
+ Volume Serial Number is 4C87-3DB0
+
+ Directory of c:\Program Files\HylaFAX\yahfc\YajHFC
+
+File Not Found
+
+c:\Program Files\HylaFAX\yahfc\YajHFC>java -jar yajhfc.jar --debug --logfile=c:\
+yajhfc.log
+
+
+From jonas.wolz at freenet.de  Mon May 17 09:21:03 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 17 May 2010 09:21:03 +0200
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+In-Reply-To: <AANLkTimxmUE8m4QIbw_7srWWuqzx8iCJ5gY0B9ZYlk-A@mail.gmail.com>
+References: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com>
+	<AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com>
+	<AANLkTimxmUE8m4QIbw_7srWWuqzx8iCJ5gY0B9ZYlk-A@mail.gmail.com>
+Message-ID: <201005170921.03887.jonas.wolz@freenet.de>
+
+Am Sonntag, 16. Mai 2010 schrieb David Vrona:
+> Log file below.
+
+> May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+> FINE: 227 Entering passive mode (172,28,1,36,141,89)
+>
+> May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+> WARNING: Error refreshing the status, logging out.
+> java.net.ConnectException: Connection timed out: connect
+
+This looks like a firewall problem to me. The control connection to the server 
+is established and working, but the data connection is blocked.
+
+Currently I am thinking of 2 possible sources:
+
+1. The HylaFAX protocol is based on FTP. Like FTP it opens separate data 
+connections, which is problematic for most firewalls.
+
+2. When you have installed a personal firewall (or use the Windows firewall), 
+you may have accidentally blocked YajHFC since it will show up as "java.exe" 
+or "javaw.exe".
+
+
+To check out the first problem, you can use the command line FTP client to see 
+if listing directories on the server works.
+For example (transcript is from Linux, but it should very similarly work like 
+that on Windows, too):
+
+jonas at pc1:~$ ftp hylafax-test 4559
+Connected to hylafax-test.
+220 hylafax-test server (HylaFAX (tm) Version 4.3.1) ready.
+Name (hylafax-test:jonas): fax
+331 Password required for fax.
+Password:
+230 User fax logged in.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> passive
+Passive mode on.
+ftp> ls
+227 Entering passive mode (192,168,23,2,211,252)
+150 Opening new data connection for ".".
+drwxr-x   2        0     4096 Sep  7 09:56 bin
+drwxrwx  76       10     4096 Mar 13 17:19 archive
+drwxr-x   2       10     4096 Jan  7 08:33 pollq
+drwxr-x   2       10     4096 Apr 17 14:19 recvq
+drwxr-x   2       10     4096 Mar 13 17:19 status
+drwxr-x   2       10     4096 Apr 19 16:33 info
+drwxr-x   2       10     4096 Apr 24 16:45 sendq
+drwxr-x   2       10    53248 Apr 24 16:45 doneq
+drwxr-x   3        0     4096 Nov  7 13:31 etc
+drwxr-x   2       10     4096 May 17 07:15 client
+drwxr-x   2       10     4096 Sep  7 09:56 dev
+drwxr-x   2       10     4096 Apr 24 16:45 docq
+drwxr-x   2       10    12288 Apr 19 16:33 log
+drwxrwx   2       10     4096 Apr 19 16:35 tmp
+drwxr-x   2       10     4096 Sep  7 09:55 config
+226 Transfer complete.
+ftp> cd status
+250 CWD command successful.
+ftp> ls
+227 Entering passive mode (192,168,23,2,161,223)
+150 Opening new data connection for ".".
+HylaFAX scheduler on hylafax-test: Running
+Modem ttyIAX1 (+49.9876.54321-202): Running and idle
+Modem ttyIAX0 (+49.9876.54321-201): Running and idle
+226 Transfer complete.
+ftp> bye
+221 Goodbye.
+jonas at pc1:~$  
+
+
+
+If you have checked both possible sources of problems (especially if it works 
+with the command line ftp) and it still does not work, please write me 
+another mail.
+
+Hope that helps
+Jonas
+
+
+From dave at vrona.com  Mon May 17 13:01:41 2010
+From: dave at vrona.com (David Vrona)
+Date: Mon, 17 May 2010 07:01:41 -0400
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+In-Reply-To: <201005170921.03887.jonas.wolz@freenet.de>
+References: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com> 
+	<AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com> 
+	<AANLkTimxmUE8m4QIbw_7srWWuqzx8iCJ5gY0B9ZYlk-A@mail.gmail.com> 
+	<201005170921.03887.jonas.wolz@freenet.de>
+Message-ID: <AANLkTimZgrh8DXM-_VyQWAPOEDHmfTKJ1VJjMJzpPYZ1@mail.gmail.com>
+
+I have the same behavior over a VPN.  I will have to investigate the
+built-in windows firewall.  Usually that firewall pops up when it is
+going to block but I will check.
+
+On Mon, May 17, 2010 at 3:21 AM, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> Am Sonntag, 16. Mai 2010 schrieb David Vrona:
+>> Log file below.
+>
+>> May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+>> FINE: 227 Entering passive mode (172,28,1,36,141,89)
+>>
+>> May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+>> WARNING: Error refreshing the status, logging out.
+>> java.net.ConnectException: Connection timed out: connect
+>
+> This looks like a firewall problem to me. The control connection to the server
+> is established and working, but the data connection is blocked.
+>
+> Currently I am thinking of 2 possible sources:
+>
+> 1. The HylaFAX protocol is based on FTP. Like FTP it opens separate data
+> connections, which is problematic for most firewalls.
+>
+> 2. When you have installed a personal firewall (or use the Windows firewall),
+> you may have accidentally blocked YajHFC since it will show up as "java.exe"
+> or "javaw.exe".
+>
+>
+> To check out the first problem, you can use the command line FTP client to see
+> if listing directories on the server works.
+> For example (transcript is from Linux, but it should very similarly work like
+> that on Windows, too):
+>
+> jonas at pc1:~$ ftp hylafax-test 4559
+> Connected to hylafax-test.
+> 220 hylafax-test server (HylaFAX (tm) Version 4.3.1) ready.
+> Name (hylafax-test:jonas): fax
+> 331 Password required for fax.
+> Password:
+> 230 User fax logged in.
+> Remote system type is UNIX.
+> Using binary mode to transfer files.
+> ftp> passive
+> Passive mode on.
+> ftp> ls
+> 227 Entering passive mode (192,168,23,2,211,252)
+> 150 Opening new data connection for ".".
+> drwxr-x ? 2 ? ? ? ?0 ? ? 4096 Sep ?7 09:56 bin
+> drwxrwx ?76 ? ? ? 10 ? ? 4096 Mar 13 17:19 archive
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Jan ?7 08:33 pollq
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 17 14:19 recvq
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Mar 13 17:19 status
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 19 16:33 info
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 24 16:45 sendq
+> drwxr-x ? 2 ? ? ? 10 ? ?53248 Apr 24 16:45 doneq
+> drwxr-x ? 3 ? ? ? ?0 ? ? 4096 Nov ?7 13:31 etc
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 May 17 07:15 client
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Sep ?7 09:56 dev
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 24 16:45 docq
+> drwxr-x ? 2 ? ? ? 10 ? ?12288 Apr 19 16:33 log
+> drwxrwx ? 2 ? ? ? 10 ? ? 4096 Apr 19 16:35 tmp
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Sep ?7 09:55 config
+> 226 Transfer complete.
+> ftp> cd status
+> 250 CWD command successful.
+> ftp> ls
+> 227 Entering passive mode (192,168,23,2,161,223)
+> 150 Opening new data connection for ".".
+> HylaFAX scheduler on hylafax-test: Running
+> Modem ttyIAX1 (+49.9876.54321-202): Running and idle
+> Modem ttyIAX0 (+49.9876.54321-201): Running and idle
+> 226 Transfer complete.
+> ftp> bye
+> 221 Goodbye.
+> jonas at pc1:~$
+>
+>
+>
+> If you have checked both possible sources of problems (especially if it works
+> with the command line ftp) and it still does not work, please write me
+> another mail.
+>
+> Hope that helps
+> Jonas
+>
+
+
+
+-- 
+thanks,
+Dave
+
+
+From dave at vrona.com  Tue May 18 01:02:48 2010
+From: dave at vrona.com (David Vrona)
+Date: Mon, 17 May 2010 19:02:48 -0400
+Subject: [Yajhfc-user] Any problems with Windows 7 ?
+In-Reply-To: <201005170921.03887.jonas.wolz@freenet.de>
+References: <AANLkTilCwS6BBcoloqjq2vMrhpmjQ6DBrgqawbHvKsGl@mail.gmail.com> 
+	<AANLkTilPnsXLlV6JI0k2-46pD4DJPRinMyB2VsaO84bd@mail.gmail.com> 
+	<AANLkTimxmUE8m4QIbw_7srWWuqzx8iCJ5gY0B9ZYlk-A@mail.gmail.com> 
+	<201005170921.03887.jonas.wolz@freenet.de>
+Message-ID: <AANLkTimFhYONXwyl4TbCKS8Wa-sF8HjAu3TUoN2CXZDC@mail.gmail.com>
+
+Apologies to all.
+
+It is my iptables firewall on the Hylafax server.
+
+This is a very good post that helped me out:
+http://www.hylafax.org/archive/2004-11/msg00387.php
+
+
+
+On Mon, May 17, 2010 at 3:21 AM, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> Am Sonntag, 16. Mai 2010 schrieb David Vrona:
+>> Log file below.
+>
+>> May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+>> FINE: 227 Entering passive mode (172,28,1,36,141,89)
+>>
+>> May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+>> WARNING: Error refreshing the status, logging out.
+>> java.net.ConnectException: Connection timed out: connect
+>
+> This looks like a firewall problem to me. The control connection to the server
+> is established and working, but the data connection is blocked.
+>
+> Currently I am thinking of 2 possible sources:
+>
+> 1. The HylaFAX protocol is based on FTP. Like FTP it opens separate data
+> connections, which is problematic for most firewalls.
+>
+> 2. When you have installed a personal firewall (or use the Windows firewall),
+> you may have accidentally blocked YajHFC since it will show up as "java.exe"
+> or "javaw.exe".
+>
+>
+> To check out the first problem, you can use the command line FTP client to see
+> if listing directories on the server works.
+> For example (transcript is from Linux, but it should very similarly work like
+> that on Windows, too):
+>
+> jonas at pc1:~$ ftp hylafax-test 4559
+> Connected to hylafax-test.
+> 220 hylafax-test server (HylaFAX (tm) Version 4.3.1) ready.
+> Name (hylafax-test:jonas): fax
+> 331 Password required for fax.
+> Password:
+> 230 User fax logged in.
+> Remote system type is UNIX.
+> Using binary mode to transfer files.
+> ftp> passive
+> Passive mode on.
+> ftp> ls
+> 227 Entering passive mode (192,168,23,2,211,252)
+> 150 Opening new data connection for ".".
+> drwxr-x ? 2 ? ? ? ?0 ? ? 4096 Sep ?7 09:56 bin
+> drwxrwx ?76 ? ? ? 10 ? ? 4096 Mar 13 17:19 archive
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Jan ?7 08:33 pollq
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 17 14:19 recvq
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Mar 13 17:19 status
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 19 16:33 info
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 24 16:45 sendq
+> drwxr-x ? 2 ? ? ? 10 ? ?53248 Apr 24 16:45 doneq
+> drwxr-x ? 3 ? ? ? ?0 ? ? 4096 Nov ?7 13:31 etc
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 May 17 07:15 client
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Sep ?7 09:56 dev
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Apr 24 16:45 docq
+> drwxr-x ? 2 ? ? ? 10 ? ?12288 Apr 19 16:33 log
+> drwxrwx ? 2 ? ? ? 10 ? ? 4096 Apr 19 16:35 tmp
+> drwxr-x ? 2 ? ? ? 10 ? ? 4096 Sep ?7 09:55 config
+> 226 Transfer complete.
+> ftp> cd status
+> 250 CWD command successful.
+> ftp> ls
+> 227 Entering passive mode (192,168,23,2,161,223)
+> 150 Opening new data connection for ".".
+> HylaFAX scheduler on hylafax-test: Running
+> Modem ttyIAX1 (+49.9876.54321-202): Running and idle
+> Modem ttyIAX0 (+49.9876.54321-201): Running and idle
+> 226 Transfer complete.
+> ftp> bye
+> 221 Goodbye.
+> jonas at pc1:~$
+>
+>
+>
+> If you have checked both possible sources of problems (especially if it works
+> with the command line ftp) and it still does not work, please write me
+> another mail.
+>
+> Hope that helps
+> Jonas
+>
+
+
+
+-- 
+thanks,
+Dave
+
+
+From 2bsolutions at 2bsolutions.it  Mon May 24 15:42:56 2010
+From: 2bsolutions at 2bsolutions.it (2B Solutions)
+Date: Mon, 24 May 2010 15:42:56 +0200
+Subject: [Yajhfc-user] Resend Fax Problem
+Message-ID: <4BFA8260.1060701@2bsolutions.it>
+
+Hi Jonas,
+
+I've a problem with options "Re-Send Fax".
+I've seen that work well with a single entry, but if a selected multiple 
+faxes, the forward windows dialog (send fax) display a single number only.
+I don't know that it's a bug or not, but it would be a interest feature.
+
+Thanks in advance.
+
+Marco
+2B Solutions S.a.s.
+
+------------------------------------------------------------------------
+
+
+
+
+*RISERVATEZZA / CONFIDENTIALITY *
+
+*In ottemperanza alla legge 675/96 sulla tutela dei dati personali, le 
+informazioni contenute in questo messaggio sono strettamente riservate e 
+sono esclusivamente indirizzate al destinatario indicato (oppure alla 
+persona responsabile di rimetterlo al destinatario), tenendo presente 
+che qualsiasi uso, riproduzione o divulgazione di questo messaggio ? 
+vietata. Nel caso in cui aveste ricevuto questa mail per errore, 
+vogliate avvertire il mittente al pi? presto a mezzo posta elettronica e 
+distruggere il presente messaggio. *
+
+*Accordingly to italian law 675/96 concerning privacy, if you are not 
+the adressee (or responsible for delivery of the message to such person) 
+you are hereby notified that any disclosure, reproduction, distribution 
+or other dissemination or use of this communication is strictly 
+prohibited. If you have received this message in error, you should 
+destroy it and please notify us immediatly by email.
+*
+
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100524/05dd4907/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Immagine1
+Type: image/jpeg
+Size: 69105 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100524/05dd4907/attachment.jpe>
+
+From jonas.wolz at freenet.de  Wed May 26 18:39:59 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 26 May 2010 18:39:59 +0200
+Subject: [Yajhfc-user] Resend Fax Problem
+In-Reply-To: <4BFA8260.1060701@2bsolutions.it>
+References: <4BFA8260.1060701@2bsolutions.it>
+Message-ID: <201005261840.00006.jonas.wolz@freenet.de>
+
+Am Montag, 24. Mai 2010 schrieb 2B Solutions:
+> I've a problem with options "Re-Send Fax".
+> I've seen that work well with a single entry, but if a selected multiple
+> faxes, the forward windows dialog (send fax) display a single number only.
+> I don't know that it's a bug or not, but it would be a interest feature.
+
+It is not really a bug, more a missing feature.
+I will put it on the "wish list".
+
+Jonas.
+
+

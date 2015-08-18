@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] YajHFC 0.3.8 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.3.8%20released&In-Reply-To=%3C200809101939.35915.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000069.html">
+   <LINK REL="Next"  HREF="000071.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] YajHFC 0.3.8 released</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20YajHFC%200.3.8%20released&In-Reply-To=%3C200809101939.35915.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] YajHFC 0.3.8 released">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Wed Sep 10 19:39:34 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000069.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+        <LI>Next message: <A HREF="000071.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag, 9. September 2008 14:38 schrieb Vieri:
+&gt;<i> I've recently upgraded from yajhfc-0_3_6 to yajhfc-0_3_8 and some users are
+</I>&gt;<i> reporting errors such as the one I'm attaching. This happens when they use
+</I>&gt;<i> the JDBC agenda.
+</I>
+Only for the JDBC phone book or also for other phone book types?
+
+&gt;<i> In the attached image, the 902... fax number is the only FAX number in the
+</I>&gt;<i> client database. The &quot;other&quot; number is in the PHONE field. Curiously
+</I>&gt;<i> enough, after the attached error message displays and the user dismisses it
+</I>&gt;<i> by pressing &quot;accept&quot; the fax job is completed successfully and the user
+</I>&gt;<i> receives the e-mail notification.
+</I>&gt;<i>
+</I>&gt;<i> It seems that this error message dose not display with yajhfc-0_3_6.
+</I>&gt;<i>
+</I>&gt;<i> Any ideas?
+</I>
+The error occurs when the gnu.hylafax library parses the response to the &quot;job 
+submit&quot; command from the HylaFAX server.
+Between version 0.3.6 and 0.3.7 I upgraded to the neweset version of that 
+library, so this could be a bug in that library (according to your 
+description the fax job was in fact submitted successfully, but the server 
+response was interpreted in a wrong way).
+
+Could you send me a debug log file for this error, so I can look at the exact 
+server response which triggered it?
+(Run YajHFC with additional command line arguments 
+of &quot;--debug --logfile=:prompt:&quot; to get such a log file)
+
+Thanks,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000069.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+	<LI>Next message: <A HREF="000071.html">[Yajhfc-user] YajHFC 0.3.8 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

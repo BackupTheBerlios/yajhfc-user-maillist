@@ -1,0 +1,66 @@
+From MWilson at acesappraisal.com  Thu Jan 31 13:40:08 2008
+From: MWilson at acesappraisal.com (MWilson at acesappraisal.com)
+Date: Thu, 31 Jan 2008 07:40:08 -0500
+Subject: [Yajhfc-user] Error trying to Re-send a failed Fax
+Message-ID: <B55301ABE760AA49BE5ADB32BF27A336086136@claims-new>
+
+I'm running Vista (which continues to be a source of several issues J)
+
+ 
+
+One problem in particular is that if I try to re-send a fax, I get the
+attached error dialog.  It's basically a NullPointerException.
+
+I am pretty sure this worked fine for me when I was running XP, so I am
+wondering if this is a Vista problem, and how it may be fixed?
+
+ 
+
+Also,  if I leave the Yajhfc console open after sending a fax from
+<stdin>  and attempt to print another fax to <stdin> via redmon, It
+typically fails on an error there too.  So long as I exit the
+console/program after each send it seems pretty stable.
+
+ 
+
+ 
+
+ 
+
+Screen clipping taken: 01/31/08, 7:35 AM
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Mike Wilson
+
+ACES Appraisal Group, Inc.
+
+P.O. Box 300
+
+Christiansburg, VA 24068
+
+540-268-5558 x 201
+
+Fax 540-268-1167
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20080131/a0cbd1ed/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image001.png
+Type: image/png
+Size: 67461 bytes
+Desc: image001.png
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20080131/a0cbd1ed/attachment.png>
+

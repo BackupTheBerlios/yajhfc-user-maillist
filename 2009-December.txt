@@ -1,0 +1,566 @@
+From cristian at nuzzosono.com  Sun Dec  6 19:20:56 2009
+From: cristian at nuzzosono.com (Cristian Nuzzo)
+Date: Sun, 06 Dec 2009 19:20:56 +0100
+Subject: [Yajhfc-user] 503 Permission denied: no read access to job
+	parameter DIALSTRING
+Message-ID: <4B1BF608.2020809@nuzzosono.com>
+
+Hi everybody, I'm new to Hylafax and YajHFC client,
+I have a problem when trying to resend a fax in the sent table (a fax 
+that belong to me or someother) I get the error in object.
+I think it's a server side problem (maybe I have to change some 
+permission) but I don't know where to start.
+Any help is appreciated, thanks in advance.
+Cristian.
+
+
+
+From cristian at nuzzosono.com  Tue Dec  8 12:15:38 2009
+From: cristian at nuzzosono.com (Cristian Nuzzo)
+Date: Tue, 08 Dec 2009 12:15:38 +0100
+Subject: [Yajhfc-user] Unsupported file format: PlainText
+Message-ID: <4B1E355A.1040601@nuzzosono.com>
+
+Hi everybody,
+I have installed yajhfc on many XP client and everything went fine,
+now I'm trying to make it working on a server win 2000, it seems that 
+ghostscript and tiff-3.8.2.1 are installed correctly but when I try to 
+send the fax or make a preview an error occurs:
+
+yajhfc.file.UnknownFormatException: Unsupported file format: PlainText
+ at 
+yajhfc.file.MultiFileConverter.convertMultipleFiles(MultiFileConverter.java:71)
+ at 
+yajhfc.file.MultiFileConverter.convertMultipleFilesToSingleFile(MultiFileConverter.java:144)
+ at yajhfc.send.SendFileManager.putPDFFile(SendFileManager.java:131)
+ at yajhfc.send.SendFileManager.uploadFiles(SendFileManager.java:74)
+ at yajhfc.send.SendController$SendWorker.doWork(SendController.java:302)
+ at yajhfc.util.ProgressWorker.run(ProgressWorker.java:178)
+
+Any advice?
+Thanks in advance.
+
+
+
+From giuseppe at eppesuigoccas.homedns.org  Tue Dec  8 19:09:26 2009
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Tue, 08 Dec 2009 19:09:26 +0100
+Subject: [Yajhfc-user] Unsupported file format: PlainText
+In-Reply-To: <4B1E355A.1040601@nuzzosono.com>
+References: <4B1E355A.1040601@nuzzosono.com>
+Message-ID: <1260295766.16510.17.camel@scarafaggio>
+
+Il giorno mar, 08/12/2009 alle 12.15 +0100, Cristian Nuzzo ha scritto:
+> Hi everybody,
+> I have installed yajhfc on many XP client and everything went fine,
+> now I'm trying to make it working on a server win 2000, it seems that 
+> ghostscript and tiff-3.8.2.1 are installed correctly but when I try to 
+> send the fax or make a preview an error occurs:
+> 
+> yajhfc.file.UnknownFormatException: Unsupported file format: PlainText
+>  at 
+[...]
+
+I think you cannot send text files. The only accepted formats arer tiff,
+ps an pdf. Other files need to be "printed" by windows and converted in
+PS by the printer driver.
+
+Bye,
+Giuseppe
+
+
+
+From cristian at nuzzosono.com  Tue Dec  8 20:28:27 2009
+From: cristian at nuzzosono.com (Cristian Nuzzo)
+Date: Tue, 08 Dec 2009 20:28:27 +0100
+Subject: [Yajhfc-user] Unsupported file format: PlainText
+In-Reply-To: <1260295766.16510.17.camel@scarafaggio>
+References: <4B1E355A.1040601@nuzzosono.com>
+	<1260295766.16510.17.camel@scarafaggio>
+Message-ID: <4B1EA8DB.3020406@nuzzosono.com>
+
+Giuseppe Sacco ha scritto:
+> Il giorno mar, 08/12/2009 alle 12.15 +0100, Cristian Nuzzo ha scritto:
+>   
+>> Hi everybody,
+>> I have installed yajhfc on many XP client and everything went fine,
+>> now I'm trying to make it working on a server win 2000, it seems that 
+>> ghostscript and tiff-3.8.2.1 are installed correctly but when I try to 
+>> send the fax or make a preview an error occurs:
+>>
+>> yajhfc.file.UnknownFormatException: Unsupported file format: PlainText
+>>  at 
+>>     
+> [...]
+>
+> I think you cannot send text files. The only accepted formats arer tiff,
+> ps an pdf. Other files need to be "printed" by windows and converted in
+> PS by the printer driver.
+>
+> Bye,
+> Giuseppe
+>
+>   
+I forgot  to say that I'm trying to send via the fax printer. Maybe 
+there is something wrong with the driver.
+The other machines (Win XPw) here I installed the client are not 
+affected by this problem.
+Thank's
+Cristian.
+
+ 
+
+
+
+From jonas.wolz at freenet.de  Wed Dec  9 18:51:36 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 9 Dec 2009 18:51:36 +0100
+Subject: [Yajhfc-user] 503 Permission denied: no read access to job
+	parameter DIALSTRING
+In-Reply-To: <4B1BF608.2020809@nuzzosono.com>
+References: <4B1BF608.2020809@nuzzosono.com>
+Message-ID: <200912091851.36227.jonas.wolz@freenet.de>
+
+Am Sonntag, 6. Dezember 2009 schrieb Cristian Nuzzo:
+> Hi everybody, I'm new to Hylafax and YajHFC client,
+> I have a problem when trying to resend a fax in the sent table (a fax
+> that belong to me or someother) I get the error in object.
+> I think it's a server side problem (maybe I have to change some
+> permission) but I don't know where to start.
+
+Can you view the fax in question?
+
+AFAIK, permissions for HylaFAX users are determined by the Unix group 
+permissions for the files corresponding to the fax job.
+A job usually consists of one control file in the doneq (or sendq) directory 
+and the documents attached to it in the docq directory.
+
+In order to be able to read a job parameter or view an attached document, the 
+group id of the files for the job must be the same as the HylaFAX (!) user id 
+of the user or the "other" Unix permission must allow reading of the file (I 
+think).
+
+Hope that helps,
+Jonas
+
+
+From jonas.wolz at freenet.de  Wed Dec  9 19:09:37 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 9 Dec 2009 19:09:37 +0100
+Subject: [Yajhfc-user] Unsupported file format: PlainText
+In-Reply-To: <4B1EA8DB.3020406@nuzzosono.com>
+References: <4B1E355A.1040601@nuzzosono.com>
+	<1260295766.16510.17.camel@scarafaggio>
+	<4B1EA8DB.3020406@nuzzosono.com>
+Message-ID: <200912091909.37301.jonas.wolz@freenet.de>
+
+Am Dienstag, 8. Dezember 2009 schrieb Cristian Nuzzo:
+> Giuseppe Sacco ha scritto:
+> > Il giorno mar, 08/12/2009 alle 12.15 +0100, Cristian Nuzzo ha scritto:
+> >> Hi everybody,
+> >> I have installed yajhfc on many XP client and everything went fine,
+> >> now I'm trying to make it working on a server win 2000, it seems that
+> >> ghostscript and tiff-3.8.2.1 are installed correctly but when I try to
+> >> send the fax or make a preview an error occurs:
+> >>
+> >> yajhfc.file.UnknownFormatException: Unsupported file format: PlainText
+> >>  at
+> >
+> > [...]
+> >
+>
+> I forgot  to say that I'm trying to send via the fax printer. Maybe
+> there is something wrong with the driver.
+> The other machines (Win XPw) here I installed the client are not
+> affected by this problem.
+
+Probably YajHFC does not recognize the PostScript produced by the printer 
+driver as PostScript.
+
+To debug this problem, please create a debug log from Redmon:
+To turn it on, go to the properties of the YajHFC printer, go to the "Ports" 
+tab, select the "YAJHFC:" port, click "Configure...", click "Log file" and 
+check both the "Use log file" and "Debug" boxes (and enter a different log 
+file name if you wish). Then close all dialogs with "OK".
+(also see the screenshot at http://yajhfc.berlios.de/temp/redmon-debug.png )
+
+Then, print a document on the YajHFC printer and send the produced log to me.
+
+
+Thanks
+Jonas
+
+
+From syscon780 at gmail.com  Fri Dec 11 07:50:57 2009
+From: syscon780 at gmail.com (Joseph)
+Date: Thu, 10 Dec 2009 23:50:57 -0700
+Subject: [Yajhfc-user] error: 500 ':Syntax error, expecting password.
+Message-ID: <20091211065057.GA6760@syscon4.inet>
+
+I just run hylafax "faxsetup" and it appear the new version (I don't know when did it change) in file-name:
+setup.modem
+
+the old setting was:
+     echo /dev/$1
+
+     echo /dev/$1
+
+with the setting above running: java -jar yajhfc-0_4_2a.jar
+yajhfc can connect and read faxes without any problem
+
+but after running faxsetup again it, the setting above was change from:
+     echo /dev/$1
+
+to:
+	if [ -z "`echo $1 | grep "^/"`" ]; then printf "/dev/"; fi
+	echo $1
+
+from:
+     echo /dev/$1
+
+to: 
+	if [ -z "`echo $1 | grep "^/"`" ]; then printf "/dev/"; fi
+	echo $1
+
+Now when I run: java -jar yajhfc-0_4_2a.jar
+I get error it keeps asking me for password, I'm not sure which root or user
+
+500 'pass ': Syntax error, expecting password.
+
+	at gnu.inet.ftp.FtpClientProtocol.pass(FtpClientProtocol.java:261)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:150)
+	at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:86)
+	at yajhfc.MainWin$LoginThread.run(MainWin.java:2646)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:98)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:207)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Sun Dec 13 11:11:46 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 13 Dec 2009 11:11:46 +0100
+Subject: [Yajhfc-user] [Fwd: Re:  Unsupported file format: PlainText]
+In-Reply-To: <4B20A0C8.5050304@nuzzosono.com>
+References: <4B20A0C8.5050304@nuzzosono.com>
+Message-ID: <200912131111.46525.jonas.wolz@freenet.de>
+
+Hello,
+
+it looks like the cscript.exe process is not starting.
+In your log, you are getting the following lines:
+
+> [...]
+> REDMON WriteThread: started
+>   Level=1
+>     DocumentName="statuto1.pdf"
+>     OutputFile="(null)"
+>     Datatype="RAW"
+>   output=0 show=1 delay=600 runuser=1
+>
+> REDMON WritePort: about to write 65536 bytes to port.
+> REDMON check_process: process isn't running.
+> REDMON check_process: flushing child stdin to unblock WriteThread.
+> %!PS-Adobe-3.0
+> [...]
+
+In a successful run, you should see two lines printed from cscript.exe, like 
+that:
+> [...]
+> REDMON WriteThread: started
+>   Level=1
+>     DocumentName="Dokument"
+>     OutputFile="YAJHFC:"
+>     Datatype="(null)"
+>   output=0 show=1 delay=600 runuser=1
+> Microsoft (R) Windows Script Host, Version 5.7
+> Copyright (C) Microsoft Corporation 1996-2001. Alle Rechte vorbehalten.
+>
+>
+> REDMON WritePort: about to write 24576 bytes to port.
+> %!PS-Adobe-3.0
+> [...]
+
+I already had reports that using Redmon on Windows Server OSes is often quite 
+problematic. So your best bet may be trying to install a fax printer manually 
+using RedmonEE.
+
+To do so, first download and install RedmonEE from http://www.is-foehr.com/.
+Then, download ftp://ftp.berlios.de/pub/yajhfc/temp/redmonee.zip and read the 
+file "install.html" in that archive for a (very) short guide on how to install 
+a fax printer with YajHFC using RedmonEE.
+
+If you have any questions about that, please write me another mail. 
+If it works for you, a (short) "success message" would be nice, too.
+
+
+Hope that helps
+Jonas
+
+
+Am Donnerstag, 10. Dezember 2009 schrieb Cristian Nuzzo:
+> Thanks in advance
+
+
+
+
+From jonas.wolz at freenet.de  Sun Dec 13 10:43:32 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 13 Dec 2009 10:43:32 +0100
+Subject: [Yajhfc-user] error: 500 ':Syntax error, expecting password.
+In-Reply-To: <20091211065057.GA6760@syscon4.inet>
+References: <20091211065057.GA6760@syscon4.inet>
+Message-ID: <200912131043.32444.jonas.wolz@freenet.de>
+
+Am Freitag, 11. Dezember 2009 schrieb Joseph:
+> I just run hylafax "faxsetup" and it appear the new version (I don't know
+> when did it change) in file-name: setup.modem
+>
+> the old setting was:
+>      echo /dev/$1
+>
+>      echo /dev/$1
+>
+> with the setting above running: java -jar yajhfc-0_4_2a.jar
+> yajhfc can connect and read faxes without any problem
+>
+> but after running faxsetup again it, the setting above was change from:
+>      echo /dev/$1
+>
+> to:
+> 	if [ -z "`echo $1 | grep "^/"`" ]; then printf "/dev/"; fi
+> 	echo $1
+>
+> from:
+>      echo /dev/$1
+>
+> to:
+> 	if [ -z "`echo $1 | grep "^/"`" ]; then printf "/dev/"; fi
+> 	echo $1
+>
+> Now when I run: java -jar yajhfc-0_4_2a.jar
+> I get error it keeps asking me for password, I'm not sure which root or
+> user
+>
+> 500 'pass ': Syntax error, expecting password.
+>
+> [...]
+
+This error probably comes from the fact that you entered no password (and just 
+clicked "OK").
+Nevertheless, this is not the source of the problem...
+
+Which version of HylaFAX do you use?
+Does connecting and listing faxes work with other clients? (e.g. 
+do "faxstat -r" and "faxstat -d" work on the server?)
+
+If other clients work, please send me a debug log from YajHFC. To do so, run 
+YajHFC with the command 
+java -jar yajhfc-0_4_2a.jar --debug --logfile=yajhfc.log
+
+Then, try to log in and send me yajhfc.log.
+
+Hope that helps
+Jonas
+
+
+From syscon780 at gmail.com  Sun Dec 13 18:14:50 2009
+From: syscon780 at gmail.com (Joseph)
+Date: Sun, 13 Dec 2009 10:14:50 -0700
+Subject: [Yajhfc-user] error: 500 ':Syntax error, expecting password.
+In-Reply-To: <200912131043.32444.jonas.wolz@freenet.de>
+References: <20091211065057.GA6760@syscon4.inet>
+	<200912131043.32444.jonas.wolz@freenet.de>
+Message-ID: <20091213171450.GJ6760@syscon4.inet>
+
+After restart it is working now OK.
+I'm using now hylafax-6.0.3.
+
+Those setting must have changed when I upgraded from ver. 4 to 6.
+
+--
+Joseph
+
+On 12/13/09 10:43, Jonas Wolz wrote:
+
+[snip]
+
+>This error probably comes from the fact that you entered no password (and just
+>clicked "OK").
+>Nevertheless, this is not the source of the problem...
+>
+>Which version of HylaFAX do you use?
+>Does connecting and listing faxes work with other clients? (e.g.
+>do "faxstat -r" and "faxstat -d" work on the server?)
+>
+>If other clients work, please send me a debug log from YajHFC. To do so, run
+>YajHFC with the command
+>java -jar yajhfc-0_4_2a.jar --debug --logfile=yajhfc.log
+>
+>Then, try to log in and send me yajhfc.log.
+>
+>Hope that helps
+>Jonas
+
+
+
+From cristian at nuzzosono.com  Mon Dec 14 21:07:47 2009
+From: cristian at nuzzosono.com (Cristian Nuzzo)
+Date: Mon, 14 Dec 2009 21:07:47 +0100
+Subject: [Yajhfc-user] [Fwd: Re:  Unsupported file format: PlainText]
+In-Reply-To: <200912131111.46525.jonas.wolz@freenet.de>
+References: <4B20A0C8.5050304@nuzzosono.com>
+	<200912131111.46525.jonas.wolz@freenet.de>
+Message-ID: <4B269B13.4040907@nuzzosono.com>
+
+Jonas Wolz ha scritto:
+> Hello,
+>
+> it looks like the cscript.exe process is not starting.
+> In your log, you are getting the following lines:
+>
+>   
+>> [...]
+>> REDMON WriteThread: started
+>>   Level=1
+>>     DocumentName="statuto1.pdf"
+>>     OutputFile="(null)"
+>>     Datatype="RAW"
+>>   output=0 show=1 delay=600 runuser=1
+>>
+>> REDMON WritePort: about to write 65536 bytes to port.
+>> REDMON check_process: process isn't running.
+>> REDMON check_process: flushing child stdin to unblock WriteThread.
+>> %!PS-Adobe-3.0
+>> [...]
+>>     
+>
+> In a successful run, you should see two lines printed from cscript.exe, like 
+> that:
+>   
+>> [...]
+>> REDMON WriteThread: started
+>>   Level=1
+>>     DocumentName="Dokument"
+>>     OutputFile="YAJHFC:"
+>>     Datatype="(null)"
+>>   output=0 show=1 delay=600 runuser=1
+>> Microsoft (R) Windows Script Host, Version 5.7
+>> Copyright (C) Microsoft Corporation 1996-2001. Alle Rechte vorbehalten.
+>>
+>>
+>> REDMON WritePort: about to write 24576 bytes to port.
+>> %!PS-Adobe-3.0
+>> [...]
+>>     
+>
+> I already had reports that using Redmon on Windows Server OSes is often quite 
+> problematic. So your best bet may be trying to install a fax printer manually 
+> using RedmonEE.
+>
+> To do so, first download and install RedmonEE from http://www.is-foehr.com/.
+> Then, download ftp://ftp.berlios.de/pub/yajhfc/temp/redmonee.zip and read the 
+> file "install.html" in that archive for a (very) short guide on how to install 
+> a fax printer with YajHFC using RedmonEE.
+>
+> If you have any questions about that, please write me another mail. 
+> If it works for you, a (short) "success message" would be nice, too.
+>
+>
+> Hope that helps
+> Jonas
+>
+>
+> Am Donnerstag, 10. Dezember 2009 schrieb Cristian Nuzzo:
+>   
+>> Thanks in advance
+>>     
+>
+>
+>
+>
+>   
+That did the trick, now everytink works perfect!
+Thank you very much,
+Cristian.
+
+
+From syscon780 at gmail.com  Wed Dec 23 17:50:44 2009
+From: syscon780 at gmail.com (Joseph)
+Date: Wed, 23 Dec 2009 09:50:44 -0700
+Subject: [Yajhfc-user] selecting multiple files
+Message-ID: <20091223165044.GA3103@syscon4.inet>
+
+When sending faxes is it possible to select multiple file attachment at once for transmission (not once at a time).
+
+-- 
+Joseph
+
+
+From jonas.wolz at freenet.de  Thu Dec 24 11:05:18 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 24 Dec 2009 11:05:18 +0100
+Subject: [Yajhfc-user] selecting multiple files
+In-Reply-To: <20091223165044.GA3103@syscon4.inet>
+References: <20091223165044.GA3103@syscon4.inet>
+Message-ID: <200912241105.18680.jonas.wolz@freenet.de>
+
+Am Mittwoch, 23. Dezember 2009 schrieb Joseph:
+> When sending faxes is it possible to select multiple file attachment at
+> once for transmission (not once at a time).
+
+Currently you cannot select multiple files in the file browse dialog. 
+Changing that behaviour for the next release should not be a big problem, 
+however.
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Thu Dec 24 16:17:27 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 24 Dec 2009 16:17:27 +0100
+Subject: [Yajhfc-user] YajHFC Windows setup with RedmonEE support
+Message-ID: <200912241617.28363.jonas.wolz@freenet.de>
+
+Because of several recent requests for Terminal server support for the YajHFC 
+fax printer, I created a new (experimental) Windows setup that optionally 
+uses RedmonEE instead of the "normal" Redmon to implement that printer.
+
+According to its documentation, the fax printer using RedmonEE should work 
+flawlessly in terminal server environments, but as I do not have a terminal 
+server installation here, I cannot test if this indeed works or if there are 
+still problems.
+
+RedmonEE also works on workstation installations of Windows, so you can also 
+use it there if you prefer. 
+Nevertheless "normal" Redmon will stay default for YajHFC (except when the 
+setup is run on a (terminal) server version of Windows), since RedmonEE 
+itself is still beta software and only works with 32bit versions of Windows.
+
+If you would like to test the new setup.exe, you can download it from here:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_2a-setup2.exe
+
+To use RedmonEE, simply select the "RedmonEE" option in the "Select 
+Components" step of the setup wizard.
+
+If you have any questions/feedback about the new setup.exe, please just write 
+me a mail or reply to this posting on the yajhfc-user list.
+
+I would especially like to hear from you if you have tried out the new setup 
+on a terminal server environment, so that I know if it works for you or if 
+there are still some problems (but of course any other feedback is also very 
+welcome!).
+
+Merry Christmas and a Happy New Year,
+Jonas Wolz
+
+

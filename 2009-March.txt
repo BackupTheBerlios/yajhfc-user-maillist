@@ -1,0 +1,441 @@
+From jonas.wolz at freenet.de  Mon Mar  2 15:10:02 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 2 Mar 2009 15:10:02 +0100
+Subject: [Yajhfc-user] YajHFC 0.4.0 released
+Message-ID: <200903021510.02758.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.0 of YajHFC has been released 
+today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0.jar
+
+Source code: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0-src.zip
+
+Windows setup.exe: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0-setup.exe
+
+New features/changes compared to 0.4.0beta:
+- Greek translation added
+- Support to manually answer a phone call (similar to faxanswer)
+- Update checker
+
+Additional changes compared to 0.3.9:
+- Support for archive directory
+- Support to view and send faxes as a single file (in PDF, TIFF or PS format)
+- Phone book includes most common fields now
+- Support for a tray icon under Java 6
+- Improved options dialog
+- Improved command line support (YajHFC can now be
+used to send faxes without user confirmation)
+- Some simple obfuscation for passwords
+- Lots of internal code clean up
+
+Known problems:
+- Greek translation is incomplete (volunteers to complete it are welcome!)
+
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun,
+Jonas
+
+
+From nerijus at users.sourceforge.net  Mon Mar  2 15:47:47 2009
+From: nerijus at users.sourceforge.net (Nerijus Baliunas)
+Date: Mon, 2 Mar 2009 16:47:47 +0200
+Subject: [Yajhfc-user] okular instead of kfax
+Message-ID: <Mahogany-0.67.2-5906-20090302-164747.00@nerijus.sat.lt>
+
+Hello,
+
+When I first launched YajHFC on Linux, kfax was set as "Command line for fax viewer"
+option. I suggest to replace it with okular - see here for more info:
+https://bugzilla.redhat.com/show_bug.cgi?id=449134
+
+Regards,
+Nerijus
+
+
+From jonas.wolz at freenet.de  Fri Mar  6 22:19:18 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 6 Mar 2009 22:19:18 +0100
+Subject: [Yajhfc-user] okular instead of kfax
+In-Reply-To: <Mahogany-0.67.2-5906-20090302-164747.00@nerijus.sat.lt>
+References: <Mahogany-0.67.2-5906-20090302-164747.00@nerijus.sat.lt>
+Message-ID: <200903062219.18533.jonas.wolz@freenet.de>
+
+Am Montag, 2. M?rz 2009 schrieb Nerijus Baliunas:
+> Hello,
+>
+> When I first launched YajHFC on Linux, kfax was set as "Command line for
+> fax viewer" option. I suggest to replace it with okular - see here for more
+> info: https://bugzilla.redhat.com/show_bug.cgi?id=449134
+
+I will consider this for future versions.
+
+In current versions (beginning with 0.3.7, I think) this should not be much of 
+an issue, however, because the default viewer is set to "kfmclient exec %s" 
+if YajHFC is started in KDE or "gnome-open %s" if it is started in GNOME.
+kfax/gv is only used as a fallback when neither KDE nor GNOME can be detected.
+
+
+Thanks for the feedback,
+Jonas
+
+
+From met at shd.de  Tue Mar 24 10:20:45 2009
+From: met at shd.de (Christian Metzen)
+Date: Tue, 24 Mar 2009 10:20:45 +0100
+Subject: [Yajhfc-user] Yajhfc and Windows 2003 Server
+Message-ID: <20090324102045.24056.296.4002615696MET192168018025@portal.shd.lan>
+
+Hello,
+
+first lets congratulate for this great client, i really love it. But there is one problem for me now, i can't get it working
+under Windows 2003. Using it on my Workstation with XP runs fine.
+
+I installed it under Win2k3, installation went fine, the client opens when you run it manually without problems. But when
+i try to print for example a testpage to the printer nothing happens, the send dialog just won't open, no error messages.
+
+Does anybody already have this running? Perhaps there are some adjustements need in the printlaunch.vbs? 
+
+Hopefully someone can help!
+
+Regards,
+Christian Metzen
+
+
+
+
+From jonas.wolz at freenet.de  Tue Mar 24 19:41:01 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 24 Mar 2009 19:41:01 +0100
+Subject: [Yajhfc-user] Yajhfc and Windows 2003 Server
+In-Reply-To: <20090324102045.24056.296.4002615696MET192168018025@portal.shd.lan>
+References: <20090324102045.24056.296.4002615696MET192168018025@portal.shd.lan>
+Message-ID: <200903241941.02427.jonas.wolz@freenet.de>
+
+Am Dienstag, 24. M?rz 2009 schrieb Christian Metzen:
+> Hello,
+>
+> first lets congratulate for this great client, i really love it. But there
+> is one problem for me now, i can't get it working under Windows 2003. Using
+> it on my Workstation with XP runs fine.
+>
+> I installed it under Win2k3, installation went fine, the client opens when
+> you run it manually without problems. But when i try to print for example a
+> testpage to the printer nothing happens, the send dialog just won't open,
+> no error messages.
+>
+> Does anybody already have this running? Perhaps there are some adjustements
+> need in the printlaunch.vbs?
+
+Does the printlaunch.vbs script start when you print to the YajHFC printer? 
+(i.e. can you see a console window in the taskbar for a short time?)
+
+In any case, please enable the Redmon log file in order to capture any error 
+messages that may be printed by the script and then send that log file to me 
+(I do not have Win2k3 here, so I cannot test YajHFC with it myself).
+
+To enable that log file, go to the properties of the YajHFC printer, select 
+the "Ports" tab, select the "YAJHFC:" port, click "Configure", click the "Log 
+file" button and check the "Use Log File" check box.
+
+After enabling the log file, I would suggest to also uncomment the last two 
+lines in printlaunch.vbs to capture error messages printed by Java or YajHFC.
+I.e., change these last two lines to:
+wscript.stdout.write java.stdout.readAll()
+wscript.stderr.write java.stderr.readAll()
+
+
+Thanks,
+Jonas
+
+
+From Stefano.Lusuardi at snapon.com  Tue Mar 24 19:56:13 2009
+From: Stefano.Lusuardi at snapon.com (Lusuardi, Stefano)
+Date: Tue, 24 Mar 2009 18:56:13 -0000
+Subject: [Yajhfc-user]  custom filter on received folder
+In-Reply-To: <3A52001F54D68E4BB785AAB810E1DBAB29C1B6B1@kett-xbck-01-pp.snaponglobal.com>
+References: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+	<3A52001F54D68E4BB785AAB810E1DBAB29C1B6B1@kett-xbck-01-pp.snaponglobal.com>
+Message-ID: <D73B7EDAC56B4B459ACB7ABFF0CFAF87072AB920@kett-xbck-01-pp.snaponglobal.com>
+
+Hello,
+
+ 
+
+I'm using JBDC connection with MySQL database in  order to centralize
+read/unread indicator and it functions fine.
+
+I've customized a filter "CIDNumber equals to ...."and after that I've
+seen only filtered faxes as expected but when I'm going to open unread
+fax an error comes up.
+
+ 
+
+The user can see the fax but he must close the windows with error
+message every time (it's a little bit fastidious).
+
+ 
+
+This message occurs every first time I'm opening unread faxes and also
+when I'm forcing the fax as unread.
+
+ 
+
+ERROR MESSAGE:
+
+java.lang.NullPointerException
+
+                at
+yajhfc.model.UnReadMyTableModel.getNumberOfUnreadFaxes(UnReadMyTableMode
+l.java:84)
+
+                at
+yajhfc.tray.YajHFCTrayIcon.updateTooltip(YajHFCTrayIcon.java:157)
+
+                at
+yajhfc.tray.YajHFCTrayIcon.readStateChanged(YajHFCTrayIcon.java:242)
+
+                at
+yajhfc.model.UnReadMyTableModel.fireReadStateChanged(UnReadMyTableModel.
+java:113)
+
+                at yajhfc.model.RecvYajJob.setRead(RecvYajJob.java:59)
+
+                at
+yajhfc.MainWin$10.actualActionPerformed(MainWin.java:897)
+
+                at
+yajhfc.util.ExcDialogAbstractAction.actionPerformed(ExcDialogAbstractAct
+ion.java:65)
+
+                at
+javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+
+                at
+javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+
+                at
+javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+
+                at
+javax.swing.JToggleButton$ToggleButtonModel.setPressed(Unknown Source)
+
+                at javax.swing.AbstractButton.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI.doClick(Unknown Source)
+
+                at
+javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(Unknown
+Source)
+
+                at java.awt.AWTEventMulticaster.mouseReleased(Unknown
+Source)
+
+                at java.awt.Component.processMouseEvent(Unknown Source)
+
+                at javax.swing.JComponent.processMouseEvent(Unknown
+Source)
+
+                at java.awt.Component.processEvent(Unknown Source)
+
+                at java.awt.Container.processEvent(Unknown Source)
+
+                at java.awt.Component.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+
+                at
+java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+
+                at java.awt.LightweightDispatcher.dispatchEvent(Unknown
+Source)
+
+                at java.awt.Container.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Window.dispatchEventImpl(Unknown Source)
+
+                at java.awt.Component.dispatchEvent(Unknown Source)
+
+                at java.awt.EventQueue.dispatchEvent(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+
+                at
+java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.pumpEvents(Unknown
+Source)
+
+                at java.awt.EventDispatchThread.run(Unknown Source)
+
+ 
+
+ 
+
+Thanks in advance for whichever help.
+
+ 
+
+Stefano Lusuardi
+
+ 
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20090324/a6a93d1b/attachment.html>
+
+From jonas.wolz at freenet.de  Tue Mar 24 20:35:16 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 24 Mar 2009 20:35:16 +0100
+Subject: [Yajhfc-user] custom filter on received folder
+In-Reply-To: <D73B7EDAC56B4B459ACB7ABFF0CFAF87072AB920@kett-xbck-01-pp.snaponglobal.com>
+References: <D73B7EDAC56B4B459ACB7ABFF0CFAF8706ED36A3@kett-xbck-01-pp.snaponglobal.com>
+	<3A52001F54D68E4BB785AAB810E1DBAB29C1B6B1@kett-xbck-01-pp.snaponglobal.com>
+	<D73B7EDAC56B4B459ACB7ABFF0CFAF87072AB920@kett-xbck-01-pp.snaponglobal.com>
+Message-ID: <200903242035.16820.jonas.wolz@freenet.de>
+
+Am Dienstag, 24. M?rz 2009 schrieb Lusuardi, Stefano:
+> This message occurs every first time I'm opening unread faxes and also
+> when I'm forcing the fax as unread.
+>
+>
+>
+> ERROR MESSAGE:
+>
+> java.lang.NullPointerException
+>
+>                 at
+> yajhfc.model.UnReadMyTableModel.getNumberOfUnreadFaxes(UnReadMyTableMode
+> l.java:84)
+> [...]
+
+This is a bug in YajHFC. It has an effect whenever you apply a filter to the 
+list of received faxes. 
+Apart from the error message, the only effect of this bug probably is that the 
+number of unread faxes shown in the tray icon's tooltip is wrong.
+
+It should now be fixed in the current developer version 
+(ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar ; this version might contain 
+other bugs, however).
+
+Thanks for the bug report,
+Jonas
+
+
+From met at shd.de  Fri Mar 27 16:17:21 2009
+From: met at shd.de (Christian Metzen)
+Date: Fri, 27 Mar 2009 16:17:21 +0100
+Subject: [Yajhfc-user] Yajhfc and Windows 2003 Server
+In-Reply-To: <200903241941.02427.jonas.wolz@freenet.de>
+References: <20090324102045.24056.296.4002615696MET192168018025@portal.shd.lan>
+	<200903241941.02427.jonas.wolz@freenet.de>
+Message-ID: <49CCEE01.5000701@shd.de>
+
+Hi,
+
+i think i figured out the problem. Redmon doesn't work under W2K3 
+Terminalserver because the security restriction are in charge.
+
+You get a error "createprocessasuser failed error code 87"
+
+A solution would be using RedmonEE instead, but i can't get it to run 
+with yajhfc. Any ideas, or could you perhaps integrate RedmonEE in your 
+setup?
+
+Regards,
+Christian
+
+Am 24.03.2009 19:41, schrieb Jonas Wolz:
+>
+> Does the printlaunch.vbs script start when you print to the YajHFC printer?
+> (i.e. can you see a console window in the taskbar for a short time?)
+>
+> In any case, please enable the Redmon log file in order to capture any error
+> messages that may be printed by the script and then send that log file to me
+> (I do not have Win2k3 here, so I cannot test YajHFC with it myself).
+>
+> To enable that log file, go to the properties of the YajHFC printer, select
+> the "Ports" tab, select the "YAJHFC:" port, click "Configure", click the "Log
+> file" button and check the "Use Log File" check box.
+>
+> After enabling the log file, I would suggest to also uncomment the last two
+> lines in printlaunch.vbs to capture error messages printed by Java or YajHFC.
+> I.e., change these last two lines to:
+> wscript.stdout.write java.stdout.readAll()
+> wscript.stderr.write java.stderr.readAll()
+>
+>    
+
+
+From jonas.wolz at freenet.de  Sat Mar 28 16:48:09 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 28 Mar 2009 16:48:09 +0100
+Subject: [Yajhfc-user] Yajhfc and Windows 2003 Server
+In-Reply-To: <49CCEE01.5000701@shd.de>
+References: <20090324102045.24056.296.4002615696MET192168018025@portal.shd.lan>
+	<200903241941.02427.jonas.wolz@freenet.de>
+	<49CCEE01.5000701@shd.de>
+Message-ID: <200903281648.09727.jonas.wolz@freenet.de>
+
+Am Freitag, 27. M?rz 2009 schrieb Christian Metzen:
+> Hi,
+>
+> i think i figured out the problem. Redmon doesn't work under W2K3
+> Terminalserver because the security restriction are in charge.
+>
+> You get a error "createprocessasuser failed error code 87"
+>
+> A solution would be using RedmonEE instead, but i can't get it to run
+> with yajhfc. Any ideas, or could you perhaps integrate RedmonEE in your
+> setup?
+
+I think I have found a way to manually create a fax printer with YajHFC and 
+RedmonEE (but tested it only with WinXP SP3, so I do not know if it works 
+with W2K3).
+
+Please download ftp://ftp.berlios.de/pub/yajhfc/temp/redmonee.zip and read the 
+file "install.html" in that archive for a (very) short guide on how to do 
+that (it would be nice if you could give me a short feedback if it worked for 
+you or if you still have problems).
+
+The basic idea for using RedmonEE with YajHFC is as follows:
+You can't directly run a GUI application that receives the printed data with 
+RedmonEE as you can do with Redmon. So you have to save that data in a 
+temporary file first (which is accomplished by savein.vbs).
+Then, you can use the ability of RedmonEE to start an application after the 
+job has been printed to invoke YajHFC (using execyajhfc.vbs).
+
+Currently this approach still has the problem that the temporary file will get 
+overwritten if the same user prints to the fax printer while the YajHFC send 
+dialog is still open (because the file's content will copied to the server 
+only after the user clicked on "Send").
+This is probably solvable, but requires some more work on my side.
+
+I can not promise when/if RedmonEE will be integrated into the setup, but I 
+will consider it for one of the next releases (probably only as an option, 
+not as default (except for Windows Server OSes)).
+
+Hope that helps,
+Jonas
+
+
+

@@ -1,0 +1,949 @@
+From giulioo at gmail.com  Mon Feb  1 09:49:41 2010
+From: giulioo at gmail.com (Giulio)
+Date: Mon, 01 Feb 2010 09:49:41 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: extended resolutions
+Message-ID: <20100201084941.E34E9FACB@i3.golden.dom>
+
+Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+
+Right now you can choose between:
+	Low (98 lpi)
+	High (196 lpi)
+It would be useful to add a 3rd option:
+	Normal (98 lpi)
+	Fine (196 lpi)
+	Hyperfine (392 lpi)
+or, rounding and using a more common term:
+	Normal (100 dpi)
+	Fine (200 dpi)
+	Hyperfine (400 dpi)
+
+Selecting hyperfine would cause the client to set
+	USEXVRES=yes ("sendfax -G")
+asking HylaFAX to use the maximum available resolution.
+
+This is useful when sending documents with small fonts.
+
+Right now the only way to get this is to manually set USEXVRES in the "job
+properties" dialog.
+
+Thanks.
+-- 
+giulioo at pobox.com
+
+
+From giulioo at gmail.com  Mon Feb  1 09:49:35 2010
+From: giulioo at gmail.com (Giulio)
+Date: Mon, 01 Feb 2010 09:49:35 +0100
+Subject: [Yajhfc-user] Possible bug with --windowstate=T
+Message-ID: <20100201084935.639FAFACA@i3.golden.dom>
+
+Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+
+I have
+	Minimize to tray: checked
+	Auto-size status bar:checked
+
+I then edit the cmdline of link created by the setup program (in the start
+menu) to be
+	......execyajhfc.vbs --windowstate=I
+Starting YajHFC will cause the expected behavior:
+- fax icon displayed in the middle of the screen
+- ghost of the main window on the screen
+- window immediately minimized to notification area and fax icon disappears
+from middle of the screen
+
+I then edit the cmdline of link created by the setup program (in the start
+menu) to be
+	......execyajhfc.vbs --windowstate=T
+Starting YajHFC will cause some unexpected behavior:
+- fax icon displayed in the middle of the screen
+- no window ghost
+- notification area icon displayed
+- unexpected n.1: fax icon remains displayed in the middle of the screen; it
+will go away when you click on the notification area icon.
+- unexpected n.2: when you click on the notification area icon, you discover
+that the "Auto-size status bar" is now UNchecked, so that no status bar is
+visible.
+
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From giulioo at gmail.com  Mon Feb  1 09:49:26 2010
+From: giulioo at gmail.com (Giulio)
+Date: Mon, 01 Feb 2010 09:49:26 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: "time to send"
+Message-ID: <20100201084926.9272BFAC9@i3.golden.dom>
+
+Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+
+If using "traditional" send-fax dialog you can set everything but for the
+"time to send".
+If using "simplified" you cannot set things like all of the faxcover
+entries, but you can set the "time to send".
+
+I think it's more likely an user would want to change "time to send"  than
+say "Maximum tries".
+
+So I think it would be useful to promote "time to send" to a more visible
+status, meaning it should be both in the simplified and traditional layouts,
+and in a more prominent position (always visible), placed even before
+"notify when".
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From Andreas.Ruf at architektenservice.com  Tue Feb  2 16:03:16 2010
+From: Andreas.Ruf at architektenservice.com (Andreas Ruf)
+Date: Tue, 2 Feb 2010 16:03:16 +0100 
+Subject: [Yajhfc-user] Is it possible to set priority for a job?
+Message-ID: <B4A8D1791A1B1E4A8A0D6030C26E377E021070FF@asserver1.architektenservice.com>
+
+Hi all,
+
+can not see previous post on archive of list, thus sending question once
+again. Please forgive eventually double-posting.
+
+
+In the manual of "hylafax-server" in the subsection "JOB SCHEDULING"
+following is mentioned:
+"Outbound jobs are scheduled by a single process. Jobs have a ''scheduling
+priority'' that is assigned at the time the job is submitted. This priority
+can be changed at any time the job is not actively being processed using the
+faxalter(1m) program. ..."
+
+My question: Is it possible with YajHFC to set this 'scheduling priority'?
+(Did not find anything)
+
+
+Many thanks
+A.
+
+
+
+AS Architekten-Service GmbH 
+Rostocker Str. 13 
+65191 Wiesbaden 
+Germany 
+
+Phone: +49 (611) 9 50 32 - 0 
+FAX:  +49 (611) 50 71 26 
+
+info at architektenservice.com 
+www.architektenservice.com 
+
+Handelsregister B5210 Wiesbaden 
+Geschaeftsfuehrer Evelyn Thielmann 
+
+Diese E-Mail enthaelt vertrauliche Informationen. Wenn Sie wissen oder
+erkennen koennen, dass Sie diese vertraulichen Informationen nicht erhalten
+sollten, informieren Sie uns und loeschen Sie diese E-Mail von Ihrem System
+und verwenden oder verteilen Sie bitte diese vertraulichen Informationen
+nicht weiter.
+
+This e-mail contains confidential information. If you know or if you can
+perceive that you are not intended to receive this confidential information
+please inform us and delete this e-mail from your system and please do not
+use or distribute the confidential information.
+
+
+
+From pasqualone at inwind.it  Thu Feb  4 01:39:30 2010
+From: pasqualone at inwind.it (pasqualone at inwind.it)
+Date: Thu, 4 Feb 2010 01:39:30 +0100 (CET)
+Subject: [Yajhfc-user] (no subject)
+Message-ID: <18407443.621301265243970928.JavaMail.defaultUser@defaultHost>
+
+Hello,
+
+I have installed YajHFC on various clients XP. It works great.
+Many features, very good interface and integration wth mysql, my compliments.
+But... The users would like to send multiple documents per fax also in  .doc 
+and .docx. format and
+the client, of course, shows this error: yajhfc.file.UnknownFormatException: 
+Unsupported file format:...
+Is there a possibility that .doc and .docx will be included in a next version 
+of YajHFC?
+Is there a java class to include in source code for that (sorry, i'm not a 
+Java programmer)?
+Thanks a lot for your good work, and sorry for my English..
+Pasquale
+
+
+From giulioo at gmail.com  Thu Feb  4 10:34:23 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Thu, 4 Feb 2010 10:34:23 +0100
+Subject: [Yajhfc-user] Is it possible to set priority for a job?
+In-Reply-To: <B4A8D1791A1B1E4A8A0D6030C26E377E021070FF@asserver1.architektenservice.com>
+References: <B4A8D1791A1B1E4A8A0D6030C26E377E021070FF@asserver1.architektenservice.com>
+Message-ID: <c62980611002040134p301a7215ncebe37db2a07f08c@mail.gmail.com>
+
+On Tue, Feb 2, 2010 at 16:03, Andreas Ruf
+<Andreas.Ruf at architektenservice.com> wrote:
+
+> In the manual of "hylafax-server" in the subsection "JOB SCHEDULING"
+>..
+> My question: Is it possible with YajHFC to set this 'scheduling priority'?
+
+It's a "manual" setting:
+1) Options, delivery, job properties, key=SCHEDPRI value=(see sendfax
+manpage for "-P")
+or for every fax
+2) Sendfax "simplified" send dialog, job properties, ....
+
+
+-- 
+giulioo at pobox.com
+
+
+From giulioo at gmail.com  Thu Feb  4 10:35:40 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Thu, 4 Feb 2010 10:35:40 +0100
+Subject: [Yajhfc-user] (no subject)
+In-Reply-To: <18407443.621301265243970928.JavaMail.defaultUser@defaultHost>
+References: <18407443.621301265243970928.JavaMail.defaultUser@defaultHost>
+Message-ID: <c62980611002040135h6825c7f7jf27c866a41314872@mail.gmail.com>
+
+On Thu, Feb 4, 2010 at 01:39, pasqualone at inwind.it <pasqualone at inwind.it> wrote:
+
+> But... The users would like to send multiple documents per fax also in ?.doc
+> and .docx. format and
+> the client, of course, shows this error: yajhfc.file.UnknownFormatException:
+> Unsupported file format:...
+
+Are you printing the docs through the YajHFC printer or adding them
+manually in the send dialog? If the latter, then try the former.
+
+-- 
+giulioo at pobox.com
+
+
+From Andreas.Ruf at architektenservice.com  Thu Feb  4 12:18:27 2010
+From: Andreas.Ruf at architektenservice.com (Andreas Ruf)
+Date: Thu, 4 Feb 2010 12:18:27 +0100 
+Subject: [Yajhfc-user] Is it possible to set priority for a job?
+Message-ID: <B4A8D1791A1B1E4A8A0D6030C26E377E02107188@asserver1.architektenservice.com>
+
+> Date: Thu, 4 Feb 2010 10:34:23 +0100
+> From: Giulio Orsero <giulioo at gmail.com>
+> Subject: Re: [Yajhfc-user] Is it possible to set priority for a job?
+
+> On Tue, Feb 2, 2010 at 16:03, Andreas Ruf
+> <Andreas.Ruf at architektenservice.com> wrote:
+> 
+> > In the manual of "hylafax-server" in the subsection "JOB SCHEDULING"
+> >..
+> > My question: Is it possible with YajHFC to set this 
+> 'scheduling priority'?
+> 
+> It's a "manual" setting:
+> 1) Options, delivery, job properties, key=SCHEDPRI value=(see sendfax
+> manpage for "-P")
+> or for every fax
+> 2) Sendfax "simplified" send dialog, job properties, ....
+
+Thanks, will try that!
+
+
+
+AS Architekten-Service GmbH 
+Rostocker Str. 13 
+65191 Wiesbaden 
+Germany 
+
+Phone: +49 (611) 9 50 32 - 0 
+FAX:  +49 (611) 50 71 26 
+
+info at architektenservice.com 
+www.architektenservice.com 
+
+Handelsregister B5210 Wiesbaden 
+Geschaeftsfuehrer Evelyn Thielmann 
+
+Diese E-Mail enthaelt vertrauliche Informationen. Wenn Sie wissen oder
+erkennen koennen, dass Sie diese vertraulichen Informationen nicht erhalten
+sollten, informieren Sie uns und loeschen Sie diese E-Mail von Ihrem System
+und verwenden oder verteilen Sie bitte diese vertraulichen Informationen
+nicht weiter.
+
+This e-mail contains confidential information. If you know or if you can
+perceive that you are not intended to receive this confidential information
+please inform us and delete this e-mail from your system and please do not
+use or distribute the confidential information.
+
+
+
+From giulioo at gmail.com  Thu Feb  4 12:46:05 2010
+From: giulioo at gmail.com (Giulio Orsero)
+Date: Thu, 04 Feb 2010 12:46:05 +0100
+Subject: [Yajhfc-user] Unsupported .doc and .docx format
+In-Reply-To: <11478016.632761265279686511.JavaMail.defaultUser@defaultHost>
+References: <11478016.632761265279686511.JavaMail.defaultUser@defaultHost>
+Message-ID: <20100204114605.B58EBFACA@i3.golden.dom>
+
+On Thu, 4 Feb 2010 11:34:46 +0100 (CET), "pasqualone at inwind.it"
+<pasqualone at inwind.it> wrote:
+
+>I would like to combine multiple files (i.e.: ons in PDF, one in JPG and one 
+>in .doc) in a single fax .
+>In this case the YajHFC send dialog doesn't accept .doc and .docx format. So I 
+>have to send
+>just a single fax per document using te printer whenever I have a word file.
+
+Ok, didn't pay attention to "multiple".
+
+As far as I know the send fax dialog will allow you to only use files that
+can be handled by HylaFAX directly or by YajHFC via ghostscript.
+
+If you want to use other file formats you have to go through the virtual
+printer, because that way the originating applications + Windows will
+convert the file for you.
+
+So, I think the best option is to use pdfcreator which will allow you to add
+to its virtual printer queue multiple documents in whatever format and
+combine them to produce a single PDF file which you can feed to YajHFC
+either through "send file" or printer.
+
+So user would have to do:
+- open doc n.1, print to pdfcreator, choose "wait - collect"
+- open doc n.2, print to pdfcreator ...
+- ....
+- in pdfcreator select "combine all", "print"
+- you get 1 PDF file which you send via fax.
+-- 
+giulioo at pobox.com
+
+
+From ath.mailman at muffti.de  Thu Feb  4 19:17:05 2010
+From: ath.mailman at muffti.de (Achim Theobald)
+Date: Thu, 04 Feb 2010 19:17:05 +0100
+Subject: [Yajhfc-user] Feature request: Select modem on comand line
+Message-ID: <4B6B0F21.6080102@muffti.de>
+
+Hi,
+
+I have a small feature request. I use on our server a AVM C4 controller
+with 4 ISDN-Lines. So we have 8 different modems to send and receive in
+hylafax. Is it possible to set on the command line a specific modem to
+send (--modem=faxCAPI11 or so)?
+At this moment i must work with different config files and the
+"defaultmodem" keyword.
+
+
+Cu
+
+Achim
+
+
+
+
+
+
+From jonas.wolz at freenet.de  Sun Feb  7 09:53:53 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Feb 2010 09:53:53 +0100
+Subject: [Yajhfc-user] Possible bug with --windowstate=T
+In-Reply-To: <20100201084935.639FAFACA@i3.golden.dom>
+References: <20100201084935.639FAFACA@i3.golden.dom>
+Message-ID: <201002070953.54289.jonas.wolz@freenet.de>
+
+Am Montag, 1. Februar 2010 schrieb Giulio:
+> I then edit the cmdline of link created by the setup program (in the start
+> menu) to be
+> 	......execyajhfc.vbs --windowstate=T
+> Starting YajHFC will cause some unexpected behavior:
+> - fax icon displayed in the middle of the screen
+> - no window ghost
+> - notification area icon displayed
+> - unexpected n.1: fax icon remains displayed in the middle of the screen;
+> it will go away when you click on the notification area icon.
+
+OK, I can reproduce this here. This problem will be fixed in the next release.
+
+> - unexpected n.2: when you click on the notification area icon, you
+> discover that the "Auto-size status bar" is now UNchecked, so that no
+> status bar is visible.
+
+"Auto-size status bar" is still checked, however. It might have to do with the 
+problem above, however. 
+So, once it is fixed in the developer version I would like to contact you 
+again to test if this problem is fixed for you, too.
+
+
+Thanks for the bug report,
+Jonas
+
+
+
+From jonas.wolz at freenet.de  Sun Feb  7 10:03:34 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Feb 2010 10:03:34 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: "time to send"
+In-Reply-To: <20100201084926.9272BFAC9@i3.golden.dom>
+References: <20100201084926.9272BFAC9@i3.golden.dom>
+Message-ID: <201002071003.35158.jonas.wolz@freenet.de>
+
+Am Montag, 1. Februar 2010 schrieb Giulio:
+> Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+>
+> If using "traditional" send-fax dialog you can set everything but for the
+> "time to send".
+> If using "simplified" you cannot set things like all of the faxcover
+> entries, but you can set the "time to send".
+
+Well, actually you can set more things in the "simplified" one (since it is 
+the newer dialog). The place is different, however (for example the faxcover 
+entries are set in the table with the recipients).
+
+> I think it's more likely an user would want to change "time to send"  than
+> say "Maximum tries".
+>
+> So I think it would be useful to promote "time to send" to a more visible
+> status, meaning it should be both in the simplified and traditional
+> layouts, and in a more prominent position (always visible), placed even
+> before "notify when".
+
+I will think about this, but most probably I will not make it always visible 
+(other users might almost never use the "time to send" setting...).
+
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sun Feb  7 10:08:56 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Feb 2010 10:08:56 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: extended
+	resolutions
+In-Reply-To: <20100201084941.E34E9FACB@i3.golden.dom>
+References: <20100201084941.E34E9FACB@i3.golden.dom>
+Message-ID: <201002071008.56436.jonas.wolz@freenet.de>
+
+Am Montag, 1. Februar 2010 schrieb Giulio:
+> Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+>
+> Right now you can choose between:
+> 	Low (98 lpi)
+> 	High (196 lpi)
+> It would be useful to add a 3rd option:
+> 	Normal (98 lpi)
+> 	Fine (196 lpi)
+> 	Hyperfine (392 lpi)
+> or, rounding and using a more common term:
+> 	Normal (100 dpi)
+> 	Fine (200 dpi)
+> 	Hyperfine (400 dpi)
+>
+> Selecting hyperfine would cause the client to set
+> 	USEXVRES=yes ("sendfax -G")
+> asking HylaFAX to use the maximum available resolution.
+>
+> This is useful when sending documents with small fonts.
+
+I see this is probably a good idea (until now I did not even realize that 
+HylaFAX supports finer resolutions than 196 lpi).
+
+Just one question: 
+Does USEXVRES=yes really mean "392 lpi" or just "use whatever the maximum is"?
+(The HylaFAX documentation is a bit unclear about that...)
+
+Jonas.
+
+
+From jonas.wolz at freenet.de  Sun Feb  7 10:46:27 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Feb 2010 10:46:27 +0100
+Subject: [Yajhfc-user] Unsupported .doc and .docx format
+In-Reply-To: <20100204114605.B58EBFACA@i3.golden.dom>
+References: <11478016.632761265279686511.JavaMail.defaultUser@defaultHost>
+	<20100204114605.B58EBFACA@i3.golden.dom>
+Message-ID: <201002071046.27842.jonas.wolz@freenet.de>
+
+Am Donnerstag, 4. Februar 2010 schrieb Giulio Orsero:
+> On Thu, 4 Feb 2010 11:34:46 +0100 (CET), "pasqualone at inwind.it"
+>
+> <pasqualone at inwind.it> wrote:
+> >I would like to combine multiple files (i.e.: ons in PDF, one in JPG and
+> > one in .doc) in a single fax .
+> >In this case the YajHFC send dialog doesn't accept .doc and .docx format.
+> > So I have to send
+> >just a single fax per document using te printer whenever I have a word
+> > file.
+>
+> Ok, didn't pay attention to "multiple".
+>
+> As far as I know the send fax dialog will allow you to only use files that
+> can be handled by HylaFAX directly or by YajHFC via ghostscript.
+
+This is correct. 
+Direct support for .doc/.docx probably will never come since it is a 
+proprietary, very complex format from Microsoft, which basically only Word 
+itself (and partly OpenOffice) can read correctly. 
+
+> If you want to use other file formats you have to go through the virtual
+> printer, because that way the originating applications + Windows will
+> convert the file for you.
+>
+> So, I think the best option is to use pdfcreator which will allow you to
+> add to its virtual printer queue multiple documents in whatever format and
+> combine them to produce a single PDF file which you can feed to YajHFC
+> either through "send file" or printer.
+>
+> So user would have to do:
+> - open doc n.1, print to pdfcreator, choose "wait - collect"
+> - open doc n.2, print to pdfcreator ...
+> - ....
+> - in pdfcreator select "combine all", "print"
+> - you get 1 PDF file which you send via fax.
+
+This is one possible way to do it.
+
+There is another, unfortunately undocumented way to do it, too:
+
+Start the registry editor and change the value 
+HKEY_LOCAL_MACHINE\SOFTWARE\YajHFC\printlaunchyajhfcparams 
+from "--stdin --background" to "--stdin --background --no-wait".
+
+After this change, the virtual print job will not wait for the send dialog to 
+be closed before it is completed.
+So you can print the first document, print the second one, ... and all of them 
+will be "collected" in the send dialog that opens after the first one has 
+been printed (as long as you keep the dialog open, of course).
+If all documents to send have been printed, you can simply use the send dialog 
+as normal and send a fax incorporating all of the documents.
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Sun Feb  7 10:49:45 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 7 Feb 2010 10:49:45 +0100
+Subject: [Yajhfc-user] Feature request: Select modem on comand line
+In-Reply-To: <4B6B0F21.6080102@muffti.de>
+References: <4B6B0F21.6080102@muffti.de>
+Message-ID: <201002071049.45745.jonas.wolz@freenet.de>
+
+Am Donnerstag, 4. Februar 2010 schrieb Achim Theobald:
+> I have a small feature request. I use on our server a AVM C4 controller
+> with 4 ISDN-Lines. So we have 8 different modems to send and receive in
+> hylafax. Is it possible to set on the command line a specific modem to
+> send (--modem=faxCAPI11 or so)?
+> At this moment i must work with different config files and the
+> "defaultmodem" keyword.
+
+Currently this is not possible, but I will consider to add this feature to one 
+of the next releases.
+
+
+Jonas.
+
+
+From giuseppe at eppesuigoccas.homedns.org  Sun Feb  7 14:28:37 2010
+From: giuseppe at eppesuigoccas.homedns.org (Giuseppe Sacco)
+Date: Sun, 07 Feb 2010 14:28:37 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: extended
+ resolutions
+In-Reply-To: <201002071008.56436.jonas.wolz@freenet.de>
+References: <20100201084941.E34E9FACB@i3.golden.dom>
+	<201002071008.56436.jonas.wolz@freenet.de>
+Message-ID: <1265549317.8611.9.camel@scarafaggio>
+
+Il giorno dom, 07/02/2010 alle 10.08 +0100, Jonas Wolz ha scritto:
+[...]
+> Just one question: 
+> Does USEXVRES=yes really mean "392 lpi" or just "use whatever the maximum is"?
+> (The HylaFAX documentation is a bit unclear about that...)
+
+This is using the best resolution that both sender and receiver can
+handle. For example, an MT5656ZDX modemfax can handle these:
+
+FaxGetty[2724]: MODEM Supports 3.85 line/mm
+FaxGetty[2724]: MODEM Supports 7.7 line/mm
+FaxGetty[2724]: MODEM Supports 15.4 line/mm
+FaxGetty[2724]: MODEM Supports R16 x 15.4 line/mm
+FaxGetty[2724]: MODEM Supports 200 x 100 dpi
+FaxGetty[2724]: MODEM Supports 200 x 200 dpi
+FaxGetty[2724]: MODEM Supports 200 x 400 dpi
+FaxGetty[2724]: MODEM Supports 300 x 300 dpi
+
+Bye,
+Giuseppe
+
+
+
+From giulioo at gmail.com  Sun Feb  7 18:30:18 2010
+From: giulioo at gmail.com (Giulio)
+Date: Sun, 07 Feb 2010 18:30:18 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: "time to send"
+In-Reply-To: <201002071003.35158.jonas.wolz@freenet.de>
+References: <20100201084926.9272BFAC9@i3.golden.dom>
+	<201002071003.35158.jonas.wolz@freenet.de>
+Message-ID: <20100207173018.C6CA4FAC9@i3.golden.dom>
+
+On Sun, 7 Feb 2010 10:03:34 +0100, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+>Am Montag, 1. Februar 2010 schrieb Giulio:
+>> Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+>>
+>> If using "traditional" send-fax dialog you can set everything but for the
+>> "time to send".
+>> If using "simplified" you cannot set things like all of the faxcover
+>> entries, but you can set the "time to send".
+>
+>Well, actually you can set more things in the "simplified" one (since it is 
+>the newer dialog). The place is different, however (for example the faxcover 
+>entries are set in the table with the recipients).
+
+I don't use the phone book, just copy/paste the faxno, so I didn't notice
+that I could input the cover data (name/last name/company) in that table, I
+thought it was just used when getting data from the phone book
+
+So my original request is moot and can be discarded.
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From giulioo at gmail.com  Sun Feb  7 18:34:16 2010
+From: giulioo at gmail.com (Giulio)
+Date: Sun, 07 Feb 2010 18:34:16 +0100
+Subject: [Yajhfc-user] Feature request: send fax dialog: extended
+	resolutions
+In-Reply-To: <201002071008.56436.jonas.wolz@freenet.de>
+References: <20100201084941.E34E9FACB@i3.golden.dom>
+	<201002071008.56436.jonas.wolz@freenet.de>
+Message-ID: <20100207173416.5BE01FACA@i3.golden.dom>
+
+On Sun, 7 Feb 2010 10:08:56 +0100, Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+>I see this is probably a good idea (until now I did not even realize that 
+>HylaFAX supports finer resolutions than 196 lpi).
+>
+>Just one question: 
+>Does USEXVRES=yes really mean "392 lpi" or just "use whatever the maximum is"?
+>(The HylaFAX documentation is a bit unclear about that...)
+
+It's like asking for 196 lpi, you tell HylaFAX to use up to X, if the remote
+supports something less it will use less.
+
+-- 
+giulioo at pobox.com
+
+
+From court at progressit.com.au  Tue Feb  9 06:59:51 2010
+From: court at progressit.com.au (Courtenay Greig)
+Date: Tue, 09 Feb 2010 13:59:51 +0800
+Subject: [Yajhfc-user] (no subject)
+Message-ID: <20100209055951.8ebb6c12@pitxsrv1.progressit.com.au>
+
+Hi All,
+
+I have just installed YAJHFC 0.4.2a (RedmonEE) on 10 of out Windows 2003 Citrix servers. All works well...however when i try and link the address book to our Microsoft SQL Server, on 3 servers it works perfectly, however on the other 7 servers (which are identical) when you click OK after adding all the connection info, javaw.exe takes 60% of the CPU and just hangs for over 30mins....i killed it at this point. All JDBC drivers/Java versions etc are identical.
+
+Has anybody else had this problem?
+
+Thanks
+Court
+
+
+From giulioo at gmail.com  Tue Feb  9 21:16:59 2010
+From: giulioo at gmail.com (Giulio)
+Date: Tue, 09 Feb 2010 21:16:59 +0100
+Subject: [Yajhfc-user] Italian translations update
+Message-ID: <20100209201659.554DEFAC9@i3.golden.dom>
+
+I'm attaching a zip file containing:
+
+new files:
+	README_it.txt
+	faq_it.tex
+
+updated files:
+	CommandLineOpts_it.po
+	messages_it.po
+
+All files are utf-8 w/o BOM.
+
+I tried to keep them in sync, meaning using the exact same translation in
+all of them.
+
+I didn't find a way to update the docs just by adding a .mo file, so if you
+speak Italian, please test the translation by downloading the UNOFFICIAL jar
+file of 0.4.2a recompiled with the updated Italian stuff:
+http://rapidshare.de/files/49125607/yajhfc.jar.html
+(look into "aiuto -> documentazione" too).
+ 
+
+Note about updates to existing .po files:
+
+1) I intentionally changed all the direct forms like "please, do this", "you
+can ..." (program speaking to you directly) into "it's necessary to do this"
+"It's possible..." (impersonal), because this is how usually programs "talk"
+to the user in Italian.
+I left the "direct" form in the faq, since the faq is usually informal.
+
+2) I intentionally used more "relaxed" translations for all the JobFmt,
+RcvFmt... parameters. I see in the English translation they are taken as is
+from the faxstat man page, the problem is the faxstat man page is very terse
+and often confusing, a direct translation into Italian would be even more
+so.
+I also restructured all these items to use the main word at the beginning,
+when possible, so that they get display together in the option dialog, ie:
+	consecutive failed dials
+	total dials
+into
+	dials failed consecutively
+	dials total    (the Italian equivalent sounds more OK...)
+
+3) "fax" and "fax job" 
+In the English translation sometimes "fax" is used, sometimes "fax job".
+It seems "fax job" is used for queued (not completed) faxes, and "fax" for
+completed ones, but not always.
+Also, since HylaFAX supports "page", it could be said that "fax job" is used
+to distinguish the various kind of jobs HylaFAX supports.
+However, HylaFAX is used 99,99% of the times to send fax, and in Italian the
+word "job" cannot be translated in a meaningful and natural way in this
+context; so I translated both "fax" and "fax job" with "fax".
+When "job" is used like "blah blah fax: job 123" I used "blah blah fax: ID
+123".
+
+4) I really don't know how to correctly translate "descriptor" in the phone
+book windows. I understand what it means, but I don't know if there is a
+conventional/common use Italian expression to indicate that thing.
+-- 
+giulioo at pobox.com
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: italian.zip
+Type: application/x-zip-compressed
+Size: 37818 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20100209/fbb1f6d1/attachment.bin>
+
+From giulioo at gmail.com  Fri Feb 12 09:58:23 2010
+From: giulioo at gmail.com (Giulio)
+Date: Fri, 12 Feb 2010 09:58:23 +0100
+Subject: [Yajhfc-user] Feature request: make info about received faxes
+	optional
+Message-ID: <20100212085823.AEB9CF990@i3.golden.dom>
+
+Windows XP SP3, Java 6 upd18, YajHFC 0.4.2a
+
+Right now you get the following info in the Windows notification area about
+received faxes:
+1) When a fax is received a message pops-up saying you received a fax, it
+stays there for a few seconds (it seems the timer starts after you move
+either the mouse or the keyboard, so that if you are away you still get to
+see it)
+2) When you hover the mouse over the icon in the notification area you get
+"user at host - XX unread faxes".
+ 
+This behavior is optimal if you are the only user, or if there are a few
+users.
+
+However, in a situation like in a small company, where there are 10/20
+users, it may happen that just one of them performs the task of "received
+fax monitor": ie, he/she will check for received faxes, see which person a
+fax should be forwarded to, forward it (by mail or other means) so that that
+user is from now on responsible for that fax, etc.
+In this case, it would be ideal that just that user (the "fax monitor") gets
+the notifications, because for the others these can be distracting.
+
+So there could be a new setting in Options->General
+	"Get info in the notification area about received faxes"
+	default: checked. (current behavior)
+If unchecked it would disable the the notification #1, and the "XX unread
+faxes" part of #2.
+
+Or maybe handle these 2 events like the "flash icon", so that "flash icon"
+becomes "give info in the notification area" and if checked we'd get
+flash+notification_area_message+hover_message. But this would be a change in
+behavior.
+
+Thanks
+-- 
+giulioo at pobox.com
+
+
+From jonas.wolz at freenet.de  Sat Feb 13 19:03:11 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 13 Feb 2010 19:03:11 +0100
+Subject: [Yajhfc-user] (no subject)
+In-Reply-To: <20100209055951.8ebb6c12@pitxsrv1.progressit.com.au>
+References: <20100209055951.8ebb6c12@pitxsrv1.progressit.com.au>
+Message-ID: <201002131903.11883.jonas.wolz@freenet.de>
+
+Am Dienstag, 9. Februar 2010 schrieb Courtenay Greig:
+> I have just installed YAJHFC 0.4.2a (RedmonEE) on 10 of out Windows 2003
+> Citrix servers. All works well...however when i try and link the address
+> book to our Microsoft SQL Server, on 3 servers it works perfectly, however
+> on the other 7 servers (which are identical) when you click OK after adding
+> all the connection info, javaw.exe takes 60% of the CPU and just hangs for
+> over 30mins....i killed it at this point. All JDBC drivers/Java versions
+> etc are identical.
+
+You could try one thing:
+Use the ODBC<->JDBC bridge together with an ODBC driver for SQL server 
+(generally, it is almost always preferable to use a native JDBC driver, 
+though).
+
+According to Sun's documentation the driver class is 
+sun.jdbc.odbc.JdbcOdbcDriver.
+
+Data base URLs look like this:
+    jdbc:odbc:<data-source-name>[;<attribute-name>=<attribute-value>]*
+For example:
+    jdbc:odbc:sybase
+    jdbc:odbc:mydb;UID=me;PWD=secret
+    jdbc:odbc:ora123;Cachesize=300
+
+
+
+For further debugging, you could also start YajHFC in debug mode and look at 
+the last few lines in the log to see where it hangs (I do not want to exclude 
+the possibility that the reason for the problem is a bug in my client 
+triggered by some weird behaviour of the JDBC driver...).
+
+
+Hope that helps
+Jonas
+
+
+From jonas.wolz at freenet.de  Sat Feb 13 19:50:32 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 13 Feb 2010 19:50:32 +0100
+Subject: [Yajhfc-user] Italian translations update
+In-Reply-To: <20100209201659.554DEFAC9@i3.golden.dom>
+References: <20100209201659.554DEFAC9@i3.golden.dom>
+Message-ID: <201002131950.32756.jonas.wolz@freenet.de>
+
+Am Dienstag, 9. Februar 2010 schrieb Giulio:
+> I tried to keep them in sync, meaning using the exact same translation in
+> all of them.
+>
+> I didn't find a way to update the docs just by adding a .mo file, so if you
+> speak Italian, please test the translation by downloading the UNOFFICIAL
+> jar file of 0.4.2a recompiled with the updated Italian stuff:
+> http://rapidshare.de/files/49125607/yajhfc.jar.html
+> (look into "aiuto -> documentazione" too).
+
+Thank you very much for your work! 
+I will try to make an updated developer version of YajHFC and a "compiled" 
+version of the FAQ available tomorrow.
+
+(You are right that there is no way to update the messages just by adding 
+a .mo file since I use gettext's feature to directly compile .po files into 
+Java classes (so I do not need to include extra gettext libs)).
+
+> 1) I intentionally changed all the direct forms like "please, do this",
+> "you can ..." (program speaking to you directly) into "it's necessary to do
+> this" "It's possible..." (impersonal), because this is how usually programs
+> "talk" to the user in Italian.
+> I left the "direct" form in the faq, since the faq is usually informal.
+
+OK, since I do not speak Italian I cannot judge which version is better.
+
+> 2) I intentionally used more "relaxed" translations for all the JobFmt,
+> RcvFmt... parameters. I see in the English translation they are taken as is
+> from the faxstat man page, the problem is the faxstat man page is very
+> terse and often confusing, a direct translation into Italian would be even
+> more so.
+> I also restructured all these items to use the main word at the beginning,
+> when possible, so that they get display together in the option dialog, ie:
+> ????????consecutive failed dials
+> ????????total dials
+> into
+> ????????dials failed consecutively
+> ????????dials total ? ?(the Italian equivalent sounds more OK...)
+
+This probably should also have been done in the English translation (which 
+will not be changed in the near future, however). So your translation is most 
+likely better than the "original" here...
+
+
+> 3) "fax" and "fax job"
+> In the English translation sometimes "fax" is used, sometimes "fax job".
+> It seems "fax job" is used for queued (not completed) faxes, and "fax" for
+> completed ones, but not always.
+> Also, since HylaFAX supports "page", it could be said that "fax job" is
+> used to distinguish the various kind of jobs HylaFAX supports.
+> However, HylaFAX is used 99,99% of the times to send fax, and in Italian
+> the word "job" cannot be translated in a meaningful and natural way in this
+> context; so I translated both "fax" and "fax job" with "fax".
+> When "job" is used like "blah blah fax: job 123" I used "blah blah fax: ID
+> 123".
+
+Well, most likely "fax" and "fax job" are simply used inconsistencely 
+throughout the program (since it grew over several years and I did not really 
+have a formal distinction between "fax" and "fax job" in mind while writing 
+it...).
+
+> 4) I really don't know how to correctly translate "descriptor" in the phone
+> book windows. I understand what it means, but I don't know if there is a
+> conventional/common use Italian expression to indicate that thing.
+
+Probably "descriptor" is not the most user friendly English term for it 
+either... (in the German translation I also kept it virtually untranslated 
+("Deskriptor")).
+
+
+Thanks again for your efforts
+Jonas
+
+
+From jonas.wolz at freenet.de  Sat Feb 13 19:52:45 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 13 Feb 2010 19:52:45 +0100
+Subject: [Yajhfc-user] Feature request: make info about received faxes
+	optional
+In-Reply-To: <20100212085823.AEB9CF990@i3.golden.dom>
+References: <20100212085823.AEB9CF990@i3.golden.dom>
+Message-ID: <201002131952.45221.jonas.wolz@freenet.de>
+
+Am Freitag, 12. Februar 2010 schrieb Giulio:
+> So there could be a new setting in Options->General
+> 	"Get info in the notification area about received faxes"
+> 	default: checked. (current behavior)
+> If unchecked it would disable the the notification #1, and the "XX unread
+> faxes" part of #2.
+
+I will put this feature request on the "wish list". Since it is probably not 
+too hard implement, chances are good it will be available in one of the next 
+releases.
+
+Jonas.
+
+
+
+From jonas.wolz at freenet.de  Sun Feb 14 09:56:38 2010
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 14 Feb 2010 09:56:38 +0100
+Subject: [Yajhfc-user] Italian translations update
+In-Reply-To: <201002131950.32756.jonas.wolz@freenet.de>
+References: <20100209201659.554DEFAC9@i3.golden.dom>
+	<201002131950.32756.jonas.wolz@freenet.de>
+Message-ID: <201002140956.38615.jonas.wolz@freenet.de>
+
+Am Samstag, 13. Februar 2010 schrieb Jonas Wolz:
+> I will try to make an updated developer version of YajHFC and a "compiled"
+> version of the FAQ available tomorrow.
+
+The current developer version of YajHFC now contains the updated translation:
+ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar
+
+README and FAQ can be found on the homepage:
+http://yajhfc.berlios.de/doc/README_it.txt
+http://yajhfc.berlios.de/doc/faq_it.html
+http://yajhfc.berlios.de/doc/faq_it.pdf
+
+
+Jonas.
+
+

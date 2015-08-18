@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Any problems with Windows 7 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Any%20problems%20with%20Windows%207%20%3F&In-Reply-To=%3CAANLkTimFhYONXwyl4TbCKS8Wa-sF8HjAu3TUoN2CXZDC%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000362.html">
+   <LINK REL="Next"  HREF="000364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Any problems with Windows 7 ?</H1>
+    <B>David Vrona</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Any%20problems%20with%20Windows%207%20%3F&In-Reply-To=%3CAANLkTimFhYONXwyl4TbCKS8Wa-sF8HjAu3TUoN2CXZDC%40mail.gmail.com%3E"
+       TITLE="[Yajhfc-user] Any problems with Windows 7 ?">dave at vrona.com
+       </A><BR>
+    <I>Tue May 18 01:02:48 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000362.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+        <LI>Next message: <A HREF="000364.html">[Yajhfc-user] Resend Fax Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Apologies to all.
+
+It is my iptables firewall on the Hylafax server.
+
+This is a very good post that helped me out:
+<A HREF="http://www.hylafax.org/archive/2004-11/msg00387.php">http://www.hylafax.org/archive/2004-11/msg00387.php</A>
+
+
+
+On Mon, May 17, 2010 at 3:21 AM, Jonas Wolz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas.wolz at freenet.de</A>&gt; wrote:
+&gt;<i> Am Sonntag, 16. Mai 2010 schrieb David Vrona:
+</I>&gt;&gt;<i> Log file below.
+</I>&gt;<i>
+</I>&gt;&gt;<i> May 16, 2010 4:23:33 PM gnu.inet.ftp.FtpClientProtocol pasv
+</I>&gt;&gt;<i> FINE: 227 Entering passive mode (172,28,1,36,141,89)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> May 16, 2010 4:23:54 PM yajhfc.MainWin$StatusRefresher run
+</I>&gt;&gt;<i> WARNING: Error refreshing the status, logging out.
+</I>&gt;&gt;<i> java.net.ConnectException: Connection timed out: connect
+</I>&gt;<i>
+</I>&gt;<i> This looks like a firewall problem to me. The control connection to the server
+</I>&gt;<i> is established and working, but the data connection is blocked.
+</I>&gt;<i>
+</I>&gt;<i> Currently I am thinking of 2 possible sources:
+</I>&gt;<i>
+</I>&gt;<i> 1. The HylaFAX protocol is based on FTP. Like FTP it opens separate data
+</I>&gt;<i> connections, which is problematic for most firewalls.
+</I>&gt;<i>
+</I>&gt;<i> 2. When you have installed a personal firewall (or use the Windows firewall),
+</I>&gt;<i> you may have accidentally blocked YajHFC since it will show up as &quot;java.exe&quot;
+</I>&gt;<i> or &quot;javaw.exe&quot;.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> To check out the first problem, you can use the command line FTP client to see
+</I>&gt;<i> if listing directories on the server works.
+</I>&gt;<i> For example (transcript is from Linux, but it should very similarly work like
+</I>&gt;<i> that on Windows, too):
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas at pc1</A>:~$ ftp hylafax-test 4559
+</I>&gt;<i> Connected to hylafax-test.
+</I>&gt;<i> 220 hylafax-test server (HylaFAX (tm) Version 4.3.1) ready.
+</I>&gt;<i> Name (hylafax-test:jonas): fax
+</I>&gt;<i> 331 Password required for fax.
+</I>&gt;<i> Password:
+</I>&gt;<i> 230 User fax logged in.
+</I>&gt;<i> Remote system type is UNIX.
+</I>&gt;<i> Using binary mode to transfer files.
+</I>&gt;<i> ftp&gt; passive
+</I>&gt;<i> Passive mode on.
+</I>&gt;<i> ftp&gt; ls
+</I>&gt;<i> 227 Entering passive mode (192,168,23,2,211,252)
+</I>&gt;<i> 150 Opening new data connection for &quot;.&quot;.
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; &#160;0 &#160; &#160; 4096 Sep &#160;7 09:56 bin
+</I>&gt;<i> drwxrwx &#160;76 &#160; &#160; &#160; 10 &#160; &#160; 4096 Mar 13 17:19 archive
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Jan &#160;7 08:33 pollq
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Apr 17 14:19 recvq
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Mar 13 17:19 status
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Apr 19 16:33 info
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Apr 24 16:45 sendq
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160;53248 Apr 24 16:45 doneq
+</I>&gt;<i> drwxr-x &#160; 3 &#160; &#160; &#160; &#160;0 &#160; &#160; 4096 Nov &#160;7 13:31 etc
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 May 17 07:15 client
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Sep &#160;7 09:56 dev
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Apr 24 16:45 docq
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160;12288 Apr 19 16:33 log
+</I>&gt;<i> drwxrwx &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Apr 19 16:35 tmp
+</I>&gt;<i> drwxr-x &#160; 2 &#160; &#160; &#160; 10 &#160; &#160; 4096 Sep &#160;7 09:55 config
+</I>&gt;<i> 226 Transfer complete.
+</I>&gt;<i> ftp&gt; cd status
+</I>&gt;<i> 250 CWD command successful.
+</I>&gt;<i> ftp&gt; ls
+</I>&gt;<i> 227 Entering passive mode (192,168,23,2,161,223)
+</I>&gt;<i> 150 Opening new data connection for &quot;.&quot;.
+</I>&gt;<i> HylaFAX scheduler on hylafax-test: Running
+</I>&gt;<i> Modem ttyIAX1 (+49.9876.54321-202): Running and idle
+</I>&gt;<i> Modem ttyIAX0 (+49.9876.54321-201): Running and idle
+</I>&gt;<i> 226 Transfer complete.
+</I>&gt;<i> ftp&gt; bye
+</I>&gt;<i> 221 Goodbye.
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">jonas at pc1</A>:~$
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> If you have checked both possible sources of problems (especially if it works
+</I>&gt;<i> with the command line ftp) and it still does not work, please write me
+</I>&gt;<i> another mail.
+</I>&gt;<i>
+</I>&gt;<i> Hope that helps
+</I>&gt;<i> Jonas
+</I>&gt;<i>
+</I>
+
+
+-- 
+thanks,
+Dave
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000362.html">[Yajhfc-user] Any problems with Windows 7 ?
+</A></li>
+	<LI>Next message: <A HREF="000364.html">[Yajhfc-user] Resend Fax Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

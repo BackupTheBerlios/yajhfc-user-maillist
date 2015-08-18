@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] reading fax-list from another server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20reading%20fax-list%20from%20another%20server&In-Reply-To=%3C20100126224830.GK5955%40syscon4.inet%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000264.html">
+   <LINK REL="Next"  HREF="000266.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] reading fax-list from another server</H1>
+    <B>Joseph</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20reading%20fax-list%20from%20another%20server&In-Reply-To=%3C20100126224830.GK5955%40syscon4.inet%3E"
+       TITLE="[Yajhfc-user] reading fax-list from another server">syscon780 at gmail.com
+       </A><BR>
+    <I>Tue Jan 26 23:48:30 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000264.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+        <LI>Next message: <A HREF="000266.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#265">[ date ]</a>
+              <a href="thread.html#265">[ thread ]</a>
+              <a href="subject.html#265">[ subject ]</a>
+              <a href="author.html#265">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 01/26/10 16:48, Sorin Toma wrote:
+&gt;<i>On 01/26/2010 03:13 PM, Joseph wrote:
+</I>&gt;&gt;<i> YajHFC is reading faxes on my local network just fine.
+</I>&gt;&gt;<i> But I'm puzzle why isn't retrieving fax list from another local Hylafax-server.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Here is the scenario:
+</I>&gt;&gt;<i> IP 10.0.0.109 is running Hylafax-server - YajHFC works OK
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> local sub-network: 192.168.1.2 is running Hylafax-server - YajHFC works OK
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I can read fax-list with YajHFC in box 192.168.1.2 from server: 10.0.0.109
+</I>&gt;&gt;<i> but I can not read faxes from  10.0.0.109 that have been stored on 192.168.1.2
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> server: 192.168.1.2 has firewall OFF and port forwarding from 4559 to 4559 on 192.168.1.2 is enabled.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>let me get this straight: you have a client in the 192.168.1.0/24
+</I>&gt;<i>network. this client can access a server at 192.168.1.2 but not a server
+</I>&gt;<i>at 10.0.0.109, right? sounds like a basic routing problem to me
+</I>&gt;<i>
+</I>&gt;<i>--
+</I>&gt;<i>Best Regards,
+</I>&gt;<i>Sorin Toma
+</I>
+Yes, it would seem so but I can not figure it out.
+Gateway 10.0.0.1
+Hylafax server 1) - 10.0.0.109
+
+a) subnetwork 2) eth0 IP - 10.0.0.151
+                  eth1 IP (lan) - 192.168.1.1
+In internal subnet 2 router I'm forwarding 4559 from 10.0.0.151 to 4559 192.168.1.2
+(192.168.1.2) another hylafax server.
+
+Firewall between internal network is disabled, nmap is showing open port 4559 on  10.0.0.151
+In YajHFC --&gt; server (tab) I entered IP:  10.0.0.151 but it can not connect.
+
+ssh, VPN between these two networks work OK except hylafax.  As I've mentioned I can access Hylafax 10.0.0.109 from 192.168.1.2 but not other way around.
+So I'm puzzled. 
+
+-- 
+Joseph
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000264.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+	<LI>Next message: <A HREF="000266.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#265">[ date ]</a>
+              <a href="thread.html#265">[ thread ]</a>
+              <a href="subject.html#265">[ subject ]</a>
+              <a href="author.html#265">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

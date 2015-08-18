@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Feature Request - Client-Side solution
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20Request%20-%20Client-Side%20solution&In-Reply-To=%3C4A842EDC.4080303%40lauserco.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000213.html">
+   <LINK REL="Next"  HREF="000215.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Feature Request - Client-Side solution</H1>
+    <B>Sorin Toma</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Feature%20Request%20-%20Client-Side%20solution&In-Reply-To=%3C4A842EDC.4080303%40lauserco.com%3E"
+       TITLE="[Yajhfc-user] Feature Request - Client-Side solution">sorin at lauserco.com
+       </A><BR>
+    <I>Thu Aug 13 17:18:52 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000213.html">[Yajhfc-user] Feature Request - Server-Side solution
+</A></li>
+        <LI>Next message: <A HREF="000215.html">[Yajhfc-user] &quot;Disconnected&quot; state
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>For the Client-Side script to work, we have to replace in the YAJHFC 
+printer port settings the &quot;redirect this port to program&quot;: C:\Program 
+Files\yajhfc\redmon\redrun.exe and &quot;the arguments for the program&quot; has 
+to be the following script (C:\Progra~1\Yajhfc\watermark.bat):
+
+###################CUT HERE###################
+@echo off
+set SCRIPT=watermark
+set VERSION=1
+::<i> ------------------------------------------------------------------
+</I>::<i>  based on a script by Thomas Koch - <A HREF="http://www.thomaskoch.it">http://www.thomaskoch.it</A>
+</I>::<i> to use: create new printer with reddir port RPT1:
+</I>::<i> configure port redirect to C:\Program Files\Yajhfc\redmon\redrun.exe
+</I>::<i> port arguments C:\Progra~1\Yajhfc\watermark.bat  %%1
+</I>::<i>
+</I>::<i> ------------------------------------------------------------------
+</I>::<i> Ghostscript configuraton
+</I>set GS_INSTALL=C:\Progra~1\Yajhfc\gs
+set GS_VERSION=8.63
+::<i> LibTIFF configuraton
+</I>set LIBTIFF_INSTALL=C:\Progra~1\Yajhfc\GnuWin32
+::<i> PDF viewer configuraton (no need to set, if PDF is a registered file 
+</I>type)
+set PDF_READER=
+::<i> Watermark background config
+</I>set BACKGROUND=C:\Progra~1\Yajhfc\WATERMARK.PDF
+::<i> PDFTK location
+</I>set PDFTK=C:\Progra~1\Yajhfc
+::<i> ------------------------------------------------------------------
+</I>::<i> temporary PDF directory
+</I>set PDF_DIR=%TEMP%\1
+::<i> delete old temporary PDF directories if required
+</I>for /d %%D in (&quot;%TEMP%\1\&quot;) do if not &quot;%%D&quot;==&quot;%TEMP%\1\&quot; rd /s /q &quot;%%D&quot;
+::<i> create if required
+</I>if not exist &quot;%PDF_DIR%&quot; md &quot;%PDF_DIR%&quot;
+::<i> check if file is given
+</I>if not &quot;%~1&quot; == &quot;&quot; goto CHECK_FOUND
+echo ERROR: No file name given!
+goto END
+::<i>----------
+</I>:<i>CHECK_FOUND
+</I>::<i> check for file existance
+</I>echo Input file is %*
+copy %* %PDF_DIR%
+if exist &quot;%*&quot; goto SET_FNE
+echo ERROR: File &quot;%*&quot; not found!
+goto END
+::<i>------
+</I>:<i>SET_FNE
+</I>::<i> set input file, name and extension
+</I>call :set_input_file_name_ext &quot;%*&quot;
+::<i> check file type
+</I>if &quot;%INPUT_EXT%&quot; == &quot;&quot; set INPUT_NAME=%~n1.ps
+if &quot;%INPUT_EXT%&quot; == &quot;&quot; set INPUT_EXT=.ps
+if &quot;%INPUT_EXT%&quot; == &quot;.ps&quot; goto PROCESS_PS
+if &quot;%INPUT_EXT%&quot; == &quot;.tiff&quot; goto PROCESS_TIFF
+if &quot;%INPUT_EXT%&quot; == &quot;.tif&quot; goto PROCESS_TIFF
+if &quot;%INPUT_EXT%&quot; == &quot;.pdf&quot; goto PROCESS_PDF
+echo ERROR: File type &quot;%INPUT_EXT%&quot; not supported!
+goto END
+::<i> --------
+</I>:<i>PROCESS_PS
+</I>::<i> set file names
+</I>echo Is PS
+set PS_FILE=%INPUT_FILE%
+set PDF_FILE=%PDF_DIR%\%INPUT_NAME%.pdf
+::<i> convert to PDF
+</I>&quot;%GS_INSTALL%\gs%GS_VERSION%\bin\gswin32c.exe&quot; -dSAFER 
+-dNumRenderingThreads#%NUMBER_OF_PROCESSORS% -sDEVICE#pdfwrite -o 
+&quot;%PDF_FILE%&quot; -f &quot;%PS_FILE%&quot;
+goto DISPLAY
+::<i> ----------
+</I>:<i>PROCESS_TIFF
+</I>::<i> set file names
+</I>echo Is TIFF
+set TIFF_FILE=%INPUT_FILE%
+set PDF_FILE=%PDF_DIR%\%INPUT_NAME%.pdf
+::<i> convert to PDF
+</I>&quot;%LIBTIFF_INSTALL%\bin\tiff2pdf.exe&quot; -o &quot;%PDF_FILE%&quot; -f &quot;%TIFF_FILE%&quot;
+goto DISPLAY
+::<i> ---------
+</I>:<i>PROCESS_PDF
+</I>::<i> set file name
+</I>echo Is PDF
+set PDF_FILE=%INPUT_FILE%
+::<i>
+</I>::<i> ------------------------------------------------------------------
+</I>:<i>DISPLAY
+</I>::<i> open PDF file in reader
+</I>::<i>start /b &quot;%PDF_READER%&quot; &quot;%PDF_FILE%&quot;
+</I>::<i>
+</I>::<i> apply watermark background
+</I>echo Apply Background
+%PDFTK%\pdftk.exe &quot;%PDF_FILE%&quot; background &quot;%BACKGROUND%&quot; output 
+&quot;%PDF_DIR%\output.pdf&quot;
+echo Transform back to PS
+&quot;%GS_INSTALL%\gs%GS_VERSION%\bin\gswin32c.exe&quot; -dSAFER 
+-dNumRenderingThreads#%NUMBER_OF_PROCESSORS% -sDEVICE#pswrite -o 
+&quot;%PDF_DIR%\output.ps&quot; -f &quot;%PDF_DIR%\output.pdf&quot;
+::<i>
+</I>::<i> and send to YAJHFC
+</I>echo Calling VBS
+&quot;%PDFTK%\execyajhfc.vbs&quot; &quot;%PDF_DIR%\output.ps&quot;
+::<i>
+</I>::<i> or call OUTLOOK to send the file by email - ugly for the moment - 
+</I>must be modified to use mapi calls
+::<i> &quot;C:\Program Files\Microsoft Office\OFFICE12\OUTLOOK.EXE&quot; /a 
+</I>&quot;%PDF_DIR%\output.pdf&quot;
+::<i> &quot;C:\Program Files\Microsoft Office\OFFICE11\OUTLOOK.EXE&quot; /a 
+</I>&quot;%PDF_DIR%\output.pdf&quot;
+::<i> &quot;C:\Program Files\Microsoft Office\OFFICE10\OUTLOOK.EXE&quot; /a 
+</I>&quot;%PDF_DIR%\output.pdf&quot;
+::<i> &quot;C:\Program Files\Microsoft Office\OFFICE\OUTLOOK.EXE&quot; /a 
+</I>&quot;%PDF_DIR%\output.pdf&quot;
+::<i>
+</I>::<i> ------------------------------------------------------------------
+</I>:<i>END
+</I>exit
+::<i>
+</I>::<i> ------------------------------------------------------------------
+</I>::<i> Subroutine: set_input_file_name_ext
+</I>::<i> Arguments:  %1 = &quot;path/name.ext&quot;
+</I>::<i> Purpose:    set environment vars to input file, name and extension
+</I>::<i> ------------------------------------------------------------------
+</I>:<i>set_input_file_name_ext
+</I>set INPUT_FILE=%~1
+set INPUT_NAME=%~n1
+set INPUT_EXT=%~x1
+goto :eof
+::<i> ------------------------------------------------------------------
+</I>
+
+-- 
+Best Regards,
+Sorin Toma
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000213.html">[Yajhfc-user] Feature Request - Server-Side solution
+</A></li>
+	<LI>Next message: <A HREF="000215.html">[Yajhfc-user] &quot;Disconnected&quot; state
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

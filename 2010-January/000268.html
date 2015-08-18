@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] reading fax-list from another server
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20reading%20fax-list%20from%20another%20server&In-Reply-To=%3CMahogany-0.67.2-13832-20100127-025550.00%40nerijus.sat.lt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000267.html">
+   <LINK REL="Next"  HREF="000269.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] reading fax-list from another server</H1>
+    <B>Nerijus Baliunas</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20reading%20fax-list%20from%20another%20server&In-Reply-To=%3CMahogany-0.67.2-13832-20100127-025550.00%40nerijus.sat.lt%3E"
+       TITLE="[Yajhfc-user] reading fax-list from another server">nerijus at users.sourceforge.net
+       </A><BR>
+    <I>Wed Jan 27 01:55:50 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000267.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+        <LI>Next message: <A HREF="000269.html">[Yajhfc-user] [SOLVED] reading fax-list from another server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 26 Jan 2010 16:37:30 -0700 Joseph &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">syscon780 at gmail.com</A>&gt; wrote:
+
+&gt;<i> &gt;If you have (need) port forwarding then you need to deal with hylafax protocol
+</I>&gt;<i> &gt;as with ftp. For example, if you use Linux, you should load nf_conntrack_ftp module
+</I>&gt;<i> &gt;with parameter ports=21,4559.
+</I>&gt;<i> 
+</I>&gt;<i> Is it a kernel module ?
+</I>
+Yes, if you use iptables firewall, you have this module loaded probably.
+
+&gt;<i> Where do I enter/enable:  ports=21,4559
+</I>
+As I use shorewall, I modify /etc/shorewall/modules like this:
+-loadmodule nf_conntrack_ftp
++loadmodule nf_conntrack_ftp ports=21,4559
+
+Or you can most probably use modprobe nf_conntrack_ftp ports=21,4559
+(I didn't check it).
+IIRC nf_conntrack_ftp was called ip_conntrack_ftp in earlier kernels.
+
+Regards,
+Nerijus
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000267.html">[Yajhfc-user] reading fax-list from another server
+</A></li>
+	<LI>Next message: <A HREF="000269.html">[Yajhfc-user] [SOLVED] reading fax-list from another server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,173 @@
+From jonas.wolz at freenet.de  Sun Jan  9 14:34:06 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 9 Jan 2011 14:34:06 +0100
+Subject: [Yajhfc-user] YajHFC 0.5.0beta2
+Message-ID: <201101091434.07132.jonas.wolz@freenet.de>
+
+A new beta version for YajHFC 0.5.0 has been made available today.
+
+You can find it in the following directory:
+ftp://ftp.berlios.de/pub/yajhfc/temp/beta/
+
+In addition to the previous beta (for details see 
+http://lists.berlios.de/pipermail/yajhfc-announce/2010/000032.html ), this 
+version incorporates the following changes:
+
+- Support for multiple servers
+
+- Support for multiple identities
+
+
+Since both are rather large changes at the "core" of the program, this beta 
+might contain all kinds of new bugs (i.e. you should not use in in a 
+production environment without a thorough test).
+
+Nevertheless, everybody is encouraged to test this new version and report any 
+bugs, possible improvements, etc. he or she finds.
+(BTW, if you find it stable enough for production use in your environment, a 
+short notice would be nice, too...).
+
+Happy testing!
+Jonas Wolz
+
+
+From lists at egidy.de  Fri Jan 28 17:22:02 2011
+From: lists at egidy.de (Gerd v. Egidy)
+Date: Fri, 28 Jan 2011 17:22:02 +0100
+Subject: [Yajhfc-user] 0.5.0beta5: connection refused
+Message-ID: <201101281722.02708.lists@egidy.de>
+
+Hi,
+
+I tried 0.5.0beta5 on Windows XP and Windows 7 today. When I had a 0.4.4 
+installed and configured on the machine before, the 0.5.0beta5 works fine.
+
+But if 0.5.0beta5 is the first YajHFC you ever install on an account, I see 
+the following problem:
+
+- Configuring a fax server works fine.
+- The connection test button in the configure menu works fine and tells me 
+that the connection is working
+- As soon as the rest of the program tries to use this connection to e.g. 
+check the fax queues, I get a connection refused error:
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at gnu.inet.ftp.FtpClientProtocol.connect(FtpClientProtocol.java:1561)
+	at 
+gnu.hylafax.HylaFAXClientProtocol.open(HylaFAXClientProtocol.java:832)
+	at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:130)
+	at 
+yajhfc.model.servconn.hylafax.HylaFaxListConnection.connect(HylaFaxListConnection.java:162)
+	at yajhfc.MainWin$LoginThread.run(MainWin.java:2710)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at 
+java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown 
+Source)
+	at 
+java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown 
+Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown 
+Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+YajHFC 0.5.0beta5
+Java 1.6.0_21 (Sun Microsystems Inc.)
+Java(TM) SE Runtime Environment 1.6.0_21-b07
+Java HotSpot(TM) Client VM
+Windows XP 5.1 (x86)
+
+When looking at the server logs or a tcpdump on the server, I don't see the 
+client trying to connect.
+
+So to me it seems like the new connection dialogue is storing the connection 
+settings in a way the rest of the program does not accept. When there are 
+still connection settings available from an older version, they are used just 
+fine.
+
+I was looking for a program replacing the old WHFC on machines that are 
+upgraded to Win 7. Aside from this issue with the beta version, the 0.4.4 does 
+a very good job as fax client. Especially the windows installer which does all 
+the work and creates a fax printer etc. is good as our customers won't have 
+problems with installing anymore.
+
+Kind regards,
+
+Gerd
+
+-- 
+Address (better: trap) for people I really don't want to get mail from:
+jonas at cactusamerica.com
+
+
+From jonas.wolz at freenet.de  Sun Jan 30 11:59:43 2011
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 30 Jan 2011 11:59:43 +0100
+Subject: [Yajhfc-user] 0.5.0beta5: connection refused
+In-Reply-To: <201101281722.02708.lists@egidy.de>
+References: <201101281722.02708.lists@egidy.de>
+Message-ID: <201101301159.43235.jonas.wolz@freenet.de>
+
+Am Freitag, 28. Januar 2011 schrieb Gerd v. Egidy:
+> I tried 0.5.0beta5 on Windows XP and Windows 7 today. When I had a 0.4.4
+> installed and configured on the machine before, the 0.5.0beta5 works fine.
+>
+> But if 0.5.0beta5 is the first YajHFC you ever install on an account, I see
+> the following problem:
+>
+> - Configuring a fax server works fine.
+> - The connection test button in the configure menu works fine and tells me
+> that the connection is working
+> - As soon as the rest of the program tries to use this connection to e.g.
+> check the fax queues, I get a connection refused error:
+> [...]
+> When looking at the server logs or a tcpdump on the server, I don't see the
+> client trying to connect.
+
+Thank you very much for testing the beta!
+
+I uploaded a new version (0.5.0beta6) to ftp.berlios.de, which should fix the 
+bug you described above.
+
+
+Best regards
+Jonas Wolz
+
+
+From lists at egidy.de  Mon Jan 31 10:06:25 2011
+From: lists at egidy.de (Gerd v. Egidy)
+Date: Mon, 31 Jan 2011 10:06:25 +0100
+Subject: [Yajhfc-user] 0.5.0beta5: connection refused
+In-Reply-To: <201101301159.43235.jonas.wolz@freenet.de>
+References: <201101281722.02708.lists@egidy.de>
+	<201101301159.43235.jonas.wolz@freenet.de>
+Message-ID: <201101311006.25469.lists@egidy.de>
+
+Hi Jonas,
+
+> I uploaded a new version (0.5.0beta6) to ftp.berlios.de, which should fix
+> the bug you described above.
+
+Thanks for the quick fix. I can confirm that it works for me now as expected.
+
+Kind regards,
+
+Gerd
+
+-- 
+Address (better: trap) for people I really don't want to get mail from:
+jonas at cactusamerica.com
+
+

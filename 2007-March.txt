@@ -1,0 +1,57 @@
+From rentorbuy at yahoo.com  Wed Mar 28 09:46:37 2007
+From: rentorbuy at yahoo.com (Vieri)
+Date: Wed, 28 Mar 2007 00:46:37 -0700 (PDT)
+Subject: [Yajhfc-user] data grid display bug
+Message-ID: <337658.32963.qm@web32608.mail.mud.yahoo.com>
+
+Hi Jonas,
+
+I suddenly can't send email to @freenet.de because:
+"
+194.97.50.153 does not like recipient.
+Remote host said: 550 Submission from dynamic IP
+requires authentication Giving up on 194.97.50.153.
+"
+
+Our MX don't have dynamic IPs so it's probably a spam
+measure based on IP ranges not well updated.
+
+Anyway I subscribed to this list and it may very well
+be the fisrt post...
+
+So here's the answer to the message you sent me
+yesterday:
+
+From: Jonas Wolz :
+> For me it looks like HylaFAX is trying to do a line
+continuation using 
+> a backslash there (The first line has "\" as status,
+the second has the real status message in the first
+column and the third line contains the rest of the
+"logical > line" offset by 2 columns).
+> 
+> Attached to this mail you will find a YajHFC version
+with a small 
+> modification to detect such line continuations (the
+rest of the code is identical to 0.3.2).
+
+Thank you Jonas, your new code solves the problem.
+Hylafax job 366 which was "behaving badly" due to the
+backslash is now displayed correctly.
+I will simply rename the new code to 0.3.2 so that our
+users don't notice anything.
+
+Regards,
+
+Vieri
+
+
+
+
+ 
+____________________________________________________________________________________
+Be a PS3 game guru.
+Get your game face on with the latest PS3 news and previews at Yahoo! Games.
+http://videogames.yahoo.com/platform?platform=120121
+
+

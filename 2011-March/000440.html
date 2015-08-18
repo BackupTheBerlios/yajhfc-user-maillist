@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] 0.5.0rc5 issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%200.5.0rc5%20issues&In-Reply-To=%3Cimenj2%242ncf%241%40hairball.ziemba.us%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] 0.5.0rc5 issues</H1>
+    <B>G. Paul Ziemba</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%200.5.0rc5%20issues&In-Reply-To=%3Cimenj2%242ncf%241%40hairball.ziemba.us%3E"
+       TITLE="[Yajhfc-user] 0.5.0rc5 issues">pz-yajhfc-user at ziemba.us
+       </A><BR>
+    <I>Thu Mar 24 07:16:02 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000439.html">[Yajhfc-user] YajHFC 0.5.0 release candiate
+</A></li>
+        <LI>Next message: <A HREF="000441.html">[Yajhfc-user] 0.5.0rc5 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>First I'd like to thank Jonas (et al.?) for this software. It seems to
+have a lot of nice features and I am happy to have found it.
+
+I can send faxes but there are some little problems. I am not
+experienced with Java (most of my work has been in C/C++) so I am not
+sure how to classify some of these issues (are they problems in the
+java environment external to yajhfc or are they internal to yajhfc?).
+
+Should I open a bug in the tracker for either of these?
+
+Thanks for your patience.
+
+My setup:
+
+OS: FreeBSD 8.2-PRERELEASE Sun Jan 23 00:28:46 PST 2011
+Java: diablo-jdk1.6.0
+yajhfc: 0.5.0rc5
+
+1. Date/time of day on cover sheet is always in UTC timezone. In
+   Extras&gt;Options&gt;Servers&gt;Default there are Settings for &quot;Date/Time
+   offset&quot; and &quot;Time Zone&quot; (the latter has choices Local and GMT)
+   but neither has any effect on the cover sheet.
+
+   How can I get correct date/time to appear on the cover sheet?
+
+
+2. I get the following message at startup but I don't know what it means.
+   It does not seem to affect functionality.
+
+    Mar 24, 2011 6:06:36 AM yajhfc.util.AWTExceptionLogger handle
+    SEVERE: An uncaught exception occurred during event dispatching:
+    java.lang.UnsatisfiedLinkError: /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: /usr/local/diablo-jdk1.6.0/jre/lib/i386/libsplashscreen.so: Undefined symbol &quot;jpeg_resync_to_restart&quot;
+	    at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+	    at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1751)
+	    at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1668)
+	    at java.lang.Runtime.loadLibrary0(Runtime.java:823)
+	    at java.lang.System.loadLibrary(System.java:1030)
+	    at sun.security.action.LoadLibraryAction.run(LoadLibraryAction.java:50)
+	    at java.security.AccessController.doPrivileged(Native Method)
+	    at java.awt.SplashScreen.getSplashScreen(SplashScreen.java:91)
+	    at yajhfc.splashscreen.Java6YJSplashScreen.&lt;init&gt;(Java6YJSplashScreen.java:75)
+	    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	    at java.lang.Class.newInstance0(Class.java:355)
+	    at java.lang.Class.newInstance(Class.java:308)
+	    at yajhfc.splashscreen.YJSplashScreen.getSplashScreen(YJSplashScreen.java:79)
+	    at yajhfc.launch.Launcher2$NewInstRunner.run(Launcher2.java:557)
+	    at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+	    at java.awt.EventQueue.dispatchEvent(EventQueue.java:597)
+	    at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:273)
+	    at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:183)
+	    at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:173)
+	    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:168)
+	    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:160)
+	    at java.awt.EventDispatchThread.run(EventDispatchThread.java:121)
+    Mar 24, 2011 6:06:36 AM yajhfc.MainWin$LoginThread$1 run
+    INFO: Finished init work after refresh complete!
+
+many thanks,
+
+ ~!paul
+-- 
+G. Paul Ziemba
+FreeBSD unix:
+11:11PM  up 21 days, 23:47, 22 users, load averages: 0.09, 0.13, 0.07
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000439.html">[Yajhfc-user] YajHFC 0.5.0 release candiate
+</A></li>
+	<LI>Next message: <A HREF="000441.html">[Yajhfc-user] 0.5.0rc5 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

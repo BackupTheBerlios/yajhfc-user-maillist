@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20when%20using%20cable%20modem%20service%20and%0A%20connecting%20to%20server%20over%20internet.&In-Reply-To=%3C468A700B.4020303%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000016.html">
+   <LINK REL="Next"  HREF="000019.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Error when using cable modem service and connecting to server over internet.</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Error%20when%20using%20cable%20modem%20service%20and%0A%20connecting%20to%20server%20over%20internet.&In-Reply-To=%3C468A700B.4020303%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Error when using cable modem service and connecting to server over internet.">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Tue Jul  3 17:49:31 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000016.html">[Yajhfc-user] Error when using cable modem service and connecting	to server over internet.
+</A></li>
+        <LI>Next message: <A HREF="000019.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yajhfc-user">MWilson at acesappraisal.com</A> schrieb:
+&gt;<i> However, when I try to connect to it via Yajhfc (and all other Java 
+</I>&gt;<i> clients I have tried ... so this is a Java problem, not a Yajhfc 
+</I>&gt;<i> problem).  I get this error:
+</I>&gt;<i>  
+</I>&gt;<i> 130 Warning, no inverse address mapping for client host name 
+</I>&gt;<i> &quot;75-144-35-141-Chesterfield.hfc.comcastbusiness.net&quot;.
+</I>
+Actually that is a warning message from the HylaFAX server and not from 
+Java.
+It seems that the gnu.hylafax library (that YajHFC and probably most 
+other Java clients use) interprets this as an error and not as a 
+warning. So this is most probably a bug in that library.
+
+Nevertheless I must do a more thorough analysis (i.e. reproduce that 
+error) before I can be really sure about that.
+
+&gt;<i> Is there any way to work around this?
+</I>
+Configure the HylaFAX server in a way so that it doesn't issue that 
+warning. ;-)
+Seriously: I currently don't know a &quot;real&quot; work around for that problem.
+
+In the next days I will also check if this bug is still present in the 
+latest version of the gnu.hylafax library and report it to the 
+developers if it is (for &quot;historical reasons&quot; YajHFC currently uses a 
+own fork of that library, but it also builds against the &quot;stock&quot; version 
+and I'm planning to stop using the fork in one of the next YajHFC versions).
+
+If a quick fix is possible, I'll probably publish a YajHFC jar with the 
+fix included.
+
+Regards,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000016.html">[Yajhfc-user] Error when using cable modem service and connecting	to server over internet.
+</A></li>
+	<LI>Next message: <A HREF="000019.html">[Yajhfc-user] Error when using cable modem service and connecting to server over internet.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

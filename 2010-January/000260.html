@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Experimental Debian and Ubuntu packages for YajHFC
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Experimental%20Debian%20and%20Ubuntu%20packages%20for%20YajHFC&In-Reply-To=%3C201001031152.49625.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000261.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Experimental Debian and Ubuntu packages for YajHFC</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Experimental%20Debian%20and%20Ubuntu%20packages%20for%20YajHFC&In-Reply-To=%3C201001031152.49625.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Experimental Debian and Ubuntu packages for YajHFC">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Sun Jan  3 11:52:49 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000261.html">[Yajhfc-user] Experimental Debian and Ubuntu packages for	YajHFC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In the last few days, new .deb packages for YajHFC have been created. 
+They have been tested with Debian 5.0 (&quot;Lenny&quot;) and Ubuntu 9.1 and probably 
+should work with other versions of Debian or Ubuntu, too.
+
+These packages support an easy installation of YajHFC and an automatic 
+installation of a &quot;fax printer&quot; in CUPS (just like the Windows setup does for 
+Windows).
+
+The packages include a beta version of YajHFC 0.4.3 (and not 0.4.2a), because 
+I had to make some extensions to YajHFC in order to support a reliable, 
+automatic fax printer creation with CUPS.
+
+While working on the fax printer package, I created a short guide how to 
+manually install a fax printer in YajHFC (e.g. if you use a rpm based 
+distribution or the packages do not work for you for some other reason).
+
+You can access this guide at:
+<A HREF="http://yajhfc.berlios.de/doc/cupsfaxprinter.shtml">http://yajhfc.berlios.de/doc/cupsfaxprinter.shtml</A>
+
+A JAR file of the YajHFC 0.4.3beta can be downloaded here:
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_3beta1.jar">ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc-0_4_3beta1.jar</A>
+
+
+If you use Debian or Ubuntu and want to try out the packages, the recommended 
+way is to add the YajHFC apt repository to your /etc/apt/sources.list. To do 
+so, please add the following line to that file (or use some graphical utility 
+to edit your package sources...) and do an &quot;apt-get update&quot;.
+
+deb <A HREF="ftp://ftp.berlios.de/pub/yajhfc/repository/apt">ftp://ftp.berlios.de/pub/yajhfc/repository/apt</A> stable/
+
+The packages found there should work for both Debian and Ubuntu, so you can 
+use the same apt line for both distributuions.
+
+Usually you will receive a warning that my packages are not authenticated 
+(since I am not a Debian or Ubuntu maintainer). 
+You can either ignore this warning or import my public key and do another 
+apt-get update, so that apt knows that I am &quot;trustworthy&quot;.
+To import the public key, execute the following command in a terminal:
+
+wget -q <A HREF="http://yajhfc.berlios.de/JonasWolz.pub">http://yajhfc.berlios.de/JonasWolz.pub</A> -O - | sudo apt-key add -
+
+After successfully adding the repository, you will have two additional 
+packages available:
+yajhfc            -- Installs the jar file, a launcher and adds a menu
+                     shortcut
+yajhfc-faxprinter -- Installs a fax printer in CUPS
+
+You can now install the packages just like any other package for your 
+distribution (e.g. by issuing &quot;apt-get install yajhfc-faxprinter&quot;).
+
+
+If you do not want to add my apt repository, you can also manually download 
+and install the debs from here:
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc_0.4.3~beta1-1_all.deb">ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc_0.4.3~beta1-1_all.deb</A>
+<A HREF="ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc-faxprinter_0.4.3~beta1-1_all.deb">ftp://ftp.berlios.de/pub/yajhfc/repository/apt/stable/yajhfc-faxprinter_0.4.3~beta1-1_all.deb</A>
+
+
+I hope that the packages will work for you (since this is the first time I 
+created and published Debian packages...).
+If you have any problems or feedback, please write me a mail or to the 
+yajhfc-user mailing list.
+
+
+Have fun and a Happy New Year,
+Jonas Wolz
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000261.html">[Yajhfc-user] Experimental Debian and Ubuntu packages for	YajHFC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] Another feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Another%20feature%20request&In-Reply-To=%3C200812291051.44157.jonas.wolz%40freenet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000153.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] Another feature request</H1>
+    <B>Jonas Wolz</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20Another%20feature%20request&In-Reply-To=%3C200812291051.44157.jonas.wolz%40freenet.de%3E"
+       TITLE="[Yajhfc-user] Another feature request">jonas.wolz at freenet.de
+       </A><BR>
+    <I>Mon Dec 29 10:51:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000153.html">[Yajhfc-user] Another feature request
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Mittwoch, 24. Dezember 2008 schrieb Sorin Toma:
+&gt;<i> Hello,
+</I>&gt;<i> Sometimes we don't want to let all the users see all the sent or
+</I>&gt;<i> received faxes, so in the &quot;View&quot; field we can change the option to &quot;Only
+</I>&gt;<i> own faxes&quot;, but there are users with a bit of curiosity, that change
+</I>&gt;<i> that option to &quot;All Faxes&quot;. For the moment, to disable that, I've
+</I>&gt;<i> rebuilt a version with all the options set to &quot;view_own&quot;
+</I>&gt;<i> ( in mainwin.java at about line 1088 I've changed:
+</I>&gt;<i>             menuViewAll = new JRadioButtonMenuItem(_(&quot;All faxes&quot;));
+</I>&gt;<i>             menuViewAll.setActionCommand(&quot;view_own&quot;);
+</I>&gt;<i>             menuViewAll.setSelected(true);
+</I>&gt;<i>             menuViewAll.addActionListener(menuViewListener);
+</I>&gt;<i>
+</I>&gt;<i>             menuViewOwn = new JRadioButtonMenuItem(_(&quot;Only own faxes&quot;));
+</I>&gt;<i>             menuViewOwn.setActionCommand(&quot;view_own&quot;);
+</I>&gt;<i>             menuViewOwn.addActionListener(menuViewListener);
+</I>&gt;<i>
+</I>&gt;<i>             menuViewCustom = new JRadioButtonMenuItem(_(&quot;Custom
+</I>&gt;<i> filter...&quot;));
+</I>&gt;<i>             menuViewCustom.setActionCommand(&quot;view_own&quot;);
+</I>&gt;<i>             menuViewCustom.addActionListener(menuViewListener);
+</I>&gt;<i> )
+</I>&gt;<i> it is another ugly hack. Maybe sometimes in the future this part of the
+</I>&gt;<i> setup will be set by default to &quot;view_own&quot; and  protected by some sort
+</I>&gt;<i> of &quot;administrative password&quot; or at least by a deeper option like &quot;show
+</I>&gt;<i> advanced settings&quot;...?
+</I>
+Generally, I am not so fond of putting such &quot;security measures&quot; in a client 
+and not the server, because a advanced user will often be able to find a way 
+to circumvent them.
+Nevertheless, I realize that this stops most &quot;normal users&quot;... ;-)
+
+Thus, the next version will include a way to disable these menu options (the 
+developer version from <A HREF="ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar">ftp://ftp.berlios.de/pub/yajhfc/temp/yajhfc.jar</A> has it 
+already, BTW):
+
+To disable the &quot;view&quot; options and force the &quot;view own faxes&quot; filter, create a 
+file named &quot;settings.override&quot; in the same directory as yajhfc.jar with the 
+following content:
+
+# copy and paste settings.override content from here
+allowChangeFilter=false
+sentFilter=O
+sendingFilter=O
+recvFilter=O
+archiveFilter=O
+# ... to here
+
+The values for the *Filter lines can also be set to enforce &quot;view all faxes&quot; 
+or a custom filter. 
+To set the filter to view all faxes, specify &quot;A&quot; instead of &quot;O&quot; (e.g. 
+recvFilter=A). 
+To set a custom filter, it is easiest to build the filter using the 
+YajHFC &quot;custom filter&quot; dialog, close YajHFC and then copy the respective 
+value from $HOME/.yajhfc/settings.
+
+Best regards,
+Jonas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000153.html">[Yajhfc-user] Another feature request
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

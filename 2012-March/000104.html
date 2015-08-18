@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> No subject
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20No%20subject&In-Reply-To=%3Cmailman.0.1331739760.15579.yajhfc-user%40lists.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>No subject</H1>
+    <B></B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20No%20subject&In-Reply-To=%3Cmailman.0.1331739760.15579.yajhfc-user%40lists.berlios.de%3E"
+       TITLE="No subject">
+       </A><BR>
+    <I>Wed Mar 14 16:42:39 CET 2012</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;If the Home Folder is unset, it defaults to the User Profile, which
+in turn defaults to %SYSTEMDRIVE%Documents and Settings\%USERNAME%.
+
+Windows (at least in the interactive session) will initialize
+%HOMEDRIVE% and %HOMEPATH% to point to the Home Folder, and will
+set HOME=%HOMEDRIVE%%HOMEPATH%.
+
+Intuitively, it seems clear we should set user.home to the same value
+as the Windows Home Folder, at least on modern Windows systems.
+Which means we should use %USERPROFILE% only as a fallback.&quot;
+
+So it seems it is ok to use -Duser.home=homedrv &amp; homedir
+like printlaunch.vbs does, but TEMP should not be set like this
+(but I see you added a check if directory exists).
+
+I added Wscript.echo javaexe &amp; &quot; -Duser.home=&quot;&quot;&quot; &amp; userprofile &amp; &quot;&quot;&quot; &quot; &amp; yjargs
+before Set java = WshShell.Exec(javaexe &amp; &quot; -Duser.home=&quot;&quot;&quot; &amp; userprofile &amp; &quot;&quot;&quot; &quot; &amp; yjargs)
+and now I get in redmon log:
+
+Microsoft (R) Windows Script Host Version 5.7
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\Java\jre1.6.0_07\bin\java.exe -Duser.home=&quot;Z:\&quot; -jar &quot;C:\Program Files\YajHFC\yajhfc.jar&quot; --stdin --debug --logfile=c:\yajhfc.log
+Error #-2147024664: 
+java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --debug --logfile=c:\yajhfc/log
+Caused by: java.lang.ClassNotFoundException: Files\YajHFC\yajhfc.jar --stdin --debug --logfile=c:\yajhfc.log
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+Exception in thread &quot;main&quot; 
+
+The java launch command seems ok and I still don't understand where
+java.lang.NoClassDefFoundError: Files\YajHFC\yajhfc/jar --stdin --debug --logfile=c:\yajhfc/log
+is from. Some missing quotes somewhere? And why yajhfc.jar and yajhfc.log are
+replaced with yajhfc/jar and yajhfc/log?
+
+Regards,
+Nerijus
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>

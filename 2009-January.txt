@@ -1,0 +1,259 @@
+From jonas.wolz at freenet.de  Thu Jan  1 12:19:06 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Thu, 1 Jan 2009 12:19:06 +0100
+Subject: [Yajhfc-user] YajHFC 0.4.0beta released
+Message-ID: <200901011219.06362.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.4.0beta of YajHFC has been released 
+today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta.jar
+
+Source code: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta-src.zip
+
+Windows setup.exe: 
+http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta-setup.exe
+
+This is the first time there is an "official" beta of YajHFC due to the many 
+internal changes this version incorporates. 
+There are currently no known bugs, but all users are encouraged to test this 
+version in their environment before using it in production (and provide 
+feedback if a problem is found).
+
+New features/changes:
+- Support for archive directory
+- Support to view and send faxes as a single file (in PDF, TIFF or PS format)
+- Phone book includes most common fields now
+- Support for a tray icon under Java 6
+- Improved options dialog
+- Improved command line support (YajHFC can now be
+used to send faxes without user confirmation)
+- Some simple obfuscation for passwords
+- Lots of internal code clean up
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have Fun and Happy New Year,
+Jonas
+
+
+From hylafax at andyscomp.f9.co.uk  Tue Jan  6 15:00:43 2009
+From: hylafax at andyscomp.f9.co.uk (Andy Rogers)
+Date: Tue, 6 Jan 2009 14:00:43 -0000 (UTC)
+Subject: [Yajhfc-user] YajHFC 0.4.0beta released
+In-Reply-To: <200901011219.06362.jonas.wolz@freenet.de>
+References: <200901011219.06362.jonas.wolz@freenet.de>
+Message-ID: <7093.62.49.140.10.1231250443.squirrel@webmail.plus.net>
+
+Hi Jonas
+
+I have been using the latest beta of yajhfc with no problems thanks.
+
+But I do have a question about the new archive view.
+
+Currently when I log into yajhfc I go under my usuall logon details for a
+general user, and in the archive I can only view faxes which I have sent
+which is what I would expect.
+
+However when I change to admin mode under the same username, in the
+archive view I would expect to be able to see all users sent faxes, but I
+can't I can still only see the ones which I haev sent.  Should it work
+this way?
+
+In archive, should I also be able to delete a file which has been
+archived?  When I try I get "java.io.IOException: Could not delete the
+file" errors.  Or is this something that can't be done or would it be an
+actual file premission problem on the actual server?  This happens in
+normal & admin mode.
+
+Thanks
+
+Andy
+On Thu, January 1, 2009 11:19 am, Jonas Wolz wrote:
+> I am pleased to announce that version 0.4.0beta of YajHFC has been
+> released
+> today.
+>
+> Download:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta.jar
+>
+> Source code:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta-src.zip
+>
+> Windows setup.exe:
+> http://prdownload.berlios.de/yajhfc/yajhfc-0_4_0beta-setup.exe
+>
+> This is the first time there is an "official" beta of YajHFC due to the
+> many
+> internal changes this version incorporates.
+> There are currently no known bugs, but all users are encouraged to test
+> this
+> version in their environment before using it in production (and provide
+> feedback if a problem is found).
+>
+> New features/changes:
+> - Support for archive directory
+> - Support to view and send faxes as a single file (in PDF, TIFF or PS
+> format)
+> - Phone book includes most common fields now
+> - Support for a tray icon under Java 6
+> - Improved options dialog
+> - Improved command line support (YajHFC can now be
+> used to send faxes without user confirmation)
+> - Some simple obfuscation for passwords
+> - Lots of internal code clean up
+>
+> For more information you may also take a look at the homepage at:
+> http://yajhfc.berlios.de/
+>
+> Have Fun and Happy New Year,
+> Jonas
+> _______________________________________________
+> Yajhfc-user mailing list
+> Yajhfc-user at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/yajhfc-user
+>
+
+
+
+
+From jonas.wolz at freenet.de  Wed Jan  7 19:39:05 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 7 Jan 2009 19:39:05 +0100
+Subject: [Yajhfc-user] YajHFC 0.4.0beta released
+In-Reply-To: <7093.62.49.140.10.1231250443.squirrel@webmail.plus.net>
+References: <200901011219.06362.jonas.wolz@freenet.de>
+	<7093.62.49.140.10.1231250443.squirrel@webmail.plus.net>
+Message-ID: <200901071939.05167.jonas.wolz@freenet.de>
+
+Am Dienstag, 6. Januar 2009 schrieb Andy Rogers:
+> But I do have a question about the new archive view.
+>
+> Currently when I log into yajhfc I go under my usuall logon details for a
+> general user, and in the archive I can only view faxes which I have sent
+> which is what I would expect.
+>
+> However when I change to admin mode under the same username, in the
+> archive view I would expect to be able to see all users sent faxes, but I
+> can't I can still only see the ones which I haev sent.  Should it work
+> this way?
+>
+> In archive, should I also be able to delete a file which has been
+> archived?  When I try I get "java.io.IOException: Could not delete the
+> file" errors.  Or is this something that can't be done or would it be an
+> actual file premission problem on the actual server?  This happens in
+> normal & admin mode.
+
+The archive view completely bypasses the HylaFAX server and uses the file 
+system directly (theoretically it would work without even connecting to 
+HylaFAX). 
+Because of that the only permissions taking effect are the "normal" file 
+permissions on the server -- so it is no bug when the admin mode does not 
+change anything here.
+
+Nevertheless it is a bit odd that you can only view faxes sent by yourself (as 
+long as "View->Only own faxes" is *not* checked, of course ;-) ).
+Most likely this is a permission problem, but it also might be a bug in YajHFC 
+(because the archive code has not been tested very much so far).
+
+You can check for a permission problem by browsing the archive directory with 
+a file manager on the client and trying if you can open the "qX" files inside 
+the sub directories of the archive directory (where X is the name of the sub 
+directory).
+
+For example, if you cannot see job 123, check if you can 
+open "archive/123/q123" with a text editor. 
+If you can read this file on the client, but YajHFC does not show that job, 
+this is a bug in YajHFC.
+
+Similarly you can check if deleting jobs fails due to a bug in YajHFC or due 
+to a permission problem: If you can delete the subdirectory belonging to the 
+job with a file manager, but not with YajHFC, it is a bug. 
+
+For example, if YajHFC cannot delete job 123, check if you can remove the 
+directory "archive/123".
+
+Regards,
+Jonas 
+
+
+From jonas.wolz at freenet.de  Sat Jan 10 18:20:06 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sat, 10 Jan 2009 18:20:06 +0100
+Subject: [Yajhfc-user] YajHFC 0.4.0beta released
+In-Reply-To: <16039.81.142.144.1.1231509661.squirrel@webmail.plus.net>
+References: <200901011219.06362.jonas.wolz@freenet.de>
+	<200901071939.05167.jonas.wolz@freenet.de>
+	<16039.81.142.144.1.1231509661.squirrel@webmail.plus.net>
+Message-ID: <200901101820.06211.jonas.wolz@freenet.de>
+
+Am Freitag, 9. Januar 2009 schrieb Andy Rogers:
+> I think there may be a slight problem with the "View Only Own Faxes"
+> option whilst I am currently viewing the archive table.  It seems it will
+> not change the table display until I click off archive and go backto the
+> table again, but all of archive faxes are then not displayed not even
+> mine.
+> Also on the menu after selecting this option, when I click back on the
+> menu the option still is showen as "All Faxes" with teh "Only Own Faxes"
+> highlighted still.
+
+Thanks, this is a bug. It has been fixed in the current developer version (and 
+of course for the 0.4.0 release).
+
+Regards,
+Jonas
+
+
+From rentorbuy at yahoo.com  Thu Jan 22 10:41:41 2009
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 22 Jan 2009 01:41:41 -0800 (PST)
+Subject: [Yajhfc-user] fax send button
+Message-ID: <363483.99203.qm@web32605.mail.mud.yahoo.com>
+
+Hi,
+
+I don't know if others have experienced this but sometimes users send a fax twice simply because they pressed the "send button" twice (or more if they're quick enough).
+This is due to the fact that at times my hylafax server is a bit slow or there's a network congestion. So the yajhfc "send fax" dialog doesn't close right after the first "click".
+
+Maybe the yajhfc code could "disable" the send button when clicked once (or some other workaround).
+
+Cheers,
+
+Vieri
+
+
+
+      
+
+
+From jonas.wolz at freenet.de  Sun Jan 25 12:04:37 2009
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Sun, 25 Jan 2009 12:04:37 +0100
+Subject: [Yajhfc-user] fax send button
+In-Reply-To: <363483.99203.qm@web32605.mail.mud.yahoo.com>
+References: <363483.99203.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <200901251204.37882.jonas.wolz@freenet.de>
+
+Am Donnerstag, 22. Januar 2009 schrieb Vieri:
+> Hi,
+>
+> I don't know if others have experienced this but sometimes users send a fax
+> twice simply because they pressed the "send button" twice (or more if
+> they're quick enough). This is due to the fact that at times my hylafax
+> server is a bit slow or there's a network congestion. So the yajhfc "send
+> fax" dialog doesn't close right after the first "click".
+>
+> Maybe the yajhfc code could "disable" the send button when clicked once (or
+> some other workaround).
+
+Thanks for pointing that out. The release version of 0.4.0 will disable the 
+send button after the first click so that this is no longer possible.
+
+
+Regards,
+Jonas
+
+

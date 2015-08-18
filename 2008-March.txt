@@ -1,0 +1,587 @@
+From jonas.wolz at freenet.de  Wed Mar  5 11:29:55 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Wed, 5 Mar 2008 11:29:55 +0100
+Subject: [Yajhfc-user] YajHFC 0.3.6 released
+Message-ID: <200803051129.55380.jonas.wolz@freenet.de>
+
+I am pleased to announce that version 0.3.6 of YajHFC has been released today.
+
+Download:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_6.jar
+
+Source code:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_6-src.zip
+
+Windows setup.exe:
+http://prdownload.berlios.de/yajhfc/yajhfc-0_3_6-setup.exe
+
+New features/changes:
+- Some bug fixes
+- Support for selection of multiple phone book entries for the send dialog
+- New command line argument ("--logfile") to log to a file in debug mode
+- Support for "disconnected mode" as a possible workaround to some HylaFAX 
+bugs
+- Support to select the modem to use
+
+For more information you may also take a look at the homepage at:
+http://yajhfc.berlios.de/
+
+Have fun,
+Jonas
+
+
+
+From rentorbuy at yahoo.com  Tue Mar 25 15:47:16 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 25 Mar 2008 07:47:16 -0700 (PDT)
+Subject: [Yajhfc-user] date display
+Message-ID: <225044.8430.qm@web32608.mail.mud.yahoo.com>
+
+Hi!
+
+Sorry for the dumb question but I noticed that the job
+dates on the server don't match the job date displayed
+on the YAJHFC grid. There's a 1-hour difference. The
+Hylafax server's time is correct and is 1h+. I know I
+could set +1h in YAJHFC's options but I'd rather tell
+the client to just display the time Hylafax is sending
+back.
+
+Can this be done?
+I'm sure it's a silly detail I'm overlooking.
+
+Thanks!
+
+Vieri
+
+
+
+      ____________________________________________________________________________________
+Be a better friend, newshound, and 
+know-it-all with Yahoo! Mobile.  Try it now.  http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ
+
+
+From jonas.wolz at freenet.de  Tue Mar 25 17:02:34 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 25 Mar 2008 17:02:34 +0100
+Subject: [Yajhfc-user] date display
+In-Reply-To: <225044.8430.qm@web32608.mail.mud.yahoo.com>
+References: <225044.8430.qm@web32608.mail.mud.yahoo.com>
+Message-ID: <200803251702.34992.jonas.wolz@freenet.de>
+
+Am Dienstag, 25. M?rz 2008 15:47 schrieb Vieri:
+> Sorry for the dumb question but I noticed that the job
+> dates on the server don't match the job date displayed
+> on the YAJHFC grid. There's a 1-hour difference. The
+> Hylafax server's time is correct and is 1h+. I know I
+> could set +1h in YAJHFC's options but I'd rather tell
+> the client to just display the time Hylafax is sending
+> back.
+>
+> Can this be done?
+> I'm sure it's a silly detail I'm overlooking.
+
+If you don't set an offset, YajHFC displays exactly the time the server is 
+sending back.
+
+You can try experimenting with the time zone setting in the options dialog 
+(under "Delivery") and see if it helps (the time zone correction is done by 
+the server, not by YajHFC).
+
+Hope that helps,
+Jonas
+
+
+From rentorbuy at yahoo.com  Tue Mar 25 17:53:43 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Tue, 25 Mar 2008 09:53:43 -0700 (PDT)
+Subject: [Yajhfc-user] date display
+In-Reply-To: <200803251702.34992.jonas.wolz@freenet.de>
+Message-ID: <734195.59532.qm@web32605.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Am Dienstag, 25. M?rz 2008 15:47 schrieb Vieri:
+> > Sorry for the dumb question but I noticed that the
+> job
+> > dates on the server don't match the job date
+> displayed
+> > on the YAJHFC grid. There's a 1-hour difference.
+> The
+> > Hylafax server's time is correct and is 1h+. I
+> know I
+> > could set +1h in YAJHFC's options but I'd rather
+> tell
+> > the client to just display the time Hylafax is
+> sending
+> > back.
+> >
+> > Can this be done?
+> > I'm sure it's a silly detail I'm overlooking.
+> 
+> If you don't set an offset, YajHFC displays exactly
+> the time the server is 
+> sending back.
+
+That's strange. I've checked the Hylafax server logs
+and the date is fine everywhere (in the log file
+related to a given fax transaction, for example).
+
+> You can try experimenting with the time zone setting
+> in the options dialog 
+> (under "Delivery") and see if it helps (the time
+> zone correction is done by 
+> the server, not by YajHFC).
+
+You meant, under "Server tab" I suppose. There, I set
++1 hour and now the time is displayed correctly. If
+it's the server making the correction and not the
+client then I guess that Hylafax is not sending the
+system date but calculates the GMT and sends that
+instead?
+My timezone is GMT+1 so I guess that could make sense.
+However, I find it an inconvenience to set +1 in
+YAJHFC. I also believe that my real local time isn't
+GMT+1 year-round (at some point and for a brief period
+I think that the legal time is GMT+2 then it comes
+back to GMT+1).
+
+Anyway, if you say that it's on the server side then I
+guess I'll have to dig into the Hylafax documentation
+and see if there's anything about GMT.
+
+Thanks!
+ 
+
+
+
+      ____________________________________________________________________________________
+Looking for last minute shopping deals?  
+Find them fast with Yahoo! Search.  http://tools.search.yahoo.com/newsearch/category.php?category=shopping
+
+
+From jonas.wolz at freenet.de  Tue Mar 25 20:08:04 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Tue, 25 Mar 2008 20:08:04 +0100
+Subject: [Yajhfc-user] date display
+In-Reply-To: <734195.59532.qm@web32605.mail.mud.yahoo.com>
+References: <734195.59532.qm@web32605.mail.mud.yahoo.com>
+Message-ID: <200803252008.05034.jonas.wolz@freenet.de>
+
+Am Dienstag, 25. M?rz 2008 17:53 schrieb Vieri:
+> You meant, under "Server tab" I suppose. There, I set
+> +1 hour and now the time is displayed correctly. If
+> it's the server making the correction and not the
+> client then I guess that Hylafax is not sending the
+> system date but calculates the GMT and sends that
+> instead?
+
+No, in the delivery tab there is a combo box where you can set the time zone 
+(you can choose between GMT and the local time zone).
+
+This is not really logical and I'll move this back to the server tab with the 
+next version ("historically" server and delivery settings were on the same 
+tab, when I separated them this combo box went into the delivery tab by 
+mistake...).
+
+Regards,
+Jonas
+
+
+From rentorbuy at yahoo.com  Wed Mar 26 10:18:34 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Wed, 26 Mar 2008 02:18:34 -0700 (PDT)
+Subject: [Yajhfc-user] date display
+In-Reply-To: <200803252008.05034.jonas.wolz@freenet.de>
+Message-ID: <78090.33524.qm@web32604.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> No, in the delivery tab there is a combo box where
+> you can set the time zone 
+> (you can choose between GMT and the local time
+> zone).
+
+Ok, I set that. However, whether I select GMT or local
+I always get the same time (ie. our hour less than the
+server's local time).
+
+I think that the bug is on the hylafax server.
+I found a "recent" post which seems to indicate that
+older Hylafax versions seem to have had an issue with
+GMT/local time.
+http://www.hylafax.org/archive/2007-12/msg00015.php
+
+I tested other Hylafax clients and have the same date
+problem.
+
+I'm running hylafax 4.2.5 which is relatively old so
+maybe upgrading to 4.3.7 or going to the 4.4 branch
+will solve my problem.
+
+Thanks for the feedback.
+
+
+
+      ____________________________________________________________________________________
+Never miss a thing.  Make Yahoo your home page. 
+http://www.yahoo.com/r/hs
+
+
+From rentorbuy at yahoo.com  Thu Mar 27 14:00:20 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Thu, 27 Mar 2008 06:00:20 -0700 (PDT)
+Subject: [Yajhfc-user] redirect script to yajhfc
+Message-ID: <762175.96402.qm@web32606.mail.mud.yahoo.com>
+
+Hi again.
+
+I have been using 0_3_4 flawlessly until I upgraded
+today to 0_3_6.
+
+The only problem I'm having is surely due to my custom
+script on Windows XP.
+The redirected printer port is configured as:
+
+program: cscript.exe
+argument: C:\FHM_FAX\CLIENTS\yajhfc-redmon.vbs
+hidden, run as user
+
+The content of yajhfc-redmon.vbs is:
+
+dim wshhell, userprofile, java
+
+Set WshShell = WScript.CreateObject("WScript.Shell")
+
+Set objWMIService = GetObject("winmgmts:" & _
+    "{impersonationLevel=impersonate}!\\.\root\cimv2")
+Set colOperatingSystems = objWMIService.ExecQuery _
+  ("Select * from Win32_OperatingSystem")
+For Each objOperatingSystem In colOperatingSystems
+    intOSType = objOperatingSystem.OSType
+    strOSVer = Left(objOperatingSystem.Version, 3)
+Next
+Select Case intOSType
+    Case 16 'Windows 95
+        intOSVer = 1
+    Case 17 'Windows 98
+        intOSVer = 2
+    Case 18
+        Select Case strOSVer
+            Case 4.0
+                intOSVer = 4 'Windows NT 4.0
+            Case 5.0
+                intOSVer = 5 'Windows 2000
+            Case 5.1
+                intOSVer = 6 'Windows XP
+            Case 5.2
+                intOSVer = 7 'Windows Server 2003
+            Case Else
+                intOSVer = 0 'Older or newer version
+            End Select
+    Case Else
+        intOSVer = 0 'Older or newer version
+End Select
+If intOSVer = 1 OR intOSVer = 2 Then ' This is an old
+Windows (95 or 98)
+
+userprofile = "C:\FHM_FAX\PROFILE"
+
+else
+
+userprofile =
+wshshell.regread("HKEY_CURRENT_USER\Volatile
+Environment\HOMEDRIVE") &
+wshshell.regread("HKEY_CURRENT_USER\Volatile
+Environment\HOMEPATH")
+'wscript.echo "userprofile = " & userprofile
+
+end if
+
+set java = WshShell.Exec("java.exe -Duser.home=""" &
+userprofile & """ -classpath
+C:\FHM_FAX\JDBC\mysql-connector-java-5.0.4-bin.jar;C:\FHM_FAX\CLIENTS\yajhfc.jar
+yajhfc.Launcher --stdin")
+
+Do While (java.status = 0 and not
+wscript.stdin.atendofstream)
+	java.stdin.write wscript.stdin.read(4000)
+loop
+java.stdin.close
+
+With 0_3_4, yajhfc shows up with the "send dialog box"
+where the user just needs to type the phone number.
+However, with 0_3_6, yajhfc shows up without the "send
+dialog box". The application runs (is operational) and
+does not quit. The user can flip through the different
+tabs and see the job list. But the data sent through
+the virtual printer system is unavailable. As if
+--stdin did not work.
+
+What could be wrong with my vbs script?
+
+
+
+      ____________________________________________________________________________________
+Looking for last minute shopping deals?  
+Find them fast with Yahoo! Search.  http://tools.search.yahoo.com/newsearch/category.php?category=shopping
+
+
+From jonas.wolz at freenet.de  Fri Mar 28 22:59:14 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Fri, 28 Mar 2008 22:59:14 +0100
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <762175.96402.qm@web32606.mail.mud.yahoo.com>
+References: <762175.96402.qm@web32606.mail.mud.yahoo.com>
+Message-ID: <200803282259.15314.jonas.wolz@freenet.de>
+
+Am Donnerstag, 27. M?rz 2008 14:00 schrieb Vieri:
+> With 0_3_4, yajhfc shows up with the "send dialog box"
+> where the user just needs to type the phone number.
+> However, with 0_3_6, yajhfc shows up without the "send
+> dialog box". The application runs (is operational) and
+> does not quit. The user can flip through the different
+> tabs and see the job list. But the data sent through
+> the virtual printer system is unavailable. As if
+> --stdin did not work.
+>
+> What could be wrong with my vbs script?
+
+Hmm, your script seems to work for me here.
+
+Do you have any log files?
+
+I would be interested in both the redmon log file (configured using the "Log 
+file" button in the virtual printer port configuration) and the yajhfc log 
+file (add the parameters "--debug --logfile=<logfile location>" to the 
+command line starting yajhfc in the vbs script).
+
+Thanks,
+Jonas
+
+
+From rentorbuy at yahoo.com  Mon Mar 31 09:09:02 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 31 Mar 2008 00:09:02 -0700 (PDT)
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <200803282259.15314.jonas.wolz@freenet.de>
+Message-ID: <603070.94276.qm@web32606.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Am Donnerstag, 27. M?rz 2008 14:00 schrieb Vieri:
+> > With 0_3_4, yajhfc shows up with the "send dialog
+> box"
+> > where the user just needs to type the phone
+> number.
+> > However, with 0_3_6, yajhfc shows up without the
+> "send
+> > dialog box". The application runs (is operational)
+> and
+> > does not quit. The user can flip through the
+> different
+> > tabs and see the job list. But the data sent
+> through
+> > the virtual printer system is unavailable. As if
+> > --stdin did not work.
+> >
+> > What could be wrong with my vbs script?
+> 
+> Hmm, your script seems to work for me here.
+> 
+> Do you have any log files?
+> 
+> I would be interested in both the redmon log file
+> (configured using the "Log 
+> file" button in the virtual printer port
+> configuration) and the yajhfc log 
+> file (add the parameters "--debug --logfile=<logfile
+> location>" to the 
+> command line starting yajhfc in the vbs script).
+
+Yajhfc 0.3.4 does not have the logfile option so I can
+only compare the redmon logs.
+
+I noticed that the first differences between the two
+versions are the following two lines found only in
+0.3.6 + redmon:
+
+REDMON check_process: process isn't running.
+REDMON check_process: flushing child stdin to unblock
+WriteThread.
+
+I guess that's where stdin is getting dumped.
+
+I am attaching the complete logs.
+
+Any ideas greatly appreciated.
+
+Thanks!
+
+Vieri
+
+
+
+      ____________________________________________________________________________________
+OMG, Sweet deal for Yahoo! users/friends:Get A Month of Blockbuster Total Access, No Cost. W00t 
+http://tc.deals.yahoo.com/tc/blockbuster/text2.com
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: yajhfc_logs.zip
+Type: application/x-zip-compressed
+Size: 31433 bytes
+Desc: 3438256350-yajhfc_logs.zip
+URL: <https://lists.berlios.de/pipermail/yajhfc-user/attachments/20080331/d09b346a/attachment.bin>
+
+From jonas.wolz at freenet.de  Mon Mar 31 11:53:01 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 31 Mar 2008 11:53:01 +0200
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <603070.94276.qm@web32606.mail.mud.yahoo.com>
+References: <603070.94276.qm@web32606.mail.mud.yahoo.com>
+Message-ID: <200803311153.01459.jonas.wolz@freenet.de>
+
+Am Montag, 31. M?rz 2008 09:09 schrieb Vieri:
+> --- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> I noticed that the first differences between the two
+> versions are the following two lines found only in
+> 0.3.6 + redmon:
+>
+> REDMON check_process: process isn't running.
+> REDMON check_process: flushing child stdin to unblock
+> WriteThread.
+>
+> I guess that's where stdin is getting dumped.
+
+Yes, later (after all the PostScript) it says:
+C:\FHM_FAX\CLIENTS\yajhfc-redmon.vbs(48, 2) (null): Se est? cerrando la 
+canalizaci?n.
+I identified this as "Se est? cerrando la canalizaci?n." which seems to 
+mean "The pipe is being closed." according to some Googling. 
+From the YajHFC logs I also found that showing the Send dialog seems to fail 
+somehow (probably an uncaught Exception happens somewhere...).
+
+So:
+Can you open the send dialog manually by clicking the toolbar button or does 
+this not work either?
+
+If this does not work, please run YajHFC from a command line window to see if 
+there is a stack trace printed when you try to open the window.
+If it is, please send me that output.
+
+Thanks,
+Jonas
+
+
+From rentorbuy at yahoo.com  Mon Mar 31 12:55:58 2008
+From: rentorbuy at yahoo.com (Vieri)
+Date: Mon, 31 Mar 2008 03:55:58 -0700 (PDT)
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <200803311153.01459.jonas.wolz@freenet.de>
+Message-ID: <570459.31580.qm@web32603.mail.mud.yahoo.com>
+
+
+--- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+
+> Am Montag, 31. M?rz 2008 09:09 schrieb Vieri:
+> > --- Jonas Wolz <jonas.wolz at freenet.de> wrote:
+> > I noticed that the first differences between the
+> two
+> > versions are the following two lines found only in
+> > 0.3.6 + redmon:
+> >
+> > REDMON check_process: process isn't running.
+> > REDMON check_process: flushing child stdin to
+> unblock
+> > WriteThread.
+> >
+> > I guess that's where stdin is getting dumped.
+> 
+> Yes, later (after all the PostScript) it says:
+> C:\FHM_FAX\CLIENTS\yajhfc-redmon.vbs(48, 2) (null):
+> Se est  cerrando la 
+> canalizaci?n.
+> I identified this as "Se est? cerrando la
+> canalizaci?n." which seems to 
+> mean "The pipe is being closed."
+
+correct.
+
+> From the YajHFC logs I also found that showing the
+> Send dialog seems to fail 
+> somehow (probably an uncaught Exception happens
+> somewhere...).
+> 
+> So:
+> Can you open the send dialog manually by clicking
+> the toolbar button or does 
+> this not work either?
+
+yes, I can.
+I did exactly the same steps as in the log I sent, but
+since the send dialog box does not appear, I clicked
+on File -> Send and it appeared just fine (but without
+stdin data, of course).
+I also did the same with the toolbar button.
+
+> If this does not work, please run YajHFC from a
+> command line window to see if 
+> there is a stack trace printed when you try to open
+> the window.
+
+Not applicable since the window opens.
+
+Could it be a newly-introduced permissions/java
+security problem with redmon/yajhfc?
+
+
+
+      ____________________________________________________________________________________
+You rock. That's why Blockbuster's offering you one month of Blockbuster Total Access, No Cost.  
+http://tc.deals.yahoo.com/tc/blockbuster/text5.com
+
+
+From jonas.wolz at freenet.de  Mon Mar 31 17:18:45 2008
+From: jonas.wolz at freenet.de (Jonas Wolz)
+Date: Mon, 31 Mar 2008 17:18:45 +0200
+Subject: [Yajhfc-user] redirect script to yajhfc
+In-Reply-To: <570459.31580.qm@web32603.mail.mud.yahoo.com>
+References: <570459.31580.qm@web32603.mail.mud.yahoo.com>
+Message-ID: <200803311718.45962.jonas.wolz@freenet.de>
+
+Am Montag, 31. M?rz 2008 12:55 schrieb Vieri:
+> Could it be a newly-introduced permissions/java
+> security problem with redmon/yajhfc?
+
+I consider this quite unlikely. I did no security related changes between 
+0.3.4 and 0.3.6 (the code used for --stdin did change however, so I might 
+have introduced a bug there...).
+
+I noticed, however, that with the current print launch scripts any output from 
+yajhfc will be discarded and not show up in the redmon logs (which is no 
+problem unless you are debugging ;-) ).
+
+Please replace the loop at the end of your script with the following code to 
+capture the yajhfc output and ignore the "pipe closed" error. Then send me a 
+new redmon log:
+
+Do While (java.status = 0 and not wscript.stdin.atendofstream)
+	on error resume next
+        java.stdin.write wscript.stdin.read(4000)
+	if (err <> 0) then
+	   Wscript.echo "Error #" & CStr(Err.Number) & ": " & Err.Description
+           Err.Clear
+        end if
+loop
+java.stdin.close
+wscript.stdout.write java.stdout.readAll()
+wscript.stderr.write java.stderr.readAll()
+
+
+Thanks,
+Jonas
+
+

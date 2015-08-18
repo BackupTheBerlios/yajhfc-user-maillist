@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yajhfc-user] admin mode
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yajhfc-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20admin%20mode&In-Reply-To=%3C20100328051008.GG5637%40syscon4.inet%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000306.html">
+   <LINK REL="Next"  HREF="000310.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yajhfc-user] admin mode</H1>
+    <B>Joseph</B> 
+    <A HREF="mailto:yajhfc-user%40lists.berlios.de?Subject=Re%3A%20%5BYajhfc-user%5D%20admin%20mode&In-Reply-To=%3C20100328051008.GG5637%40syscon4.inet%3E"
+       TITLE="[Yajhfc-user] admin mode">syscon780 at gmail.com
+       </A><BR>
+    <I>Sun Mar 28 07:10:08 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000306.html">[Yajhfc-user] admin mode
+</A></li>
+        <LI>Next message: <A HREF="000310.html">[Yajhfc-user] admin mode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/07/10 16:17, Jonas Wolz wrote:
+&gt;<i>Am Dienstag, 2. M?rz 2010 schrieb Joseph:
+</I>&gt;&gt;<i> What to specify in &quot;server&quot; setting to log-in with admin - mode and be able
+</I>&gt;&gt;<i> to delete faxes. I've tried root + password or user + password; it is not
+</I>&gt;&gt;<i> working.
+</I>&gt;<i>
+</I>&gt;<i>The HylaFAX admin password is not any system user's password; HylaFAX uses its
+</I>&gt;<i>own authentication system here (i.e. you have to create your own HylaFAX
+</I>&gt;<i>users and set passwords for them).
+</I>&gt;<i>
+</I>&gt;<i>To use admin mode, you will have to use the faxadduser command (or edit the
+</I>&gt;<i>file hosts.hfaxd) to add an user with an admin password and then log in to
+</I>&gt;<i>HylaFAX as that user.
+</I>&gt;<i>
+</I>&gt;<i>(For an example on editing hosts.hfaxd please see
+</I>&gt;<i><A HREF="../2008-December/000148.html">http://lists.berlios.de/pipermail/yajhfc-user/2008-December/000148.html</A> ).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Hope that helps
+</I>&gt;<i>Jonas
+</I>
+I've added user fax with password, using command:
+faxadduser -a my_password fax
+
+the user fax was added to: hosts.hfaxd
+^fax@:::CL62lePLuiJNI
+
+but when I try to login as &quot;admin&quot; it keeps telling me password incorrect:
+
+An error occured in response to the password:
+530 Password incorrect.
+
+530 Password incorrect.
+          at gnu.hylafax.HylaFAXClientProtocol.admin(HylaFAXClientProtocol.java:111)
+          at yajhfc.HylaClientManager.forceLogin(HylaClientManager.java:164)
+          at yajhfc.HylaClientManager.beginServerTransaction(HylaClientManager.java:86)
+          at yajhfc.MainWin$LoginThread.run(MainWin.java:2646)
+          at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+          at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+          at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+          at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:98)
+          at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:207)
+          at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+          at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+          at java.lang.Thread.run(Thread.java:619)
+
+
+-- 
+Joseph
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000306.html">[Yajhfc-user] admin mode
+</A></li>
+	<LI>Next message: <A HREF="000310.html">[Yajhfc-user] admin mode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yajhfc-user">More information about the Yajhfc-user
+mailing list</a><br>
+</body></html>
